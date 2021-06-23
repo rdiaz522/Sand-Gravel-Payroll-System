@@ -17,7 +17,7 @@
                 <AppTextBox label="Last Name" v-model="lastname" placeholder="Employee Middle Name.."> </AppTextBox>
             </div>
             <div class="form-group">
-                <AppDropdown label="Employee Type" v-model="employee_type" :options="employeeTypeList" placeholder="Select Employee Type"> </AppDropdown>
+                <AppDropdown label="Employee Type" v-model="employee_type_id" :options="employeeTypeList" placeholder="Select Employee Type"> </AppDropdown>
             </div>
             <AppButton v-on:save="save" :btn-name="name" btn-method="save" v-if="isOnsave"></AppButton>
             <AppButton v-on:edit="edit" :btn-name="name" btn-method="edit" v-if="isOnEdit"></AppButton>
@@ -39,7 +39,7 @@ export default {
             firstname: '',
             middlename: '',
             lastname: '',
-            employee_type: '',
+            employee_type_id: '',
             isEdit: false,
             isCreate: false,
         }
@@ -72,7 +72,7 @@ export default {
                 firstname: this.firstname,
                 middlename: this.middlename,
                 lastname: this.lastname,
-                employee_type: this.employee_type
+                employee_type_id: this.employee_type_id
             }
             axios.post(this.$BASE_URL + this.$EMPLOYEES, data)
                 .then((response) => {
@@ -99,7 +99,7 @@ export default {
             this.firstname = '';
             this.middlename = '';
             this.lastname = '';
-            this.employee_type = '';
+            this.employee_type_id = '';
         }
     }
 }

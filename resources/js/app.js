@@ -12,7 +12,9 @@
  Vue.prototype.$BASE_URL = window.location.origin;
  Vue.prototype.$EMPLOYEES = '/employees';
  Vue.prototype.$EMPLOYEETYPE = '/employeeTypes';
- Vue.prototype.$SHOW_LOADING = () => {
+ Vue.prototype.$POSITION = '/position';
+ Vue.prototype.$LOCATION = '/location';
+ Vue.prototype.$SHOW_LOADING = () => {  
      $('#cover-spin').show();
  }
  

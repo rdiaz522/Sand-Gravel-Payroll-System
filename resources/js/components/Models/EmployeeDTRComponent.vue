@@ -6,11 +6,17 @@
         </div>
         <div class="card-body">
             <div class="form-group">
-                <AppTextBox label="Department" v-model="location" placeholder="Enter Department ..."> </AppTextBox>
+    
+                    <label for="exampleDataList" class="form-label">Employee List</label>
+                    <input class="form-control" v-model="searchQuery" placeholder="Type to search...">
+            </div>
+            <div class="form-group">
+               <AppDropdown label="Location" v-model="position_id" :options="position"  placeholder="Select Position"> </AppDropdown>
             </div>
             <AppButton v-on:save="save" :btn-name="name" btn-method="save" v-if="isOnsave"></AppButton>
             <button @click="onCancel" class="btn btn-secondary float-right mr-2">Cancel</button>
-        </div>
+        </div>  
+        {{employees}}
     </div>
 </div>
 </template>
@@ -18,20 +24,26 @@
 <script>
 import AppButton from '../AppComponents/AppButton.vue';
 import AppTextBox from '../AppComponents/AppTextBox.vue';
-
+import AppDTRDropdown from '../AppComponents/AppDTRDropdown.vue';
+import AppDropdown from '../AppComponents/AppDropdown.vue';
 export default {
-    props: ['title', 'name', 'event'],
+    props: ['title', 'name', 'event','employees','position'],
     data() {
         return {
-            location: ''
+            employee_id: '',
+            position_id: '',
+            employeeName: '',
+            searchQuery:''
         }
     },
     components: {
         AppButton,
-        AppTextBox
+        AppTextBox,
+        AppDTRDropdown,
+        AppDropdown
     },
     computed: {
-        isOnsave: function () {
+         isOnsave: function () {
             if (this.event === 'save') {
                 return true;
             }
@@ -45,8 +57,20 @@ export default {
 
             return false;
         },
+        resultQuery(){
+            if(this.searchQuery){
+            return this.employees.filter((item)=>{
+                return this.searchQuery.toLowerCase().split(' ').every(v => item.firstname.toLowerCase().includes(v))
+            })
+            }else{
+                return this.employees;
+            }
+        },
     },
     methods: {
+        test() {
+            console.log(this.employee_id);
+        },
         save() {
             this.$SHOW_LOADING();
             const data = {
@@ -66,13 +90,16 @@ export default {
         },
 
         onCancel() {
+            this.test();
             this.location = '';
         },
 
         clearFields() {
             this.location = '';
-        }
+        },
+  
     }
+
 }
 </script>
 

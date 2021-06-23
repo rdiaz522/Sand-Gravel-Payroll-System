@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\LocationResource;
 use App\Models\Location;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class LocationController extends Controller
      */
     public function index()
     {
-        //
+        $location = Location::orderBy('name', 'ASC')->get();
+        return LocationResource::collection($location);
     }
 
     /**
@@ -36,6 +38,15 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request , [
+            'name' => 'required',
+        ]);
+
+        $location = new Location();
+        $location->name = ucwords($request->name);
+        if($location->save()) {
+            return new LocationResource($location);
+        }
     }
 
     /**
@@ -44,9 +55,13 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function show(Location $location)
+    public function show($id)
     {
         //
+        $location = Location::findOrFail($id);
+        if($location) {
+            return new LocationResource($location);
+        }
     }
 
     /**
@@ -67,9 +82,18 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Location $location)
+    public function update(Request $request, $id)
     {
         //
+        $this->validate($request , [
+            'name' => 'required',
+        ]);
+
+        $location = Location::find($id);
+        $location->name = ucwords($request->name);
+        if($location->save()) {
+            return new LocationResource($location);
+        }
     }
 
     /**
@@ -78,8 +102,12 @@ class LocationController extends Controller
      * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Location $location)
+    public function destroy($id)
     {
         //
+        $location = Location::find($id);
+        if($location->delete()) {
+            return new LocationResource($location);
+        }
     }
 }

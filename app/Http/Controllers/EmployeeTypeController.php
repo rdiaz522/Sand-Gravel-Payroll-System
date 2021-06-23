@@ -84,15 +84,15 @@ class EmployeeTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $this->validate($request , [
+        $this->validate($request , [
             'name' => 'required',
         ]);
 
         $employeesType = EmployeeType::find($id);
         $employeesType->name = ucwords($request->name);
-       if($employeesType->save()) {
-            return new EmployeeTypeResource($employeesType);
-       }
+        if($employeesType->save()) {
+                return new EmployeeTypeResource($employeesType);
+        }
     }
 
     /**

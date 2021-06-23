@@ -13,15 +13,17 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
-        
+        Schema::disableForeignKeyConstraints();
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('firstname')->nullable();
             $table->string('middlename')->nullable();
             $table->string('lastname')->nullable();
-            $table->string('employee_type')->nullable();
+            $table->unsignedBigInteger('employee_type_id')->nullable()->unsigned();
+            $table->foreign('employee_type_id')->references('id')->on('employee_types');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

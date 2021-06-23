@@ -17,12 +17,11 @@
                 <AppTextBox label="Last Name" v-model="lastname" placeholder="Employee Middle Name.."> </AppTextBox>
             </div>
             <div class="form-group">
-                <AppDropdown label="Employee Type" v-model="employee_type" :options="employeeTypeList" placeholder="Select Employee Type"> </AppDropdown>
+                <AppDropdown label="Employee Type" v-model="employee_type_id" :options="employeeTypeList" placeholder="Select Employee Type"> </AppDropdown>
             </div>
             <AppButton v-on:save="save" :btn-name="name" btn-method="save" v-if="isOnsave"></AppButton>
             <AppButton v-on:edit="edit" :btn-name="name" btn-method="edit" v-if="isOnEdit"></AppButton>
             <button @click="onCancel" class="btn btn-secondary float-right mr-2">Cancel</button>
-
         </div>
     </div>
 </div>
@@ -41,7 +40,7 @@ export default {
             firstname: '',
             middlename: '',
             lastname: '',
-            employee_type: '',
+            employee_type_id: '',
             isEdit: false,
             isCreate: false
         }
@@ -68,7 +67,7 @@ export default {
             this.firstname = newVal.firstname;
             this.middlename = newVal.middlename;
             this.lastname = newVal.lastname;
-            this.employee_type = newVal.employee_type;
+            this.employee_type_id = newVal.employee_type_id;
         }
     },
     components: {
@@ -83,7 +82,7 @@ export default {
                 firstname: this.firstname,
                 middlename: this.middlename,
                 lastname: this.lastname,
-                employee_type: this.employee_type
+                employee_type_id: this.employee_type_id
             }
             const config = {
                 headers: {
@@ -116,7 +115,7 @@ export default {
             this.firstname = '';
             this.middlename = '';
             this.lastname = '';
-            this.employee_type = '';
+            this.employee_type_id = '';
         }
     }
 }

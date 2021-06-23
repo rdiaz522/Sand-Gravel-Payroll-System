@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\EmployeeCollection;
-use App\Models\Employees;;
+use App\Models\Employees;
+use App\Models\EmployeeType;
+
+;
 use Illuminate\Http\Request;
 
 class EmployeesController extends Controller
@@ -41,14 +44,14 @@ class EmployeesController extends Controller
             'firstname' => 'required',
             'middlename' => 'required',
             'lastname' => 'required',
-            'employee_type' => 'required'
+            'employee_type_id' => 'required'
         ]);
 
         $employees = new Employees;
         $employees->firstname = ucwords($request->firstname);
         $employees->middlename = ucwords($request->middlename);
         $employees->lastname = ucwords($request->lastname);
-        $employees->employee_type = ucwords($request->employee_type);
+        $employees->employee_type_id = $request->employee_type_id;
        if($employees->save()) {
             return new EmployeeCollection($employees);
        }
@@ -91,18 +94,19 @@ class EmployeesController extends Controller
     public function update(Request $request, $id)
     {
         //
+    
         $this->validate($request , [
             'firstname' => 'required',
             'middlename' => 'required',
             'lastname' => 'required',
-            'employee_type' => 'required'
+            'employee_type_id' => 'required'
         ]);
 
         $employees = Employees::find($id);
         $employees->firstname = ucwords($request->firstname);
         $employees->middlename = ucwords($request->middlename);
         $employees->lastname = ucwords($request->lastname);
-        $employees->employee_type = ucwords($request->employee_type);
+        $employees->employee_type_id = $request->employee_type_id;
        if($employees->save()) {
             return new EmployeeCollection($employees);
        }

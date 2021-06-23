@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PositionResource;
+use App\Models\Location;
 use App\Models\Position;
 use Illuminate\Http\Request;
 
@@ -15,6 +17,8 @@ class PositionController extends Controller
     public function index()
     {
         //
+        $position = Position::orderBy('name', 'ASC')->get();
+        return PositionResource::collection($position);
     }
 
     /**
@@ -35,7 +39,16 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request , [
+            'name' => 'required',
+            'location' => 'required'
+        ]);
+        $position = new Position();
+        $position->name = ucwords($request->name);
+        $position->location_id = $request->location;
+        if($position->save()) {
+            return new PositionResource($position);
+        }
     }
 
     /**
@@ -44,9 +57,13 @@ class PositionController extends Controller
      * @param  \App\Models\Position  $position
      * @return \Illuminate\Http\Response
      */
-    public function show(Position $position)
+    public function show($id)
     {
         //
+        $position = Position::findOrFail($id);
+        if($position) {
+            return new PositionResource($position);
+        }
     }
 
     /**
@@ -67,9 +84,19 @@ class PositionController extends Controller
      * @param  \App\Models\Position  $position
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Position $position)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request , [
+            'name' => 'required',
+            'location' => 'required'
+        ]);
+        
+        $position = Position::find($id);
+        $position->name = ucwords($request->name);
+        $position->location_id = $request->location;
+        if($position->save()) {
+            return new PositionResource($position);
+        }
     }
 
     /**
@@ -78,8 +105,12 @@ class PositionController extends Controller
      * @param  \App\Models\Position  $position
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Position $position)
+    public function destroy($id)
     {
         //
+        $position = Positi::find($id);
+        if($position->delete()) {
+            return new PositionResource($position);
+        }
     }
 }

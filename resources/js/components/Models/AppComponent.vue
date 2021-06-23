@@ -2,14 +2,24 @@
 <div>
     <div class="row">
         <div class="col-xl-12 col-lg-12">
-            <EmployeeListComponent :employeeList="this.employees" v-on:editEmployee="test"></EmployeeListComponent>
+            <EmployeeListComponent 
+            :employeeList="this.employees" 
+            v-on:editEmployee="editEmployee"
+            ></EmployeeListComponent>
         </div>
     </div>
     <div class="row">
         <div class="col-xl-6 col-lg-6">
-            <EmployeeComponent title="Add New Employee" name="Save" event="save" :employeeTypeList="this.employee_types"></EmployeeComponent>
+
+            <EmployeeComponent 
+            title="Add New Employee" 
+            name="Save" event="save" 
+            :employeeTypeList="this.employee_types"
+            ></EmployeeComponent>
+
         </div>
         <div class="col-xl-6 col-lg-6">
+
             <EditEmployeeComponent 
             title="Edit Employee" 
             name="Update" event="save"
@@ -17,12 +27,15 @@
              :employeeTypeList="this.employee_types" 
              v-show="this.showEmployeeEdit">
              </EditEmployeeComponent>
-            <EmployeeTypeComponent title="Add New Employee Type" name="Save" event="save"></EmployeeTypeComponent>
+
+            <EmployeeTypeComponent 
+            title="Add New Employee Type" 
+            name="Save" 
+            event="save">
+            </EmployeeTypeComponent>
         </div>
     </div>
 </div>
-<!-- <PositionComponent title="Add New Position"  name="Save" event="save"></PositionComponent>
-     <LocationComponent title="Add New Location" name="Save" event="save"></LocationComponent> -->
 </template>
 
 <script>
@@ -70,7 +83,8 @@ export default {
                     this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
                 });
         },
-        test(props) {
+
+        editEmployee(props) {
             this.showEmployeeEdit = true;
             this.employeeEdit = props;
         }

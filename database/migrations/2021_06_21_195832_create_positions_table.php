@@ -16,7 +16,7 @@ class CreatePositionsTable extends Migration
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->unsignedBigInteger('location_id')->unsigned();
+            $table->unsignedBigInteger('location_id')->nullable()->unsigned();
             $table->foreign('location_id')->references('id')->on('locations');
             $table->timestamps();
         });

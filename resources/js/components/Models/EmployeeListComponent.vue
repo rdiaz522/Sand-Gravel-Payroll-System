@@ -55,7 +55,7 @@ import DataTable from "vue-materialize-datatable";
                     },
                     {
                         label: 'Employee Type',
-                        field: 'employee_type'
+                        field: 'employee_type_id'
                     },
                 ],
             }

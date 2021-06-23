@@ -2,13 +2,12 @@
 
 namespace App\Http\Resources;
 
-use App\Models\EmployeeType;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class EmployeeCollection extends JsonResource
+class LocationResource extends JsonResource
 {
     /**
-     * Transform the resource collection into an array.
+     * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
@@ -17,10 +16,7 @@ class EmployeeCollection extends JsonResource
     {
         return [
             'id' => $this->id,
-            'firstname' => $this->firstname,
-            'middlename' => $this->middlename,
-            'lastname' => $this->lastname,
-            'employee_type_id' => $this->employee_type_id,
+            'name' => $this->name,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
