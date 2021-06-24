@@ -6,9 +6,24 @@
         </div>
         <div class="card-body">
             <div class="form-group">
-    
-                    <label for="exampleDataList" class="form-label">Employee List</label>
-                    <input class="form-control" v-model="searchQuery" placeholder="Type to search...">
+                <label class="typo__label">Employees</label>
+                 <multiselect 
+                        v-model="value" 
+                        deselect-label="Can't remove this value" 
+                        track-by="firstname" 
+                        :custom-label="fullName" 
+                        placeholder="Select employees" 
+                        :options="employees" 
+                        :searchable="true" 
+                        :allow-empty="true">
+
+                        <template slot="singleLabel" 
+                        slot-scope="{ option }">
+
+                        <strong>{{ option.firstname }} {{ option.lastname }}</strong>
+                        
+                        </template>
+                </multiselect>
             </div>
             <div class="form-group">
                <AppDropdown label="Location" v-model="position_id" :options="position"  placeholder="Select Position"> </AppDropdown>
@@ -16,12 +31,12 @@
             <AppButton v-on:save="save" :btn-name="name" btn-method="save" v-if="isOnsave"></AppButton>
             <button @click="onCancel" class="btn btn-secondary float-right mr-2">Cancel</button>
         </div>  
-        {{employees}}
     </div>
 </div>
 </template>
 
 <script>
+import Multiselect from 'vue-multiselect'
 import AppButton from '../AppComponents/AppButton.vue';
 import AppTextBox from '../AppComponents/AppTextBox.vue';
 import AppDTRDropdown from '../AppComponents/AppDTRDropdown.vue';
@@ -33,14 +48,15 @@ export default {
             employee_id: '',
             position_id: '',
             employeeName: '',
-            searchQuery:''
+            value: null,
         }
     },
     components: {
         AppButton,
         AppTextBox,
         AppDTRDropdown,
-        AppDropdown
+        AppDropdown,
+        Multiselect
     },
     computed: {
          isOnsave: function () {
@@ -57,20 +73,11 @@ export default {
 
             return false;
         },
-        resultQuery(){
-            if(this.searchQuery){
-            return this.employees.filter((item)=>{
-                return this.searchQuery.toLowerCase().split(' ').every(v => item.firstname.toLowerCase().includes(v))
-            })
-            }else{
-                return this.employees;
-            }
-        },
     },
     methods: {
-        test() {
-            console.log(this.employee_id);
-        },
+        fullName ({ firstname,middlename,lastname }) {
+            return `${firstname} ${middlename}, ${lastname}`
+            },
         save() {
             this.$SHOW_LOADING();
             const data = {
@@ -102,6 +109,8 @@ export default {
 
 }
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
 <style>
 
