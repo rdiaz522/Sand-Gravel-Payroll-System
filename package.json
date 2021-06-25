@@ -30,11 +30,13 @@
         "laravel-vue-pagination": "^2.3.1",
         "material-design-icons-iconfont": "^6.1.0",
         "sweetalert2": "^11.0.17",
+        "v-digital-time-picker": "^0.1.8",
         "vue-axios": "^3.2.4",
         "vue-materialize-datatable": "^1.0.4",
         "vue-multiselect": "^2.1.6",
         "vue-resource": "^1.5.3",
         "vue-router": "^3.5.2",
+        "vue2-timepicker": "^1.1.6",
         "vuejs-datatable": "^2.0.0-alpha.7"
     }
 }

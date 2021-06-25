@@ -9,24 +9,43 @@
                 <label class="typo__label">Employees</label>
                  <multiselect 
                         v-model="value" 
-                        deselect-label="Can't remove this value" 
+                        deselect-label="Remove selected value" 
                         track-by="firstname" 
                         :custom-label="fullName" 
                         placeholder="Select employees" 
-                        :options="employees" 
+                        :options="employees"
+                        @select="clickInput" 
                         :searchable="true" 
+                        :block-keys="['Tab']"
                         :allow-empty="true">
-
                         <template slot="singleLabel" 
                         slot-scope="{ option }">
 
-                        <strong>{{ option.firstname }} {{ option.lastname }}</strong>
+                        <strong >{{ option.firstname }} {{ option.lastname }}</strong>
                         
                         </template>
                 </multiselect>
             </div>
             <div class="form-group">
-               <AppDropdown label="Location" v-model="position_id" :options="position"  placeholder="Select Position"> </AppDropdown>
+               <AppDropdown label="Location" v-model="formData.position_id" :options="position"  placeholder="Select Position"> </AppDropdown>
+            </div>
+            <div class="form-group">
+                <label for="">Time Logs</label>
+                <div>
+                    <vue-timepicker
+                    :disabled="disabledTimePicker"
+                :format="format"
+                v-model="formData.start_time"
+                placeholder="Start Time"
+                ></vue-timepicker>
+                to
+                <vue-timepicker
+                :disabled="disabledTimePicker"
+                :format="format"
+                v-model="formData.end_time"
+                placeholder="End Time"
+                ></vue-timepicker>
+                </div>
             </div>
             <AppButton v-on:save="save" :btn-name="name" btn-method="save" v-if="isOnsave"></AppButton>
             <button @click="onCancel" class="btn btn-secondary float-right mr-2">Cancel</button>
@@ -41,14 +60,22 @@ import AppButton from '../AppComponents/AppButton.vue';
 import AppTextBox from '../AppComponents/AppTextBox.vue';
 import AppDTRDropdown from '../AppComponents/AppDTRDropdown.vue';
 import AppDropdown from '../AppComponents/AppDropdown.vue';
+import VueTimepicker from 'vue2-timepicker/src/vue-timepicker.vue';
 export default {
     props: ['title', 'name', 'event','employees','position'],
     data() {
         return {
-            employee_id: '',
-            position_id: '',
+            formData: {
+                employee_id: '',
+                position_id: '',
+                start_time: '',
+                end_time: ''
+            },
             employeeName: '',
             value: null,
+            format:'HH:mm',
+            timeValue:'',
+            disabledTimePicker: true
         }
     },
     components: {
@@ -56,7 +83,8 @@ export default {
         AppTextBox,
         AppDTRDropdown,
         AppDropdown,
-        Multiselect
+        Multiselect,
+        VueTimepicker
     },
     computed: {
          isOnsave: function () {
@@ -78,22 +106,28 @@ export default {
         fullName ({ firstname,middlename,lastname }) {
             return `${firstname} ${middlename}, ${lastname}`
             },
+
+        clickInput() {
+            this.disabledTimePicker = false;  
+        },
         save() {
-            this.$SHOW_LOADING();
-            const data = {
-                name: this.location,
-            }
-            axios.post(this.$BASE_URL + this.$LOCATION, data)
-                .then((response) => {
-                    this.clearFields();
-                    this.$HIDE_LOADING();
-                    this.$parent.getLocations();
-                    this.$SHOW_MESSAGE('Successfully', 'New Location Added!', 'success');
-                })
-                .catch((error) => {
-                    this.$HIDE_LOADING();
-                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-                });
+            this.formData.employee_id = this.value.id;
+            console.log(this.formData);
+            // this.$SHOW_LOADING();
+            // const data = {
+            //     name: this.location,
+            // }
+            // axios.post(this.$BASE_URL + this.$LOCATION, data)
+            //     .then((response) => {
+            //         this.clearFields();
+            //         this.$HIDE_LOADING();
+            //         this.$parent.getLocations();
+            //         this.$SHOW_MESSAGE('Successfully', 'New Location Added!', 'success');
+            //     })
+            //     .catch((error) => {
+            //         this.$HIDE_LOADING();
+            //         this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+            //     });
         },
 
         onCancel() {

@@ -8,7 +8,9 @@
  window.Vue = require('vue').default;
  import Swal from 'sweetalert2';
  import Multiselect from 'vue-multiselect';
- Vue.component('multiselect', Multiselect)
+ import VueTimepicker from 'vue2-timepicker';
+ Vue.use(VueTimepicker);
+ Vue.component('multiselect', Multiselect);
  Vue.use(require('vue-resource'));
  Vue.prototype.$SWAL = Swal;
  Vue.prototype.$BASE_URL = window.location.origin;
@@ -57,6 +59,7 @@
   */
  
 import VueRouter from 'vue-router'
+import Vue from 'vue';
    
   Vue.use(VueRouter)
      
