@@ -4,7 +4,6 @@
             {{ label }}
         </label>
         <input
-        type="text"
         class="form-control"
         maxlength="20" 
         v-bind="$attrs"

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BreakSeedersController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeesController;
@@ -27,6 +28,7 @@ Route::resource('/employees',EmployeesController::class)->middleware('auth');
 Route::resource('/employeeTypes',EmployeeTypeController::class)->middleware('auth');
 Route::resource('/position',PositionController::class)->middleware('auth');
 Route::resource('/location',LocationController::class)->middleware('auth');
+Route::resource('/breakhours',BreakSeedersController::class)->middleware('auth');
 Route::post('/authenticate', [UserController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 

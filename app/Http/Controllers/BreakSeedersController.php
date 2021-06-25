@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\EmployeeTypeResource;
-use App\Models\EmployeeType;
+use App\Http\Resources\BreakSeederResource;
+use App\Models\BreakSeeders;
 use Illuminate\Http\Request;
 
-class EmployeeTypeController extends Controller
+class BreakSeedersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,8 @@ class EmployeeTypeController extends Controller
      */
     public function index()
     {
-        //
-        $employeesType = EmployeeType::orderBy('name', 'ASC')->get();
-        return EmployeeTypeResource::collection($employeesType);
+        $breakSeeders = BreakSeeders::all();
+        return BreakSeederResource::collection($breakSeeders);
     }
 
     /**
@@ -40,37 +39,37 @@ class EmployeeTypeController extends Controller
     {
         //
         $this->validate($request , [
-            'name' => 'required',
+            'hours' => 'required',
         ]);
 
-        $employeesType = new EmployeeType();
-        $employeesType->name = ucwords($request->name);
-       if($employeesType->save()) {
-            return new EmployeeTypeResource($employeesType);
-       }
+        $breakSeeders = new BreakSeeders();
+        $breakSeeders->hours = ucwords($request->name);
+        if($breakSeeders->save()) {
+            return new BreakSeederResource($breakSeeders);
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\EmployeeType  $employeeType
+     * @param  \App\Models\BreakSeeders  $breakSeeders
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-         $employeesType = EmployeeType::findOrFail($id);
-         if($employeesType) {
-             return new EmployeeTypeResource($employeesType);
+        $breakSeeders = BreakSeeders::findOrFail($id);
+         if($breakSeeders) {
+             return new BreakSeederResource($breakSeeders);
          }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\EmployeeType  $employeeType
+     * @param  \App\Models\BreakSeeders  $breakSeeders
      * @return \Illuminate\Http\Response
      */
-    public function edit(EmployeeType $employeeType)
+    public function edit($id)
     {
         //
     }
@@ -79,33 +78,33 @@ class EmployeeTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\EmployeeType  $employeeType
+     * @param  \App\Models\BreakSeeders  $breakSeeders
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate($request , [
-            'name' => 'required',
+            'hours' => 'required',
         ]);
 
-        $employeesType = EmployeeType::find($id);
-        $employeesType->name = ucwords($request->name);
-        if($employeesType->save()) {
-            return new EmployeeTypeResource($employeesType);
+        $breakSeeders = new BreakSeeders();
+        $breakSeeders->hours = ucwords($request->name);
+        if($breakSeeders->save()) {
+            return new BreakSeederResource($breakSeeders);
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\EmployeeType  $employeeType
+     * @param  \App\Models\BreakSeeders  $breakSeeders
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $employeesType = EmployeeType::find($id);
-        if($employeesType->delete()) {
-            return new EmployeeTypeResource($employeesType);
+        $breakSeeders = BreakSeeders::find($id);
+        if($breakSeeders->delete()) {
+            return new BreakSeederResource($breakSeeders);
         }
     }
 }

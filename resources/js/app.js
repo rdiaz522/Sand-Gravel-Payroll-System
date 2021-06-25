@@ -18,6 +18,7 @@
  Vue.prototype.$EMPLOYEETYPE = '/employeeTypes';
  Vue.prototype.$POSITION = '/position';
  Vue.prototype.$LOCATION = '/location';
+ Vue.prototype.$BREAKHOURS = '/breakhours';
  Vue.prototype.$SHOW_LOADING = () => {  
      $('#cover-spin').show();
  }
