@@ -40,7 +40,7 @@ class EmployeeTypeController extends Controller
     {
         //
         $this->validate($request , [
-            'name' => 'required',
+            'name' => 'required|unique:employee_types',
         ]);
 
         $employeesType = new EmployeeType();

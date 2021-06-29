@@ -39,7 +39,7 @@ class LocationController extends Controller
     {
         //
         $this->validate($request , [
-            'name' => 'required',
+            'name' => 'required|unique:locations',
         ]);
 
         $location = new Location();

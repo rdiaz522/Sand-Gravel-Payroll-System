@@ -9,6 +9,7 @@ class Employees extends Model
 {
     use HasFactory;
     
+    protected $table = 'employees';
     /**
      * The attributes that are mass assignable.
      *
@@ -20,5 +21,7 @@ class Employees extends Model
         'middlename',
         'employee_type'
     ];
+
+    public $timestamps = true;
 
 }

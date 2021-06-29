@@ -33,9 +33,12 @@
         </li>
 
         <li class="nav-item">
-                <router-link class="nav-link" to="/payroll"> <span>Employee Payroll Management</span></router-link>
+            <router-link class="nav-link" to="/payroll"> <span>Employee Daily Time Record</span></router-link>
         </li>
-
+        
+        <li class="nav-item">
+            <router-link class="nav-link" to="/settings"> <span>Settings</span></router-link>
+        </li>
 
     </ul>
     <div id="content-wrapper" class="d-flex flex-column">

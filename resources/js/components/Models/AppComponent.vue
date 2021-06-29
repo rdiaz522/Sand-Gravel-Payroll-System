@@ -1,24 +1,12 @@
 <template>
 <div>
     <div class="row">
-        <div class="col-xl-12 col-lg-12">
-            <EmployeeListComponent 
-            :employeeList="this.employees" 
-            v-on:editEmployee="editEmployee"
-            ></EmployeeListComponent>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-xl-6 col-lg-6">
-
             <EmployeeComponent 
             title="Add New Employee" 
             name="Save" event="save" 
             :employeeTypeList="this.employee_types"
             ></EmployeeComponent>
-
-        </div>
-        <div class="col-xl-6 col-lg-6">
 
             <EditEmployeeComponent 
             title="Edit Employee" 
@@ -27,19 +15,18 @@
              :employeeTypeList="this.employee_types" 
              v-show="this.showEmployeeEdit">
              </EditEmployeeComponent>
-
-            <EmployeeTypeComponent 
-            title="Add New Employee Type" 
-            name="Save" 
-            event="save">
-            </EmployeeTypeComponent>
+        </div>
+        <div class="col-xl-6 col-lg-6">
+            <EmployeeListComponent 
+            :employeeList="this.employees" 
+            v-on:editEmployee="editEmployee"
+            ></EmployeeListComponent>
         </div>
     </div>
 </div>
 </template>
 
 <script>
-import EmployeeTypeComponent from './EmployeeTypeComponent.vue';
 import EmployeeListComponent from './EmployeeListComponent.vue';
 import EmployeeComponent from './EmployeeComponent.vue';
 import EditEmployeeComponent from './EditEmployeeComponent.vue';
@@ -57,7 +44,6 @@ export default {
     components: {
         EmployeeListComponent,
         EmployeeComponent,
-        EmployeeTypeComponent,
         EditEmployeeComponent
     },
     methods: {

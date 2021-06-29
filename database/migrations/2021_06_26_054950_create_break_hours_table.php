@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBreakSeedersTable extends Migration
+class CreateBreakHoursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateBreakSeedersTable extends Migration
      */
     public function up()
     {
-        Schema::create('break_seeders', function (Blueprint $table) {
+        Schema::create('break_hours', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateBreakSeedersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('break_seeders');
+        Schema::dropIfExists('break_hours');
     }
 }

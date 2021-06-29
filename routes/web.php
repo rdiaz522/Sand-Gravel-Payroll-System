@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\BreakHourController;
 use App\Http\Controllers\BreakSeedersController;
+use App\Http\Controllers\DailyPayrollExportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\EmployeeTypeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\TimelogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +31,17 @@ Route::resource('/employees',EmployeesController::class)->middleware('auth');
 Route::resource('/employeeTypes',EmployeeTypeController::class)->middleware('auth');
 Route::resource('/position',PositionController::class)->middleware('auth');
 Route::resource('/location',LocationController::class)->middleware('auth');
-Route::resource('/breakhours',BreakSeedersController::class)->middleware('auth');
+Route::resource('/breakhours',BreakHourController::class)->middleware('auth');
+Route::resource('/timelogs',TimelogsController::class)->middleware('auth');
 Route::post('/authenticate', [UserController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/payroll', function () {
     return view('components.home');
 });
+
+Route::get('/settings', function () {
+    return view('components.home');
+});
+
+Route::get('/dailypayrollexport', [DailyPayrollExportController::class, 'generateDailyPayroll'])->middleware('auth');

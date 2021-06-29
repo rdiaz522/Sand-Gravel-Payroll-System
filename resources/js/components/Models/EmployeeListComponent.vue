@@ -10,6 +10,7 @@
                 :rows="employeeList"
                 :sortable="false"
                 :clickable="false"
+                :printable="false"
                 v-on:row-click="onEdit"
                 >
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TimeLogsResource;
 use App\Models\Timelogs;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,30 @@ class TimelogsController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'employee_id' => 'required',
+            'position_id' => 'required',
+            'daily_rate' => 'required',
+            'time_in' => 'required',
+            'time_out' => 'required',
+            'break_time' => 'required',
+            'total_hours' => 'required',
+            'log_date' => 'required',
+        ]);
+
+        $timelogs = new Timelogs();
+        $timelogs->employee_id = $request->employee_id;
+        $timelogs->position_id = $request->position_id;
+        $timelogs->daily_rate = $request->daily_rate;
+        $timelogs->time_in = $request->time_in;
+        $timelogs->time_out = $request->time_out;
+        $timelogs->break_time = $request->break_time;
+        $timelogs->total_hours = $request->total_hours;
+        $timelogs->log_date = date('Y-m-d', strtotime($request->log_date));
+        if($timelogs->save()) {
+            return new TimeLogsResource($timelogs);
+        }
+
     }
 
     /**

@@ -1,34 +1,42 @@
 <template>
- <div>
+<div>
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">{{title}}</h6>
         </div>
         <div class="card-body">
             <div class="form-group">
-                <AppTextBox label="Break Hour" v-model="hour" placeholder="Enter Break Hour ..."> </AppTextBox>
+                <AppTextBox label="Location" v-model="position" placeholder="Enter Location ..."> </AppTextBox>
+            </div>
+            <div class="form-group">
+                <AppDropdown label="Department" v-model="location" :options="locationList" placeholder="Select Department Type"> </AppDropdown>
             </div>
             <AppButton v-on:save="save" :btn-name="name" btn-method="save" v-if="isOnsave"></AppButton>
             <button @click="onCancel" class="btn btn-secondary float-right mr-2">Cancel</button>
-        </div>
+        </div>  
     </div>
 </div>
 </template>
 
 <script>
-import AppButton from '../AppComponents/AppButton.vue';
-import AppTextBox from '../AppComponents/AppTextBox.vue';
+
+import AppButton from '../../AppComponents/AppButton.vue';
+import AppTextBox from '../../AppComponents/AppTextBox.vue';
+import AppDropdown from '../../AppComponents/AppDropdown.vue';
 
 export default {
-props: ['title', 'name', 'event'],
+    props:['title','name','event', 'locationList'],
     data() {
         return {
-            hour: ''
+            position:'',
+            location:'',
+            location_id:''
         }
     },
     components: {
         AppButton,
-        AppTextBox
+        AppTextBox,
+        AppDropdown
     },
     computed: {
         isOnsave: function () {
@@ -50,26 +58,27 @@ props: ['title', 'name', 'event'],
         save() {
             this.$SHOW_LOADING();
             const data = {
-                name: this.location,
+                name: this.position,
+                location: this.location
             }
-            axios.post(this.$BASE_URL + this.$LOCATION, data)
+            axios.post(this.$BASE_URL + this.$POSITION, data)
                 .then((response) => {
                     this.clearFields();
                     this.$HIDE_LOADING();
-                    this.$parent.getLocations();
-                    this.$SHOW_MESSAGE('Successfully', 'New Location Added!', 'success');
+                    this.$SHOW_MESSAGE('Successfully', 'New Position Added!', 'success');
                 })
                 .catch((error) => {
                     this.$HIDE_LOADING();
                     this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-                });
+                });    
         },
 
         onCancel() {
-            this.location = '';
+            this.clearFields();
         },
 
         clearFields() {
+            this.position = '';
             this.location = '';
         }
     }

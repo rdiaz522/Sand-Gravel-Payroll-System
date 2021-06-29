@@ -12,9 +12,9 @@
                         deselect-label="Remove selected value" 
                         track-by="firstname" 
                         :custom-label="fullName" 
-                        placeholder="Select employees" 
+                        placeholder="Search employees" 
                         :options="employees"
-                        @select="clickInput" 
+                        @select="atSelect" 
                         :searchable="true" 
                         :block-keys="['Tab']"
                         :allow-empty="true">
@@ -37,7 +37,7 @@
             <div class="form-group">
                 <datepicker 
                 v-model="formData.log_date"
-                title="Selected Circle"
+                :circle="true"
                 lang="en"/>
             </div>
 
@@ -46,26 +46,32 @@
                 <div>   
                     <vue-timepicker
                     :disabled="disabledTimePicker"
-                :format="format"
-                v-model="formData.start_time"
-                placeholder="Start Time"
-                input-width="250px"
-                input-class="my-awesome-picker"
+                    :format="format"
+                    v-model="startTime"
+                    placeholder="Start Time"
+                    input-width="250px"
+                    input-class="my-awesome-picker"
+                    close-on-complete
+                    auto-scroll
+                    hide-clear-button
                 ></vue-timepicker>
                 to
                 <vue-timepicker
                 :disabled="disabledTimePicker"
                 :format="format"
-                v-model="formData.end_time"
+                v-model="endTime"
                 placeholder="End Time"
                 input-width="250px"
                 input-class="my-awesome-picker"
+                close-on-complete
+                auto-scroll
+                hide-clear-button
                 ></vue-timepicker>
                 </div>
             </div>
 
             <div class="form-group">
-                <AppDropdown label="Break Hour" v-model="formData.break_time" :options="breakHour"  placeholder="Select Break Hours"> </AppDropdown>
+                <AppDropdown label="Break Time" v-model="breakTimeValue" :options="breakHour"  placeholder="Select Break Hours"> </AppDropdown>
             </div>
 
             <AppButton v-on:save="save" :btn-name="name" btn-method="save" v-if="isOnsave"></AppButton>
@@ -81,10 +87,9 @@ import AppButton from '../AppComponents/AppButton.vue';
 import AppTextBox from '../AppComponents/AppTextBox.vue';
 import AppDTRDropdown from '../AppComponents/AppDTRDropdown.vue';
 import AppDropdown from '../AppComponents/AppDropdown.vue';
-import VueTimepicker from 'vue2-timepicker/src/vue-timepicker.vue';
+import VueTimepicker from 'vue2-timepicker';
 import VueDatepickerUi from 'vue-datepicker-ui';
 import moment from 'moment';
-
 export default {
     props: ['title', 'name', 'event','employees','position','breakHour'],
     data() {
@@ -92,18 +97,29 @@ export default {
             formData: {
                 employee_id: '',
                 position_id: '',
-                start_time: '',
-                end_time: '',
+                time_in:'',
+                time_out:'',
                 break_time:'',
                 total_hours:'',
                 log_date: '',
                 daily_rate: ''
             },
-            employeeName: '',
+            breakTimeValue:'',
+            startTime: {
+                    hh: '08',
+                    mm: '00',
+                    A: 'AM'
+                },
+            endTime: {
+                    hh: '05',
+                    mm: '00',
+                    A: 'PM'
+                },
             value: null,
             format:'hh:mm A',
             timeValue:'',
-            disabledTimePicker: true
+            disabledTimePicker: true,
+            readyToSave: false
         }
     },
     components: {
@@ -136,46 +152,60 @@ export default {
             return `${firstname} ${middlename}, ${lastname}`
             },
 
-        clickInput() {
+        atSelect() {
             this.disabledTimePicker = false;  
         },
+
         save() {
-            var startTime = moment(this.formData.start_time, "hh:mm A");
-            var endTime = moment(this.formData.end_time, "hh:mm A");
-            var duration = moment.duration(endTime.diff(startTime));
-            var hours = parseInt(duration.asHours());
-            var minutes = parseInt(duration.asMinutes())%60;
-            var totalMinutesandHours = hours + ':' + minutes;
-            var breakTime = parseFloat( moment.duration(this.formData.break_time).asHours());
-            var convertTotalHour = parseFloat(moment.duration(totalMinutesandHours).asHours()).toFixed(1);
-            var totalHours = convertTotalHour - breakTime;
-            this.formData.total_hours = totalHours;
-            this.formData.employee_id = this.value.id;
-            console.log(this.formData);
-            // this.$SHOW_LOADING();
-            // const data = {
-            //     name: this.location,
-            // }
-            // axios.post(this.$BASE_URL + this.$LOCATION, data)
-            //     .then((response) => {
-            //         this.clearFields();
-            //         this.$HIDE_LOADING();
-            //         this.$parent.getLocations();
-            //         this.$SHOW_MESSAGE('Successfully', 'New Location Added!', 'success');
-            //     })
-            //     .catch((error) => {
-            //         this.$HIDE_LOADING();
-            //         this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-            //     });
+            var timeInformat = this.startTime.hh + ':' + this.startTime.mm + ' '+ this.startTime.A;
+            var timeOutformat = this.endTime.hh + ':' + this.endTime.mm + ' '+ this.endTime.A;
+            this.formData.time_in = timeInformat;
+            this.formData.time_out = timeOutformat;
+            if(this.formData.time_in !== '' && this.formData.time_out !== '') {
+                this.readyToSave = true;
+                var startTime = moment(this.formData.time_in, "hh:mm A");
+                var endTime = moment(this.formData.time_out, "hh:mm A");
+                var duration = moment.duration(endTime.diff(startTime));
+                var hours = parseInt(duration.asHours());
+                var minutes = parseInt(duration.asMinutes())%60;
+                var totalMinutesandHours = hours + ':' + minutes;
+                var breakTime = parseFloat(moment.duration("1:30").asHours());
+                var convertTotalHour = parseFloat(moment.duration(totalMinutesandHours).asHours()).toFixed(1);
+                var totalHours = convertTotalHour - breakTime;
+                this.formData.total_hours = totalHours;
+                this.formData.break_time = breakTime
+                this.formData.employee_id = this.value.id;
+            }
+
+            if(this.readyToSave) {
+                this.$SHOW_LOADING();
+                axios.post(this.$BASE_URL + this.$EMPLOYEETIMELOGS, this.formData)
+                    .then((response) => {
+                        this.clearFields();
+                        this.$HIDE_LOADING();
+                        this.$SHOW_MESSAGE('Successfully', 'New Location Added!', 'success');
+                })
+                .catch((error) => {
+                    this.$HIDE_LOADING();
+                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                });
+            }
         },
 
         onCancel() {
-            this.test();
-            this.location = '';
+            this.clearFields();
         },
 
         clearFields() {
-            this.location = '';
+            this.formData.position_id = '';
+            this.formData.employee_id = '';
+            this.formData.start_time = '';
+            this.formData.end_time = '';
+            this.formData.break_time = '';
+            this.formData.total_hours = '';
+            this.formData.log_date = '';
+            this.formData.daily_rate = '';
+            this.disabledTimePicker = true;
         },
   
     }

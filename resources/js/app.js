@@ -19,6 +19,7 @@
  Vue.prototype.$POSITION = '/position';
  Vue.prototype.$LOCATION = '/location';
  Vue.prototype.$BREAKHOURS = '/breakhours';
+ Vue.prototype.$EMPLOYEETIMELOGS = '/timelogs';
  Vue.prototype.$SHOW_LOADING = () => {  
      $('#cover-spin').show();
  }
@@ -74,6 +75,11 @@ import Vue from 'vue';
         path: '/payroll',
         name: 'Payroll',
         component: require('./components/Models/AppPayrollComponent.vue').default
+     },
+     { 
+        path: '/settings',
+        name: 'Setting',
+        component: require('./components/Models/Settings/AppSettingsComponent.vue').default
      },
   ]
     

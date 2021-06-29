@@ -41,8 +41,6 @@ export default {
             middlename: '',
             lastname: '',
             employee_type_id: '',
-            isEdit: false,
-            isCreate: false
         }
     },
     computed: {

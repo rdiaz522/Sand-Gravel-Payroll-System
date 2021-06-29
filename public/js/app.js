@@ -1981,10 +1981,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _EmployeeTypeComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EmployeeTypeComponent.vue */ "./resources/js/components/Models/EmployeeTypeComponent.vue");
-/* harmony import */ var _EmployeeListComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EmployeeListComponent.vue */ "./resources/js/components/Models/EmployeeListComponent.vue");
-/* harmony import */ var _EmployeeComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EmployeeComponent.vue */ "./resources/js/components/Models/EmployeeComponent.vue");
-/* harmony import */ var _EditEmployeeComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EditEmployeeComponent.vue */ "./resources/js/components/Models/EditEmployeeComponent.vue");
+/* harmony import */ var _EmployeeListComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EmployeeListComponent.vue */ "./resources/js/components/Models/EmployeeListComponent.vue");
+/* harmony import */ var _EmployeeComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EmployeeComponent.vue */ "./resources/js/components/Models/EmployeeComponent.vue");
+/* harmony import */ var _EditEmployeeComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditEmployeeComponent.vue */ "./resources/js/components/Models/EditEmployeeComponent.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2019,19 +2018,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 
@@ -2047,10 +2033,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   components: {
-    EmployeeListComponent: _EmployeeListComponent_vue__WEBPACK_IMPORTED_MODULE_2__.default,
-    EmployeeComponent: _EmployeeComponent_vue__WEBPACK_IMPORTED_MODULE_3__.default,
-    EmployeeTypeComponent: _EmployeeTypeComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    EditEmployeeComponent: _EditEmployeeComponent_vue__WEBPACK_IMPORTED_MODULE_4__.default
+    EmployeeListComponent: _EmployeeListComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default,
+    EmployeeComponent: _EmployeeComponent_vue__WEBPACK_IMPORTED_MODULE_2__.default,
+    EditEmployeeComponent: _EditEmployeeComponent_vue__WEBPACK_IMPORTED_MODULE_3__.default
   },
   methods: {
     getEmployees: function getEmployees() {
@@ -2154,10 +2139,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _PositionComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PositionComponent.vue */ "./resources/js/components/Models/PositionComponent.vue");
-/* harmony import */ var _LocationComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LocationComponent.vue */ "./resources/js/components/Models/LocationComponent.vue");
-/* harmony import */ var _EmployeeDTRComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EmployeeDTRComponent.vue */ "./resources/js/components/Models/EmployeeDTRComponent.vue");
-/* harmony import */ var _BreakHourComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BreakHourComponent.vue */ "./resources/js/components/Models/BreakHourComponent.vue");
+/* harmony import */ var _EmployeeDTRComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EmployeeDTRComponent.vue */ "./resources/js/components/Models/EmployeeDTRComponent.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2182,47 +2164,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      locationData: [],
       employees: [],
       position: [],
       breakHour: []
     };
   },
   components: {
-    PositionComponent: _PositionComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    LocationComponent: _LocationComponent_vue__WEBPACK_IMPORTED_MODULE_2__.default,
-    EmployeeDTRComponent: _EmployeeDTRComponent_vue__WEBPACK_IMPORTED_MODULE_3__.default,
-    BreakHourComponent: _BreakHourComponent_vue__WEBPACK_IMPORTED_MODULE_4__.default
+    EmployeeDTRComponent: _EmployeeDTRComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default
   },
   methods: {
-    getLocations: function getLocations() {
+    getEmployees: function getEmployees() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -2230,8 +2185,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                axios.get(_this.$BASE_URL + _this.$LOCATION).then(function (response) {
-                  _this.locationData = response.data.data;
+                axios.get(_this.$BASE_URL + _this.$EMPLOYEES).then(function (response) {
+                  _this.employees = response.data.data;
 
                   _this.$HIDE_LOADING();
                 })["catch"](function (err) {
@@ -2248,7 +2203,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    getEmployees: function getEmployees() {
+    getPositions: function getPositions() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
@@ -2256,8 +2211,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                axios.get(_this2.$BASE_URL + _this2.$EMPLOYEES).then(function (response) {
-                  _this2.employees = response.data.data;
+                axios.get(_this2.$BASE_URL + _this2.$POSITION).then(function (response) {
+                  _this2.position = response.data.data;
 
                   _this2.$HIDE_LOADING();
                 })["catch"](function (err) {
@@ -2274,7 +2229,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    getPositions: function getPositions() {
+    getBreakHours: function getBreakHours() {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
@@ -2282,8 +2237,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                axios.get(_this3.$BASE_URL + _this3.$POSITION).then(function (response) {
-                  _this3.position = response.data.data;
+                axios.get(_this3.$BASE_URL + _this3.$BREAKHOURS).then(function (response) {
+                  _this3.breakHour = response.data.data;
 
                   _this3.$HIDE_LOADING();
                 })["catch"](function (err) {
@@ -2299,159 +2254,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee3);
       }))();
-    },
-    getBreakHours: function getBreakHours() {
-      var _this4 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                axios.get(_this4.$BASE_URL + _this4.$BREAKHOURS).then(function (response) {
-                  _this4.breakHour = response.data.data;
-
-                  _this4.$HIDE_LOADING();
-                })["catch"](function (err) {
-                  _this4.$HIDE_LOADING();
-
-                  _this4.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-                });
-
-              case 1:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4);
-      }))();
     }
   },
   created: function created() {
-    var _this5 = this;
+    var _this4 = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
-          switch (_context5.prev = _context5.next) {
+          switch (_context4.prev = _context4.next) {
             case 0:
-              _context5.next = 2;
-              return _this5.getLocations();
+              _context4.next = 2;
+              return _this4.getEmployees();
 
             case 2:
-              _context5.next = 4;
-              return _this5.getEmployees();
+              _context4.next = 4;
+              return _this4.getPositions();
 
             case 4:
-              _context5.next = 6;
-              return _this5.getPositions();
+              _context4.next = 6;
+              return _this4.getBreakHours();
 
             case 6:
-              _context5.next = 8;
-              return _this5.getBreakHours();
-
-            case 8:
             case "end":
-              return _context5.stop();
+              return _context4.stop();
           }
         }
-      }, _callee5);
+      }, _callee4);
     }))();
   },
   mounted: function mounted() {
     this.$SHOW_LOADING();
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/BreakHourComponent.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/BreakHourComponent.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
-/* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['title', 'name', 'event'],
-  data: function data() {
-    return {
-      hour: ''
-    };
-  },
-  components: {
-    AppButton: _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__.default,
-    AppTextBox: _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__.default
-  },
-  computed: {
-    isOnsave: function isOnsave() {
-      if (this.event === 'save') {
-        return true;
-      }
-
-      return false;
-    },
-    isOnEdit: function isOnEdit() {
-      if (this.event === 'edit') {
-        return true;
-      }
-
-      return false;
-    }
-  },
-  methods: {
-    save: function save() {
-      var _this = this;
-
-      this.$SHOW_LOADING();
-      var data = {
-        name: this.location
-      };
-      axios.post(this.$BASE_URL + this.$LOCATION, data).then(function (response) {
-        _this.clearFields();
-
-        _this.$HIDE_LOADING();
-
-        _this.$parent.getLocations();
-
-        _this.$SHOW_MESSAGE('Successfully', 'New Location Added!', 'success');
-      })["catch"](function (error) {
-        _this.$HIDE_LOADING();
-
-        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-      });
-    },
-    onCancel: function onCancel() {
-      this.location = '';
-    },
-    clearFields: function clearFields() {
-      this.location = '';
-    }
   }
 });
 
@@ -2511,9 +2344,7 @@ __webpack_require__.r(__webpack_exports__);
       firstname: '',
       middlename: '',
       lastname: '',
-      employee_type_id: '',
-      isEdit: false,
-      isCreate: false
+      employee_type_id: ''
     };
   },
   computed: {
@@ -2728,11 +2559,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
 /* harmony import */ var _AppComponents_AppDTRDropdown_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AppComponents/AppDTRDropdown.vue */ "./resources/js/components/AppComponents/AppDTRDropdown.vue");
 /* harmony import */ var _AppComponents_AppDropdown_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AppComponents/AppDropdown.vue */ "./resources/js/components/AppComponents/AppDropdown.vue");
-/* harmony import */ var vue2_timepicker_src_vue_timepicker_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue2-timepicker/src/vue-timepicker.vue */ "./node_modules/vue2-timepicker/src/vue-timepicker.vue");
+/* harmony import */ var vue2_timepicker__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue2-timepicker */ "./node_modules/vue2-timepicker/dist/VueTimepicker.common.js");
+/* harmony import */ var vue2_timepicker__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue2_timepicker__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-datepicker-ui */ "./node_modules/vue-datepicker-ui/lib/vuedatepickerui.umd.js");
 /* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_7__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2825,18 +2663,29 @@ __webpack_require__.r(__webpack_exports__);
       formData: {
         employee_id: '',
         position_id: '',
-        start_time: '',
-        end_time: '',
+        time_in: '',
+        time_out: '',
         break_time: '',
         total_hours: '',
         log_date: '',
         daily_rate: ''
       },
-      employeeName: '',
+      breakTimeValue: '',
+      startTime: {
+        hh: '08',
+        mm: '00',
+        A: 'AM'
+      },
+      endTime: {
+        hh: '05',
+        mm: '00',
+        A: 'PM'
+      },
       value: null,
       format: 'hh:mm A',
       timeValue: '',
-      disabledTimePicker: true
+      disabledTimePicker: true,
+      readyToSave: false
     };
   },
   components: {
@@ -2845,7 +2694,7 @@ __webpack_require__.r(__webpack_exports__);
     AppDTRDropdown: _AppComponents_AppDTRDropdown_vue__WEBPACK_IMPORTED_MODULE_3__.default,
     AppDropdown: _AppComponents_AppDropdown_vue__WEBPACK_IMPORTED_MODULE_4__.default,
     Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_0___default()),
-    VueTimepicker: vue2_timepicker_src_vue_timepicker_vue__WEBPACK_IMPORTED_MODULE_5__.default,
+    VueTimepicker: (vue2_timepicker__WEBPACK_IMPORTED_MODULE_5___default()),
     datepicker: (vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_6___default())
   },
   computed: {
@@ -2871,43 +2720,61 @@ __webpack_require__.r(__webpack_exports__);
           lastname = _ref.lastname;
       return "".concat(firstname, " ").concat(middlename, ", ").concat(lastname);
     },
-    clickInput: function clickInput() {
+    atSelect: function atSelect() {
       this.disabledTimePicker = false;
     },
     save: function save() {
-      var startTime = moment__WEBPACK_IMPORTED_MODULE_7___default()(this.formData.start_time, "hh:mm A");
-      var endTime = moment__WEBPACK_IMPORTED_MODULE_7___default()(this.formData.end_time, "hh:mm A");
-      var duration = moment__WEBPACK_IMPORTED_MODULE_7___default().duration(endTime.diff(startTime));
-      var hours = parseInt(duration.asHours());
-      var minutes = parseInt(duration.asMinutes()) % 60;
-      var totalMinutesandHours = hours + ':' + minutes;
-      var breakTime = parseFloat(moment__WEBPACK_IMPORTED_MODULE_7___default().duration(this.formData.break_time).asHours());
-      var convertTotalHour = parseFloat(moment__WEBPACK_IMPORTED_MODULE_7___default().duration(totalMinutesandHours).asHours()).toFixed(1);
-      var totalHours = convertTotalHour - breakTime;
-      this.formData.total_hours = totalHours;
-      this.formData.employee_id = this.value.id;
-      console.log(this.formData); // this.$SHOW_LOADING();
-      // const data = {
-      //     name: this.location,
-      // }
-      // axios.post(this.$BASE_URL + this.$LOCATION, data)
-      //     .then((response) => {
-      //         this.clearFields();
-      //         this.$HIDE_LOADING();
-      //         this.$parent.getLocations();
-      //         this.$SHOW_MESSAGE('Successfully', 'New Location Added!', 'success');
-      //     })
-      //     .catch((error) => {
-      //         this.$HIDE_LOADING();
-      //         this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-      //     });
+      var _this = this;
+
+      var timeInformat = this.startTime.hh + ':' + this.startTime.mm + ' ' + this.startTime.A;
+      var timeOutformat = this.endTime.hh + ':' + this.endTime.mm + ' ' + this.endTime.A;
+      this.formData.time_in = timeInformat;
+      this.formData.time_out = timeOutformat;
+
+      if (this.formData.time_in !== '' && this.formData.time_out !== '') {
+        this.readyToSave = true;
+        var startTime = moment__WEBPACK_IMPORTED_MODULE_7___default()(this.formData.time_in, "hh:mm A");
+        var endTime = moment__WEBPACK_IMPORTED_MODULE_7___default()(this.formData.time_out, "hh:mm A");
+        var duration = moment__WEBPACK_IMPORTED_MODULE_7___default().duration(endTime.diff(startTime));
+        var hours = parseInt(duration.asHours());
+        var minutes = parseInt(duration.asMinutes()) % 60;
+        var totalMinutesandHours = hours + ':' + minutes;
+        var breakTime = parseFloat(moment__WEBPACK_IMPORTED_MODULE_7___default().duration("1:30").asHours());
+        var convertTotalHour = parseFloat(moment__WEBPACK_IMPORTED_MODULE_7___default().duration(totalMinutesandHours).asHours()).toFixed(1);
+        var totalHours = convertTotalHour - breakTime;
+        this.formData.total_hours = totalHours;
+        this.formData.break_time = breakTime;
+        this.formData.employee_id = this.value.id;
+      }
+
+      if (this.readyToSave) {
+        this.$SHOW_LOADING();
+        axios.post(this.$BASE_URL + this.$EMPLOYEETIMELOGS, this.formData).then(function (response) {
+          _this.clearFields();
+
+          _this.$HIDE_LOADING();
+
+          _this.$SHOW_MESSAGE('Successfully', 'New Location Added!', 'success');
+        })["catch"](function (error) {
+          _this.$HIDE_LOADING();
+
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        });
+      }
     },
     onCancel: function onCancel() {
-      this.test();
-      this.location = '';
+      this.clearFields();
     },
     clearFields: function clearFields() {
-      this.location = '';
+      this.formData.position_id = '';
+      this.formData.employee_id = '';
+      this.formData.start_time = '';
+      this.formData.end_time = '';
+      this.formData.break_time = '';
+      this.formData.total_hours = '';
+      this.formData.log_date = '';
+      this.formData.daily_rate = '';
+      this.disabledTimePicker = true;
     }
   }
 });
@@ -2926,6 +2793,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue_materialize_datatable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-materialize-datatable */ "./node_modules/vue-materialize-datatable/src/DataTable.vue");
+//
 //
 //
 //
@@ -3029,10 +2897,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3040,8 +2908,252 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
-/* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _PositionComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PositionComponent.vue */ "./resources/js/components/Models/Settings/PositionComponent.vue");
+/* harmony import */ var _LocationComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LocationComponent.vue */ "./resources/js/components/Models/Settings/LocationComponent.vue");
+/* harmony import */ var _BreakHourComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BreakHourComponent.vue */ "./resources/js/components/Models/Settings/BreakHourComponent.vue");
+/* harmony import */ var _EmployeeTypeComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EmployeeTypeComponent.vue */ "./resources/js/components/Models/Settings/EmployeeTypeComponent.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      locationData: []
+    };
+  },
+  components: {
+    PositionComponent: _PositionComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default,
+    LocationComponent: _LocationComponent_vue__WEBPACK_IMPORTED_MODULE_2__.default,
+    EmployeeTypeComponent: _EmployeeTypeComponent_vue__WEBPACK_IMPORTED_MODULE_4__.default,
+    BreakHourComponent: _BreakHourComponent_vue__WEBPACK_IMPORTED_MODULE_3__.default
+  },
+  methods: {
+    getLocations: function getLocations() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                axios.get(_this.$BASE_URL + _this.$LOCATION).then(function (response) {
+                  _this.locationData = response.data.data;
+
+                  _this.$HIDE_LOADING();
+                })["catch"](function (err) {
+                  _this.$HIDE_LOADING();
+
+                  _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                });
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _this2.getLocations();
+
+            case 2:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
+  },
+  mounted: function mounted() {
+    this.$SHOW_LOADING();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
+/* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
+/* harmony import */ var vue2_timepicker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue2-timepicker */ "./node_modules/vue2-timepicker/dist/VueTimepicker.common.js");
+/* harmony import */ var vue2_timepicker__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue2_timepicker__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['title', 'name', 'event'],
+  data: function data() {
+    return {
+      hour: {
+        H: '0',
+        mm: '00'
+      },
+      value: null,
+      format: 'H:mm',
+      timeValue: '',
+      disabledTimePicker: true
+    };
+  },
+  components: {
+    AppButton: _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__.default,
+    AppTextBox: _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__.default,
+    VueTimepicker: (vue2_timepicker__WEBPACK_IMPORTED_MODULE_2___default())
+  },
+  computed: {
+    isOnsave: function isOnsave() {
+      if (this.event === 'save') {
+        return true;
+      }
+
+      return false;
+    },
+    isOnEdit: function isOnEdit() {
+      if (this.event === 'edit') {
+        return true;
+      }
+
+      return false;
+    }
+  },
+  methods: {
+    save: function save() {
+      var _this = this;
+
+      if (this.hour.H === '0' && this.hour.mm === '00') {
+        this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Must not 00:00 Time', 'error');
+      } else {
+        this.$SHOW_LOADING();
+        var data = {
+          name: this.hour.H + ':' + this.hour.mm
+        };
+        axios.post(this.$BASE_URL + this.$BREAKHOURS, data).then(function (response) {
+          _this.clearFields();
+
+          _this.$HIDE_LOADING();
+
+          _this.$SHOW_MESSAGE('Successfully', 'New Break Time Added!', 'success');
+        })["catch"](function (error) {
+          _this.$HIDE_LOADING();
+
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        });
+      }
+    },
+    onCancel: function onCancel() {
+      this.location = '';
+    },
+    clearFields: function clearFields() {
+      this.location = '';
+    },
+    changeHandler: function changeHandler() {
+      console.log('TEST');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
+/* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
 //
 //
 //
@@ -3097,8 +3209,6 @@ __webpack_require__.r(__webpack_exports__);
         name: this.employee_type
       };
       axios.post(this.$BASE_URL + this.$EMPLOYEETYPE, data).then(function (response) {
-        _this.$parent.getEmployeeTypes();
-
         _this.clearFields();
 
         _this.$HIDE_LOADING();
@@ -3110,7 +3220,6 @@ __webpack_require__.r(__webpack_exports__);
         _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
       });
     },
-    edit: function edit() {},
     onCancel: function onCancel() {
       this.clearFields();
     },
@@ -3122,10 +3231,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/LocationComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/LocationComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3133,8 +3242,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
-/* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
+/* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
+/* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
 //
 //
 //
@@ -3214,10 +3323,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/PositionComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/PositionComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3225,9 +3334,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
-/* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
-/* harmony import */ var _AppComponents_AppDropdown_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AppComponents/AppDropdown.vue */ "./resources/js/components/AppComponents/AppDropdown.vue");
+/* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
+/* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
+/* harmony import */ var _AppComponents_AppDropdown_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../AppComponents/AppDropdown.vue */ "./resources/js/components/AppComponents/AppDropdown.vue");
 //
 //
 //
@@ -3293,8 +3402,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.post(this.$BASE_URL + this.$POSITION, data).then(function (response) {
         _this.clearFields();
 
-        _this.$parent.getPositions();
-
         _this.$HIDE_LOADING();
 
         _this.$SHOW_MESSAGE('Successfully', 'New Position Added!', 'success');
@@ -3353,6 +3460,7 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$EMPLOYEETYPE = '/employeeTyp
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$POSITION = '/position';
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$LOCATION = '/location';
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$BREAKHOURS = '/breakhours';
+vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$EMPLOYEETIMELOGS = '/timelogs';
 
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$SHOW_LOADING = function () {
   $('#cover-spin').show();
@@ -3402,6 +3510,10 @@ var routes = [{
   path: '/payroll',
   name: 'Payroll',
   component: __webpack_require__(/*! ./components/Models/AppPayrollComponent.vue */ "./resources/js/components/Models/AppPayrollComponent.vue").default
+}, {
+  path: '/settings',
+  name: 'Setting',
+  component: __webpack_require__(/*! ./components/Models/Settings/AppSettingsComponent.vue */ "./resources/js/components/Models/Settings/AppSettingsComponent.vue").default
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
   mode: 'history',
@@ -7941,30 +8053,6 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\ndiv.material-table[data-v-53282f60] {\n\tpadding: 0;\n}\ntr.clickable[data-v-53282f60] {\n\tcursor: pointer;\n}\n#search-input[data-v-53282f60] {\n\tmargin: 0;\n\tborder: transparent 0 !important;\n\theight: 48px;\n\tcolor: rgba(0, 0, 0, .84);\n}\n#search-input-container[data-v-53282f60] {\n\tpadding: 0 14px 0 24px;\n\tborder-bottom: solid 1px #DDDDDD;\n}\ntable[data-v-53282f60] {\n\ttable-layout: fixed;\n}\n.table-header[data-v-53282f60] {\n\theight: 64px;\n\tpadding-left: 24px;\n\tpadding-right: 14px;\n\talign-items: center;\n\tdisplay: flex;\n\t-webkit-display: flex;\n\tborder-bottom: solid 1px #DDDDDD;\n}\n.table-header .actions[data-v-53282f60] {\n\tdisplay: -webkit-flex;\n\tmargin-left: auto;\n}\n.table-header .btn-flat[data-v-53282f60] {\n\t\tmin-width: 36px;\n\t\tpadding: 0 8px;\n}\n.table-header input[data-v-53282f60] {\n\tmargin: 0;\n\theight: auto;\n}\n.table-header i[data-v-53282f60] {\n\tcolor: rgba(0, 0, 0, 0.54);\n\tfont-size: 24px;\n}\n.table-footer[data-v-53282f60] {\n\theight: 56px;\n\tpadding-left: 24px;\n\tpadding-right: 14px;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tfont-size: 12px !important;\n\tcolor: rgba(0, 0, 0, 0.54);\n}\n.table-footer .datatable-length[data-v-53282f60] {\n\tdisplay: flex;\n}\n.table-footer .datatable-length select[data-v-53282f60] {\n\toutline: none;\n}\n.table-footer label[data-v-53282f60] {\n\tfont-size: 12px;\n\tcolor: rgba(0, 0, 0, 0.54);\n\tdisplay: flex;\n\t/* works with row or column */\n\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.table-footer .select-wrapper[data-v-53282f60] {\n\tdisplay: flex;\n\t/* works with row or column */\n\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: center;\n}\n.table-footer .datatable-info[data-v-53282f60],\n.table-footer .datatable-length[data-v-53282f60] {\n\tmargin-right: 32px;\n}\n.table-footer .material-pagination[data-v-53282f60] {\n\tdisplay: flex;\n\t-webkit-display: flex;\n\tmargin: 0;\n}\n.table-footer .material-pagination li a[data-v-53282f60] {\n\tcolor: rgba(0, 0, 0, 0.54);\n\tpadding: 0 8px;\n\tfont-size: 24px;\n}\n.table-footer .select-wrapper input.select-dropdown[data-v-53282f60] {\n\tmargin: 0;\n\tborder-bottom: none;\n\theight: auto;\n\tline-height: normal;\n\tfont-size: 12px;\n\twidth: 40px;\n\ttext-align: right;\n}\n.table-footer select[data-v-53282f60] {\n\tbackground-color: transparent;\n\twidth: auto;\n\tpadding: 0;\n\tborder: 0;\n\tborder-radius: 0;\n\theight: auto;\n\tmargin-left: 20px;\n}\n.table-title[data-v-53282f60] {\n\tfont-size: 20px;\n\tcolor: #000;\n}\ntable tr td[data-v-53282f60] {\n\tpadding: 0 0 0 56px;\n\theight: 48px;\n\tfont-size: 13px;\n\tcolor: rgba(0, 0, 0, 0.87);\n\tborder-bottom: solid 1px #DDDDDD;\n\twhite-space: nowrap;\n\toverflow: hidden;\n\ttext-overflow: ellipsis;\n}\ntable td[data-v-53282f60], table th[data-v-53282f60] {\n\tborder-radius: 0;\n}\ntable tr td a[data-v-53282f60] {\n\tcolor: inherit;\n}\ntable tr td a i[data-v-53282f60] {\n\tfont-size: 18px;\n\tcolor: rgba(0, 0, 0, 0.54);\n}\ntable tr[data-v-53282f60] {\n\tfont-size: 12px;\n}\ntable th[data-v-53282f60] {\n\tfont-size: 12px;\n\tfont-weight: 500;\n\tcolor: #757575;\n\tcursor: pointer;\n\twhite-space: nowrap;\n\tpadding: 0;\n\theight: 56px;\n\tpadding-left: 56px;\n\tvertical-align: middle;\n\toutline: none !important;\n\n\toverflow: hidden;\n\ttext-overflow: ellipsis;\n}\ntable th[data-v-53282f60]:hover {\n\toverflow: visible;\n\ttext-overflow: initial;\n}\ntable th.sorting-asc[data-v-53282f60],\ntable th.sorting-desc[data-v-53282f60] {\n\tcolor: rgba(0, 0, 0, 0.87);\n}\ntable th.sorting[data-v-53282f60]:after,\ntable th.sorting-asc[data-v-53282f60]:after {\n\tfont-family: 'Material Icons';\n\tfont-weight: normal;\n\tfont-style: normal;\n\tfont-size: 16px;\n\tline-height: 1;\n\tletter-spacing: normal;\n\ttext-transform: none;\n\tdisplay: inline-block;\n\tword-wrap: normal;\n\t-webkit-font-feature-settings: 'liga';\n\t-webkit-font-smoothing: antialiased;\n\tcontent: \"arrow_back\";\n\t-webkit-transform: rotate(90deg);\n\tdisplay: none;\n\tvertical-align: middle;\n}\ntable th.sorting[data-v-53282f60]:hover:after,\ntable th.sorting-asc[data-v-53282f60]:after,\ntable th.sorting-desc[data-v-53282f60]:after {\n\tdisplay: inline-block;\n}\ntable th.sorting-desc[data-v-53282f60]:after {\n\tcontent: \"arrow_forward\";\n}\ntable tbody tr[data-v-53282f60]:hover {\n\tbackground-color: #EEE;\n}\ntable th[data-v-53282f60]:last-child,\ntable td[data-v-53282f60]:last-child {\n\tpadding-right: 14px;\n}\ntable th[data-v-53282f60]:first-child, table td[data-v-53282f60]:first-child {\n\tpadding-left: 24px;\n}\n.rtl[data-v-53282f60] {\n\tdirection: rtl;\n}\n", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=style&index=0&lang=css&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=style&index=0&lang=css& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.vue__time-picker {\n  display: inline-block;\n  position: relative;\n  font-size: 1em;\n  width: 10em;\n  font-family: sans-serif;\n  vertical-align: middle;\n}\n.vue__time-picker * {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.vue__time-picker input.display-time {\n  border: 1px solid #d2d2d2;\n  width: 10em;\n  height: 2.2em;\n  padding: 0.3em 0.5em;\n  font-size: 1em;\n}\n.vue__time-picker input.has-custom-icon {\n  padding-left: 1.8em;\n}\n.vue__time-picker input.display-time.invalid:not(.skip-error-style) {\n  border-color: #cc0033;\n  outline-color: #cc0033;\n}\n.vue__time-picker input.display-time:disabled,\n.vue__time-picker input.display-time.disabled {\n  color: #d2d2d2;\n}\n.vue__time-picker .controls {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  z-index: 3;\n\n  display: -webkit-box;\n\n  display: -ms-flexbox;\n\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-box-pack: end;\n      -ms-flex-pack: end;\n          justify-content: flex-end;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n\n  /* Prevent browser focusing on the controls layer */\n  pointer-events: none;\n}\n.vue__time-picker .controls > * {\n  cursor: pointer;\n  \n  width: auto;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column nowrap;\n          flex-flow: column nowrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n\n  padding: 0 0.35em;\n\n  color: #d2d2d2;\n  line-height: 100%;\n  font-style: normal;\n\n  /* Resume pointer-events on children components */\n  pointer-events: initial;\n\n  -webkit-transition: color .2s, opacity .2s;\n\n  transition: color .2s, opacity .2s;\n}\n.vue__time-picker .controls > *:hover {\n  color: #797979;\n}\n.vue__time-picker .controls > *:focus,\n.vue__time-picker .controls > *:active {\n  outline: 0;\n}\n.vue__time-picker .controls .char {\n  font-size: 1.1em;\n  line-height: 100%;\n\n  /* Vertical align fixes for webkit browsers only */\n  -webkit-margin-before: -0.15em;\n}\n.vue__time-picker .custom-icon {\n  z-index: 2;\n  position: absolute;\n  left: 0;\n  top: 0;\n  bottom: 0;\n  width: 1.8em;\n\n  display: -webkit-box;\n\n  display: -ms-flexbox;\n\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: column nowrap;\n          flex-flow: column nowrap;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n\n  /* pass down mouse events to the <input> underneath */\n  pointer-events: none;\n}\n.vue__time-picker .custom-icon img,\n.vue__time-picker .custom-icon svg,\n.vue__time-picker .controls img,\n.vue__time-picker .controls svg {\n  display: inline-block;\n  vertical-align: middle;\n  margin: 0;\n  border: 0;\n  outline: 0;\n  max-width: 1em;\n  height: auto;\n}\n.vue__time-picker .time-picker-overlay {\n  z-index: 4;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n}\n.vue__time-picker .dropdown,\n.vue__time-picker-dropdown {\n  position: absolute;\n  z-index: 5;\n  top: calc(2.2em + 2px);\n  left: 0;\n  background: #fff;\n  -webkit-box-shadow: 0 1px 6px rgba(0,0,0,0.15);\n          box-shadow: 0 1px 6px rgba(0,0,0,0.15);\n  width: 10em;\n  height: 10em;\n  font-weight: normal;\n}\n\n/* Dropdown class when \"append-to-body\" is on */\n.vue__time-picker-dropdown {\n  position: fixed;\n  z-index: 100;\n}\n.vue__time-picker .dropdown.drop-up,\n.vue__time-picker-dropdown.drop-up {\n  top: auto;\n  bottom: calc(2.2em + 1px);\n}\n.vue__time-picker .dropdown .select-list,\n.vue__time-picker-dropdown .select-list {\n  width: 10em;\n  height: 10em;\n  overflow: hidden;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-flow: row nowrap;\n          flex-flow: row nowrap;\n  -webkit-box-align: stretch;\n      -ms-flex-align: stretch;\n          align-items: stretch;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n.vue__time-picker .dropdown .select-list:focus,\n.vue__time-picker .dropdown .select-list:active,\n.vue__time-picker-dropdown .select-list:focus,\n.vue__time-picker-dropdown .select-list:active {\n  outline: 0;\n}\n.vue__time-picker .dropdown ul,\n.vue__time-picker-dropdown ul {\n  padding: 0;\n  margin: 0;\n  list-style: none;\n  outline: 0;\n\n  -webkit-box-flex: 1;\n\n      -ms-flex: 1 1 0.00001px;\n\n          flex: 1 1 0.00001px;\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.vue__time-picker .dropdown ul.minutes,\n.vue__time-picker .dropdown ul.seconds,\n.vue__time-picker .dropdown ul.apms,\n.vue__time-picker-dropdown ul.minutes,\n.vue__time-picker-dropdown ul.seconds,\n.vue__time-picker-dropdown ul.apms {\n  border-left: 1px solid #fff;\n}\n.vue__time-picker .dropdown ul li,\n.vue__time-picker-dropdown ul li {\n  list-style: none;\n  text-align: center;\n  padding: 0.3em 0;\n  color: #161616;\n}\n.vue__time-picker .dropdown ul li:not(.hint):not([disabled]):hover,\n.vue__time-picker .dropdown ul li:not(.hint):not([disabled]):focus,\n.vue__time-picker-dropdown ul li:not(.hint):not([disabled]):hover,\n.vue__time-picker-dropdown ul li:not(.hint):not([disabled]):focus  {\n  background: rgba(0,0,0,.08);\n  color: #161616;\n  cursor: pointer;\n}\n.vue__time-picker .dropdown ul li:not([disabled]).active,\n.vue__time-picker .dropdown ul li:not([disabled]).active:hover,\n.vue__time-picker .dropdown ul li:not([disabled]).active:focus,\n.vue__time-picker-dropdown ul li:not([disabled]).active,\n.vue__time-picker-dropdown ul li:not([disabled]).active:hover,\n.vue__time-picker-dropdown ul li:not([disabled]).active:focus {\n  background: #41B883;\n  color: #fff;\n}\n.vue__time-picker .dropdown ul li[disabled],\n.vue__time-picker .dropdown ul li[disabled]:hover,\n.vue__time-picker-dropdown ul li[disabled],\n.vue__time-picker-dropdown ul li[disabled]:hover {\n  background: transparent;\n  opacity: 0.3;\n  cursor: not-allowed;\n}\n.vue__time-picker .dropdown .hint,\n.vue__time-picker-dropdown .hint {\n  color: #a5a5a5;\n  cursor: default;\n  font-size: 0.8em;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -62089,36 +62177,6 @@ var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMP
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=style&index=0&lang=css&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=style&index=0&lang=css& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_vue_timepicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../vue-loader/lib/index.js??vue-loader-options!./vue-timepicker.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=style&index=0&lang=css&");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_vue_timepicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default, options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_vue_timepicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-multiselect/dist/vue-multiselect.min.css?vue&type=style&index=0&lang=css& ***!
@@ -70106,2105 +70164,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue2-timepicker/src/vue-timepicker.vue":
-/*!*************************************************************!*\
-  !*** ./node_modules/vue2-timepicker/src/vue-timepicker.vue ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _vue_timepicker_vue_vue_type_template_id_c4588f32___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vue-timepicker.vue?vue&type=template&id=c4588f32& */ "./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=template&id=c4588f32&");
-/* harmony import */ var _vue_timepicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vue-timepicker.vue?vue&type=script&lang=js& */ "./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=script&lang=js&");
-/* harmony import */ var _vue_timepicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vue-timepicker.vue?vue&type=style&index=0&lang=css& */ "./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-;
-
-
-/* normalize component */
-
-var component = (0,_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
-  _vue_timepicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _vue_timepicker_vue_vue_type_template_id_c4588f32___WEBPACK_IMPORTED_MODULE_0__.render,
-  _vue_timepicker_vue_vue_type_template_id_c4588f32___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "node_modules/vue2-timepicker/src/vue-timepicker.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-
-const CONFIG = {
-  HOUR_TOKENS: ['HH', 'H', 'hh', 'h', 'kk', 'k'],
-  MINUTE_TOKENS: ['mm', 'm'],
-  SECOND_TOKENS: ['ss', 's'],
-  APM_TOKENS: ['A', 'a'],
-  BASIC_TYPES: ['hour', 'minute', 'second', 'apm']
-}
-
-const DEFAULT_OPTIONS = {
-  format: 'HH:mm',
-  minuteInterval: 1,
-  secondInterval: 1,
-  hourRange: null,
-  minuteRange: null,
-  secondRange: null,
-  hideDisabledHours: false,
-  hideDisabledMinutes: false,
-  hideDisabledSeconds: false,
-  hideDisabledItems: false,
-  hideDropdown: false,
-  blurDelay: 300,
-  manualInputTimeout: 1000,
-  dropOffsetHeight: 160
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'VueTimepicker',
-  props: {
-    value: { type: [ Object, String ] },
-    format: { type: String },
-    minuteInterval: { type: [ Number, String ] },
-    secondInterval: { type: [ Number, String ] },
-
-    hourRange: { type: Array },
-    minuteRange: { type: Array },
-    secondRange: { type: Array },
-
-    hideDisabledHours: { type: Boolean, default: false },
-    hideDisabledMinutes: { type: Boolean, default: false },
-    hideDisabledSeconds: { type: Boolean, default: false },
-    hideDisabledItems: { type: Boolean, default: false },
-
-    hideClearButton: { type: Boolean, default: false },
-    disabled: { type: Boolean, default: false },
-    closeOnComplete: { type: Boolean, default: false },
-
-    id: { type: String },
-    name: { type: String },
-    inputClass: { type: [ String, Object, Array ] },
-    placeholder: { type: String },
-    tabindex: { type: [ Number, String ], default: 0 },
-    inputWidth: { type: String },
-    autocomplete: { type: String, default: 'off' },
-
-    hourLabel: { type: String },
-    minuteLabel: { type: String },
-    secondLabel: { type: String },
-    apmLabel: { type: String },
-    amText: { type: String },
-    pmText: { type: String },
-
-    blurDelay: { type: [ Number, String ] },
-    advancedKeyboard: { type: Boolean, default: false },
-
-    lazy: { type: Boolean, default: false },
-    autoScroll: { type: Boolean, default: false },
-
-    dropDirection: { type: String, default: 'down' },
-    dropOffsetHeight: { type: [ Number, String ] },
-    containerId: { type: String },
-    appendToBody: { type: Boolean, default: false },
-
-    manualInput: { type: Boolean, default: false },
-    manualInputTimeout: { type: [ Number, String ] },
-    hideDropdown: { type: Boolean, default: false },
-    fixedDropdownButton: { type: Boolean, default: false },
-
-    debugMode: { type: Boolean, default: false }
-  },
-
-  data () {
-    return {
-      timeValue: {},
-
-      hours: [],
-      minutes: [],
-      seconds: [],
-      apms: [],
-
-      isActive: false,
-      showDropdown: false,
-      isFocusing: false,
-      debounceTimer: undefined,
-
-      hourType: 'HH',
-      minuteType: 'mm',
-      secondType: '',
-      apmType: '',
-      hour: '',
-      minute: '',
-      second: '',
-      apm: '',
-      fullValues: undefined,
-      bakDisplayTime: undefined,
-      doClearApmChecking: false,
-
-      selectionTimer: undefined,
-      kbInputTimer: undefined,
-      kbInputLog: '',
-      bakCurrentPos: undefined,
-      forceDropOnTop: false
-    }
-  },
-
-  computed: {
-    opts () {
-      const options = Object.assign({}, DEFAULT_OPTIONS)
-
-      if (this.format && this.format.length) {
-        options.format = String(this.format)
-      }
-
-      if (this.isNumber(this.minuteInterval)) {
-        options.minuteInterval = +this.minuteInterval
-      }
-      // minuteInterval failsafe
-      if (!options.minuteInterval || options.minuteInterval < 1 || options.minuteInterval > 60) {
-        if (this.debugMode) {
-          if (options.minuteInterval > 60) {
-            this.debugLog(`"minute-interval" should be less than 60. Current value is ${this.minuteInterval}`)
-          } else if (options.minuteInterval === 0 || options.minuteInterval < 1) {
-            this.debugLog(`"minute-interval" should be NO less than 1. Current value is ${this.minuteInterval}`)
-          }
-        }
-        if (options.minuteInterval === 0) {
-          options.minuteInterval = 60
-        } else {
-          options.minuteInterval = 1
-        }
-      }
-
-      if (this.isNumber(this.secondInterval)) {
-        options.secondInterval = +this.secondInterval
-      }
-      // secondInterval failsafe
-      if (!options.secondInterval || options.secondInterval < 1 || options.secondInterval > 60) {
-        if (this.debugMode) {
-          if (options.secondInterval > 60) {
-            this.debugLog(`"second-interval" should be less than 60. Current value is ${this.secondInterval}`)
-          } else if (options.secondInterval === 0 || options.secondInterval < 1) {
-            this.debugLog(`"second-interval" should be NO less than 1. Current value is ${this.secondInterval}`)
-          }
-        }
-        if (options.secondInterval === 0) {
-          options.secondInterval = 60
-        } else {
-          options.secondInterval = 1
-        }
-      }
-
-      if (this.hourRange && Array.isArray(this.hourRange)) {
-        options.hourRange = JSON.parse(JSON.stringify(this.hourRange))
-        if (!this.hourRange.length && this.debugMode) {
-          this.debugLog('The "hour-range" array is empty (length === 0)')
-        }
-      }
-
-      if (this.minuteRange && Array.isArray(this.minuteRange)) {
-        options.minuteRange = JSON.parse(JSON.stringify(this.minuteRange))
-        if (!this.minuteRange.length && this.debugMode) {
-          this.debugLog('The "minute-range" array is empty (length === 0)')
-        }
-      }
-
-      if (this.secondRange && Array.isArray(this.secondRange)) {
-        options.secondRange = JSON.parse(JSON.stringify(this.secondRange))
-        if (!this.secondRange.length && this.debugMode) {
-          this.debugLog('The "second-range" array is empty (length === 0)')
-        }
-      }
-
-      if (this.hideDisabledItems) {
-        options.hideDisabledItems = true
-      }
-
-      if (this.hideDisabledHours || this.hideDisabledItems) {
-        options.hideDisabledHours = true
-      }
-      if (this.hideDisabledMinutes || this.hideDisabledItems) {
-        options.hideDisabledMinutes = true
-      }
-      if (this.hideDisabledSeconds || this.hideDisabledItems) {
-        options.hideDisabledSeconds = true
-      }
-
-      if (this.hideDropdown) {
-        if (this.manualInput) {
-          options.hideDropdown = true
-        } else if (this.debugMode) {
-          this.debugLog('"hide-dropdown" only works with "manual-input" mode')
-        }
-      }
-
-      if (this.blurDelay && +this.blurDelay > 0) {
-        options.blurDelay = +this.blurDelay
-      }
-
-      if (this.manualInputTimeout && +this.manualInputTimeout > 0) {
-        options.manualInputTimeout = +this.manualInputTimeout
-      }
-
-      if (this.dropOffsetHeight && +this.dropOffsetHeight > 0) {
-        options.dropOffsetHeight = +this.dropOffsetHeight
-      }
-
-      return options
-    },
-
-    useStringValue () {
-      return typeof this.value === 'string'
-    },
-
-    formatString () {
-      return this.opts.format || DEFAULT_OPTIONS.format
-    },
-
-    inUse () {
-      const typesInUse = CONFIG.BASIC_TYPES.filter(type => this.getTokenByType(type))
-      // Sort types and tokens by their sequence in the "format" string
-      typesInUse.sort((l, r) => {
-        return this.formatString.indexOf(this.getTokenByType(l) || null) - this.formatString.indexOf(this.getTokenByType(r) || null)
-      })
-      const tokensInUse = typesInUse.map(type => this.getTokenByType(type))
-      return {
-        hour: !!this.hourType,
-        minute: !!this.minuteType,
-        second: !!this.secondType,
-        apm: !!this.apmType,
-        types: typesInUse || [],
-        tokens: tokensInUse || []
-      }
-    },
-
-    displayTime () {
-      let formatString = String(this.formatString)
-      if (this.hour) {
-        formatString = formatString.replace(new RegExp(this.hourType, 'g'), this.hour)
-      }
-      if (this.minute) {
-        formatString = formatString.replace(new RegExp(this.minuteType, 'g'), this.minute)
-      }
-      if (this.second && this.secondType) {
-        formatString = formatString.replace(new RegExp(this.secondType, 'g'), this.second)
-      }
-      if (this.apm && this.apmType) {
-        formatString = formatString.replace(new RegExp(this.apmType, 'g'), this.apm)
-      }
-      return formatString
-    },
-
-    customDisplayTime () {
-      if (!this.amText && !this.pmText) {
-        return this.displayTime
-      }
-      return this.displayTime.replace(new RegExp(this.apm, 'g'), this.apmDisplayText(this.apm))
-    },
-
-    inputIsEmpty () {
-      return this.formatString === this.displayTime
-    },
-
-    allValueSelected () {
-      if (
-        (this.inUse.hour && !this.hour) ||
-        (this.inUse.minute && !this.minute) ||
-        (this.inUse.second && !this.second) ||
-        (this.inUse.apm && !this.apm)
-      ) {
-        return false
-      }
-      return true
-    },
-
-    columnsSequence () {
-      return this.inUse.types.map(type => type) || []
-    },
-
-    showClearBtn () {
-      if (this.hideClearButton || this.disabled) {
-        return false
-      }
-      return !this.inputIsEmpty
-    },
-
-    showDropdownBtn () {
-      if (this.fixedDropdownButton) { return true }
-      if (this.opts.hideDropdown && this.isActive && !this.showDropdown) {
-        return true
-      }
-      return false
-    },
-
-    baseOn12Hours () {
-      return this.hourType === 'h' || this.hourType === 'hh'
-    },
-
-    hourRangeIn24HrFormat () {
-      if (!this.hourType || !this.opts.hourRange) { return false }
-      if (!this.opts.hourRange.length) { return [] }
-
-      const range = []
-      this.opts.hourRange.forEach(value => {
-        if (value instanceof Array) {
-          if (value.length > 2 && this.debugMode) {
-            this.debugLog(`Nested array within "hour-range" must contain no more than two items. Only the first two items of ${JSON.stringify(value)} will be taken into account.`)
-          }
-
-          let start = value[0]
-          let end = value[1] || value[0]
-
-          if (this.is12hRange(start)) {
-            start = this.translate12hRange(start)
-          }
-          if (this.is12hRange(end)) {
-            end = this.translate12hRange(end)
-          }
-
-          for (let i = +start; i <= +end; i++) {
-            if (i < 0 || i > 24) { continue }
-            if (!range.includes(i)) {
-              range.push(i)
-            }
-          }
-        } else {
-          if (this.is12hRange(value)) {
-            value = this.translate12hRange(value)
-          } else {
-            value = +value
-          }
-          if (value < 0 || value > 24) { return }
-          if (!range.includes(value)) {
-            range.push(value)
-          }
-        }
-      })
-      range.sort((l, r) => { return l - r })
-      return range
-    },
-
-    restrictedHourRange () {
-      // No restriction
-      if (!this.hourRangeIn24HrFormat) { return false }
-      // 12-Hour
-      if (this.baseOn12Hours) {
-        const range = this.hourRangeIn24HrFormat.map((value) => {
-          if (value === 12) {
-            return '12p'
-          } else if (value === 24 || value === 0) {
-            return '12a'
-          }
-          return value > 12 ? `${value % 12}p` : `${value}a`
-        })
-        return range
-      }
-      // 24-Hour
-      return this.hourRangeIn24HrFormat
-    },
-
-    validHoursList () {
-      if (!this.manualInput) { return false }
-      if (this.restrictedHourRange) {
-        let list = []
-        if (this.baseOn12Hours) {
-          list = this.restrictedHourRange.map(hr => {
-            const l = hr.substr(0, hr.length - 1)
-            const r = hr.substr(-1)
-            return `${this.formatValue(this.hourType, l)}${r}`
-          })
-          const am12Index = list.indexOf('12a')
-          if (am12Index > 0) {
-            // Make '12a' the first item in h/hh
-            list.unshift(list.splice(am12Index, 1)[0])
-          }
-          return list
-        }
-        list = this.restrictedHourRange.map(hr => {
-          return this.formatValue(this.hourType, hr)
-        })
-        if (list.length > 1 && list[0] && list[0] === '24') {
-          // Make '24' the last item in k/kk
-          list.push(list.shift())
-        }
-        return list
-      }
-      if (this.baseOn12Hours) {
-        return [].concat([], this.hours.map(hr => `${hr}a`), this.hours.map(hr => `${hr}p`))
-      }
-      return this.hours
-    },
-
-    has () {
-      const result = {
-        customApmText: false
-      }
-      const apmEnabled = !!this.apmType
-
-      if (apmEnabled && this.hourRangeIn24HrFormat && this.hourRangeIn24HrFormat.length) {
-        const range = [].concat([], this.hourRangeIn24HrFormat)
-        result.am = range.some(value => value < 12 || value === 24)
-        result.pm = range.some(value => value >= 12 && value < 24)
-      } else {
-        result.am = apmEnabled
-        result.pm = apmEnabled
-      }
-      if ((this.amText && this.amText.length) || (this.pmText && this.pmText.length)) {
-        result.customApmText = true
-      }
-      return result
-    },
-
-    minuteRangeList () {
-      if (!this.minuteType || !this.opts.minuteRange) { return false }
-      if (!this.opts.minuteRange.length) { return [] }
-      return this.renderRangeList(this.opts.minuteRange, 'minute')
-    },
-
-    secondRangeList () {
-      if (!this.secondType || !this.opts.secondRange) { return false }
-      if (!this.opts.secondRange.length) { return [] }
-      return this.renderRangeList(this.opts.secondRange, 'second')
-    },
-    
-    hourLabelText () {
-      return this.hourLabel || this.hourType
-    },
-    minuteLabelText () {
-      return this.minuteLabel || this.minuteType
-    },
-    secondLabelText() {
-      return this.secondLabel || this.secondType
-    },
-    apmLabelText () {
-      return this.apmLabel || this.apmType
-    },
-
-    inputWidthStyle () {
-      if (!this.inputWidth || !this.inputWidth.length) { return }
-      return {
-        width: this.inputWidth
-      }
-    },
-
-    tokenRegexBase () {
-      return this.inUse.tokens.join('|')
-    },
-
-    tokenChunks () {
-      if (!this.manualInput && !this.useStringValue) { return false }
-
-      const formatString = String(this.formatString)
-      const tokensRegxStr = `(${this.tokenRegexBase})+?`
-      const tokensMatchAll = this.getMatchAllByRegex(formatString, tokensRegxStr)
-
-      const tokenChunks = []
-      for (let tkMatch of tokensMatchAll) {
-        const rawToken = tkMatch[0]
-        const tokenMatchItem = {
-          index: tkMatch.index,
-          token: rawToken,
-          type: this.getTokenType(rawToken),
-          needsCalibrate: rawToken.length < 2,
-          len: (rawToken || '').length
-        }
-        tokenChunks.push(tokenMatchItem)
-      }
-      return tokenChunks
-    },
-
-    needsPosCalibrate () {
-      if (!this.manualInput) { return false }
-      return this.tokenChunks.some(chk => chk.needsCalibrate)
-    },
-
-    tokenChunksPos () {
-      if (!this.manualInput) { return false }
-      if (!this.needsPosCalibrate) {
-        return this.tokenChunks.map(chk => {
-          return {
-            token: chk.token,
-            type: chk.type,
-            start: chk.index,
-            end: chk.index + chk.len
-          }
-        })
-      }
-      const list = []
-      let calibrateLen = 0
-      this.tokenChunks.forEach(chk => {
-        let chunkCurrentLen
-        // Adjust for customized AM/PM text
-        if (chk.type === 'apm' && this.has.customApmText) {
-          if (this.apm && this.apm.length) {
-            const customApmText = this.apm.toLowerCase() === 'am' ? this.amText : this.pmText
-            chunkCurrentLen = (customApmText && customApmText.length) ? customApmText.length : chk.len
-          } else {
-            chunkCurrentLen = chk.len
-          }
-        // Others
-        } else {
-          chunkCurrentLen = this[chk.type] && this[chk.type].length ? this[chk.type].length : chk.len
-        }
-        list.push({
-          token: chk.token,
-          type: chk.type,
-          start: chk.index + calibrateLen,
-          end: chk.index + calibrateLen + chunkCurrentLen
-        })
-        if (chk.needsCalibrate && chunkCurrentLen > chk.len) {
-          calibrateLen += (chunkCurrentLen - chk.len)
-        }
-      })
-      return list
-    },
-
-    invalidValues () {
-      if (this.inputIsEmpty) { return [] }
-      if (!this.restrictedHourRange && !this.minuteRangeList && !this.secondRangeList && this.opts.minuteInterval === 1 && this.opts.secondInterval === 1) { return [] }
-
-      const result = []
-      if (this.inUse.hour && !this.isEmptyValue(this.hourType, this.hour) && (!this.isValidValue(this.hourType, this.hour) || this.isDisabled('hour', this.hour))) {
-        result.push('hour')
-      }
-      if (this.inUse.minute && !this.isEmptyValue(this.minuteType, this.minute) && (!this.isValidValue(this.minuteType, this.minute) || this.isDisabled('minute', this.minute) || this.notInInterval('minute', this.minute))) {
-        result.push('minute')
-      }
-      if (this.inUse.second && !this.isEmptyValue(this.secondType, this.second) && (!this.isValidValue(this.secondType, this.second) || this.isDisabled('second', this.second) || this.notInInterval('second', this.second))) {
-        result.push('second')
-      }
-      if (this.inUse.apm && !this.isEmptyValue(this.apmType, this.apm) && (!this.isValidValue(this.apmType, this.apm) || this.isDisabled('apm', this.apm))) {
-        result.push('apm')
-      }
-      if (result.length) {
-        return result
-      }
-      return []
-    },
-
-    hasInvalidInput () {
-      return Boolean(this.invalidValues && this.invalidValues.length)
-    },
-
-    autoDirectionEnabled () {
-      return this.dropDirection === 'auto'
-    },
-
-    dropdownDirClass () {
-      if (this.autoDirectionEnabled) {
-        return this.forceDropOnTop ? 'drop-up' : 'drop-down'
-      }
-      return this.dropDirection === 'up' ? 'drop-up' : 'drop-down'      
-    }
-  },
-
-  watch: {
-    'opts.format' (newValue) {
-      this.renderFormat(newValue)
-    },
-    'opts.minuteInterval' (newInteval) {
-      this.renderList('minute', newInteval)
-    },
-    'opts.secondInterval' (newInteval) {
-      this.renderList('second', newInteval)
-    },
-    value: {
-      deep: true,
-      handler () {
-        this.readValues()
-      }
-    },
-    displayTime () {
-      this.fillValues()
-    },
-    disabled (toDisabled) {
-      if (toDisabled) {
-        // Force close dropdown and reset status when disabled
-        if (this.isActive) {
-          this.isActive = false
-        }
-        if (this.showDropdown) {
-          this.showDropdown = false
-        }
-      }
-    },
-    'invalidValues.length' (newLength, oldLength) {
-      if (newLength && newLength >= 1) {
-        this.$emit('error', this.invalidValues)
-      } else if (oldLength && oldLength >= 1) {
-        this.$emit('error', [])
-      }
-    }
-  },
-
-  methods: {
-    formatValue (token, i) {
-      if (!this.isNumber(i)) { return '' }
-      i = +i
-      switch (token) {
-        case 'H':
-        case 'h':
-        case 'k':
-        case 'm':
-        case 's':
-          if (['h', 'k'].includes(token) && i === 0) {
-            return token === 'k' ? '24' : '12'
-          }
-          return String(i)
-        case 'HH':
-        case 'mm':
-        case 'ss':
-        case 'hh':
-        case 'kk':
-          if (['hh', 'kk'].includes(token) && i === 0) {
-            return token === 'kk' ? '24' : '12'
-          }
-          return i < 10 ? `0${i}` : String(i)
-        default:
-          return ''
-      }
-    },
-
-    checkAcceptingType (validValues, formatString) {
-      if (!validValues || !formatString || !formatString.length) { return '' }
-      for (let i = 0; i < validValues.length; i++) {
-        if (formatString.indexOf(validValues[i]) > -1) {
-          return validValues[i]
-        }
-      }
-      return ''
-    },
-
-    renderFormat (newFormat) {
-      newFormat = newFormat || this.opts.format || DEFAULT_OPTIONS.format
-
-      let hourType = this.checkAcceptingType(CONFIG.HOUR_TOKENS, newFormat)
-      let minuteType = this.checkAcceptingType(CONFIG.MINUTE_TOKENS, newFormat)
-      this.secondType = this.checkAcceptingType(CONFIG.SECOND_TOKENS, newFormat)
-      this.apmType = this.checkAcceptingType(CONFIG.APM_TOKENS, newFormat)
-
-      // Failsafe checking
-      if (!hourType && !minuteType && !this.secondType && !this.apmType) {
-        if (this.debugMode && this.format) {
-          this.debugLog(`No valid tokens found in your defined "format" string "${this.format}". Fallback to the default "HH:mm" format.`)
-        }
-        hourType = 'HH'
-        minuteType = 'mm'
-      }
-      this.hourType = hourType
-      this.minuteType = minuteType
-
-      this.hourType ? this.renderHoursList() : this.hours = []
-      this.minuteType ? this.renderList('minute') : this.minutes = []
-      this.secondType ? this.renderList('second') : this.seconds = []
-      this.apmType ? this.renderApmList() : this.apms = []
-
-      this.$nextTick(() => {
-        this.readValues()
-      })
-    },
-
-    renderHoursList () {
-      const hoursCount = this.baseOn12Hours ? 12 : 24
-      const hours = []
-      for (let i = 0; i < hoursCount; i++) {
-        if (this.hourType === 'k' || this.hourType === 'kk') {
-          hours.push(this.formatValue(this.hourType, i + 1))
-        } else {
-          hours.push(this.formatValue(this.hourType, i))
-        }
-      }
-      this.hours = hours
-    },
-
-    renderList (listType, interval) {
-      if (!this.isMinuteOrSecond(listType)) { return }
-
-      const isMinute = listType === 'minute'
-      interval = interval || (isMinute ? (this.opts.minuteInterval || DEFAULT_OPTIONS.minuteInterval) : (this.opts.secondInterval || DEFAULT_OPTIONS.secondInterval))
-
-      const result = []
-      for (let i = 0; i < 60; i += interval) {
-        result.push(this.formatValue(isMinute ? this.minuteType : this.secondType, i))
-      }
-      isMinute ? this.minutes = result : this.seconds = result
-    },
-
-    renderApmList () {
-      this.apms = this.apmType === 'A' ? ['AM', 'PM'] : ['am', 'pm']
-    },
-
-    readValues () {
-      if (this.useStringValue) {
-        if (this.debugMode) {
-          this.debugLog(`Received a string value: "${this.value}"`)
-        }
-        this.readStringValues(this.value)
-      } else {
-        if (this.debugMode) {
-          this.debugLog(`Received an object value: "${JSON.stringify(this.value || {})}"`)
-        }
-        this.readObjectValues(this.value)
-      }
-    },
-
-    readObjectValues (objValue) {
-      const timeValue = JSON.parse(JSON.stringify(objValue || {}))
-      const values = Object.keys(timeValue)
-
-      // Failsafe for empty `v-model` object
-      if (values.length === 0) {
-        this.addFallbackValues()
-        return
-      }
-
-      CONFIG.BASIC_TYPES.forEach(type => {
-        const token = this.getTokenByType(type)
-        if (values.indexOf(token) > -1) {
-          const sanitizedValue = this.sanitizedValue(token, timeValue[token])
-          this[type] = sanitizedValue
-          timeValue[token] = sanitizedValue
-        } else {
-          this[type] = ''
-        }
-      })
-      this.timeValue = timeValue
-    },
-
-    getMatchAllByRegex (testString, regexString) {
-      const str = 'polyfillTest'
-      const needsPolyfill = Boolean(!str.matchAll || typeof str.matchAll !== 'function')
-      return needsPolyfill ? this.polyfillMatchAll(testString, regexString) : testString.matchAll(new RegExp(regexString, 'g'))
-    },
-
-    readStringValues (stringValue) {
-      // Failsafe for empty `v-model` string
-      if (!stringValue || !stringValue.length) {
-        this.addFallbackValues()
-        return
-      }
-
-      const formatString = String(this.formatString)
-      const tokensRegxStr = `(${this.tokenRegexBase})+?`
-      const othersRegxStr = `[^(${this.tokenRegexBase})]+`
-
-      const tokensMatchAll = this.getMatchAllByRegex(formatString, tokensRegxStr)
-      const othersMatchAll = this.getMatchAllByRegex(formatString, othersRegxStr)
-
-      const chunks = []
-      const tokenChunks = []
-
-      for (let tkMatch of tokensMatchAll) {
-        const tokenMatchItem = {
-          index: tkMatch.index,
-          token: tkMatch[0],
-          isValueToken: true
-        }
-        chunks.push(tokenMatchItem)
-        tokenChunks.push(tokenMatchItem)
-      }
-
-      for (let otMatch of othersMatchAll) {
-        chunks.push({
-          index: otMatch.index,
-          token: otMatch[0]
-        })
-      }
-
-      chunks.sort((l, r) => l.index < r.index ? -1 : 1)
-
-      let regexCombo = ''
-      chunks.forEach(chunk => {
-        if (chunk.isValueToken) {
-          const tokenRegex = this.getTokenRegex(chunk.token) || ''
-          regexCombo += tokenRegex
-        } else {
-          const safeChars = chunk.token.replace(/\\{0}(\*|\?|\.|\+)/g, '\\$1')
-          regexCombo += `(?:${safeChars})`
-        }
-      })
-
-      const comboReg = new RegExp(regexCombo)
-
-      // Do test before match
-      if (comboReg.test(stringValue)) {
-        const matchResults = stringValue.match(new RegExp(regexCombo))
-        const valueResults = matchResults.slice(1, tokenChunks.length + 1)
-        const timeValue = {}
-        valueResults.forEach((value, vrIndex) => {
-          if (tokenChunks[vrIndex]) {
-            const targetToken = tokenChunks[vrIndex].token
-            timeValue[targetToken] = this.setValueFromString(value, targetToken)
-          }
-        })
-        this.timeValue = timeValue
-
-        if (this.debugMode) {
-          const tokenChunksForLog = tokenChunks.map(tChunk => tChunk && tChunk.token)
-          this.debugLog(`Successfully parsed values ${JSON.stringify(valueResults)}\nfor ${JSON.stringify(tokenChunksForLog)}\nin format pattern '${this.formatString}'`)
-        }
-      } else {
-        if (this.debugMode) {
-          this.debugLog(`The input string in "v-model" does NOT match the "format" pattern\nformat: ${this.formatString}\nv-model: ${stringValue}`)
-        }
-      }
-    },
-
-    polyfillMatchAll (targetString, regxStr) {
-      const matchesList = targetString.match(new RegExp(regxStr, 'g'))
-      const result = []
-      const indicesReg = []
-      if (matchesList && matchesList.length) {
-        matchesList.forEach(matchedItem => {
-          const existIndex = indicesReg.findIndex(idxItem => idxItem.str === matchedItem)
-          let index
-          if (existIndex >= 0) {
-            if (indicesReg[existIndex] && indicesReg[existIndex].regex) {
-              index = indicesReg[existIndex].regex.exec(targetString).index
-            }
-          } else {
-            const itemIndicesRegex = new RegExp(matchedItem, 'g')
-            index = itemIndicesRegex.exec(targetString).index
-            indicesReg.push({
-              str: String(matchedItem),
-              regex: itemIndicesRegex
-            })
-          }
-          result.push({
-            0: String(matchedItem),
-            index: index
-          })
-        })
-      }
-      return result
-    },
-
-    addFallbackValues () {
-      const timeValue = {}
-      this.inUse.types.forEach(type => {
-        timeValue[this.getTokenByType(type)] = ''
-      })
-      this.timeValue = timeValue
-    },
-
-    setValueFromString (parsedValue, token) {
-      if (!token || !parsedValue) { return '' }
-      const tokenType = this.getTokenType(token)
-      if (!tokenType || !tokenType.length) { return '' }
-      const stdValue = (parsedValue !== this.getTokenByType(tokenType)) ? parsedValue : ''
-      this[tokenType] = stdValue
-      return stdValue
-    },
-
-    fillValues (forceEmit) {
-      const fullValues = {}
-
-      const baseHour = this.hour
-      const baseHourType = this.hourType
-
-      let apmValue
-
-      // Hour type or hour value is NOT set in the "format" string
-      if (!baseHourType || !this.isNumber(baseHour)) {
-        CONFIG.HOUR_TOKENS.forEach(token => fullValues[token] = '')
-        apmValue = this.lowerCasedApm(this.apm || '')
-        fullValues.a = apmValue
-        fullValues.A = apmValue.toUpperCase()
-
-      // Both Hour type and value are set
-      } else {
-        const hourValue = +baseHour
-        const apmValue = (this.baseOn12Hours && this.apm) ? this.lowerCasedApm(this.apm) : false
-
-        CONFIG.HOUR_TOKENS.forEach((token) => {
-          if (token === baseHourType) {
-            fullValues[token] = baseHour
-            return
-          }
-
-          let value
-          let apm
-          switch (token) {
-            case 'H':
-            case 'HH':
-            case 'k':
-            case 'kk':
-              if (this.baseOn12Hours) {
-                if (apmValue === 'pm') {
-                  value = hourValue < 12 ? hourValue + 12 : hourValue
-                } else if (['k', 'kk'].includes(token)) {
-                  value = hourValue === 12 ? 24 : hourValue
-                } else {
-                  value = hourValue % 12
-                }
-              } else {
-                if (['k', 'kk'].includes(token)) {
-                  value = hourValue === 0 ? 24 : hourValue
-                } else {
-                  value = hourValue % 24
-                }
-              }
-              fullValues[token] = this.formatValue(token, value)
-              break
-            case 'h':
-            case 'hh':
-              // h <-> hh
-              if (this.baseOn12Hours) {
-                value = hourValue
-                apm = apmValue || ''
-              // Read from other hour formats
-              } else {
-                if (hourValue > 11 && hourValue < 24) {
-                  apm = 'pm'
-                  value = hourValue === 12 ? 12 : hourValue % 12
-                } else {
-                  apm = 'am'
-                  value = hourValue % 12 === 0 ? 12 : hourValue
-                }
-              }
-              fullValues[token] = this.formatValue(token, value)
-              fullValues.a = apm
-              fullValues.A = apm.toUpperCase()
-              break
-          }
-        })
-      }
-
-      fullValues.m = this.formatValue('m', this.minute)
-      fullValues.mm = this.formatValue('mm', this.minute)
-      fullValues.s = this.formatValue('s', this.second)
-      fullValues.ss = this.formatValue('ss', this.second)
-
-      this.fullValues = fullValues
-
-      // On lazy mode, emit `input` and `change` events only when:
-      // - The user pick a new value and then close the dropdown
-      // - The user click the ("x") clear button
-      if (!this.lazy || forceEmit) {
-        this.emitTimeValue()
-      }
-
-      if (this.closeOnComplete && this.allValueSelected && this.showDropdown) {
-        this.toggleActive()
-      }
-    },
-
-    getFullData () {
-      if (!this.fullValues) {
-        this.fillValues()
-      }
-      return {
-        data: JSON.parse(JSON.stringify(this.fullValues)),
-        displayTime: this.inputIsEmpty ? '' : String(this.displayTime)
-      }
-    },
-
-    emitTimeValue () {
-      if (this.lazy && this.bakDisplayTime === this.displayTime) {
-        if (this.debugMode) {
-          this.debugLog('The value does not change on `lazy` mode. Skip the emitting `input` and `change` event.')
-        }
-        return
-      }
-
-      const fullData = this.getFullData()
-
-      if (this.useStringValue) {
-        this.$emit('input', fullData.displayTime)
-      } else {
-        const fullValues = fullData.data
-        const tokensInUse = this.inUse.tokens || []
-        const timeValue = {}
-        tokensInUse.forEach((token) => {
-          timeValue[token] = fullValues[token] || ''
-        })
-        this.$emit('input', JSON.parse(JSON.stringify(timeValue)))
-      }
-
-      this.$emit('change', fullData)
-    },
-
-    translate12hRange (value) {
-      const valueT = this.match12hRange(value)
-      if (+valueT[1] === 12) {
-        return +valueT[1] + (valueT[2].toLowerCase() === 'p' ? 0 : 12)
-      }
-      return +valueT[1] + (valueT[2].toLowerCase() === 'p' ? 12 : 0)
-    },
-
-    isDisabled (type, value) {
-      if (!this.isBasicType(type) || !this.inUse[type]) { return true }
-      switch (type) {
-        case 'hour':
-          return this.isDisabledHour(value)
-        case 'minute':
-        case 'second':
-          if (!this[`${type}RangeList`]) {
-            return false
-          }
-          return !this[`${type}RangeList`].includes(value)
-        case 'apm':
-          if (!this.restrictedHourRange) {
-            return false
-          }
-          return !this.has[this.lowerCasedApm(value)]
-        default:
-          return true
-      }
-    },
-
-    isDisabledHour (value) {
-      if (!this.restrictedHourRange) { return false }
-      if (this.baseOn12Hours) {
-        if (!this.apm || !this.apm.length) {
-          return false
-        } else {
-          const token = this.apm.toLowerCase() === 'am' ? 'a' : 'p'
-          return !this.restrictedHourRange.includes(`${+value}${token}`)
-        }
-      }
-      // Fallback for 'HH' and 'H hour format with a `hour-range` in a 12-hour form
-      if (
-        (this.hourType === 'HH' || this.hourType === 'H') &&
-        +value === 0 && this.restrictedHourRange.includes(24)
-      ) {
-        return false
-      }
-      return !this.restrictedHourRange.includes(+value)
-    },
-
-    notInInterval (section, value) {
-      if (!section || !this.isMinuteOrSecond(section)) { return }
-      if (this.opts[`${section}Interval`] === 1) { return false }
-      return +value % this.opts[`${section}Interval`] !== 0
-    },
-
-    renderRangeList (rawRange, section) {
-      if (!rawRange || !section || !this.isMinuteOrSecond(section)) { return [] }
-      const range = []
-      let formatedValue
-      rawRange.forEach(value => {
-        if (value instanceof Array) {
-          if (value.length > 2 && this.debugMode) {
-            this.debugLog(`Nested array within "${section}-range" must contain no more than two items. Only the first two items of ${JSON.stringify(value)} will be taken into account.`)
-          }
-          const start = value[0]
-          const end = value[1] || value[0]
-          for (let i = +start; i <= +end; i++) {
-            if (i < 0 || i > 59) { continue }
-            formatedValue = this.formatValue(this.getTokenByType(section), i)
-            if (!range.includes(formatedValue)) {
-              range.push(formatedValue)
-            }
-          }
-        } else {
-          if (+value < 0 || +value > 59) { return }
-          formatedValue = this.formatValue(this.getTokenByType(section), value)
-          if (!range.includes(formatedValue)) {
-            range.push(formatedValue)
-          }
-        }
-      })
-      range.sort((l, r) => { return l - r })
-      // Debug Mode
-      if (this.debugMode) {
-        const fullList = (section === 'minute' ? this.minutes : this.seconds) || []
-        const validItems = fullList.filter(item => range.includes(item))
-        if (!validItems || !validItems.length) {
-          if (section === 'minute') {
-            this.debugLog(`The minute list is empty due to the "minute-range" config\nminute-range: ${JSON.stringify(this.minuteRange)}\nminute-interval: ${this.opts.minuteInterval}`)
-          } else {
-            this.debugLog(`The second list is empty due to the "second-range" config\nsecond-range: ${JSON.stringify(this.secondRange)}\nsecond-interval: ${this.opts.secondInterval}`)
-          }
-        }
-      }
-      return range
-    },
-
-    forceApmSelection () {
-      if (this.manualInput) {
-        // Skip this to allow users to paste a string value from the clipboard in Manual Input mode
-        return
-      }
-      if (this.apmType && !this.apm) {
-        if (this.has.am || this.has.pm) {
-          this.doClearApmChecking = true
-          const apmValue = this.has.am ? 'am' : 'pm'
-          this.apm = this.apmType === 'A' ? apmValue.toUpperCase() : apmValue
-        }
-      }
-    },
-
-    emptyApmSelection () {
-      if (this.doClearApmChecking && this.hour === '' && this.minute === '' && this.second === '') {
-        this.apm = ''
-      }
-      this.doClearApmChecking = false
-    },
-
-    apmDisplayText (apmValue) {
-      if (this.amText && this.lowerCasedApm(apmValue) === 'am') {
-        return this.amText
-      }
-      if (this.pmText && this.lowerCasedApm(apmValue) === 'pm') {
-        return this.pmText
-      }
-      return apmValue
-    },
-
-    toggleActive () {
-      if (this.disabled) { return }
-      this.isActive = !this.isActive
-
-      if (this.isActive) {
-        this.isFocusing = true
-        if (this.manualInput) {
-          this.$emit('focus')
-        }
-        if (!this.opts.hideDropdown) {
-          this.setDropdownState(true)
-        }
-        // Record to check if value did change in the later phase
-        if (this.lazy) {
-          this.bakDisplayTime = String(this.displayTime || '')
-        }
-        if (this.manualInput && !this.inputIsEmpty) {
-          this.$nextTick(() => {
-            if (this.$refs.input && this.$refs.input.selectionStart === 0 && this.$refs.input.selectionEnd === this.displayTime.length) {
-              // Select the first slot instead of the whole value string when tabbed in
-              this.selectFirstSlot()
-            }
-          })
-        }
-      } else {
-        if (this.showDropdown) {
-          this.setDropdownState(false)
-        } else if (this.manualInput) {
-          this.$emit('blur', this.getFullData())
-        }
-        this.isFocusing = false
-        if (this.lazy) {
-          this.fillValues(true)
-          this.bakDisplayTime = undefined
-        }
-      }
-
-      if (this.restrictedHourRange && this.baseOn12Hours) {
-        this.showDropdown ? this.forceApmSelection() : this.emptyApmSelection()
-      }
-      if (this.showDropdown) {
-        this.checkForAutoScroll()
-      }
-    },
-
-    setDropdownState (toShow, fromUserClick = false) {
-      if (toShow) {
-        if (this.appendToBody) {
-          this.appendDropdownToBody()
-        }
-        this.keepFocusing()
-        if (this.autoDirectionEnabled) {
-          this.checkDropDirection()
-        }
-        this.showDropdown = true
-        this.$emit('open') 
-        if (fromUserClick) {
-          if (this.fixedDropdownButton) {
-            this.isActive = true
-          }
-          this.$emit('blur', this.getFullData())
-          this.checkForAutoScroll()
-        }
-      } else {
-        this.showDropdown = false
-        this.$emit('close', this.getFullData())
-        if (this.appendToBody) {
-          this.removeDropdownFromBody()
-        }
-      }
-    },
-
-    appendDropdownToBody () {
-      const dropdown = this.$refs && this.$refs.dropdown
-      const body = document.getElementsByTagName('body')[0]
-      if (body && dropdown) {
-        window.addEventListener('scroll', this.updateDropdownPos)
-        dropdown.classList.add('vue__time-picker-dropdown')
-        this.updateDropdownPos()
-        body.appendChild(dropdown)
-      }
-    },
-
-    updateDropdownPos () {
-      if (!this.appendToBody) { return }
-      const dropdown = this.$refs && this.$refs.dropdown
-      const body = document.getElementsByTagName('body')[0]
-      if (body && dropdown) {
-        const box = this.$el.getBoundingClientRect()
-        if (this.dropdownDirClass === 'drop-up') {
-          dropdown.style.bottom = `${window.innerHeight - box.y}px`
-          dropdown.style.top = 'auto'
-        } else {
-          dropdown.style.top = `${box.y + box.height}px`
-          dropdown.style.bottom = 'auto'
-        }
-        dropdown.style.left = `${box.x}px`
-      }
-    },
-
-    removeDropdownFromBody () {
-      const dropdown = this.$refs && this.$refs.dropdown
-      const body = document.getElementsByTagName('body')[0]
-      if (body && dropdown && body.contains(dropdown)) {
-        body.removeChild(dropdown)
-      }
-      if (dropdown) {
-        dropdown.classList.remove('vue__time-picker-dropdown')
-        dropdown.style.top = ''
-        dropdown.style.bottom = ''
-        dropdown.style.left = ''
-        this.$el.appendChild(dropdown)
-      }
-      window.removeEventListener('scroll', this.updateDropdownPos)
-    },
-
-    blurEvent () {
-      if (this.manualInput && !this.opts.hideDropdown) {
-        // hideDropdown's `blur` event is handled somewhere else
-        this.$emit('blur', this.getFullData())
-      }
-    },
-
-    select (type, value) {
-      if (this.isBasicType(type) && !this.isDisabled(type, value)) {
-        this[type] = value
-        if (this.doClearApmChecking) {
-          this.doClearApmChecking = false
-        }
-      }
-    },
-
-    clearTime () {
-      if (this.disabled) { return }
-      this.hour = ''
-      this.minute = ''
-      this.second = ''
-      this.apm = ''
-
-      if (this.manualInput && this.$refs && this.$refs.input && this.$refs.input.value.length) {
-        this.$refs.input.value = ''
-      }
-
-      if (this.lazy) {
-        this.fillValues(true)
-      }
-    },
-
-    //
-    // Auto-Scroll
-    //
-
-    checkForAutoScroll () {
-      if (this.inputIsEmpty) { return }
-      if (this.autoScroll) {
-        this.$nextTick(() => {
-          this.scrollToSelectedValues()
-        })
-      } else if (this.advancedKeyboard) {
-        // Auto-focus on selected value in the first column for advanced-keyboard
-        this.$nextTick(() => {
-          const firstColumn = this.inUse.types[0]
-          this.scrollToSelected(firstColumn, true)
-        })
-      }
-    },
-
-    scrollToSelected (column, allowFallback = false) {
-      if (!this.timeValue || this.inputIsEmpty) { return }
-      let targetList
-      if (this.appendToBody && this.$refs && this.$refs.dropdown) {
-        targetList = this.$refs.dropdown.querySelectorAll(`ul.${column}s`)[0]
-      } else {
-        targetList = this.$el.querySelectorAll(`ul.${column}s`)[0]
-      }
-      let targetValue = this.activeItemInCol(column)[0]
-      if (!targetValue && allowFallback) {
-        // No value selected in the target column, fallback to the first found valid item
-        targetValue = this.validItemsInCol(column)[0]
-      }
-      if (targetList && targetValue) {
-        targetList.scrollTop = targetValue.offsetTop || 0
-        if (this.advancedKeyboard) {
-          targetValue.focus()
-        }
-      }
-    },
-
-    scrollToSelectedValues () {
-      if (!this.timeValue || this.inputIsEmpty) { return }
-      this.inUse.types.forEach(section => {
-        this.scrollToSelected(section)
-      })
-    },
-
-    //
-    // Additional Keyboard Navigation
-    //
-
-    onFocus () {
-      if (this.disabled) { return }
-      if (!this.isFocusing) {
-        this.isFocusing = true
-      }
-      if (!this.isActive) {
-        this.toggleActive()
-      }
-    },
-
-    escBlur () {
-      if (this.disabled) { return }
-      window.clearTimeout(this.debounceTimer)
-      this.isFocusing = false
-      const inputBox = this.$el.querySelectorAll('input.display-time')[0]
-      if (inputBox) {
-        inputBox.blur()
-      }
-    },
-
-    debounceBlur () {
-      if (this.disabled) { return }
-      this.isFocusing = false
-      window.clearTimeout(this.debounceTimer)
-      this.debounceTimer = window.setTimeout(() => {
-        window.clearTimeout(this.debounceTimer)
-        this.onBlur()
-      }, this.opts.blurDelay)
-    },
-
-    onBlur () {
-      if (!this.disabled && !this.isFocusing && this.isActive) {
-        this.toggleActive()
-      }
-    },
-
-    keepFocusing () {
-      if (this.disabled) { return }
-      window.clearTimeout(this.debounceTimer)
-      if (!this.isFocusing) {
-        this.isFocusing = true
-      }
-    },
-
-    onTab (column, value, evt) {
-      if (this.appendToBody && evt.shiftKey) {
-        const firstColumn = this.inUse.types[0]
-        if (column !== firstColumn) { return }
-        const firstValidValue = this.validItemsInCol(firstColumn)[0]
-        // Is the first valid item in the first column
-        if (firstValidValue && firstValidValue.getAttribute('data-key') === String(value)) {
-          evt.preventDefault()
-          // Focus back on <input>
-          if (this.$refs && this.$refs.input) {
-            this.$refs.input.focus()
-          }
-        }
-      }
-    },
-
-    validItemsInCol (column) {
-      const columnClass = `${column}s`
-      if (this.appendToBody && this.$refs && this.$refs.dropdown) {
-        return this.$refs.dropdown.querySelectorAll(`ul.${columnClass} > li:not(.hint):not([disabled])`)
-      }
-      return this.$el.querySelectorAll(`ul.${columnClass} > li:not(.hint):not([disabled])`)
-    },
-
-    activeItemInCol (column) {
-      const columnClass = `${column}s`
-      if (this.appendToBody && this.$refs && this.$refs.dropdown) {
-        return this.$refs.dropdown.querySelectorAll(`ul.${columnClass} > li.active:not(.hint)`)
-      }
-      return this.$el.querySelectorAll(`ul.${columnClass} > li.active:not(.hint)`)
-    },
-
-    getClosestSibling (column, dataKey, getPrevious = false) {
-      const siblingsInCol = this.validItemsInCol(column)
-      const selfIndex = Array.prototype.findIndex.call(siblingsInCol, (sbl) => {
-        return sbl.getAttribute('data-key') === dataKey
-      })
-
-      // Already the first item
-      if (getPrevious && selfIndex === 0) {
-        return siblingsInCol[siblingsInCol.length - 1]
-      }
-      // Already the last item
-      if (!getPrevious && selfIndex === siblingsInCol.length - 1) {
-        return siblingsInCol[0]
-      }
-      // Selected value not in the valid values list
-      if (selfIndex < 0) {
-        return siblingsInCol[0]
-      }
-
-      if (getPrevious) {
-        return siblingsInCol[selfIndex - 1]
-      }
-      return siblingsInCol[selfIndex + 1]
-    },
-
-    prevItem (column, dataKey, isManualInput = false) {
-      const targetItem = this.getClosestSibling(column, dataKey, true)
-      if (targetItem) {
-        return isManualInput ? targetItem : targetItem.focus()
-      }
-    },
-
-    nextItem (column, dataKey, isManualInput = false) {
-      const targetItem = this.getClosestSibling(column, dataKey, false)
-      if (targetItem) {
-        return isManualInput ? targetItem : targetItem.focus()
-      }
-    },
-
-    getSideColumnName (currentColumn, toLeft = false) {
-      const currentColumnIndex = this.inUse.types.indexOf(currentColumn)
-      if (toLeft && currentColumnIndex <= 0) {
-        if (this.debugMode) {
-          this.debugLog('You\'re in the leftmost list already')
-        }
-        return
-      } else if (!toLeft && currentColumnIndex === (this.inUse.types.length - 1)) {
-        if (this.debugMode) {
-          this.debugLog('You\'re in the rightmost list already')
-        }
-        return
-      }
-      return this.inUse.types[toLeft ? currentColumnIndex - 1 : currentColumnIndex + 1]
-    },
-
-    getFirstItemInSideColumn (currentColumn, toLeft = false) {
-      const targetColumn = this.getSideColumnName(currentColumn, toLeft)
-      if (!targetColumn) { return }
-      const listItems = this.validItemsInCol(targetColumn)
-      if (listItems && listItems[0]) {
-        return listItems[0]
-      }
-    },
-
-    getActiveItemInSideColumn (currentColumn, toLeft = false) {
-      const targetColumn = this.getSideColumnName(currentColumn, toLeft)
-      if (!targetColumn) { return }
-      const activeItems = this.activeItemInCol(targetColumn)
-      if (activeItems && activeItems[0]) {
-        return activeItems[0]
-      }
-    },
-
-    toLeftColumn (currentColumn) {
-      const targetItem = this.getActiveItemInSideColumn(currentColumn, true) || this.getFirstItemInSideColumn(currentColumn, true)
-      if (targetItem) {
-        targetItem.focus()
-      }
-    },
-
-    toRightColumn (currentColumn) {
-      const targetItem = this.getActiveItemInSideColumn(currentColumn, false) || this.getFirstItemInSideColumn(currentColumn, false)
-      if (targetItem) {
-        targetItem.focus()
-      }
-    },
-
-    //
-    // Manual Input
-    //
-
-    onMouseDown () {
-      if (!this.manualInput) { return }
-      window.clearTimeout(this.selectionTimer)
-      this.selectionTimer = window.setTimeout(() => {
-        window.clearTimeout(this.selectionTimer)
-        if (this.$refs && this.$refs.input) {
-          const nearestSlot = this.getNearestChunkByPos(this.$refs.input.selectionStart || 0)
-          this.debounceSetInputSelection(nearestSlot)
-        }
-      }, 50)
-    },
-
-    keyDownHandler (evt) {
-      if (evt.isComposing || evt.keyCode === 229) {
-        // Skip IME inputs
-        evt.preventDefault()
-        evt.stopPropagation()
-        return false
-      }
-      // Numbers
-      if ((evt.keyCode >= 48 && evt.keyCode <= 57) || (evt.keyCode >= 96 && evt.keyCode <= 105)) {
-        evt.preventDefault()
-        this.keyboardInput(evt.key)
-      // A|P|M
-      } else if ([65, 80, 77].includes(evt.keyCode)) {
-        evt.preventDefault()
-        this.keyboardInput(evt.key, true)
-      // Arrow keys
-      } else if (evt.keyCode >= 37 && evt.keyCode <= 40) {
-        evt.preventDefault()
-        this.clearKbInputLog()
-        this.arrowHandler(evt)
-      // Delete|Backspace
-      } else if (evt.keyCode === 8 || evt.keyCode === 46) {
-        evt.preventDefault()
-        this.clearKbInputLog()
-        this.clearTime()
-      // Tab
-      } else if (evt.keyCode === 9) {
-        this.clearKbInputLog()
-        this.tabHandler(evt)
-      // Colon|Space
-      } else if (evt.keyCode === 186 || evt.keyCode === 32) {
-        evt.preventDefault()
-        this.clearKbInputLog()
-        this.toNextSlot()
-      // Prevent any Non-ESC and non-pasting inputs
-      } else if (evt.keyCode !== 27 && !(evt.metaKey || evt.ctrlKey)) {
-        evt.preventDefault()
-      }
-    },
-
-    onCompostionStart (evt) {
-      evt.preventDefault()
-      evt.stopPropagation()
-      this.bakCurrentPos = this.getCurrentTokenChunk()
-      return false
-    },
-
-    onCompostionEnd (evt) {
-      evt.preventDefault()
-      evt.stopPropagation()
-
-      const cpsData = evt.data
-      let inputIsCustomApmText = false
-      if (this.has.customApmText) {
-        inputIsCustomApmText = this.isCustomApmText(cpsData)
-      }
-      if (inputIsCustomApmText) {
-        this.setSanitizedValueToSection('apm', inputIsCustomApmText)
-      }
-
-      this.$refs.input.value = this.has.customApmText ? this.customDisplayTime : this.displayTime
-
-      this.$nextTick(() => {
-        if (this.bakCurrentPos) {
-          const bakPos = JSON.parse(JSON.stringify(this.bakCurrentPos))
-          if (inputIsCustomApmText) {
-            bakPos.end = (bakPos.start + cpsData.length)
-          }
-          this.debounceSetInputSelection(bakPos)
-          this.bakCurrentPos = null
-        }
-      })
-      return false
-    },
-
-    pasteHandler (evt) {
-      evt.preventDefault()
-      let pastingText = (evt.clipboardData || window.clipboardData).getData('text')
-      if (this.debugMode) {
-        this.debugLog(`Pasting value "${pastingText}" from clipboard`)
-      }
-      if (!pastingText || !pastingText.length) { return }
-
-      // Replace custom AM/PM text (if any)
-      if (this.has.customApmText) {
-        pastingText = this.replaceCustomApmText(pastingText)
-      }
-
-      if (this.inputIsEmpty) {
-        this.readStringValues(pastingText)
-      } else {
-        this.kbInputLog = pastingText.substr(-2, 2)
-        this.setKbInput()
-        this.debounceClearKbLog()
-      }
-    },
-
-    arrowHandler (evt) {
-      const direction = { 37: 'L', 38: 'U', 39: 'R', 40: 'D' }[evt.keyCode]
-      if (direction === 'U' || direction === 'D') {
-        if (this.inputIsEmpty) {
-          this.selectFirstValidValue()
-        } else {
-          const currentChunk = this.getCurrentTokenChunk()
-          if (!currentChunk) {
-            this.selectFirstValidValue()
-            return
-          }
-          const tokenType = currentChunk.type
-          this.getClosestValidItemInCol(tokenType, this[tokenType], direction)
-          const newChunkPos = this.getCurrentTokenChunk()
-          this.debounceSetInputSelection(newChunkPos)
-        }
-      } else if (direction === 'R') {
-        this.toLateralToken(false)
-      } else if (direction === 'L') {
-        this.toLateralToken(true)
-      }
-    },
-
-    tabHandler (evt) {
-      if (!this.inputIsEmpty && this.tokenChunksPos && this.tokenChunksPos.length) {
-        const currentChunk = this.getCurrentTokenChunk()
-        if (!currentChunk) { return }
-        const firstChunk = this.tokenChunksPos[0]
-        const lastChunk = this.tokenChunksPos[this.tokenChunksPos.length - 1]
-        if ((evt.shiftKey && currentChunk.token !== firstChunk.token) || (!evt.shiftKey && currentChunk.token !== lastChunk.token)) {
-          evt.preventDefault()
-          this.toLateralToken(evt.shiftKey)
-        }
-      } else if (this.appendToBody && this.advancedKeyboard) {
-        if (evt.shiftKey) { return }
-        evt.preventDefault()
-        if (this.inputIsEmpty) {
-          const firstColumn = this.inUse.types[0]
-          const targetValue = this.validItemsInCol(firstColumn)[0]
-          if (targetValue) {
-            targetValue.focus()
-          }
-        }
-      }
-    },
-
-    keyboardInput (newChar, isApm = false) {
-      const currentChunk = this.getCurrentTokenChunk()
-      if (!currentChunk || (currentChunk.type !== 'apm' && isApm) || (currentChunk.type === 'apm' && !isApm)) { return }
-      this.kbInputLog = `${this.kbInputLog.substr(-1)}${newChar}`
-      this.setKbInput()
-      this.debounceClearKbLog()
-    },
-
-    clearKbInputLog () {
-      window.clearTimeout(this.kbInputTimer)
-      this.kbInputLog = ''
-    },
-
-    debounceClearKbLog () {
-      window.clearTimeout(this.kbInputTimer)
-      this.kbInputTimer = window.setTimeout(() => {
-        this.clearKbInputLog()
-      }, this.opts.manualInputTimeout)
-    },
-
-    setKbInput (value) {
-      value = value || this.kbInputLog
-      const currentChunk = this.getCurrentTokenChunk()
-      if (!currentChunk || !value || !value.length) { return }
-      const chunkType = currentChunk.type
-      const chunkToken = currentChunk.token
-
-      let validValue
-      if (chunkType === 'apm') {
-        if (this.lowerCasedApm(value).includes('a')) {
-          validValue = 'am'
-        } else if (this.lowerCasedApm(value).includes('p')) {
-          validValue = 'pm'
-        }
-        if (validValue) {
-          validValue = chunkToken === 'A' ? validValue.toUpperCase() : validValue
-        }
-      } else {
-        if (this.isValidValue(chunkToken, value)) {
-          validValue = value
-        } else {
-          const lastInputValue = this.formatValue(chunkToken, value.substr(-1))
-          if (this.isValidValue(chunkToken, lastInputValue)) {
-            validValue = lastInputValue
-          }
-        }
-      }
-
-      if (validValue) {
-        this.setSanitizedValueToSection(chunkType, validValue)
-        const newChunkPos = this.getCurrentTokenChunk()
-        this.debounceSetInputSelection(newChunkPos)      
-      }
-      if (this.debugMode) {
-        if (validValue) {
-          this.debugLog(`Successfully set value "${validValue}" from latest input "${value}" for the "${chunkType}" slot`)
-        } else {
-          this.debugLog(`Value "${value}" is invalid in the "${chunkType}" slot`)
-        }
-      }
-    },
-
-    // Form Autofill
-    onChange () {
-      if (!this.manualInput || !this.$refs || !this.$refs.input) { return }
-      const autoFillValue = this.$refs.input.value || ''
-      if (autoFillValue && autoFillValue.length) {
-        this.readStringValues(autoFillValue)
-      }
-    },
-
-    getNearestChunkByPos (startPos) {
-      if (!this.tokenChunksPos || !this.tokenChunksPos.length) { return }
-      let nearest
-      let nearestDelta = -1
-      for (let i = 0; i < this.tokenChunksPos.length; i++) {
-        const chunk = JSON.parse(JSON.stringify(this.tokenChunksPos[i]))
-        if (chunk.start === startPos) {
-          return chunk
-        }
-        const delta = Math.abs(chunk.start - startPos)
-        if (nearestDelta < 0) {
-          nearest = chunk
-          nearestDelta = delta
-        } else {
-          if (nearestDelta <= delta) {
-            return nearest
-          }
-          nearestDelta = delta
-          nearest = chunk
-        }
-      }
-      return nearest
-    },
-
-    selectFirstValidValue () {
-      if (!this.tokenChunksPos || !this.tokenChunksPos.length) { return }
-      const firstSlotType = this.tokenChunksPos[0].type
-      if (firstSlotType === 'hour') {
-        this.getClosestHourItem()
-      } else {
-        this.getClosestValidItemInCol(firstSlotType, this[firstSlotType])
-      }
-      this.selectFirstSlot()
-    },
-
-    getClosestHourItem (currentValue, direction = 'U') {
-      if (!this.validHoursList || !this.validHoursList.length) {
-        if (this.debugMode) {
-          this.debugLog(`No valid hour values found, please check your "hour-range" config\nhour-range: ${JSON.stringify(this.hourRange)}`)
-        }
-        return
-      }
-      if (!currentValue) {
-        this.setManualHour(this.validHoursList[0])
-        return
-      }
-      const currentIndex = this.validHoursList.findIndex(item => {
-        if (!this.baseOn12Hours) {
-          return item === currentValue
-        } else {
-          const valueKey = `${currentValue}${this.lowerCasedApm(this.apm) === 'pm' ? 'p' : 'a'}` 
-          return item === valueKey
-        }
-      })
-      let nextIndex
-      if (currentIndex === -1) {
-        nextIndex = 0
-      } else if (direction === 'D') {
-        nextIndex = currentIndex === 0 ? this.validHoursList.length - 1 : currentIndex - 1
-      } else {
-        nextIndex = (currentIndex + 1) % this.validHoursList.length
-      }
-      const nextItem = this.validHoursList[nextIndex]
-      this.setManualHour(nextItem)
-    },
-
-    getClosestValidItemInCol (column, currentValue, direction = 'U') {
-      if (column === 'hour') {
-        this.getClosestHourItem(currentValue, direction)
-      } else {
-        const nextItem = direction === 'D' ? this.prevItem(column, this[column], true) : this.nextItem(column, this[column], true)
-        if (nextItem) {
-          this.select(column, nextItem.getAttribute('data-key'))
-        }
-      }
-    },
-
-    setSanitizedValueToSection (section, inputValue) {
-      if (!section || !this.getTokenByType(section)) { return }
-      // NOTE: Disabled values are allowed here, followed by an 'error' event, though
-      const sanitizedValue = this.sanitizedValue(this.getTokenByType(section), inputValue)
-      this[section] = sanitizedValue
-    },
-
-    setManualHour (nextItem) {
-      if (this.is12hRange(nextItem)) {
-        const hourT = this.match12hRange(nextItem)
-        const apmValue = hourT[2] === 'a' ? 'AM' : 'PM'
-        this.setSanitizedValueToSection('apm', this.apmType === 'a' ? apmValue.toLowerCase() : apmValue)
-        this.setSanitizedValueToSection('hour', hourT[1])
-      } else {
-        this.setSanitizedValueToSection('hour', nextItem)
-      }
-    },
-
-    debounceSetInputSelection ({start = 0, end = 0 }) {
-      this.$nextTick(() => {
-        this.setInputSelectionRange(start, end)
-      })
-      window.clearTimeout(this.selectionTimer)
-      this.selectionTimer = window.setTimeout(() => {
-        window.clearTimeout(this.selectionTimer)
-        // Double-check selection for 12hr format
-        if (this.$refs.input && (this.$refs.input.selectionStart !== start || this.$refs.input.selectionEnd !== end)) {
-          this.setInputSelectionRange(start, end)
-        }
-      }, 30)
-    },
-
-    setInputSelectionRange (start, end) {
-      if (this.$refs && this.$refs.input) {
-        this.$refs.input.setSelectionRange(start, end)
-      }
-    },
-
-    getCurrentTokenChunk () {
-      return this.getNearestChunkByPos((this.$refs.input && this.$refs.input.selectionStart) || 0)
-    },
-
-    selectFirstSlot () {
-      const firstChunkPos = this.getNearestChunkByPos(0)
-      this.debounceSetInputSelection(firstChunkPos)
-    },
-
-    toNextSlot () {
-      if (!this.inputIsEmpty && this.tokenChunksPos && this.tokenChunksPos.length) {
-        const currentChunk = this.getCurrentTokenChunk()
-        if (!currentChunk) { return }
-        const lastChunk = this.tokenChunksPos[this.tokenChunksPos.length - 1]
-        if (currentChunk.token !== lastChunk.token) {
-          this.toLateralToken(false)
-        }
-      }
-    },
-
-    toLateralToken (toLeft) {
-      const currentChunk = this.getCurrentTokenChunk()
-      if (!currentChunk) {
-        this.selectFirstValidValue()
-        return
-      }
-      const currentChunkIndex = this.tokenChunksPos.findIndex(chk => chk.token === currentChunk.token)
-      if ((!toLeft && currentChunkIndex >= this.tokenChunksPos.length - 1) || (toLeft && currentChunkIndex === 0)) {
-        if (this.debugMode) {
-          if (toLeft) {
-            this.debugLog('You\'re in the leftmost slot already')
-          } else {
-            this.debugLog('You\'re in the rightmost slot already')
-          }
-        }
-        return
-      }
-      const targetSlotPos = toLeft ? this.tokenChunksPos[currentChunkIndex - 1] : this.tokenChunksPos[currentChunkIndex + 1]
-      this.debounceSetInputSelection(targetSlotPos)
-    },
-
-    isCustomApmText (inputData) {
-      if (!inputData || !inputData.length) { return false }
-      if (this.amText && this.amText === inputData) {
-        return this.apmType === 'A' ? 'AM' : 'am'
-      }
-      if (this.pmText && this.pmText === inputData) {
-        return this.apmType === 'A' ? 'PM' : 'pm'
-      }
-      return false
-    },
-
-    replaceCustomApmText (inputString) {
-      if (this.amText && this.amText.length && inputString.includes(this.amText)) {
-        return inputString.replace(new RegExp(this.amText, 'g'), this.apmType === 'A' ? 'AM' : 'am')
-      } else if (this.pmText && this.pmText.length && inputString.includes(this.pmText)) {
-        return inputString.replace(new RegExp(this.pmText, 'g'), this.apmType === 'A' ? 'PM' : 'pm')
-      }
-      return inputString
-    },
-
-    checkDropDirection () {
-      if (!this.$el) { return }
-      let container
-      if (this.containerId && this.containerId.length) {
-        container = document.getElementById(this.containerId)
-        if (!container && this.debugMode) {
-          this.debugLog(`Container with id "${this.containerId}" not found. Fallback to document body.`)
-        }
-      }
-      const el = this.$el
-      let spaceDown
-      if (container && container.offsetHeight) {
-        // Valid container found
-        spaceDown = (container.offsetTop + container.offsetHeight) - (el.offsetTop + el.offsetHeight)
-      } else {
-        // Fallback to document body
-        const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight)
-        spaceDown = docHeight - (el.offsetTop + el.offsetHeight)
-      }
-      this.forceDropOnTop = this.opts.dropOffsetHeight > spaceDown
-    },
-
-    //
-    // Helpers
-    //
-
-    is12hRange (value) {
-      return /^\d{1,2}(a|p|A|P)$/.test(value)
-    },
-
-    match12hRange (value) {
-      return value.match(/^(\d{1,2})(a|p|A|P)$/)
-    },
-
-    isNumber (value) {
-      return !isNaN(parseFloat(value)) && isFinite(value)
-    },
-
-    isBasicType (type) {
-      return CONFIG.BASIC_TYPES.includes(type)
-    },
-
-    lowerCasedApm (apmValue) {
-      return (apmValue || '').toLowerCase()
-    },
-
-    getTokenRegex (token) {
-      switch (token) {
-        case 'HH':
-          return '([01][0-9]|2[0-3]|H{2})'
-        case 'H':
-          return '([0-9]{1}|1[0-9]|2[0-3]|H{1})'
-        case 'hh':
-          return '(0[1-9]|1[0-2]|h{2})'
-        case 'h':
-          return '([1-9]{1}|1[0-2]|h{1})'
-        case 'kk':
-          return '(0[1-9]|1[0-9]|2[0-4]|k{2})'
-        case 'k':
-          return '([1-9]{1}|1[0-9]|2[0-4]|k{1})'
-        case 'mm':
-          return '([0-5][0-9]|m{2})'
-        case 'ss':
-          return '([0-5][0-9]|s{2})'
-        case 'm':
-          return '([0-9]{1}|[1-5][0-9]|m{1})'
-        case 's':
-          return '([0-9]{1}|[1-5][0-9]|s{1})'
-        case 'A':
-          return '(AM|PM|A{1})'
-        case 'a':
-          return '(am|pm|a{1})'
-        default:
-          return ''
-      }
-    },
-
-    isEmptyValue (targetToken, testValue) {
-      return (!testValue || !testValue.length) || (testValue && testValue === targetToken)
-    },
-
-    isValidValue (targetToken, testValue) {
-      if (!targetToken || this.isEmptyValue(targetToken, testValue)) { return false }
-      const tokenRegexStr = this.getTokenRegex(targetToken)
-      if (!tokenRegexStr || !tokenRegexStr.length) { return false }
-      return (new RegExp(`^${tokenRegexStr}$`)).test(testValue)
-    },
-
-    sanitizedValue (targetToken, inputValue) {
-      if (this.isValidValue(targetToken, inputValue)) {
-        return inputValue
-      }
-      return ''
-    },
-
-    getTokenType (token) {
-      return this.inUse.types[this.inUse.tokens.indexOf(token)] || ''
-    },
-
-    getTokenByType (type) {
-      return this[`${type}Type`] || ''
-    },
-
-    isMinuteOrSecond (type) {
-      return ['minute', 'second'].includes(type)
-    },
-
-    debugLog (logText) {
-      if (!logText || !logText.length) { return }
-      let identifier = ''
-      if (this.id) {
-        identifier += `#${this.id}`
-      }
-      if (this.name) {
-        identifier += `[name=${this.name}]`
-      }
-      if (this.inputClass) {
-        let inputClasses = []
-        if (typeof this.inputClass === 'string') {
-          inputClasses = this.inputClass.split(/\s/g)
-        } else if (Array.isArray(this.inputClass)) {
-          inputClasses = [].concat([], this.inputClass)
-        } else if (typeof this.inputClass === 'object') {
-          Object.keys(this.inputClass).forEach(clsName => {
-            if (this.inputClass[clsName]) {
-              inputClasses.push(clsName)
-            }
-          })
-        }
-        for (let inputClass of inputClasses) {
-          if (inputClass && inputClass.trim().length) {
-            identifier += `.${inputClass.trim()}`
-          }
-        }
-      }
-      const finalLogText = `DEBUG: ${logText}${identifier ? `\n\t(${identifier})` : '' }`
-      if (window.console.debug && typeof window.console.debug === 'function') {
-        window.console.debug(finalLogText)
-      } else {
-        window.console.log(finalLogText)
-      }
-    }
-  },
-
-  mounted () {
-    window.clearTimeout(this.debounceTimer)
-    window.clearTimeout(this.selectionTimer)
-    window.clearTimeout(this.kbInputTimer)
-    this.renderFormat()
-  },
-
-  beforeDestroy () {
-    window.clearTimeout(this.debounceTimer)
-    window.clearTimeout(this.selectionTimer)
-    window.clearTimeout(this.kbInputTimer)
-  }
-});
-
-
-/***/ }),
-
 /***/ "./resources/js/components/AppComponents/AppButton.vue":
 /*!*************************************************************!*\
   !*** ./resources/js/components/AppComponents/AppButton.vue ***!
@@ -72439,45 +70398,6 @@ component.options.__file = "resources/js/components/Models/AppPayrollComponent.v
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/BreakHourComponent.vue":
-/*!***************************************************************!*\
-  !*** ./resources/js/components/Models/BreakHourComponent.vue ***!
-  \***************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _BreakHourComponent_vue_vue_type_template_id_7fccb578___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BreakHourComponent.vue?vue&type=template&id=7fccb578& */ "./resources/js/components/Models/BreakHourComponent.vue?vue&type=template&id=7fccb578&");
-/* harmony import */ var _BreakHourComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BreakHourComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Models/BreakHourComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _BreakHourComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _BreakHourComponent_vue_vue_type_template_id_7fccb578___WEBPACK_IMPORTED_MODULE_0__.render,
-  _BreakHourComponent_vue_vue_type_template_id_7fccb578___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/Models/BreakHourComponent.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/components/Models/EditEmployeeComponent.vue":
 /*!******************************************************************!*\
   !*** ./resources/js/components/Models/EditEmployeeComponent.vue ***!
@@ -72636,10 +70556,10 @@ component.options.__file = "resources/js/components/Models/EmployeeListComponent
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/EmployeeTypeComponent.vue":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/Models/EmployeeTypeComponent.vue ***!
-  \******************************************************************/
+/***/ "./resources/js/components/Models/Settings/AppSettingsComponent.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/AppSettingsComponent.vue ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -72647,9 +70567,87 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _EmployeeTypeComponent_vue_vue_type_template_id_d5d48a8a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EmployeeTypeComponent.vue?vue&type=template&id=d5d48a8a& */ "./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=template&id=d5d48a8a&");
-/* harmony import */ var _EmployeeTypeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EmployeeTypeComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _AppSettingsComponent_vue_vue_type_template_id_7a5ea46b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppSettingsComponent.vue?vue&type=template&id=7a5ea46b& */ "./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=template&id=7a5ea46b&");
+/* harmony import */ var _AppSettingsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppSettingsComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _AppSettingsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _AppSettingsComponent_vue_vue_type_template_id_7a5ea46b___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AppSettingsComponent_vue_vue_type_template_id_7a5ea46b___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Models/Settings/AppSettingsComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Models/Settings/BreakHourComponent.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/BreakHourComponent.vue ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _BreakHourComponent_vue_vue_type_template_id_057edb2c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BreakHourComponent.vue?vue&type=template&id=057edb2c& */ "./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=template&id=057edb2c&");
+/* harmony import */ var _BreakHourComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BreakHourComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _BreakHourComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _BreakHourComponent_vue_vue_type_template_id_057edb2c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _BreakHourComponent_vue_vue_type_template_id_057edb2c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Models/Settings/BreakHourComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Models/Settings/EmployeeTypeComponent.vue":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/EmployeeTypeComponent.vue ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _EmployeeTypeComponent_vue_vue_type_template_id_3211dbd3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EmployeeTypeComponent.vue?vue&type=template&id=3211dbd3& */ "./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=template&id=3211dbd3&");
+/* harmony import */ var _EmployeeTypeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EmployeeTypeComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -72659,8 +70657,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
   _EmployeeTypeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _EmployeeTypeComponent_vue_vue_type_template_id_d5d48a8a___WEBPACK_IMPORTED_MODULE_0__.render,
-  _EmployeeTypeComponent_vue_vue_type_template_id_d5d48a8a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _EmployeeTypeComponent_vue_vue_type_template_id_3211dbd3___WEBPACK_IMPORTED_MODULE_0__.render,
+  _EmployeeTypeComponent_vue_vue_type_template_id_3211dbd3___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -72670,15 +70668,15 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/Models/EmployeeTypeComponent.vue"
+component.options.__file = "resources/js/components/Models/Settings/EmployeeTypeComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/LocationComponent.vue":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/Models/LocationComponent.vue ***!
-  \**************************************************************/
+/***/ "./resources/js/components/Models/Settings/LocationComponent.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/LocationComponent.vue ***!
+  \***********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -72686,9 +70684,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _LocationComponent_vue_vue_type_template_id_d9d653a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LocationComponent.vue?vue&type=template&id=d9d653a4& */ "./resources/js/components/Models/LocationComponent.vue?vue&type=template&id=d9d653a4&");
-/* harmony import */ var _LocationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LocationComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Models/LocationComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _LocationComponent_vue_vue_type_template_id_42bd4346___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LocationComponent.vue?vue&type=template&id=42bd4346& */ "./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=template&id=42bd4346&");
+/* harmony import */ var _LocationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LocationComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -72698,8 +70696,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
   _LocationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _LocationComponent_vue_vue_type_template_id_d9d653a4___WEBPACK_IMPORTED_MODULE_0__.render,
-  _LocationComponent_vue_vue_type_template_id_d9d653a4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _LocationComponent_vue_vue_type_template_id_42bd4346___WEBPACK_IMPORTED_MODULE_0__.render,
+  _LocationComponent_vue_vue_type_template_id_42bd4346___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -72709,15 +70707,15 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/Models/LocationComponent.vue"
+component.options.__file = "resources/js/components/Models/Settings/LocationComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/PositionComponent.vue":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/Models/PositionComponent.vue ***!
-  \**************************************************************/
+/***/ "./resources/js/components/Models/Settings/PositionComponent.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/PositionComponent.vue ***!
+  \***********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -72725,9 +70723,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _PositionComponent_vue_vue_type_template_id_76a44d8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PositionComponent.vue?vue&type=template&id=76a44d8c& */ "./resources/js/components/Models/PositionComponent.vue?vue&type=template&id=76a44d8c&");
-/* harmony import */ var _PositionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PositionComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Models/PositionComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _PositionComponent_vue_vue_type_template_id_74564652___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PositionComponent.vue?vue&type=template&id=74564652& */ "./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=template&id=74564652&");
+/* harmony import */ var _PositionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PositionComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -72737,8 +70735,8 @@ __webpack_require__.r(__webpack_exports__);
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
   _PositionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _PositionComponent_vue_vue_type_template_id_76a44d8c___WEBPACK_IMPORTED_MODULE_0__.render,
-  _PositionComponent_vue_vue_type_template_id_76a44d8c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _PositionComponent_vue_vue_type_template_id_74564652___WEBPACK_IMPORTED_MODULE_0__.render,
+  _PositionComponent_vue_vue_type_template_id_74564652___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -72748,7 +70746,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/Models/PositionComponent.vue"
+component.options.__file = "resources/js/components/Models/Settings/PositionComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -72849,22 +70847,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/BreakHourComponent.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/Models/BreakHourComponent.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BreakHourComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/BreakHourComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
-
-/***/ }),
-
 /***/ "./resources/js/components/Models/EditEmployeeComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************!*\
   !*** ./resources/js/components/Models/EditEmployeeComponent.vue?vue&type=script&lang=js& ***!
@@ -72929,10 +70911,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -72940,15 +70922,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeTypeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EmployeeTypeComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppSettingsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AppSettingsComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AppSettingsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BreakHourComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeTypeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EmployeeTypeComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeTypeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/LocationComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/components/Models/LocationComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************/
+/***/ "./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -72956,15 +70970,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LocationComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/LocationComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LocationComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/PositionComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/components/Models/PositionComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************/
+/***/ "./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -72972,7 +70986,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PositionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PositionComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/PositionComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PositionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PositionComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PositionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
@@ -72999,19 +71013,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_loader_dist_cjs_js_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_DataTable_vue_vue_type_style_index_0_id_53282f60_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../style-loader/dist/cjs.js!../../css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../vue-loader/lib/index.js??vue-loader-options!./DataTable.vue?vue&type=style&index=0&id=53282f60&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-materialize-datatable/src/DataTable.vue?vue&type=style&index=0&id=53282f60&scoped=true&lang=css&");
-
-
-/***/ }),
-
-/***/ "./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=style&index=0&lang=css&":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=style&index=0&lang=css& ***!
-  \**********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _style_loader_dist_cjs_js_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_vue_loader_lib_loaders_stylePostLoader_js_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_vue_loader_lib_index_js_vue_loader_options_vue_timepicker_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../style-loader/dist/cjs.js!../../css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../vue-loader/lib/loaders/stylePostLoader.js!../../postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../vue-loader/lib/index.js??vue-loader-options!./vue-timepicker.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=style&index=0&lang=css&");
 
 
 /***/ }),
@@ -73045,39 +71046,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_DataTable_vue_vue_type_template_id_53282f60_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_DataTable_vue_vue_type_template_id_53282f60_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../vue-loader/lib/index.js??vue-loader-options!./DataTable.vue?vue&type=template&id=53282f60&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-materialize-datatable/src/DataTable.vue?vue&type=template&id=53282f60&scoped=true&");
-
-
-/***/ }),
-
-/***/ "./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _vue_loader_lib_index_js_vue_loader_options_vue_timepicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib/index.js??vue-loader-options!./vue-timepicker.vue?vue&type=script&lang=js& */ "./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_vue_loader_lib_index_js_vue_loader_options_vue_timepicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
-
-/***/ }),
-
-/***/ "./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=template&id=c4588f32&":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=template&id=c4588f32& ***!
-  \********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_vue_timepicker_vue_vue_type_template_id_c4588f32___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_vue_timepicker_vue_vue_type_template_id_c4588f32___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _vue_loader_lib_loaders_templateLoader_js_vue_loader_options_vue_loader_lib_index_js_vue_loader_options_vue_timepicker_vue_vue_type_template_id_c4588f32___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../vue-loader/lib/index.js??vue-loader-options!./vue-timepicker.vue?vue&type=template&id=c4588f32& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=template&id=c4588f32&");
 
 
 /***/ }),
@@ -73184,23 +71152,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/BreakHourComponent.vue?vue&type=template&id=7fccb578&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/components/Models/BreakHourComponent.vue?vue&type=template&id=7fccb578& ***!
-  \**********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_template_id_7fccb578___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_template_id_7fccb578___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_template_id_7fccb578___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BreakHourComponent.vue?vue&type=template&id=7fccb578& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/BreakHourComponent.vue?vue&type=template&id=7fccb578&");
-
-
-/***/ }),
-
 /***/ "./resources/js/components/Models/EditEmployeeComponent.vue?vue&type=template&id=560f7e2a&":
 /*!*************************************************************************************************!*\
   !*** ./resources/js/components/Models/EditEmployeeComponent.vue?vue&type=template&id=560f7e2a& ***!
@@ -73269,53 +71220,87 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=template&id=d5d48a8a&":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=template&id=d5d48a8a& ***!
-  \*************************************************************************************************/
+/***/ "./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=template&id=7a5ea46b&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=template&id=7a5ea46b& ***!
+  \*********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeTypeComponent_vue_vue_type_template_id_d5d48a8a___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeTypeComponent_vue_vue_type_template_id_d5d48a8a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppSettingsComponent_vue_vue_type_template_id_7a5ea46b___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppSettingsComponent_vue_vue_type_template_id_7a5ea46b___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeTypeComponent_vue_vue_type_template_id_d5d48a8a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EmployeeTypeComponent.vue?vue&type=template&id=d5d48a8a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=template&id=d5d48a8a&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AppSettingsComponent_vue_vue_type_template_id_7a5ea46b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AppSettingsComponent.vue?vue&type=template&id=7a5ea46b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=template&id=7a5ea46b&");
 
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/LocationComponent.vue?vue&type=template&id=d9d653a4&":
-/*!*********************************************************************************************!*\
-  !*** ./resources/js/components/Models/LocationComponent.vue?vue&type=template&id=d9d653a4& ***!
-  \*********************************************************************************************/
+/***/ "./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=template&id=057edb2c&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=template&id=057edb2c& ***!
+  \*******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationComponent_vue_vue_type_template_id_d9d653a4___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationComponent_vue_vue_type_template_id_d9d653a4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_template_id_057edb2c___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_template_id_057edb2c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationComponent_vue_vue_type_template_id_d9d653a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LocationComponent.vue?vue&type=template&id=d9d653a4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/LocationComponent.vue?vue&type=template&id=d9d653a4&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_template_id_057edb2c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BreakHourComponent.vue?vue&type=template&id=057edb2c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=template&id=057edb2c&");
 
 
 /***/ }),
 
-/***/ "./resources/js/components/Models/PositionComponent.vue?vue&type=template&id=76a44d8c&":
-/*!*********************************************************************************************!*\
-  !*** ./resources/js/components/Models/PositionComponent.vue?vue&type=template&id=76a44d8c& ***!
-  \*********************************************************************************************/
+/***/ "./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=template&id=3211dbd3&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=template&id=3211dbd3& ***!
+  \**********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PositionComponent_vue_vue_type_template_id_76a44d8c___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PositionComponent_vue_vue_type_template_id_76a44d8c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeTypeComponent_vue_vue_type_template_id_3211dbd3___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeTypeComponent_vue_vue_type_template_id_3211dbd3___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PositionComponent_vue_vue_type_template_id_76a44d8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PositionComponent.vue?vue&type=template&id=76a44d8c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/PositionComponent.vue?vue&type=template&id=76a44d8c&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EmployeeTypeComponent_vue_vue_type_template_id_3211dbd3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EmployeeTypeComponent.vue?vue&type=template&id=3211dbd3& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=template&id=3211dbd3&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=template&id=42bd4346&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=template&id=42bd4346& ***!
+  \******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationComponent_vue_vue_type_template_id_42bd4346___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationComponent_vue_vue_type_template_id_42bd4346___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LocationComponent_vue_vue_type_template_id_42bd4346___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LocationComponent.vue?vue&type=template&id=42bd4346& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=template&id=42bd4346&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=template&id=74564652&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=template&id=74564652& ***!
+  \******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PositionComponent_vue_vue_type_template_id_74564652___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PositionComponent_vue_vue_type_template_id_74564652___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PositionComponent_vue_vue_type_template_id_74564652___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PositionComponent.vue?vue&type=template&id=74564652& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=template&id=74564652&");
 
 
 /***/ }),
@@ -73687,1244 +71672,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=template&id=c4588f32&":
-/*!***********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue2-timepicker/src/vue-timepicker.vue?vue&type=template&id=c4588f32& ***!
-  \***********************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "span",
-    { staticClass: "vue__time-picker time-picker", style: _vm.inputWidthStyle },
-    [
-      _c("input", {
-        ref: "input",
-        staticClass: "display-time",
-        class: [
-          _vm.inputClass,
-          {
-            "is-empty": _vm.inputIsEmpty,
-            invalid: _vm.hasInvalidInput,
-            "all-selected": _vm.allValueSelected,
-            disabled: _vm.disabled,
-            "has-custom-icon": _vm.$slots && _vm.$slots.icon
-          }
-        ],
-        style: _vm.inputWidthStyle,
-        attrs: {
-          type: "text",
-          id: _vm.id,
-          name: _vm.name,
-          placeholder: _vm.placeholder ? _vm.placeholder : _vm.formatString,
-          tabindex: _vm.disabled ? -1 : _vm.tabindex,
-          disabled: _vm.disabled,
-          readonly: !_vm.manualInput,
-          autocomplete: _vm.autocomplete
-        },
-        domProps: { value: _vm.inputIsEmpty ? null : _vm.customDisplayTime },
-        on: {
-          focus: _vm.onFocus,
-          change: _vm.onChange,
-          blur: function($event) {
-            _vm.debounceBlur()
-            _vm.blurEvent()
-          },
-          mousedown: _vm.onMouseDown,
-          keydown: [
-            _vm.keyDownHandler,
-            function($event) {
-              if (
-                !$event.type.indexOf("key") &&
-                _vm._k($event.keyCode, "esc", 27, $event.key, ["Esc", "Escape"])
-              ) {
-                return null
-              }
-              if (
-                $event.ctrlKey ||
-                $event.shiftKey ||
-                $event.altKey ||
-                $event.metaKey
-              ) {
-                return null
-              }
-              return _vm.escBlur.apply(null, arguments)
-            }
-          ],
-          compositionstart: _vm.onCompostionStart,
-          compositionend: _vm.onCompostionEnd,
-          paste: _vm.pasteHandler
-        }
-      }),
-      _vm._v(" "),
-      _vm.showClearBtn || _vm.showDropdownBtn
-        ? _c("div", { staticClass: "controls", attrs: { tabindex: "-1" } }, [
-            !_vm.isActive && _vm.showClearBtn
-              ? _c(
-                  "span",
-                  {
-                    staticClass: "clear-btn",
-                    class: {
-                      "has-custom-btn": _vm.$slots && _vm.$slots.clearButton
-                    },
-                    attrs: { tabindex: "-1" },
-                    on: { click: _vm.clearTime }
-                  },
-                  [
-                    _vm._t("clearButton", function() {
-                      return [
-                        _c("span", { staticClass: "char" }, [_vm._v("×")])
-                      ]
-                    })
-                  ],
-                  2
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.showDropdownBtn
-              ? _c(
-                  "span",
-                  {
-                    staticClass: "dropdown-btn",
-                    class: {
-                      "has-custom-btn": _vm.$slots && _vm.$slots.dropdownButton
-                    },
-                    attrs: { tabindex: "-1" },
-                    on: {
-                      click: function($event) {
-                        return _vm.setDropdownState(
-                          _vm.fixedDropdownButton ? !_vm.showDropdown : true,
-                          true
-                        )
-                      },
-                      mousedown: _vm.keepFocusing
-                    }
-                  },
-                  [
-                    _vm._t("dropdownButton", function() {
-                      return [
-                        _c("span", { staticClass: "char" }, [_vm._v("▾")])
-                      ]
-                    })
-                  ],
-                  2
-                )
-              : _vm._e()
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.$slots && _vm.$slots.icon
-        ? _c("div", { staticClass: "custom-icon" }, [_vm._t("icon")], 2)
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.showDropdown
-        ? _c("div", {
-            staticClass: "time-picker-overlay",
-            attrs: { tabindex: "-1" },
-            on: { click: _vm.toggleActive }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.showDropdown,
-              expression: "showDropdown"
-            }
-          ],
-          ref: "dropdown",
-          staticClass: "dropdown",
-          class: [_vm.dropdownDirClass],
-          style: _vm.inputWidthStyle,
-          attrs: { tabindex: "-1" },
-          on: {
-            mouseup: _vm.keepFocusing,
-            click: function($event) {
-              $event.stopPropagation()
-            }
-          }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "select-list",
-              style: _vm.inputWidthStyle,
-              attrs: { tabindex: "-1" }
-            },
-            [
-              !_vm.advancedKeyboard
-                ? [
-                    _vm._l(_vm.columnsSequence, function(column) {
-                      return [
-                        column === "hour"
-                          ? _c(
-                              "ul",
-                              {
-                                key: column,
-                                staticClass: "hours",
-                                on: { scroll: _vm.keepFocusing }
-                              },
-                              [
-                                _c("li", {
-                                  staticClass: "hint",
-                                  domProps: {
-                                    textContent: _vm._s(_vm.hourLabelText)
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _vm._l(_vm.hours, function(hr, hIndex) {
-                                  return [
-                                    !_vm.opts.hideDisabledHours ||
-                                    (_vm.opts.hideDisabledHours &&
-                                      !_vm.isDisabled("hour", hr))
-                                      ? _c("li", {
-                                          key: hIndex,
-                                          class: { active: _vm.hour === hr },
-                                          attrs: {
-                                            disabled: _vm.isDisabled(
-                                              "hour",
-                                              hr
-                                            ),
-                                            "data-key": hr
-                                          },
-                                          domProps: { textContent: _vm._s(hr) },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.select("hour", hr)
-                                            }
-                                          }
-                                        })
-                                      : _vm._e()
-                                  ]
-                                })
-                              ],
-                              2
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        column === "minute"
-                          ? _c(
-                              "ul",
-                              {
-                                key: column,
-                                staticClass: "minutes",
-                                on: { scroll: _vm.keepFocusing }
-                              },
-                              [
-                                _c("li", {
-                                  staticClass: "hint",
-                                  domProps: {
-                                    textContent: _vm._s(_vm.minuteLabelText)
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _vm._l(_vm.minutes, function(m, mIndex) {
-                                  return [
-                                    !_vm.opts.hideDisabledMinutes ||
-                                    (_vm.opts.hideDisabledMinutes &&
-                                      !_vm.isDisabled("minute", m))
-                                      ? _c("li", {
-                                          key: mIndex,
-                                          class: { active: _vm.minute === m },
-                                          attrs: {
-                                            disabled: _vm.isDisabled(
-                                              "minute",
-                                              m
-                                            ),
-                                            "data-key": m
-                                          },
-                                          domProps: { textContent: _vm._s(m) },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.select("minute", m)
-                                            }
-                                          }
-                                        })
-                                      : _vm._e()
-                                  ]
-                                })
-                              ],
-                              2
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        column === "second"
-                          ? _c(
-                              "ul",
-                              {
-                                key: column,
-                                staticClass: "seconds",
-                                on: { scroll: _vm.keepFocusing }
-                              },
-                              [
-                                _c("li", {
-                                  staticClass: "hint",
-                                  domProps: {
-                                    textContent: _vm._s(_vm.secondLabelText)
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _vm._l(_vm.seconds, function(s, sIndex) {
-                                  return [
-                                    !_vm.opts.hideDisabledSeconds ||
-                                    (_vm.opts.hideDisabledSeconds &&
-                                      !_vm.isDisabled("second", s))
-                                      ? _c("li", {
-                                          key: sIndex,
-                                          class: { active: _vm.second === s },
-                                          attrs: {
-                                            disabled: _vm.isDisabled(
-                                              "second",
-                                              s
-                                            ),
-                                            "data-key": s
-                                          },
-                                          domProps: { textContent: _vm._s(s) },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.select("second", s)
-                                            }
-                                          }
-                                        })
-                                      : _vm._e()
-                                  ]
-                                })
-                              ],
-                              2
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        column === "apm"
-                          ? _c(
-                              "ul",
-                              {
-                                key: column,
-                                staticClass: "apms",
-                                on: { scroll: _vm.keepFocusing }
-                              },
-                              [
-                                _c("li", {
-                                  staticClass: "hint",
-                                  domProps: {
-                                    textContent: _vm._s(_vm.apmLabelText)
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _vm._l(_vm.apms, function(a, aIndex) {
-                                  return [
-                                    !_vm.opts.hideDisabledHours ||
-                                    (_vm.opts.hideDisabledHours &&
-                                      !_vm.isDisabled("apm", a))
-                                      ? _c("li", {
-                                          key: aIndex,
-                                          class: { active: _vm.apm === a },
-                                          attrs: {
-                                            disabled: _vm.isDisabled("apm", a),
-                                            "data-key": a
-                                          },
-                                          domProps: {
-                                            textContent: _vm._s(
-                                              _vm.apmDisplayText(a)
-                                            )
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.select("apm", a)
-                                            }
-                                          }
-                                        })
-                                      : _vm._e()
-                                  ]
-                                })
-                              ],
-                              2
-                            )
-                          : _vm._e()
-                      ]
-                    })
-                  ]
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.advancedKeyboard
-                ? [
-                    _vm._l(_vm.columnsSequence, function(column) {
-                      return [
-                        column === "hour"
-                          ? _c(
-                              "ul",
-                              {
-                                key: column,
-                                staticClass: "hours",
-                                attrs: { tabindex: "-1" },
-                                on: { scroll: _vm.keepFocusing }
-                              },
-                              [
-                                _c("li", {
-                                  staticClass: "hint",
-                                  attrs: { tabindex: "-1" },
-                                  domProps: {
-                                    textContent: _vm._s(_vm.hourLabelText)
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _vm._l(_vm.hours, function(hr, hIndex) {
-                                  return [
-                                    !_vm.opts.hideDisabledHours ||
-                                    (_vm.opts.hideDisabledHours &&
-                                      !_vm.isDisabled("hour", hr))
-                                      ? _c("li", {
-                                          key: hIndex,
-                                          class: { active: _vm.hour === hr },
-                                          attrs: {
-                                            tabindex: _vm.isDisabled("hour", hr)
-                                              ? -1
-                                              : _vm.tabindex,
-                                            "data-key": hr,
-                                            disabled: _vm.isDisabled("hour", hr)
-                                          },
-                                          domProps: { textContent: _vm._s(hr) },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.select("hour", hr)
-                                            },
-                                            keydown: [
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "tab",
-                                                    9,
-                                                    $event.key,
-                                                    "Tab"
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                return _vm.onTab(
-                                                  "hour",
-                                                  hr,
-                                                  $event
-                                                )
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "space",
-                                                    32,
-                                                    $event.key,
-                                                    [" ", "Spacebar"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.select("hour", hr)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "enter",
-                                                    13,
-                                                    $event.key,
-                                                    "Enter"
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.select("hour", hr)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "up",
-                                                    38,
-                                                    $event.key,
-                                                    ["Up", "ArrowUp"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.prevItem("hour", hr)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "down",
-                                                    40,
-                                                    $event.key,
-                                                    ["Down", "ArrowDown"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.nextItem("hour", hr)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "left",
-                                                    37,
-                                                    $event.key,
-                                                    ["Left", "ArrowLeft"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  "button" in $event &&
-                                                  $event.button !== 0
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.toLeftColumn("hour")
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "right",
-                                                    39,
-                                                    $event.key,
-                                                    ["Right", "ArrowRight"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  "button" in $event &&
-                                                  $event.button !== 2
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.toRightColumn("hour")
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "esc",
-                                                    27,
-                                                    $event.key,
-                                                    ["Esc", "Escape"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  $event.ctrlKey ||
-                                                  $event.shiftKey ||
-                                                  $event.altKey ||
-                                                  $event.metaKey
-                                                ) {
-                                                  return null
-                                                }
-                                                return _vm.debounceBlur.apply(
-                                                  null,
-                                                  arguments
-                                                )
-                                              }
-                                            ],
-                                            blur: _vm.debounceBlur,
-                                            focus: _vm.keepFocusing
-                                          }
-                                        })
-                                      : _vm._e()
-                                  ]
-                                })
-                              ],
-                              2
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        column === "minute"
-                          ? _c(
-                              "ul",
-                              {
-                                key: column,
-                                staticClass: "minutes",
-                                attrs: { tabindex: "-1" },
-                                on: { scroll: _vm.keepFocusing }
-                              },
-                              [
-                                _c("li", {
-                                  staticClass: "hint",
-                                  attrs: { tabindex: "-1" },
-                                  domProps: {
-                                    textContent: _vm._s(_vm.minuteLabelText)
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _vm._l(_vm.minutes, function(m, mIndex) {
-                                  return [
-                                    !_vm.opts.hideDisabledMinutes ||
-                                    (_vm.opts.hideDisabledMinutes &&
-                                      !_vm.isDisabled("minute", m))
-                                      ? _c("li", {
-                                          key: mIndex,
-                                          class: { active: _vm.minute === m },
-                                          attrs: {
-                                            tabindex: _vm.isDisabled(
-                                              "minute",
-                                              m
-                                            )
-                                              ? -1
-                                              : _vm.tabindex,
-                                            "data-key": m,
-                                            disabled: _vm.isDisabled(
-                                              "minute",
-                                              m
-                                            )
-                                          },
-                                          domProps: { textContent: _vm._s(m) },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.select("minute", m)
-                                            },
-                                            keydown: [
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "tab",
-                                                    9,
-                                                    $event.key,
-                                                    "Tab"
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                return _vm.onTab(
-                                                  "minute",
-                                                  m,
-                                                  $event
-                                                )
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "space",
-                                                    32,
-                                                    $event.key,
-                                                    [" ", "Spacebar"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.select("minute", m)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "enter",
-                                                    13,
-                                                    $event.key,
-                                                    "Enter"
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.select("minute", m)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "up",
-                                                    38,
-                                                    $event.key,
-                                                    ["Up", "ArrowUp"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.prevItem("minute", m)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "down",
-                                                    40,
-                                                    $event.key,
-                                                    ["Down", "ArrowDown"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.nextItem("minute", m)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "left",
-                                                    37,
-                                                    $event.key,
-                                                    ["Left", "ArrowLeft"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  "button" in $event &&
-                                                  $event.button !== 0
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.toLeftColumn(
-                                                  "minute"
-                                                )
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "right",
-                                                    39,
-                                                    $event.key,
-                                                    ["Right", "ArrowRight"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  "button" in $event &&
-                                                  $event.button !== 2
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.toRightColumn(
-                                                  "minute"
-                                                )
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "esc",
-                                                    27,
-                                                    $event.key,
-                                                    ["Esc", "Escape"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  $event.ctrlKey ||
-                                                  $event.shiftKey ||
-                                                  $event.altKey ||
-                                                  $event.metaKey
-                                                ) {
-                                                  return null
-                                                }
-                                                return _vm.debounceBlur.apply(
-                                                  null,
-                                                  arguments
-                                                )
-                                              }
-                                            ],
-                                            blur: _vm.debounceBlur,
-                                            focus: _vm.keepFocusing
-                                          }
-                                        })
-                                      : _vm._e()
-                                  ]
-                                })
-                              ],
-                              2
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        column === "second"
-                          ? _c(
-                              "ul",
-                              {
-                                key: column,
-                                staticClass: "seconds",
-                                attrs: { tabindex: "-1" },
-                                on: { scroll: _vm.keepFocusing }
-                              },
-                              [
-                                _c("li", {
-                                  staticClass: "hint",
-                                  attrs: { tabindex: "-1" },
-                                  domProps: {
-                                    textContent: _vm._s(_vm.secondLabelText)
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _vm._l(_vm.seconds, function(s, sIndex) {
-                                  return [
-                                    !_vm.opts.hideDisabledSeconds ||
-                                    (_vm.opts.hideDisabledSeconds &&
-                                      !_vm.isDisabled("second", s))
-                                      ? _c("li", {
-                                          key: sIndex,
-                                          class: { active: _vm.second === s },
-                                          attrs: {
-                                            tabindex: _vm.isDisabled(
-                                              "second",
-                                              s
-                                            )
-                                              ? -1
-                                              : _vm.tabindex,
-                                            "data-key": s,
-                                            disabled: _vm.isDisabled(
-                                              "second",
-                                              s
-                                            )
-                                          },
-                                          domProps: { textContent: _vm._s(s) },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.select("second", s)
-                                            },
-                                            keydown: [
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "tab",
-                                                    9,
-                                                    $event.key,
-                                                    "Tab"
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                return _vm.onTab(
-                                                  "second",
-                                                  s,
-                                                  $event
-                                                )
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "space",
-                                                    32,
-                                                    $event.key,
-                                                    [" ", "Spacebar"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.select("second", s)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "enter",
-                                                    13,
-                                                    $event.key,
-                                                    "Enter"
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.select("second", s)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "up",
-                                                    38,
-                                                    $event.key,
-                                                    ["Up", "ArrowUp"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.prevItem("second", s)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "down",
-                                                    40,
-                                                    $event.key,
-                                                    ["Down", "ArrowDown"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.nextItem("second", s)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "left",
-                                                    37,
-                                                    $event.key,
-                                                    ["Left", "ArrowLeft"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  "button" in $event &&
-                                                  $event.button !== 0
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.toLeftColumn(
-                                                  "second"
-                                                )
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "right",
-                                                    39,
-                                                    $event.key,
-                                                    ["Right", "ArrowRight"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  "button" in $event &&
-                                                  $event.button !== 2
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.toRightColumn(
-                                                  "second"
-                                                )
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "esc",
-                                                    27,
-                                                    $event.key,
-                                                    ["Esc", "Escape"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  $event.ctrlKey ||
-                                                  $event.shiftKey ||
-                                                  $event.altKey ||
-                                                  $event.metaKey
-                                                ) {
-                                                  return null
-                                                }
-                                                return _vm.debounceBlur.apply(
-                                                  null,
-                                                  arguments
-                                                )
-                                              }
-                                            ],
-                                            blur: _vm.debounceBlur,
-                                            focus: _vm.keepFocusing
-                                          }
-                                        })
-                                      : _vm._e()
-                                  ]
-                                })
-                              ],
-                              2
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        column === "apm"
-                          ? _c(
-                              "ul",
-                              {
-                                key: column,
-                                staticClass: "apms",
-                                attrs: { tabindex: "-1" },
-                                on: { scroll: _vm.keepFocusing }
-                              },
-                              [
-                                _c("li", {
-                                  staticClass: "hint",
-                                  attrs: { tabindex: "-1" },
-                                  domProps: {
-                                    textContent: _vm._s(_vm.apmLabelText)
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _vm._l(_vm.apms, function(a, aIndex) {
-                                  return [
-                                    !_vm.opts.hideDisabledHours ||
-                                    (_vm.opts.hideDisabledHours &&
-                                      !_vm.isDisabled("apm", a))
-                                      ? _c("li", {
-                                          key: aIndex,
-                                          class: { active: _vm.apm === a },
-                                          attrs: {
-                                            tabindex: _vm.isDisabled("apm", a)
-                                              ? -1
-                                              : _vm.tabindex,
-                                            "data-key": a,
-                                            disabled: _vm.isDisabled("apm", a)
-                                          },
-                                          domProps: {
-                                            textContent: _vm._s(
-                                              _vm.apmDisplayText(a)
-                                            )
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.select("apm", a)
-                                            },
-                                            keydown: [
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "tab",
-                                                    9,
-                                                    $event.key,
-                                                    "Tab"
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                return _vm.onTab(
-                                                  "apm",
-                                                  a,
-                                                  $event
-                                                )
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "space",
-                                                    32,
-                                                    $event.key,
-                                                    [" ", "Spacebar"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.select("apm", a)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "enter",
-                                                    13,
-                                                    $event.key,
-                                                    "Enter"
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.select("apm", a)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "up",
-                                                    38,
-                                                    $event.key,
-                                                    ["Up", "ArrowUp"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.prevItem("apm", a)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "down",
-                                                    40,
-                                                    $event.key,
-                                                    ["Down", "ArrowDown"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.nextItem("apm", a)
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "left",
-                                                    37,
-                                                    $event.key,
-                                                    ["Left", "ArrowLeft"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  "button" in $event &&
-                                                  $event.button !== 0
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.toLeftColumn("apm")
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "right",
-                                                    39,
-                                                    $event.key,
-                                                    ["Right", "ArrowRight"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  "button" in $event &&
-                                                  $event.button !== 2
-                                                ) {
-                                                  return null
-                                                }
-                                                $event.preventDefault()
-                                                return _vm.toRightColumn("apm")
-                                              },
-                                              function($event) {
-                                                if (
-                                                  !$event.type.indexOf("key") &&
-                                                  _vm._k(
-                                                    $event.keyCode,
-                                                    "esc",
-                                                    27,
-                                                    $event.key,
-                                                    ["Esc", "Escape"]
-                                                  )
-                                                ) {
-                                                  return null
-                                                }
-                                                if (
-                                                  $event.ctrlKey ||
-                                                  $event.shiftKey ||
-                                                  $event.altKey ||
-                                                  $event.metaKey
-                                                ) {
-                                                  return null
-                                                }
-                                                return _vm.debounceBlur.apply(
-                                                  null,
-                                                  arguments
-                                                )
-                                              }
-                                            ],
-                                            blur: _vm.debounceBlur,
-                                            focus: _vm.keepFocusing
-                                          }
-                                        })
-                                      : _vm._e()
-                                  ]
-                                })
-                              ],
-                              2
-                            )
-                          : _vm._e()
-                      ]
-                    })
-                  ]
-                : _vm._e()
-            ],
-            2
-          )
-        ]
-      )
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AppComponents/AppButton.vue?vue&type=template&id=59d39b00&":
 /*!***********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AppComponents/AppButton.vue?vue&type=template&id=59d39b00& ***!
@@ -75165,20 +71912,6 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-xl-12 col-lg-12" },
-        [
-          _c("EmployeeListComponent", {
-            attrs: { employeeList: this.employees },
-            on: { editEmployee: _vm.editEmployee }
-          })
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
         { staticClass: "col-xl-6 col-lg-6" },
         [
           _c("EmployeeComponent", {
@@ -75188,15 +71921,8 @@ var render = function() {
               event: "save",
               employeeTypeList: this.employee_types
             }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-xl-6 col-lg-6" },
-        [
+          }),
+          _vm._v(" "),
           _c("EditEmployeeComponent", {
             directives: [
               {
@@ -75213,14 +71939,18 @@ var render = function() {
               employeeEdit: this.employeeEdit,
               employeeTypeList: this.employee_types
             }
-          }),
-          _vm._v(" "),
-          _c("EmployeeTypeComponent", {
-            attrs: {
-              title: "Add New Employee Type",
-              name: "Save",
-              event: "save"
-            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-xl-6 col-lg-6" },
+        [
+          _c("EmployeeListComponent", {
+            attrs: { employeeList: this.employees },
+            on: { editEmployee: _vm.editEmployee }
           })
         ],
         1
@@ -75257,38 +71987,9 @@ var render = function() {
         "div",
         { staticClass: "col-xl-6 col-lg-6" },
         [
-          _c("PositionComponent", {
-            attrs: {
-              title: "Add new Location",
-              locationList: this.locationData,
-              name: "Save",
-              event: "save"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-xl-6 col-lg-6" },
-        [
-          _c("LocationComponent", {
-            attrs: { title: "Add new Department", name: "Save", event: "save" }
-          })
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-xl-6 col-lg-6" },
-        [
           _c("EmployeeDTRComponent", {
             attrs: {
-              title: "Employee DTR",
+              title: "Employee Time Logs",
               name: "Save",
               event: "save",
               employees: this.employees,
@@ -75301,90 +72002,6 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-xl-6 col-lg-6" })
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/BreakHourComponent.vue?vue&type=template&id=7fccb578&":
-/*!*************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/BreakHourComponent.vue?vue&type=template&id=7fccb578& ***!
-  \*************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "card shadow mb-4" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "card-header py-3 d-flex flex-row align-items-center justify-content-between"
-        },
-        [
-          _c("h6", { staticClass: "m-0 font-weight-bold text-primary" }, [
-            _vm._v(_vm._s(_vm.title))
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card-body" },
-        [
-          _c(
-            "div",
-            { staticClass: "form-group" },
-            [
-              _c("AppTextBox", {
-                attrs: {
-                  label: "Break Hour",
-                  placeholder: "Enter Break Hour ..."
-                },
-                model: {
-                  value: _vm.hour,
-                  callback: function($$v) {
-                    _vm.hour = $$v
-                  },
-                  expression: "hour"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm.isOnsave
-            ? _c("AppButton", {
-                attrs: { "btn-name": _vm.name, "btn-method": "save" },
-                on: { save: _vm.save }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-secondary float-right mr-2",
-              on: { click: _vm.onCancel }
-            },
-            [_vm._v("Cancel")]
-          )
-        ],
-        1
-      )
     ])
   ])
 }
@@ -75753,13 +72370,13 @@ var render = function() {
                   "deselect-label": "Remove selected value",
                   "track-by": "firstname",
                   "custom-label": _vm.fullName,
-                  placeholder: "Select employees",
+                  placeholder: "Search employees",
                   options: _vm.employees,
                   searchable: true,
                   "block-keys": ["Tab"],
                   "allow-empty": true
                 },
-                on: { select: _vm.clickInput },
+                on: { select: _vm.atSelect },
                 scopedSlots: _vm._u([
                   {
                     key: "singleLabel",
@@ -75840,7 +72457,7 @@ var render = function() {
             { staticClass: "form-group" },
             [
               _c("datepicker", {
-                attrs: { title: "Selected Circle", lang: "en" },
+                attrs: { circle: true, lang: "en" },
                 model: {
                   value: _vm.formData.log_date,
                   callback: function($$v) {
@@ -75865,14 +72482,17 @@ var render = function() {
                     format: _vm.format,
                     placeholder: "Start Time",
                     "input-width": "250px",
-                    "input-class": "my-awesome-picker"
+                    "input-class": "my-awesome-picker",
+                    "close-on-complete": "",
+                    "auto-scroll": "",
+                    "hide-clear-button": ""
                   },
                   model: {
-                    value: _vm.formData.start_time,
+                    value: _vm.startTime,
                     callback: function($$v) {
-                      _vm.$set(_vm.formData, "start_time", $$v)
+                      _vm.startTime = $$v
                     },
-                    expression: "formData.start_time"
+                    expression: "startTime"
                   }
                 }),
                 _vm._v("\r\n                to\r\n                "),
@@ -75882,14 +72502,17 @@ var render = function() {
                     format: _vm.format,
                     placeholder: "End Time",
                     "input-width": "250px",
-                    "input-class": "my-awesome-picker"
+                    "input-class": "my-awesome-picker",
+                    "close-on-complete": "",
+                    "auto-scroll": "",
+                    "hide-clear-button": ""
                   },
                   model: {
-                    value: _vm.formData.end_time,
+                    value: _vm.endTime,
                     callback: function($$v) {
-                      _vm.$set(_vm.formData, "end_time", $$v)
+                      _vm.endTime = $$v
                     },
-                    expression: "formData.end_time"
+                    expression: "endTime"
                   }
                 })
               ],
@@ -75903,16 +72526,16 @@ var render = function() {
             [
               _c("AppDropdown", {
                 attrs: {
-                  label: "Break Hour",
+                  label: "Break Time",
                   options: _vm.breakHour,
                   placeholder: "Select Break Hours"
                 },
                 model: {
-                  value: _vm.formData.break_time,
+                  value: _vm.breakTimeValue,
                   callback: function($$v) {
-                    _vm.$set(_vm.formData, "break_time", $$v)
+                    _vm.breakTimeValue = $$v
                   },
-                  expression: "formData.break_time"
+                  expression: "breakTimeValue"
                 }
               })
             ],
@@ -75981,7 +72604,8 @@ var render = function() {
               columns: _vm.columns,
               rows: _vm.employeeList,
               sortable: false,
-              clickable: false
+              clickable: false,
+              printable: false
             },
             on: { "row-click": _vm.onEdit },
             scopedSlots: _vm._u([
@@ -76047,10 +72671,168 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=template&id=d5d48a8a&":
-/*!****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/EmployeeTypeComponent.vue?vue&type=template&id=d5d48a8a& ***!
-  \****************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=template&id=7a5ea46b&":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/AppSettingsComponent.vue?vue&type=template&id=7a5ea46b& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xl-6 col-lg-6" },
+        [
+          _c("PositionComponent", {
+            attrs: {
+              title: "Add new Location",
+              locationList: this.locationData,
+              name: "Save",
+              event: "save"
+            }
+          }),
+          _vm._v(" "),
+          _c("LocationComponent", {
+            attrs: { title: "Add new Department", name: "Save", event: "save" }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-xl-6 col-lg-6" },
+        [
+          _c("EmployeeTypeComponent", {
+            attrs: {
+              title: "Add new Employee Type",
+              name: "Save",
+              event: "save"
+            }
+          }),
+          _vm._v(" "),
+          _c("BreakHourComponent", {
+            attrs: { title: "Add new Break Time", name: "Save", event: "save" }
+          })
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=template&id=057edb2c&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=template&id=057edb2c& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "card shadow mb-4" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        },
+        [
+          _c("h6", { staticClass: "m-0 font-weight-bold text-primary" }, [
+            _vm._v(_vm._s(_vm.title))
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        [
+          _c("label", { attrs: { for: "" } }, [_vm._v("Break Time")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("vue-timepicker", {
+                attrs: {
+                  format: _vm.format,
+                  placeholder: "Break Time",
+                  "input-width": "250px",
+                  "input-class": "my-awesome-picker",
+                  "close-on-complete": "",
+                  "auto-scroll": "",
+                  "hide-clear-button": ""
+                },
+                on: { change: _vm.changeHandler },
+                model: {
+                  value: _vm.hour,
+                  callback: function($$v) {
+                    _vm.hour = $$v
+                  },
+                  expression: "hour"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.isOnsave
+            ? _c("AppButton", {
+                attrs: { "btn-name": _vm.name, "btn-method": "save" },
+                on: { save: _vm.save }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-secondary float-right mr-2",
+              on: { click: _vm.onCancel }
+            },
+            [_vm._v("Cancel")]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=template&id=3211dbd3&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=template&id=3211dbd3& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -76131,10 +72913,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/LocationComponent.vue?vue&type=template&id=d9d653a4&":
-/*!************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/LocationComponent.vue?vue&type=template&id=d9d653a4& ***!
-  \************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=template&id=42bd4346&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/LocationComponent.vue?vue&type=template&id=42bd4346& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -76215,10 +72997,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/PositionComponent.vue?vue&type=template&id=76a44d8c&":
-/*!************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/PositionComponent.vue?vue&type=template&id=76a44d8c& ***!
-  \************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=template&id=74564652&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=template&id=74564652& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";

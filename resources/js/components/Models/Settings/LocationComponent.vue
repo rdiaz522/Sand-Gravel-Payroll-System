@@ -6,25 +6,24 @@
         </div>
         <div class="card-body">
             <div class="form-group">
-                <AppTextBox label="Employee Type" v-model="employee_type" placeholder="Enter Employee Type ..."> </AppTextBox>
+                <AppTextBox label="Department" v-model="location" placeholder="Enter Department ..."> </AppTextBox>
             </div>
             <AppButton v-on:save="save" :btn-name="name" btn-method="save" v-if="isOnsave"></AppButton>
-             <button @click="onCancel" class="btn btn-secondary float-right mr-2">Cancel</button>
-        </div>  
+            <button @click="onCancel" class="btn btn-secondary float-right mr-2">Cancel</button>
+        </div>
     </div>
 </div>
 </template>
 
 <script>
-
-import AppButton from '../AppComponents/AppButton.vue';
-import AppTextBox from '../AppComponents/AppTextBox.vue';
+import AppButton from '../../AppComponents/AppButton.vue';
+import AppTextBox from '../../AppComponents/AppTextBox.vue';
 
 export default {
-    props:['title','name','event'],
+    props: ['title', 'name', 'event'],
     data() {
         return {
-            employee_type:''
+            location: ''
         }
     },
     components: {
@@ -51,14 +50,14 @@ export default {
         save() {
             this.$SHOW_LOADING();
             const data = {
-                name: this.employee_type,
+                name: this.location,
             }
-            axios.post(this.$BASE_URL + this.$EMPLOYEETYPE, data)
+            axios.post(this.$BASE_URL + this.$LOCATION, data)
                 .then((response) => {
-                    this.$parent.getEmployeeTypes();
                     this.clearFields();
                     this.$HIDE_LOADING();
-                    this.$SHOW_MESSAGE('Successfully', 'New Employee Type Added', 'success');
+                    this.$parent.getLocations();
+                    this.$SHOW_MESSAGE('Successfully', 'New Location Added!', 'success');
                 })
                 .catch((error) => {
                     this.$HIDE_LOADING();
@@ -66,16 +65,12 @@ export default {
                 });
         },
 
-        edit() {
-
-        },
-
         onCancel() {
-            this.clearFields();
+            this.location = '';
         },
-        
+
         clearFields() {
-            this.employee_type = '';
+            this.location = '';
         }
     }
 }

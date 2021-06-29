@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\BreakSeederResource;
-use App\Models\BreakSeeders;
+use App\Http\Resources\BreakHourResource;
+use App\Models\BreakHour;
 use Illuminate\Http\Request;
-
-class BreakSeedersController extends Controller
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+class BreakHourController extends Controller
 {
+    
+    protected $DATENOW = '';
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +19,10 @@ class BreakSeedersController extends Controller
      */
     public function index()
     {
-        $breakSeeders = BreakSeeders::all();
-        return BreakSeederResource::collection($breakSeeders);
+        $breakHour = BreakHour::all();
+        if($breakHour) {
+            return BreakHourResource::collection($breakHour);
+        }
     }
 
     /**
@@ -29,6 +35,11 @@ class BreakSeedersController extends Controller
         //
     }
 
+    public function DateNow()
+    {
+        $carbon = Carbon::now('Asia/Manila')->format('Y-m-d');
+        $this->DATENOW = $carbon;
+    } 
     /**
      * Store a newly created resource in storage.
      *
@@ -36,37 +47,34 @@ class BreakSeedersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-        $this->validate($request , [
-            'hours' => 'required',
-        ]);
+    {   
+        $this->DateNow();
 
-        $breakSeeders = new BreakSeeders();
-        $breakSeeders->hours = ucwords($request->name);
-        if($breakSeeders->save()) {
-            return new BreakSeederResource($breakSeeders);
-        }
+        $this->validate($request , [
+            'name' => 'required|unique:break_hours',
+        ]);
+        DB::table('break_hours')->insert([
+            'name' =>  $request->name,
+            'created_at' => $this->DATENOW,
+            'updated_at' => $this->DATENOW
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BreakSeeders  $breakSeeders
+     * @param  \App\Models\BreakHour  $breakHour
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $breakSeeders = BreakSeeders::findOrFail($id);
-         if($breakSeeders) {
-             return new BreakSeederResource($breakSeeders);
-         }
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BreakSeeders  $breakSeeders
+     * @param  \App\Models\BreakHour  $breakHour
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -78,33 +86,33 @@ class BreakSeedersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BreakSeeders  $breakSeeders
+     * @param  \App\Models\BreakHour  $breakHour
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate($request , [
-            'hours' => 'required',
+            'name' => 'required|unique:break_hours',
         ]);
 
-        $breakSeeders = new BreakSeeders();
-        $breakSeeders->hours = ucwords($request->name);
-        if($breakSeeders->save()) {
-            return new BreakSeederResource($breakSeeders);
+        $breakHour = BreakHour::findOrFail($id);
+        $breakHour->name = $request->name;
+        if($breakHour) {
+            return new BreakHourResource($breakHour);
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BreakSeeders  $breakSeeders
+     * @param  \App\Models\BreakHour  $breakHour
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $breakSeeders = BreakSeeders::find($id);
-        if($breakSeeders->delete()) {
-            return new BreakSeederResource($breakSeeders);
+        $breakHour = BreakHour::find($id);
+        if($breakHour->delete()) {
+            return new BreakHourResource($breakHour);
         }
     }
 }

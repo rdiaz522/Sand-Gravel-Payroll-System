@@ -6,24 +6,25 @@
         </div>
         <div class="card-body">
             <div class="form-group">
-                <AppTextBox label="Department" v-model="location" placeholder="Enter Department ..."> </AppTextBox>
+                <AppTextBox label="Employee Type" v-model="employee_type" placeholder="Enter Employee Type ..."> </AppTextBox>
             </div>
             <AppButton v-on:save="save" :btn-name="name" btn-method="save" v-if="isOnsave"></AppButton>
-            <button @click="onCancel" class="btn btn-secondary float-right mr-2">Cancel</button>
-        </div>
+             <button @click="onCancel" class="btn btn-secondary float-right mr-2">Cancel</button>
+        </div>  
     </div>
 </div>
 </template>
 
 <script>
-import AppButton from '../AppComponents/AppButton.vue';
-import AppTextBox from '../AppComponents/AppTextBox.vue';
+
+import AppButton from '../../AppComponents/AppButton.vue';
+import AppTextBox from '../../AppComponents/AppTextBox.vue';
 
 export default {
-    props: ['title', 'name', 'event'],
+    props:['title','name','event'],
     data() {
         return {
-            location: ''
+            employee_type:''
         }
     },
     components: {
@@ -50,14 +51,13 @@ export default {
         save() {
             this.$SHOW_LOADING();
             const data = {
-                name: this.location,
+                name: this.employee_type,
             }
-            axios.post(this.$BASE_URL + this.$LOCATION, data)
+            axios.post(this.$BASE_URL + this.$EMPLOYEETYPE, data)
                 .then((response) => {
                     this.clearFields();
                     this.$HIDE_LOADING();
-                    this.$parent.getLocations();
-                    this.$SHOW_MESSAGE('Successfully', 'New Location Added!', 'success');
+                    this.$SHOW_MESSAGE('Successfully', 'New Employee Type Added', 'success');
                 })
                 .catch((error) => {
                     this.$HIDE_LOADING();
@@ -66,11 +66,11 @@ export default {
         },
 
         onCancel() {
-            this.location = '';
+            this.clearFields();
         },
-
+        
         clearFields() {
-            this.location = '';
+            this.employee_type = '';
         }
     }
 }
