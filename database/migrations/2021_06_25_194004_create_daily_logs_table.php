@@ -17,7 +17,7 @@ class CreateDailyLogsTable extends Migration
         Schema::create('daily_logs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id')->unsigned();
-            $table->foreign('employee_id')->references('id')->on('employees');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
             $table->unsignedBigInteger('location_id')->unsigned();
             $table->foreign('location_id')->references('id')->on('locations');
             $table->string('daily_rate')->nullable();

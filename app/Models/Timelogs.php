@@ -23,4 +23,14 @@ class Timelogs extends Model
         'total_hours',
         'log_date' 
     ];
+
+    public function employees()
+    {
+        return $this->hasMany(Employees::class);
+    }
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class);
+    }
 }

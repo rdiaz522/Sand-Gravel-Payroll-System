@@ -1,0 +1,16 @@
+.slip-name {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:15px;
+}
+.slip-name2 {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:12px;
+}
+.regular-name {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+tr > th  {
+    text-align:left;
+    font-size:12px;
+    border: 1px solid black;
+}

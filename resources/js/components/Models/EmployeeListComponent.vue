@@ -56,7 +56,7 @@ import DataTable from "vue-materialize-datatable";
                     },
                     {
                         label: 'Employee Type',
-                        field: 'employee_type_id'
+                        field: 'employeeTypeName'
                     },
                 ],
             }
@@ -83,6 +83,7 @@ import DataTable from "vue-materialize-datatable";
                         this.$SHOW_LOADING();
                         axios.delete(this.$BASE_URL + this.$EMPLOYEES + `/${props.id}`).then((response) =>  {
                             this.$parent.getEmployees();
+                            this.$parent.showEmployeeEdit = false;
                             this.$HIDE_LOADING();
                             this.$WARNING_MESSAGE.fire(
                             'Deleted!',

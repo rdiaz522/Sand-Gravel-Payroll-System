@@ -17,15 +17,16 @@ class CreateEmployeeTimelogsTable extends Migration
         Schema::create('employee_timelogs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id')->unsigned();
-            $table->foreign('employee_id')->references('id')->on('employees');
-            $table->unsignedBigInteger('position_id')->unsigned();
-            $table->foreign('position_id')->references('id')->on('positions');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->unsignedBigInteger('department_id')->unsigned();
+            $table->foreign('department_id')->references('id')->on('locations');
             $table->string('daily_rate')->nullable();
             $table->string('time_in')->nullable();
             $table->string('time_out')->nullable();
             $table->string('break_time')->nullable();
             $table->string('total_hours')->nullable();
             $table->string('log_date')->nullable();
+            $table->string('total_pay')->nullable();
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();

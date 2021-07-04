@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\TimeLogsResource;
+use App\Models\BreakHour;
+use App\Models\Location;
+use App\Models\Position;
 use App\Models\Timelogs;
 use Illuminate\Http\Request;
 
@@ -15,7 +18,10 @@ class TimelogsController extends Controller
      */
     public function index()
     {
-        //
+        $timelogs = Timelogs::orderBy('id', 'DESC')->get();
+        if($timelogs) {
+            return TimeLogsResource::collection($timelogs);
+        }
     }
 
     /**
@@ -36,27 +42,34 @@ class TimelogsController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $this->validate($request, [
             'employee_id' => 'required',
             'position_id' => 'required',
             'daily_rate' => 'required',
             'time_in' => 'required',
-            'time_out' => 'required',
             'break_time' => 'required',
+            'time_out' => 'required',
             'total_hours' => 'required',
             'log_date' => 'required',
         ]);
 
+        $location = Position::where('id', $request->position_id)->select('location_id')->first();
+        $departmentId = 0;
+        
+        if($location instanceof Position && $location->exists) {
+            $departmentId = $location->location_id;
+        }
+
         $timelogs = new Timelogs();
         $timelogs->employee_id = $request->employee_id;
-        $timelogs->position_id = $request->position_id;
+        $timelogs->department_id = $departmentId;
         $timelogs->daily_rate = $request->daily_rate;
         $timelogs->time_in = $request->time_in;
         $timelogs->time_out = $request->time_out;
         $timelogs->break_time = $request->break_time;
         $timelogs->total_hours = $request->total_hours;
         $timelogs->log_date = date('Y-m-d', strtotime($request->log_date));
+        $timelogs->total_pay = (float)$request->total_hours * ((float)$request->daily_rate / 8);
         if($timelogs->save()) {
             return new TimeLogsResource($timelogs);
         }
@@ -95,6 +108,33 @@ class TimelogsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'daily_rate' => 'required',
+            'time_in' => 'required',
+            'time_out' => 'required',
+            'total_hours' => 'required',
+            'log_date' => 'required',
+        ]);
+
+        $location = Position::where('id', $request->position_id)->select('location_id')->first();
+        $departmentId = 0;
+        $timelogs = Timelogs::findOrFail($id);
+
+        if($location instanceof Position && $location->exists) {
+            $departmentId = $location->location_id;
+            $timelogs->department_id = $departmentId;
+        }
+
+        $timelogs->daily_rate = $request->daily_rate;
+        $timelogs->time_in = $request->time_in;
+        $timelogs->time_out = $request->time_out;
+        $timelogs->break_time = $request->break_time;
+        $timelogs->total_hours = $request->total_hours;
+        $timelogs->log_date = date('Y-m-d', strtotime($request->log_date));
+        $timelogs->total_pay = (float)$request->total_hours * ((float)$request->daily_rate / 8);
+        if($timelogs->save()) {
+            return new TimeLogsResource($timelogs);
+        }
     }
 
     /**
@@ -105,6 +145,9 @@ class TimelogsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $timelogs = Timelogs::find($id);
+        if ($timelogs->delete()) { 
+            return new TimeLogsResource($timelogs);
+        }
     }
 }

@@ -16,4 +16,9 @@ class Location extends Model
     ];
 
     public $timestamps = true;
+
+    public function timeLogs()
+    {
+        return $this->belongsTo(Timelogs::class,'id','department_id');
+    }
 }

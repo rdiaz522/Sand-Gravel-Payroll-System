@@ -2,17 +2,17 @@
 <div>
     <div class="row">
         <div class="col-xl-6 col-lg-6">
-            <PositionComponent 
-            title="Add new Location" 
-            :locationList="this.locationData" 
-            name="Save" event="save">
-            </PositionComponent>
-            
             <LocationComponent 
             title="Add new Department" 
             name="Save" 
             event="save">
             </LocationComponent>
+            
+            <PositionComponent 
+            title="Add new Location" 
+            :locationList="this.locationData" 
+            name="Save" event="save">
+            </PositionComponent>
         </div>
         <div class="col-xl-6 col-lg-6">
             <EmployeeTypeComponent

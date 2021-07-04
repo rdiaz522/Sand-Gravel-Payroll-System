@@ -71,7 +71,7 @@
             </div>
 
             <div class="form-group">
-                <AppDropdown label="Break Time" v-model="breakTimeValue" :options="breakHour"  placeholder="Select Break Hours"> </AppDropdown>
+                <AppDTRDropdown label="Break Time" v-model="breakTimeValue" :options="breakHour"  placeholder="Select Break Hours"> </AppDTRDropdown>
             </div>
 
             <AppButton v-on:save="save" :btn-name="name" btn-method="save" v-if="isOnsave"></AppButton>
@@ -101,10 +101,10 @@ export default {
                 time_out:'',
                 break_time:'',
                 total_hours:'',
-                log_date: '',
+                log_date: moment().format('D MMM, YYYY'),
                 daily_rate: ''
             },
-            breakTimeValue:'',
+            breakTimeValue:'1:00',
             startTime: {
                     hh: '08',
                     mm: '00',
@@ -153,7 +153,7 @@ export default {
             },
 
         atSelect() {
-            this.disabledTimePicker = false;  
+            this.disabledTimePicker = false;
         },
 
         save() {
@@ -169,11 +169,11 @@ export default {
                 var hours = parseInt(duration.asHours());
                 var minutes = parseInt(duration.asMinutes())%60;
                 var totalMinutesandHours = hours + ':' + minutes;
-                var breakTime = parseFloat(moment.duration("1:30").asHours());
+                var breakTime = parseFloat(moment.duration(this.breakTimeValue).asHours());
                 var convertTotalHour = parseFloat(moment.duration(totalMinutesandHours).asHours()).toFixed(1);
                 var totalHours = convertTotalHour - breakTime;
                 this.formData.total_hours = totalHours;
-                this.formData.break_time = breakTime
+                this.formData.break_time = breakTime;
                 this.formData.employee_id = this.value.id;
             }
 
@@ -182,8 +182,9 @@ export default {
                 axios.post(this.$BASE_URL + this.$EMPLOYEETIMELOGS, this.formData)
                     .then((response) => {
                         this.clearFields();
+                        this.$parent.getTimeLogs();
                         this.$HIDE_LOADING();
-                        this.$SHOW_MESSAGE('Successfully', 'New Location Added!', 'success');
+                        this.$SHOW_MESSAGE('Successfully', 'New DTR Added!', 'success');
                 })
                 .catch((error) => {
                     this.$HIDE_LOADING();
@@ -203,9 +204,20 @@ export default {
             this.formData.end_time = '';
             this.formData.break_time = '';
             this.formData.total_hours = '';
-            this.formData.log_date = '';
+            this.formData.log_date = moment().format('D MMM, YYYY'),
             this.formData.daily_rate = '';
             this.disabledTimePicker = true;
+            this.value = null;
+            this.startTime = {
+                    hh: '08',
+                    mm: '00',
+                    A: 'AM'
+                };
+            this.endTime = {
+                    hh: '05',
+                    mm: '00',
+                    A: 'PM'
+            }
         },
   
     }

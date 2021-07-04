@@ -1,14 +1,24 @@
 <template>
 <div>
     <div class="row">
+        <div class="col-xl-12 col-lg-12">
+           <EmployeeListComponent 
+                :employeeList="this.employees" 
+                v-on:editEmployee="editEmployee"
+                ></EmployeeListComponent>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-xl-6 col-lg-6">
             <EmployeeComponent 
             title="Add New Employee" 
             name="Save" event="save" 
             :employeeTypeList="this.employee_types"
             ></EmployeeComponent>
+        </div>
 
-            <EditEmployeeComponent 
+        <div class="col-xl-6 col-lg-6">
+              <EditEmployeeComponent 
             title="Edit Employee" 
             name="Update" event="save"
              :employeeEdit="this.employeeEdit" 
@@ -16,12 +26,7 @@
              v-show="this.showEmployeeEdit">
              </EditEmployeeComponent>
         </div>
-        <div class="col-xl-6 col-lg-6">
-            <EmployeeListComponent 
-            :employeeList="this.employees" 
-            v-on:editEmployee="editEmployee"
-            ></EmployeeListComponent>
-        </div>
+    
     </div>
 </div>
 </template>
@@ -69,7 +74,7 @@ export default {
                     this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
                 });
         },
-
+        
         editEmployee(props) {
             this.showEmployeeEdit = true;
             this.employeeEdit = props;

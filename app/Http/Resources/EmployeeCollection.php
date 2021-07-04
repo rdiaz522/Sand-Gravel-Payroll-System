@@ -15,14 +15,18 @@ class EmployeeCollection extends JsonResource
      */
     public function toArray($request)
     {
+        $employeeType = EmployeeType::findOrFail($this->employee_type_id);
+        $employeeTypeName = '';
+        if($employeeType instanceof EmployeeType && $employeeType->exists) {
+            $employeeTypeName = $employeeType->name;
+        }
         return [
             'id' => $this->id,
             'firstname' => $this->firstname,
             'middlename' => $this->middlename,
             'lastname' => $this->lastname,
             'employee_type_id' => $this->employee_type_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'employeeTypeName' => $employeeTypeName
         ];
     }
 }

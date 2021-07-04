@@ -20,6 +20,11 @@
  Vue.prototype.$LOCATION = '/location';
  Vue.prototype.$BREAKHOURS = '/breakhours';
  Vue.prototype.$EMPLOYEETIMELOGS = '/timelogs';
+ Vue.prototype.$CASHADVANCEDEDUCTION = '/cashadvancededuction';
+ Vue.prototype.$CASHDEDUCTION = '/cashdeductions';
+ Vue.prototype.$CONTRIBUTION = '/contribution';
+ Vue.prototype.$REPORTS = '/reports';
+ Vue.prototype.$EXPENSES = '/expenses';
  Vue.prototype.$SHOW_LOADING = () => {  
      $('#cover-spin').show();
  }
@@ -80,6 +85,31 @@ import Vue from 'vue';
         path: '/settings',
         name: 'Setting',
         component: require('./components/Models/Settings/AppSettingsComponent.vue').default
+     },
+     { 
+        path: '/cashadvance',
+        name: 'CashAdvance',
+        component: require('./components/Models/CashAdvance/AppCashAdvanceComponent.vue').default
+     },
+     { 
+        path: '/cashdeduction',
+        name: 'CashDeduction',
+        component: require('./components/Models/CashDeduction/AppCashDeductionComponent.vue').default
+     },
+     { 
+        path: '/cashcontribution',
+        name: 'Cash Contribution',
+        component: require('./components/Models/Contribution/AppContributionComponent.vue').default
+     },
+     { 
+        path: '/report',
+        name: 'Reports',
+        component: require('./components/Models/Reports/AppReportComponent.vue').default
+     },
+     { 
+        path: '/expense',
+        name: 'Expenses',
+        component: require('./components/Models/Expenses/AppExpensesComponent.vue').default
      },
   ]
     

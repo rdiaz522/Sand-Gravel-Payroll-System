@@ -2,9 +2,10 @@
 
 namespace App\Exports;
 
-use Illuminate\Support\Facades\DB;
+use App\Models\Contribution;
+use App\Models\Employees;
+use App\Models\Location;
 use Maatwebsite\Excel\Excel;
-use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Illuminate\Contracts\Support\Responsable;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -12,6 +13,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 
 class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, WithColumnWidths, WithMapping
 {
@@ -20,11 +22,6 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
     protected $DATENOW = '';
 
     protected $DAY = '';
-    /**
-    * It's required to define the fileName within
-    * the export class when making use of Responsable.
-    */
-    private $fileName = 'dailypayroll.xlsx';
 
     /**
     * Optional Writer Type
@@ -36,25 +33,66 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
         'Content-Type' => 'text/csv',
     ];
 
-    /**
-    * @var Invoice $invoice
-    */
-    public function map($employee): array
+    protected $startDate;
+
+    protected $endDate;
+
+    public function __construct($request)
+    {
+        $this->startDate = date('Y-m-d', strtotime($request->start_date));
+        $this->endDate = date('Y-m-d', strtotime($request->end_date));
+    }
+
+    public function map($employeeModel): array
     {   
-        $fullName = $employee->firstname . ' ' . $employee->middlename . ' ' . $employee->lastname;
-        $hourlyRate = (float)$employee->daily_rate / 8;
-        $totalPay = (float)$hourlyRate * (float)$employee->total_hours;
+            $fullname = $employeeModel->lastname . ' ' . $employeeModel->firstname . ' ' . $employeeModel->middlename;
+            $departmentAssigned = [];
+            $total_each_pay = [];
+            $SSS = 0;
+            $pagibig = 0;
+            $philhealth = 0;
+            $departments = Location::all();
+            $totalCashAdvances =  (float)$employeeModel->cashAdvance()->sum('cash_advance');;
+
+            $totalCashDeductions = (float)$employeeModel->cashDeduction()
+            ->whereBetween('cash_deduction_date', [$this->startDate,$this->endDate])
+            ->sum('cash_deduction');
+
+            $overTotalCashAdvance = (float)$totalCashAdvances - (float)$totalCashDeductions;
+            if($departments instanceof Collection && !$departments->isEmpty()) {
+                foreach($departments as $department) {
+                    $departmentAssigned[] = $department->name;
+                    $total_each_pay[] =  (float)$employeeModel->timeLogs()
+                    ->where('department_id',$department->id)->whereBetween('log_date', [$this->startDate,$this->endDate])
+                    ->sum('total_pay');
+                }
+            }
+            $netPay = $employeeModel->timeLogs()->whereBetween('log_date', [$this->startDate,$this->endDate])->sum('total_pay');
+            $contributions = $employeeModel->contributions()
+            ->whereBetween('contribution_date', [$this->startDate,$this->endDate])
+            ->latest()->first();
+
+            if($contributions instanceof Contribution && $contributions->exists) {
+                $SSS = (float)$contributions->sss;
+                $pagibig = (float)$contributions->pagibig;
+                $philhealth = (float)$contributions->philhealth;
+            }
+            $totalContribution = (float)$SSS + (float)$pagibig + (float)$philhealth;
+            $gross = (float)$netPay - (float)$totalCashDeductions - (float)$totalContribution;
+        
         return [
             [
-                $fullName,
-                $employee->name,
-                $employee->time_in,
-                $employee->time_out,
-                $employee->total_hours,
-                $employee->daily_rate,
-                $hourlyRate,
-                $employee->break_time,
-                $totalPay
+                $fullname,
+                '(' .implode(", ", $departmentAssigned) . ')',
+                '₱' . '(' .implode(", ", $total_each_pay) . ')',
+                '₱' . $netPay,
+                '₱' . $totalCashAdvances,
+                '₱' . $totalCashDeductions,
+                '₱' . $overTotalCashAdvance,
+                '₱' . $SSS,
+                '₱' . $pagibig,
+                '₱' . $philhealth,
+                '₱' . $gross
             ]
         ];
     }
@@ -65,19 +103,21 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
 
         return [
             [
-                'DATE: '. $this->DATENOW,
-                'DAY: '. $this->DAY
+                'PAYDATE DATE: '. $this->DATENOW,
+                'DATE:'. $this->startDate . ' - ' . $this->endDate
             ],
             [
-                'NAMES',
-                'POSITION',
-                'TIME IN',
-                'TIME OUT',
-                'TOTAL HOURS',
-                'DAILY RATE',
-                'HOURLY RATE',
-                'BREAK TIME',
-                'TOTAL PAY'
+                'FULLNAME',
+                'DEPARTMENT',
+                'TOTAL PAY OF EACH DEPARTMENT',
+                'NET.PAY',
+                'TOTAL CASH ADVANCE',
+                'CASH DEDUCTION',
+                'CASH ADVANCE BALANCE',
+                'SSS',
+                'PAGIBIG',
+                'PHILHEALTH',
+                'GROSS'
             ]
         ];
     }
@@ -85,15 +125,16 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
     public function columnWidths(): array
     {
         return [
-            'A' => 20,
-            'B' => 20,
-            'C' => 20,
-            'D' => 20,
-            'E' => 20,            
-            'F' => 20,
-            'G' => 20,
-            'H' => 20,
-            'I' => 20,
+            'A' => 35,
+            'B' => 35,
+            'C' => 35,
+            'D' => 35,
+            'E' => 35,            
+            'F' => 35,
+            'G' => 35,
+            'H' => 35,
+            'I' => 35,
+            'J' => 35
         ];
     }
 
@@ -101,26 +142,13 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
     * @return \Illuminate\Support\Collection
     */
     public function collection()
-    {
-        $selectQuery = [
-            'E.id',
-            'E.firstname',
-            'E.middlename',
-            'E.lastname',
-            'L.daily_rate',
-            'L.time_in',
-            'L.time_out',
-            'L.break_time',
-            'L.total_hours',
-            'L.log_date',
-            'P.name'
-        ];
-       $collections = DB::table('employees AS E')
-       ->leftjoin('employee_timelogs as L','E.id','=','L.employee_id')
-       ->leftjoin('positions as P', 'L.position_id','=','P.id')
-       ->select($selectQuery)->get();
+    {  
+        $selectQuery = ['id','firstname','middlename','lastname'];
+        $collections = Employees::with(['cashAdvance','cashDeduction', 'timeLogs', 'contributions'])
+        ->select($selectQuery)
+        ->get();
 
-       return $collections;
+        return $collections;
     }
 
     public function DateNow()
@@ -138,9 +166,4 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
         $this->DATENOW = $carbon->format('Y-m-d');
         $this->DAY = $days[$carbon->dayOfWeek];
     } 
-
-    public function failed(Throwable $exception): void
-    {
-        // handle failed export
-    }
 }
