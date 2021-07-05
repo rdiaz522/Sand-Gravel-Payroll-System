@@ -2413,6 +2413,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -2601,7 +2602,7 @@ __webpack_require__.r(__webpack_exports__);
         employee_id: '',
         cash_advance: '',
         description: '',
-        cash_advance_date: moment__WEBPACK_IMPORTED_MODULE_4___default()().format('D MMM, YYYY')
+        cash_advance_date: moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD')
       },
       value: null
     };
@@ -2645,13 +2646,14 @@ __webpack_require__.r(__webpack_exports__);
       this.formData.employee_id = '';
       this.formData.cash_advance = '';
       this.formData.description = '';
-      this.formData.cash_advance_date = moment__WEBPACK_IMPORTED_MODULE_4___default()().format('D MMM, YYYY');
+      this.formData.cash_advance_date = moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD');
       this.value = null;
     },
     save: function save() {
       var _this = this;
 
       this.formData.employee_id = this.value.id;
+      this.formData.cash_advance_date = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.cash_advance_date).format('YYYY-MM-DD');
       this.$SHOW_LOADING();
       axios.post(this.$BASE_URL + this.$CASHADVANCEDEDUCTION, this.formData).then(function (response) {
         _this.clearFields();
@@ -2688,6 +2690,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
 /* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-datepicker-ui */ "./node_modules/vue-datepicker-ui/lib/vuedatepickerui.umd.js");
 /* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
 //
 //
 //
@@ -2722,6 +2726,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -2776,7 +2781,7 @@ __webpack_require__.r(__webpack_exports__);
       var data = {
         cash_advance: this.cash_advance,
         description: this.description,
-        cash_advance_date: this.cash_advance_date
+        cash_advance_date: moment__WEBPACK_IMPORTED_MODULE_4___default()(this.cash_advance_date).format('YYYY-MM-DD')
       };
       var config = {
         headers: {
@@ -3176,7 +3181,7 @@ __webpack_require__.r(__webpack_exports__);
       formData: {
         employee_id: '',
         cash_deduction: '',
-        cash_deduction_date: moment__WEBPACK_IMPORTED_MODULE_4___default()().format('D MMM, YYYY')
+        cash_deduction_date: moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD')
       },
       value: null,
       total_cashAdvance: 0
@@ -3230,7 +3235,7 @@ __webpack_require__.r(__webpack_exports__);
     clearFields: function clearFields() {
       this.formData.employee_id = '';
       this.formData.cash_deduction = '';
-      this.formData.cash_deduction_date = moment__WEBPACK_IMPORTED_MODULE_4___default()().format('D MMM, YYYY');
+      this.formData.cash_deduction_date = moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD');
       this.value = null;
       this.total_cashAdvance = 0;
     },
@@ -3241,6 +3246,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$SHOW_LOADING();
 
       if (parseFloat(this.formData.cash_deduction) <= this.total_cashAdvance) {
+        this.formData.cash_deduction_date = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.cash_deduction_date).format('YYYY-MM-DD');
         axios.post(this.$BASE_URL + this.$CASHDEDUCTION, this.formData).then(function (response) {
           _this2.clearFields();
 
@@ -3280,6 +3286,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
 /* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-datepicker-ui */ "./node_modules/vue-datepicker-ui/lib/vuedatepickerui.umd.js");
 /* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
 //
 //
 //
@@ -3311,6 +3319,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -3362,7 +3371,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$SHOW_LOADING();
       var data = {
         cash_deduction: this.cash_deduction,
-        cash_deduction_date: this.cash_deduction_date
+        cash_deduction_date: moment__WEBPACK_IMPORTED_MODULE_4___default()(this.cash_deduction_date).format('YYYY-MM-DD')
       };
       var config = {
         headers: {
@@ -3796,7 +3805,7 @@ __webpack_require__.r(__webpack_exports__);
         sss: '',
         pagibig: '',
         philhealth: '',
-        contribution_date: moment__WEBPACK_IMPORTED_MODULE_4___default()().format('D MMM, YYYY')
+        contribution_date: moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD')
       },
       value: null
     };
@@ -3841,13 +3850,13 @@ __webpack_require__.r(__webpack_exports__);
       this.formData.sss = '';
       this.formData.pagibig = '';
       this.formData.philhealth = '';
-      this.formData.contribution_date = moment__WEBPACK_IMPORTED_MODULE_4___default()().format('D MMM, YYYY');
-      this.value = null;
+      this.formData.contribution_date = moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD'), this.value = null;
     },
     save: function save() {
       var _this = this;
 
       this.formData.employee_id = this.value.id;
+      this.formData.contribution_date = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.contribution_date).format('YYYY-MM-DD');
       this.$SHOW_LOADING();
       axios.post(this.$BASE_URL + this.$CONTRIBUTION, this.formData).then(function (response) {
         _this.clearFields();
@@ -3884,6 +3893,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
 /* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-datepicker-ui */ "./node_modules/vue-datepicker-ui/lib/vuedatepickerui.umd.js");
 /* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
 //
 //
 //
@@ -3924,7 +3935,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
 
 
 
@@ -3982,7 +3993,7 @@ __webpack_require__.r(__webpack_exports__);
         sss: this.sss,
         pagibig: this.pagibig,
         philhealth: this.philhealth,
-        contribution_date: this.contribution_date
+        contribution_date: moment__WEBPACK_IMPORTED_MODULE_4___default()(this.contribution_date).format('YYYY-MM-DD')
       };
       var config = {
         headers: {
@@ -4614,7 +4625,7 @@ __webpack_require__.r(__webpack_exports__);
         time_out: '',
         break_time: '',
         total_hours: '',
-        log_date: moment__WEBPACK_IMPORTED_MODULE_7___default()().format('D MMM, YYYY'),
+        log_date: moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'),
         daily_rate: ''
       },
       breakTimeValue: '1:00',
@@ -4695,6 +4706,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (this.readyToSave) {
+        this.formData.log_date = moment__WEBPACK_IMPORTED_MODULE_7___default()(this.formData.log_date).format('YYYY-MM-DD');
         this.$SHOW_LOADING();
         axios.post(this.$BASE_URL + this.$EMPLOYEETIMELOGS, this.formData).then(function (response) {
           _this.clearFields();
@@ -4721,7 +4733,7 @@ __webpack_require__.r(__webpack_exports__);
       this.formData.end_time = '';
       this.formData.break_time = '';
       this.formData.total_hours = '';
-      this.formData.log_date = moment__WEBPACK_IMPORTED_MODULE_7___default()().format('D MMM, YYYY'), this.formData.daily_rate = '';
+      this.formData.log_date = moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'), this.formData.daily_rate = '';
       this.disabledTimePicker = true;
       this.value = null;
       this.startTime = {
@@ -4927,19 +4939,23 @@ __webpack_require__.r(__webpack_exports__);
           'Content-Type': 'application/json'
         }
       };
-      axios.put(this.$BASE_URL + this.$EMPLOYEETIMELOGS + "/".concat(this.formData.id), this.formData, config).then(function (response) {
-        _this.$parent.getTimeLogs();
+      this.formData.log_date = moment__WEBPACK_IMPORTED_MODULE_6___default()(this.formData.log_date).format('YYYY-MM-DD');
 
-        _this.clearFields();
+      if (this.readyToSave) {
+        axios.put(this.$BASE_URL + this.$EMPLOYEETIMELOGS + "/".concat(this.formData.id), this.formData, config).then(function (response) {
+          _this.$parent.getTimeLogs();
 
-        _this.$HIDE_LOADING();
+          _this.clearFields();
 
-        _this.$SHOW_MESSAGE('Successfully', 'New DTR Added!', 'success');
-      })["catch"](function (error) {
-        _this.$HIDE_LOADING();
+          _this.$HIDE_LOADING();
 
-        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-      });
+          _this.$SHOW_MESSAGE('Successfully', 'New DTR Added!', 'success');
+        })["catch"](function (error) {
+          _this.$HIDE_LOADING();
+
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        });
+      }
     },
     parse: function parse(num) {
       return ('0' + Math.floor(num) % 24).slice(-2) + ':' + (num % 1 * 60 + '0').slice(0, 2);
@@ -5016,9 +5032,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       columns: [{
-        label: 'ID',
-        field: 'id'
-      }, {
         label: 'Employee',
         field: 'employee_fullname'
       }, {
@@ -5266,6 +5279,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -5440,7 +5454,7 @@ __webpack_require__.r(__webpack_exports__);
         description: '',
         amount: '',
         cash_from: '',
-        cash_date: moment__WEBPACK_IMPORTED_MODULE_4___default()().format('D MMM, YYYY')
+        cash_date: moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD')
       }
     };
   },
@@ -5475,12 +5489,13 @@ __webpack_require__.r(__webpack_exports__);
       this.formData.description = '';
       this.formData.amount = '';
       this.formData.cash_from = '';
-      this.formData.cash_date = moment__WEBPACK_IMPORTED_MODULE_4___default()().format('D MMM, YYYY');
+      this.formData.cash_date = moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD');
     },
     save: function save() {
       var _this = this;
 
       this.$SHOW_LOADING();
+      this.formData.cash_date = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.cash_date).format('YYYY-MM-DD');
       axios.post(this.$BASE_URL + this.$EXPENSES, this.formData).then(function (response) {
         _this.clearFields();
 
@@ -5574,7 +5589,7 @@ __webpack_require__.r(__webpack_exports__);
       description: '',
       amount: '',
       cash_from: '',
-      cash_date: moment__WEBPACK_IMPORTED_MODULE_4___default()().format('D MMM, YYYY')
+      cash_date: ''
     };
   },
   computed: {
@@ -5619,7 +5634,7 @@ __webpack_require__.r(__webpack_exports__);
         description: this.description,
         amount: this.amount,
         cash_from: this.cash_from,
-        cash_date: this.cash_date
+        cash_date: moment__WEBPACK_IMPORTED_MODULE_4___default()(this.cash_date).format('YYYY-MM-DD')
       };
       var config = {
         headers: {
@@ -5800,7 +5815,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
 //
 //
 //
@@ -6036,46 +6050,34 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$SHOW_LOADING();
-      var startDate = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.start_date).format('DD-MM-YYYY');
-      var endDate = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.endDate).format('DD-MM-YYYY');
+      var startDate = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.start_date).format('YYYY-MM-DD');
+      var endDate = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.end_date).format('YYYY-MM-DD');
 
       if (startDate < endDate) {
-        if (this.formData.report_type === 'Payroll Report') {
-          axios.post(this.$BASE_URL + '/dailypayrollexport', this.formData).then(function (response) {
-            _this.$parent.getReports();
+        this.formData.start_date = startDate;
+        this.formData.end_date = endDate;
 
-            _this.clearFields();
+        if (this.formData.report_type !== '') {
+          if (this.formData.report_type === 'Payroll Report') {
+            axios.post(this.$BASE_URL + '/dailypayrollexport', this.formData).then(function (response) {
+              _this.$parent.getReports();
 
-            _this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
+              _this.clearFields();
 
-            _this.$HIDE_LOADING();
-          })["catch"](function (err) {
-            _this.$HIDE_LOADING();
+              _this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
 
-            _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-          });
-        }
+              _this.$HIDE_LOADING();
+            })["catch"](function (err) {
+              _this.$HIDE_LOADING();
 
-        if (this.formData.report_type === 'Department Total Pay Report') {
-          axios.post(this.$BASE_URL + '/departmentpay', this.formData).then(function (response) {
-            _this.$parent.getReports();
+              _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+            });
+          }
 
-            _this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
+          if (this.formData.report_type === 'Department Total Pay Report') {
+            axios.post(this.$BASE_URL + '/departmentpay', this.formData).then(function (response) {
+              _this.clearFields();
 
-            _this.$HIDE_LOADING();
-          })["catch"](function (err) {
-            _this.$HIDE_LOADING();
-
-            _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-          });
-        }
-
-        if (this.formData.report_type === 'Department Expenses') {
-          if (this.formData.department_id === '') {
-            this.$HIDE_LOADING();
-            this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Please Select Department..', 'error');
-          } else {
-            axios.post(this.$BASE_URL + '/departmentexpenses', this.formData).then(function (response) {
               _this.$parent.getReports();
 
               _this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
@@ -6087,6 +6089,30 @@ __webpack_require__.r(__webpack_exports__);
               _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
             });
           }
+
+          if (this.formData.report_type === 'Department Expenses') {
+            if (this.formData.department_id === '') {
+              this.$HIDE_LOADING();
+              this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Please Select Department..', 'error');
+            } else {
+              axios.post(this.$BASE_URL + '/departmentexpenses', this.formData).then(function (response) {
+                _this.clearFields();
+
+                _this.$parent.getReports();
+
+                _this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
+
+                _this.$HIDE_LOADING();
+              })["catch"](function (err) {
+                _this.$HIDE_LOADING();
+
+                _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+              });
+            }
+          }
+        } else {
+          this.$HIDE_LOADING();
+          this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Please Select Report Type', 'error');
         }
       } else {
         this.$HIDE_LOADING();
@@ -6261,6 +6287,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LocationComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LocationComponent.vue */ "./resources/js/components/Models/Settings/LocationComponent.vue");
 /* harmony import */ var _BreakHourComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BreakHourComponent.vue */ "./resources/js/components/Models/Settings/BreakHourComponent.vue");
 /* harmony import */ var _EmployeeTypeComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EmployeeTypeComponent.vue */ "./resources/js/components/Models/Settings/EmployeeTypeComponent.vue");
+/* harmony import */ var _UsersComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./UsersComponent.vue */ "./resources/js/components/Models/Settings/UsersComponent.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -6299,6 +6326,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -6306,14 +6343,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      locationData: []
+      locationData: [],
+      positionData: []
     };
   },
   components: {
     PositionComponent: _PositionComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default,
     LocationComponent: _LocationComponent_vue__WEBPACK_IMPORTED_MODULE_2__.default,
     EmployeeTypeComponent: _EmployeeTypeComponent_vue__WEBPACK_IMPORTED_MODULE_4__.default,
-    BreakHourComponent: _BreakHourComponent_vue__WEBPACK_IMPORTED_MODULE_3__.default
+    BreakHourComponent: _BreakHourComponent_vue__WEBPACK_IMPORTED_MODULE_3__.default,
+    UsersComponent: _UsersComponent_vue__WEBPACK_IMPORTED_MODULE_5__.default
   },
   methods: {
     getLocations: function getLocations() {
@@ -6341,25 +6380,55 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    getPositions: function getPositions() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                axios.get(_this2.$BASE_URL + _this2.$POSITION).then(function (response) {
+                  _this2.positionData = response.data.data;
+
+                  _this2.$HIDE_LOADING();
+                })["catch"](function (err) {
+                  _this2.$HIDE_LOADING();
+
+                  _this2.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                });
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context3.prev = _context3.next) {
             case 0:
-              _context2.next = 2;
-              return _this2.getLocations();
+              _context3.next = 2;
+              return _this3.getLocations();
 
             case 2:
+              _context3.next = 4;
+              return _this3.getPositions();
+
+            case 4:
             case "end":
-              return _context2.stop();
+              return _context3.stop();
           }
         }
-      }, _callee2);
+      }, _callee3);
     }))();
   },
   mounted: function mounted() {
@@ -6591,6 +6660,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
 /* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
+/* harmony import */ var vue_materialize_datatable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-materialize-datatable */ "./node_modules/vue-materialize-datatable/src/DataTable.vue");
 //
 //
 //
@@ -6608,29 +6678,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['title', 'name', 'event'],
+  props: ['title', 'name', 'event', 'locationList'],
   data: function data() {
     return {
-      location: ''
+      location: '',
+      columns: [{
+        label: 'Department Name',
+        field: 'name'
+      }]
     };
   },
   components: {
     AppButton: _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__.default,
-    AppTextBox: _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__.default
+    AppTextBox: _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__.default,
+    "datatable": vue_materialize_datatable__WEBPACK_IMPORTED_MODULE_2__.default
   },
   computed: {
     isOnsave: function isOnsave() {
       if (this.event === 'save') {
-        return true;
-      }
-
-      return false;
-    },
-    isOnEdit: function isOnEdit() {
-      if (this.event === 'edit') {
         return true;
       }
 
@@ -6659,6 +6749,45 @@ __webpack_require__.r(__webpack_exports__);
         _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
       });
     },
+    onDelete: function onDelete(props, row, e) {
+      var _this2 = this;
+
+      this.$WARNING_MESSAGE.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          _this2.$SHOW_LOADING();
+
+          axios["delete"](_this2.$BASE_URL + _this2.$LOCATION + "/".concat(props.id)).then(function (response) {
+            _this2.clearFields();
+
+            _this2.$parent.getPositions();
+
+            _this2.$parent.showExpensesEdit = false;
+
+            _this2.$HIDE_LOADING();
+
+            _this2.$WARNING_MESSAGE.fire('Deleted!', 'Data has been deleted.', 'success');
+          })["catch"](function (err) {
+            _this2.$HIDE_LOADING();
+
+            _this2.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+          });
+        } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === _this2.$SWAL.DismissReason.cancel) {
+          _this2.$WARNING_MESSAGE.fire('Cancelled', 'Data deleting cancelled :)', 'error');
+
+          return false;
+        }
+      });
+    },
     onCancel: function onCancel() {
       this.location = '';
     },
@@ -6684,6 +6813,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
 /* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
 /* harmony import */ var _AppComponents_AppDropdown_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../AppComponents/AppDropdown.vue */ "./resources/js/components/AppComponents/AppDropdown.vue");
+/* harmony import */ var vue_materialize_datatable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-materialize-datatable */ "./node_modules/vue-materialize-datatable/src/DataTable.vue");
 //
 //
 //
@@ -6704,22 +6834,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['title', 'name', 'event', 'locationList'],
+  props: ['title', 'name', 'event', 'locationList', 'positionList'],
   data: function data() {
     return {
       position: '',
       location: '',
-      location_id: ''
+      location_id: '',
+      columns: [{
+        label: 'Location Name',
+        field: 'name'
+      }, {
+        label: 'Department Name',
+        field: 'departmentName'
+      }]
     };
   },
   components: {
     AppButton: _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__.default,
     AppTextBox: _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    AppDropdown: _AppComponents_AppDropdown_vue__WEBPACK_IMPORTED_MODULE_2__.default
+    AppDropdown: _AppComponents_AppDropdown_vue__WEBPACK_IMPORTED_MODULE_2__.default,
+    "datatable": vue_materialize_datatable__WEBPACK_IMPORTED_MODULE_3__.default
   },
   computed: {
     isOnsave: function isOnsave() {
@@ -6749,9 +6909,138 @@ __webpack_require__.r(__webpack_exports__);
       axios.post(this.$BASE_URL + this.$POSITION, data).then(function (response) {
         _this.clearFields();
 
+        _this.$parent.getPositions();
+
         _this.$HIDE_LOADING();
 
         _this.$SHOW_MESSAGE('Successfully', 'New Position Added!', 'success');
+      })["catch"](function (error) {
+        _this.$HIDE_LOADING();
+
+        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+      });
+    },
+    onDelete: function onDelete(props, row, e) {
+      var _this2 = this;
+
+      this.$WARNING_MESSAGE.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          _this2.$SHOW_LOADING();
+
+          axios["delete"](_this2.$BASE_URL + _this2.$POSITION + "/".concat(props.id)).then(function (response) {
+            _this2.clearFields();
+
+            _this2.$parent.getPositions();
+
+            _this2.$parent.showExpensesEdit = false;
+
+            _this2.$HIDE_LOADING();
+
+            _this2.$WARNING_MESSAGE.fire('Deleted!', 'Data has been deleted.', 'success');
+          })["catch"](function (err) {
+            _this2.$HIDE_LOADING();
+
+            _this2.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+          });
+        } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === _this2.$SWAL.DismissReason.cancel) {
+          _this2.$WARNING_MESSAGE.fire('Cancelled', 'Data deleting cancelled :)', 'error');
+
+          return false;
+        }
+      });
+    },
+    onCancel: function onCancel() {
+      this.clearFields();
+    },
+    clearFields: function clearFields() {
+      this.position = '';
+      this.location = '';
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
+/* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['title', 'name', 'event'],
+  data: function data() {
+    return {
+      formData: {
+        username: '',
+        password: ''
+      }
+    };
+  },
+  components: {
+    AppButton: _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__.default,
+    AppTextBox: _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__.default
+  },
+  computed: {
+    isOnsave: function isOnsave() {
+      if (this.event === 'save') {
+        return true;
+      }
+
+      return false;
+    }
+  },
+  methods: {
+    save: function save() {
+      var _this = this;
+
+      this.$SHOW_LOADING();
+      axios.post(this.$BASE_URL + this.$USERS, this.formData).then(function (response) {
+        _this.clearFields();
+
+        _this.$HIDE_LOADING();
+
+        _this.$SHOW_MESSAGE('Successfully', 'New User Added!', 'success');
       })["catch"](function (error) {
         _this.$HIDE_LOADING();
 
@@ -6762,8 +7051,8 @@ __webpack_require__.r(__webpack_exports__);
       this.clearFields();
     },
     clearFields: function clearFields() {
-      this.position = '';
-      this.location = '';
+      this.formData.username = '';
+      this.formData.password = '';
     }
   }
 });
@@ -6813,6 +7102,7 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$CASHDEDUCTION = '/cashdeduct
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$CONTRIBUTION = '/contribution';
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$REPORTS = '/reports';
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$EXPENSES = '/expenses';
+vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$USERS = '/users';
 
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$SHOW_LOADING = function () {
   $('#cover-spin').show();
@@ -74981,6 +75271,45 @@ component.options.__file = "resources/js/components/Models/Settings/PositionComp
 
 /***/ }),
 
+/***/ "./resources/js/components/Models/Settings/UsersComponent.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/UsersComponent.vue ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UsersComponent_vue_vue_type_template_id_3881f5c7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UsersComponent.vue?vue&type=template&id=3881f5c7& */ "./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=template&id=3881f5c7&");
+/* harmony import */ var _UsersComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UsersComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _UsersComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _UsersComponent_vue_vue_type_template_id_3881f5c7___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UsersComponent_vue_vue_type_template_id_3881f5c7___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Models/Settings/UsersComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/AppComponents/AppButton.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************!*\
   !*** ./resources/js/components/AppComponents/AppButton.vue?vue&type=script&lang=js& ***!
@@ -75570,6 +75899,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PositionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PositionComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PositionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UsersComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UsersComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UsersComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -76261,6 +76606,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=template&id=3881f5c7&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=template&id=3881f5c7& ***!
+  \***************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UsersComponent_vue_vue_type_template_id_3881f5c7___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UsersComponent_vue_vue_type_template_id_3881f5c7___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UsersComponent_vue_vue_type_template_id_3881f5c7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UsersComponent.vue?vue&type=template&id=3881f5c7& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=template&id=3881f5c7&");
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-materialize-datatable/src/DataTable.vue?vue&type=template&id=53282f60&scoped=true&":
 /*!****************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./node_modules/vue-materialize-datatable/src/DataTable.vue?vue&type=template&id=53282f60&scoped=true& ***!
@@ -76940,20 +77302,6 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-xl-12 col-lg-12" },
-        [
-          _c("EmployeeDTRListComponent", {
-            attrs: { timelogList: this.timelogList },
-            on: { editTimeLogs: this.editTimeLogs }
-          })
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
         { staticClass: "col-xl-6 col-lg-6" },
         [
           _c("EmployeeDTRComponent", {
@@ -76995,6 +77343,20 @@ var render = function() {
         ],
         1
       )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xl-12 col-lg-12" },
+        [
+          _c("EmployeeDTRListComponent", {
+            attrs: { timelogList: this.timelogList },
+            on: { editTimeLogs: this.editTimeLogs }
+          })
+        ],
+        1
+      )
     ])
   ])
 }
@@ -77022,20 +77384,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-xl-12 col-lg-12" },
-        [
-          _c("CashAdvanceListComponent", {
-            attrs: { cashAdvanceList: this.cashAdvanceList },
-            on: { editCashAdvance: this.editCashAdvance }
-          })
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
@@ -77072,6 +77420,20 @@ var render = function() {
               event: "save",
               cashAdvanceEdit: this.cashAdvanceEdit
             }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xl-12 col-lg-12" },
+        [
+          _c("CashAdvanceListComponent", {
+            attrs: { cashAdvanceList: this.cashAdvanceList },
+            on: { editCashAdvance: this.editCashAdvance }
           })
         ],
         1
@@ -77515,20 +77877,6 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-xl-12 col-lg-12" },
-        [
-          _c("CashDeductionListComponent", {
-            attrs: { cashDeductionList: this.cashDeductionList },
-            on: { editCashDeduction: this.editCashDeduction }
-          })
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
         { staticClass: "col-xl-6 col-lg-6" },
         [
           _c("CashDeductionComponent", {
@@ -77562,6 +77910,20 @@ var render = function() {
               event: "save",
               cashDeductionEdit: this.cashDeductionEdit
             }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xl-12 col-lg-12" },
+        [
+          _c("CashDeductionListComponent", {
+            attrs: { cashDeductionList: this.cashDeductionList },
+            on: { editCashDeduction: this.editCashDeduction }
           })
         ],
         1
@@ -77981,23 +78343,6 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-xl-12 col-lg-12" },
-        [
-          _c("ContributionListComponent", {
-            attrs: { contributionList: this.contributionList },
-            on: {
-              editContribution: this.editContribution,
-              showOverTotal: this.showOverTotal
-            }
-          })
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
         { staticClass: "col-xl-6 col-lg-6" },
         [
           _c("ContributionComponent", {
@@ -78048,6 +78393,23 @@ var render = function() {
               name: "Update",
               event: "save",
               totalContribution: this.totalContribution
+            }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xl-12 col-lg-12" },
+        [
+          _c("ContributionListComponent", {
+            attrs: { contributionList: this.contributionList },
+            on: {
+              editContribution: this.editContribution,
+              showOverTotal: this.showOverTotal
             }
           })
         ],
@@ -78287,11 +78649,6 @@ var render = function() {
         "div",
         { staticClass: "card-body" },
         [
-          _vm._v(
-            "\r\n            " +
-              _vm._s(_vm.totalContribution) +
-              "\r\n            "
-          ),
           _c("h4", [_vm._v(_vm._s(_vm.fullName))]),
           _vm._v(" "),
           _c(
@@ -79578,20 +79935,6 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-xl-12 col-lg-12" },
-        [
-          _c("ExpensesListComponent", {
-            attrs: { expensesList: this.expensesList },
-            on: { editExpenses: this.editExpenses }
-          })
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
         { staticClass: "col-xl-6 col-lg-6" },
         [
           _c("ExpensesComponent", {
@@ -79626,6 +79969,20 @@ var render = function() {
               locationData: this.locationData,
               expensesEdit: this.expensesEdit
             }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xl-12 col-lg-12" },
+        [
+          _c("ExpensesListComponent", {
+            attrs: { expensesList: this.expensesList },
+            on: { editExpenses: this.editExpenses }
           })
         ],
         1
@@ -80104,15 +80461,6 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-xl-12 col-lg-12" },
-        [_c("ReportListComponent", { attrs: { reportList: this.reportList } })],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
         { staticClass: "col-xl-6 col-lg-6" },
         [
           _c("ReportComponent", {
@@ -80124,6 +80472,15 @@ var render = function() {
             }
           })
         ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-xl-12 col-lg-12" },
+        [_c("ReportListComponent", { attrs: { reportList: this.reportList } })],
         1
       )
     ])
@@ -80398,7 +80755,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-success btn-sm",
+                          staticClass: "btn btn-primary btn-sm",
                           on: {
                             click: function(e) {
                               return _vm.onGeneratePayslip(props.row, e)
@@ -80475,13 +80832,19 @@ var render = function() {
         { staticClass: "col-xl-6 col-lg-6" },
         [
           _c("LocationComponent", {
-            attrs: { title: "Add new Department", name: "Save", event: "save" }
+            attrs: {
+              title: "Add new Department",
+              name: "Save",
+              event: "save",
+              locationList: this.locationData
+            }
           }),
           _vm._v(" "),
           _c("PositionComponent", {
             attrs: {
               title: "Add new Location",
               locationList: this.locationData,
+              positionList: this.positionData,
               name: "Save",
               event: "save"
             }
@@ -80494,6 +80857,14 @@ var render = function() {
         "div",
         { staticClass: "col-xl-6 col-lg-6" },
         [
+          _c("UsersComponent", {
+            attrs: {
+              title: "Add new User Account",
+              name: "Save",
+              event: "save"
+            }
+          }),
+          _vm._v(" "),
           _c("EmployeeTypeComponent", {
             attrs: {
               title: "Add new Employee Type",
@@ -80711,64 +81082,115 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card shadow mb-4" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "card-header py-3 d-flex flex-row align-items-center justify-content-between"
-        },
-        [
-          _c("h6", { staticClass: "m-0 font-weight-bold text-primary" }, [
-            _vm._v(_vm._s(_vm.title))
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card-body" },
-        [
-          _c(
-            "div",
-            { staticClass: "form-group" },
-            [
-              _c("AppTextBox", {
-                attrs: {
-                  label: "Department",
-                  placeholder: "Enter Department ..."
-                },
-                model: {
-                  value: _vm.location,
-                  callback: function($$v) {
-                    _vm.location = $$v
+    _c(
+      "div",
+      { staticClass: "card shadow mb-4" },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "card-header py-3 d-flex flex-row align-items-center justify-content-between"
+          },
+          [
+            _c("h6", { staticClass: "m-0 font-weight-bold text-primary" }, [
+              _vm._v(_vm._s(_vm.title))
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "card-body" },
+          [
+            _c(
+              "div",
+              { staticClass: "form-group" },
+              [
+                _c("AppTextBox", {
+                  attrs: {
+                    label: "Department",
+                    placeholder: "Enter Department ..."
                   },
-                  expression: "location"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm.isOnsave
-            ? _c("AppButton", {
-                attrs: { "btn-name": _vm.name, "btn-method": "save" },
-                on: { save: _vm.save }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-secondary float-right mr-2",
-              on: { click: _vm.onCancel }
+                  model: {
+                    value: _vm.location,
+                    callback: function($$v) {
+                      _vm.location = $$v
+                    },
+                    expression: "location"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm.isOnsave
+              ? _c("AppButton", {
+                  attrs: { "btn-name": _vm.name, "btn-method": "save" },
+                  on: { save: _vm.save }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary float-right mr-2",
+                on: { click: _vm.onCancel }
+              },
+              [_vm._v("Cancel")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "datatable",
+          {
+            attrs: {
+              title: "Department List",
+              columns: _vm.columns,
+              rows: _vm.locationList,
+              sortable: false,
+              clickable: false,
+              printable: false
             },
-            [_vm._v("Cancel")]
-          )
-        ],
-        1
-      )
-    ])
+            scopedSlots: _vm._u([
+              {
+                key: "tbody-tr",
+                fn: function(props) {
+                  return [
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-sm",
+                          on: {
+                            click: function(e) {
+                              return _vm.onDelete(props.row, e)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\r\n                        Delete\r\n                      "
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                }
+              }
+            ])
+          },
+          [
+            _c("th", { attrs: { slot: "thead-tr" }, slot: "thead-tr" }, [
+              _vm._v("\r\n                    Actions\r\n                  ")
+            ])
+          ]
+        )
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -80782,6 +81204,163 @@ render._withStripped = true
 /*!*********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/PositionComponent.vue?vue&type=template&id=74564652& ***!
   \*********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "card shadow mb-4" },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "card-header py-3 d-flex flex-row align-items-center justify-content-between"
+          },
+          [
+            _c("h6", { staticClass: "m-0 font-weight-bold text-primary" }, [
+              _vm._v(_vm._s(_vm.title))
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "card-body" },
+          [
+            _c(
+              "div",
+              { staticClass: "form-group" },
+              [
+                _c("AppTextBox", {
+                  attrs: {
+                    label: "Location",
+                    placeholder: "Enter Location ..."
+                  },
+                  model: {
+                    value: _vm.position,
+                    callback: function($$v) {
+                      _vm.position = $$v
+                    },
+                    expression: "position"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "form-group" },
+              [
+                _c("AppDropdown", {
+                  attrs: {
+                    label: "Department",
+                    options: _vm.locationList,
+                    placeholder: "Select Department Type"
+                  },
+                  model: {
+                    value: _vm.location,
+                    callback: function($$v) {
+                      _vm.location = $$v
+                    },
+                    expression: "location"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm.isOnsave
+              ? _c("AppButton", {
+                  attrs: { "btn-name": _vm.name, "btn-method": "save" },
+                  on: { save: _vm.save }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary float-right mr-2",
+                on: { click: _vm.onCancel }
+              },
+              [_vm._v("Cancel")]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "datatable",
+          {
+            attrs: {
+              title: "Location List",
+              columns: _vm.columns,
+              rows: _vm.positionList,
+              sortable: false,
+              clickable: false,
+              printable: false
+            },
+            scopedSlots: _vm._u([
+              {
+                key: "tbody-tr",
+                fn: function(props) {
+                  return [
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-sm",
+                          on: {
+                            click: function(e) {
+                              return _vm.onDelete(props.row, e)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\r\n                        Delete\r\n                      "
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                }
+              }
+            ])
+          },
+          [
+            _c("th", { attrs: { slot: "thead-tr" }, slot: "thead-tr" }, [
+              _vm._v("\r\n                    Actions\r\n                  ")
+            ])
+          ]
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=template&id=3881f5c7&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/UsersComponent.vue?vue&type=template&id=3881f5c7& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -80818,13 +81397,13 @@ var render = function() {
             { staticClass: "form-group" },
             [
               _c("AppTextBox", {
-                attrs: { label: "Location", placeholder: "Enter Location ..." },
+                attrs: { label: "Username", placeholder: "Enter username ..." },
                 model: {
-                  value: _vm.position,
+                  value: _vm.formData.username,
                   callback: function($$v) {
-                    _vm.position = $$v
+                    _vm.$set(_vm.formData, "username", $$v)
                   },
-                  expression: "position"
+                  expression: "formData.username"
                 }
               })
             ],
@@ -80835,18 +81414,18 @@ var render = function() {
             "div",
             { staticClass: "form-group" },
             [
-              _c("AppDropdown", {
+              _c("AppTextBox", {
                 attrs: {
-                  label: "Department",
-                  options: _vm.locationList,
-                  placeholder: "Select Department Type"
+                  label: "Password",
+                  type: "password",
+                  placeholder: "Enter password ..."
                 },
                 model: {
-                  value: _vm.location,
+                  value: _vm.formData.password,
                   callback: function($$v) {
-                    _vm.location = $$v
+                    _vm.$set(_vm.formData, "password", $$v)
                   },
-                  expression: "location"
+                  expression: "formData.password"
                 }
               })
             ],

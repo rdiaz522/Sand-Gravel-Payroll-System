@@ -1,13 +1,6 @@
 <template>
     <div>
          <div class="row">
-            <div class="col-xl-12 col-lg-12"> 
-                <ReportListComponent
-                :reportList="this.reportList" 
-                > </ReportListComponent>
-                 </div>
-        </div>
-        <div class="row"> 
            <div class="col-xl-6 col-lg-6">
                  <ReportComponent
                     title="Generate Report" 
@@ -17,7 +10,13 @@
                     >
                     </ReportComponent>
            </div>
-        
+        </div>
+        <div class="row"> 
+             <div class="col-xl-12 col-lg-12"> 
+                <ReportListComponent
+                :reportList="this.reportList" 
+                > </ReportListComponent>
+            </div>
         </div>
     </div>
 </template>

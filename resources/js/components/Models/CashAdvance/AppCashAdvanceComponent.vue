@@ -1,13 +1,5 @@
 <template>
     <div>
-         <div class="row">
-            <div class="col-xl-12 col-lg-12"> 
-                <CashAdvanceListComponent
-                :cashAdvanceList="this.cashAdvanceList" 
-                 v-on:editCashAdvance="this.editCashAdvance"
-                > </CashAdvanceListComponent>
-                 </div>
-        </div>
         <div class="row"> 
            <div class="col-xl-6 col-lg-6">
                  <CashAdvanceComponent
@@ -28,6 +20,15 @@
                     >
                     </CashAdvanceEditComponent>
            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-12 col-lg-12"> 
+                <CashAdvanceListComponent
+                :cashAdvanceList="this.cashAdvanceList" 
+                 v-on:editCashAdvance="this.editCashAdvance"
+                > </CashAdvanceListComponent>
+                 </div>
         </div>
     </div>
 </template>

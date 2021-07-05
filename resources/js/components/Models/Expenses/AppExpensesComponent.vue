@@ -1,13 +1,5 @@
 <template>
     <div>
-         <div class="row">
-            <div class="col-xl-12 col-lg-12"> 
-                <ExpensesListComponent
-                :expensesList="this.expensesList" 
-                 v-on:editExpenses="this.editExpenses"
-                > </ExpensesListComponent>
-                 </div>
-        </div>
         <div class="row"> 
            <div class="col-xl-6 col-lg-6">
                  <ExpensesComponent
@@ -29,6 +21,15 @@
                     >
                     </ExpensesEditComponent>
            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-12 col-lg-12"> 
+                <ExpensesListComponent
+                :expensesList="this.expensesList" 
+                 v-on:editExpenses="this.editExpenses"
+                > </ExpensesListComponent>
+                 </div>
         </div>
     </div>
 </template>

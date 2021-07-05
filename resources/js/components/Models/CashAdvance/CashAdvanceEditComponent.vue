@@ -37,6 +37,7 @@ import AppTextBox from '../../AppComponents/AppTextBox.vue';
 import AppDropdown from '../../AppComponents/AppDropdown.vue';
 import AppButton from '../../AppComponents/AppButton.vue';
 import VueDatepickerUi from 'vue-datepicker-ui';
+import moment from 'moment';
 export default {
     props: ['title', 'name', 'event','cashAdvanceEdit'],
     data() {
@@ -85,13 +86,14 @@ export default {
             const data = {
                 cash_advance: this.cash_advance,
                 description: this.description,
-                cash_advance_date: this.cash_advance_date,
+                cash_advance_date: moment(this.cash_advance_date).format('YYYY-MM-DD')
             }
             const config = {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             };
+            
             axios.put(this.$BASE_URL + this.$CASHADVANCEDEDUCTION + `/${this.id}`, data, config)
                 .then((response) => {
                     this.$parent.getCashAdvance();

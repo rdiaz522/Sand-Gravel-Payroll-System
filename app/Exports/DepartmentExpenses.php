@@ -56,7 +56,7 @@ class DepartmentExpenses implements FromCollection, Responsable, WithHeadings, W
             [
                 $employeeModel->cash_date,
                 $employeeModel->description,
-                '₱' . $employeeModel->amount,
+                '₱' . number_format($employeeModel->amount, 2, '.', ''),
                 $employeeModel->cash_from
             ]
         ];

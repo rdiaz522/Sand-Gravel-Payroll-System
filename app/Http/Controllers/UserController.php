@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -15,7 +18,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
         return view('components.home');
     }
 
@@ -37,7 +39,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'username' => 'required|unique:users',
+            'password' => 'required'
+        ]);
+
+        $users = new User;
+        $users->username = $request->username;
+        $users->password = Hash::make($request->password);
+
+        if($users->save()) {
+            return new UserResource($users);
+        }
     }
 
     /**
@@ -82,7 +95,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = User::findOrFail($id);
+        if($users->delete()) {
+            return new UserResource($users);
+        } 
     }
 
     public function authenticate(Request $request)

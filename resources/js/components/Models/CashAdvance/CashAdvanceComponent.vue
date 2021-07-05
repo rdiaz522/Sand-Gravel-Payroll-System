@@ -62,7 +62,7 @@ export default {
                 employee_id:'',
                 cash_advance:'',
                 description:'',
-                cash_advance_date: moment().format('D MMM, YYYY'),
+                cash_advance_date:  moment().format('YYYY-MM-DD')
             },
             value:null
         }
@@ -106,12 +106,13 @@ export default {
             this.formData.employee_id = '';
             this.formData.cash_advance = '';
             this.formData.description = '';
-            this.formData.cash_advance_date = moment().format('D MMM, YYYY');
+            this.formData.cash_advance_date =  moment().format('YYYY-MM-DD');
             this.value = null;
         },
 
         save() {
             this.formData.employee_id = this.value.id;
+            this.formData.cash_advance_date = moment(this.formData.cash_advance_date).format('YYYY-MM-DD');
             this.$SHOW_LOADING();
                 axios.post(this.$BASE_URL + this.$CASHADVANCEDEDUCTION, this.formData)
                     .then((response) => {

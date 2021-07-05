@@ -47,7 +47,7 @@ class DepartmentTotalPay implements FromCollection, Responsable, WithHeadings, W
         return [
             [
                 $employeeModel->name,
-                '₱' . $totalPay
+                '₱' . number_format($totalPay, 2, '.', ''),
             ]
         ];
     }

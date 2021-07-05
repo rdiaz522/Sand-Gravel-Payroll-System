@@ -95,51 +95,59 @@ export default {
 
         save() {
             this.$SHOW_LOADING();
-            let startDate = moment(this.formData.start_date).format('DD-MM-YYYY');
-            let endDate =  moment(this.formData.endDate).format('DD-MM-YYYY');
+            let startDate = moment(this.formData.start_date).format('YYYY-MM-DD');
+            let endDate = moment(this.formData.end_date).format('YYYY-MM-DD');
             if(startDate < endDate) {
-               if(this.formData.report_type === 'Payroll Report') {
+                this.formData.start_date = startDate;
+                this.formData.end_date = endDate;
+                if(this.formData.report_type !== '') {
+                    if(this.formData.report_type === 'Payroll Report') {
                     axios.post(this.$BASE_URL + '/dailypayrollexport', this.formData).then((response) => {
                      this.$parent.getReports();
                     this.clearFields();
                     this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
                     this.$HIDE_LOADING();
-                })
-                .catch((err) => {
-                    this.$HIDE_LOADING();
-                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-                });
-               }
+                        })
+                        .catch((err) => {
+                            this.$HIDE_LOADING();
+                            this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                        });
+                    }
 
-               if(this.formData.report_type === 'Department Total Pay Report') {
-                    axios.post(this.$BASE_URL + '/departmentpay', this.formData).then((response) => {
-                    this.$parent.getReports();
-                    this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
-                    this.$HIDE_LOADING();
-                })
-                .catch((err) => {
-                    this.$HIDE_LOADING();
-                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-                });
-               }
-
-               if(this.formData.report_type === 'Department Expenses') {
-                   if(this.formData.department_id === '') {
-                        this.$HIDE_LOADING();
-                        this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Please Select Department..', 'error');
-                   } else {
-                       axios.post(this.$BASE_URL + '/departmentexpenses', this.formData).then((response) => {
+                    if(this.formData.report_type === 'Department Total Pay Report') {
+                            axios.post(this.$BASE_URL + '/departmentpay', this.formData).then((response) => {
+                            this.clearFields();
                             this.$parent.getReports();
                             this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
                             this.$HIDE_LOADING();
-                            })
-                            .catch((err) => {
-                                this.$HIDE_LOADING();
-                                this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                        })
+                        .catch((err) => {
+                            this.$HIDE_LOADING();
+                            this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
                         });
-                   }
-               }
+                    }
 
+                    if(this.formData.report_type === 'Department Expenses') {
+                        if(this.formData.department_id === '') {
+                                this.$HIDE_LOADING();
+                                this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Please Select Department..', 'error');
+                        } else {
+                            axios.post(this.$BASE_URL + '/departmentexpenses', this.formData).then((response) => {
+                                    this.clearFields();
+                                    this.$parent.getReports();
+                                    this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
+                                    this.$HIDE_LOADING();
+                                    })
+                                    .catch((err) => {
+                                        this.$HIDE_LOADING();
+                                        this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                                });
+                        }
+                    }
+                } else {
+                    this.$HIDE_LOADING();
+                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Please Select Report Type', 'error');
+                }
             } else {
                 this.$HIDE_LOADING();
                 this.$SHOW_MESSAGE('Oops..', 'Something went wrong, The Start Date must less than the End Date', 'error');

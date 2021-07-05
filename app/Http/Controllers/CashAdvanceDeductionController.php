@@ -100,7 +100,7 @@ class CashAdvanceDeductionController extends Controller
         $cashAdvanceDeduction = CashAdvanceDeduction::findOrFail($id);
         $cashAdvanceDeduction->cash_advance = $request->cash_advance;
         $cashAdvanceDeduction->description = $request->description;
-        $cashAdvanceDeduction->cash_advance_date = $request->cash_advance_date;
+        $cashAdvanceDeduction->cash_advance_date = date('Y-m-d', strtotime($request->cash_advance_date));
         if($cashAdvanceDeduction->save()) {
             return new CashAdvanceDeductionResource($cashAdvanceDeduction);
         }

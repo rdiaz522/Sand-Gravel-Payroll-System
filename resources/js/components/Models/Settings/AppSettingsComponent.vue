@@ -5,16 +5,25 @@
             <LocationComponent 
             title="Add new Department" 
             name="Save" 
-            event="save">
+            event="save"
+            :locationList="this.locationData"
+            >
             </LocationComponent>
             
             <PositionComponent 
             title="Add new Location" 
-            :locationList="this.locationData" 
+            :locationList="this.locationData"
+            :positionList="this.positionData" 
             name="Save" event="save">
             </PositionComponent>
         </div>
         <div class="col-xl-6 col-lg-6">
+            <UsersComponent
+             title="Add new User Account" 
+            name="Save" 
+            event="save"
+            > 
+            </UsersComponent>
             <EmployeeTypeComponent
             title="Add new Employee Type" 
             name="Save" 
@@ -35,17 +44,20 @@ import PositionComponent from './PositionComponent.vue';
 import LocationComponent from './LocationComponent.vue';
 import BreakHourComponent from './BreakHourComponent.vue';
 import EmployeeTypeComponent from './EmployeeTypeComponent.vue';
+import UsersComponent from './UsersComponent.vue';
 export default {
     data() {
         return {
             locationData: [],
+            positionData: []
         }
     },
     components: {
         PositionComponent,
         LocationComponent,
         EmployeeTypeComponent,
-        BreakHourComponent
+        BreakHourComponent,
+        UsersComponent
     },
     methods: {
         async getLocations() {
@@ -58,10 +70,22 @@ export default {
                     this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
                 })
         },
+
+        async getPositions() {
+            axios.get(this.$BASE_URL + this.$POSITION).then(response => {
+                    this.positionData = response.data.data;
+                    this.$HIDE_LOADING();
+                })
+                .catch((err) => {
+                    this.$HIDE_LOADING();
+                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                })
+        },
     },
 
     async created() {
         await this.getLocations();
+        await this.getPositions();
     },
     
     mounted() {

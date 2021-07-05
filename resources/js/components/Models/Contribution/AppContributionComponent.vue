@@ -1,14 +1,5 @@
 <template>
     <div>
-         <div class="row">
-            <div class="col-xl-12 col-lg-12"> 
-                <ContributionListComponent
-                :contributionList="this.contributionList" 
-                 v-on:editContribution="this.editContribution"
-                 v-on:showOverTotal="this.showOverTotal"
-                > </ContributionListComponent>
-                 </div>
-        </div>
         <div class="row"> 
            <div class="col-xl-6 col-lg-6">
                  <ContributionComponent
@@ -41,6 +32,15 @@
                     </ContributionTotalComponent>
                 
            </div>
+        </div>
+            <div class="row">
+            <div class="col-xl-12 col-lg-12"> 
+                <ContributionListComponent
+                :contributionList="this.contributionList" 
+                 v-on:editContribution="this.editContribution"
+                 v-on:showOverTotal="this.showOverTotal"
+                > </ContributionListComponent>
+            </div>
         </div>
     </div>
 </template>

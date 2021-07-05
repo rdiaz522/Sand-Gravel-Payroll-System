@@ -101,7 +101,7 @@ export default {
                 time_out:'',
                 break_time:'',
                 total_hours:'',
-                log_date: moment().format('D MMM, YYYY'),
+                log_date: moment().format('YYYY-MM-DD'),
                 daily_rate: ''
             },
             breakTimeValue:'1:00',
@@ -178,6 +178,7 @@ export default {
             }
 
             if(this.readyToSave) {
+               this.formData.log_date = moment(this.formData.log_date).format('YYYY-MM-DD');
                 this.$SHOW_LOADING();
                 axios.post(this.$BASE_URL + this.$EMPLOYEETIMELOGS, this.formData)
                     .then((response) => {
@@ -204,7 +205,7 @@ export default {
             this.formData.end_time = '';
             this.formData.break_time = '';
             this.formData.total_hours = '';
-            this.formData.log_date = moment().format('D MMM, YYYY'),
+            this.formData.log_date = moment().format('YYYY-MM-DD'),
             this.formData.daily_rate = '';
             this.disabledTimePicker = true;
             this.value = null;

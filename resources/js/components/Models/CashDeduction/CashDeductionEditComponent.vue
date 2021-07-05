@@ -34,6 +34,7 @@ import AppTextBox from '../../AppComponents/AppTextBox.vue';
 import AppDropdown from '../../AppComponents/AppDropdown.vue';
 import AppButton from '../../AppComponents/AppButton.vue';
 import VueDatepickerUi from 'vue-datepicker-ui';
+import moment from 'moment';
 export default {
     props: ['title', 'name', 'event','cashDeductionEdit'],
     data() {
@@ -79,7 +80,7 @@ export default {
             this.$SHOW_LOADING();
             const data = {
                 cash_deduction: this.cash_deduction,
-                cash_deduction_date: this.cash_deduction_date,
+                cash_deduction_date: moment(this.cash_deduction_date).format('YYYY-MM-DD'),
             }
             const config = {
                 headers: {

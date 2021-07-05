@@ -7,7 +7,6 @@
         </div>
         <!-- Card Body -->
         <div class="card-body">
-            {{totalContribution}}
             <h4>{{fullName}}</h4>
             
             <div class="form-group">
@@ -44,6 +43,7 @@ import AppTextBox from '../../AppComponents/AppTextBox.vue';
 import AppDropdown from '../../AppComponents/AppDropdown.vue';
 import AppButton from '../../AppComponents/AppButton.vue';
 import VueDatepickerUi from 'vue-datepicker-ui';
+import moment from 'moment';
 export default {
     props: ['title', 'name', 'event','contributionEdit','totalContribution'],
     data() {
@@ -95,7 +95,7 @@ export default {
                 sss: this.sss,
                 pagibig: this.pagibig,
                 philhealth: this.philhealth,
-                contribution_date: this.contribution_date,
+                contribution_date: moment(this.contribution_date).format('YYYY-MM-DD')
             }
             const config = {
                 headers: {

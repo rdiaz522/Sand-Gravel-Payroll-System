@@ -62,7 +62,7 @@ export default {
             formData: {
                 employee_id:'',
                 cash_deduction:'',
-                cash_deduction_date: moment().format('D MMM, YYYY')
+                cash_deduction_date: moment().format('YYYY-MM-DD')
             },
             value:null,
             total_cashAdvance:0
@@ -114,7 +114,7 @@ export default {
         clearFields() {
             this.formData.employee_id = '';
             this.formData.cash_deduction = '';
-            this.formData.cash_deduction_date =  moment().format('D MMM, YYYY');
+            this.formData.cash_deduction_date =  moment().format('YYYY-MM-DD');
             this.value = null;
             this.total_cashAdvance = 0;
         },
@@ -124,6 +124,7 @@ export default {
 
             this.$SHOW_LOADING();
             if(parseFloat(this.formData.cash_deduction) <= this.total_cashAdvance) {
+                this.formData.cash_deduction_date = moment(this.formData.cash_deduction_date).format('YYYY-MM-DD');
                 axios.post(this.$BASE_URL + this.$CASHDEDUCTION, this.formData)
                         .then((response) => {
                             this.clearFields();

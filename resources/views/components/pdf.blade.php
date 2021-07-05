@@ -16,19 +16,22 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
+                @php
+                    $dateNow = (new \DateTime('Asia/Manila'))->format('Y-m-d h:i: A');
+                    $rows = 1;
+                @endphp
                 @foreach ($collections as $employeeModel)
-                <table class="table" style="width: 100%"> 
+
+                <table class="table" style="width: 100%; border:1px solid black;"> 
+                    <tr> <th class="slip-name">DATE: {{$dateNow}}</th></tr>
                     <tr>
                         @php
-                            
-                            $fullname = $employeeModel->lastname . ' ' . $employeeModel->firstname . ' ' . $employeeModel->middlename;
+                            $fullname = getEmployeeFullname($employeeModel->id);
                             $departmentAssigned = [];
                             $total_each_pay = [];
                             $SSS = 0;
                             $pagibig = 0;
                             $philhealth = 0;
-                           
-                            
                             $cashAdvanceModel = $employeeModel->cashAdvance()
                             ->whereBetween('cash_advance_date', [$startDate,$endDate]);
                             $totalCashDeductions = $employeeModel->cashDeduction()
@@ -54,7 +57,6 @@
                             $totalContribution = (float)$SSS + (float)$pagibig + (float)$philhealth;
                             $gross = (float)$netPay - (float)$totalCashDeductions - (float)$totalContribution;
                         @endphp
-
                         <th class="slip-name">PAYROLL SLIP</th>
                         <th class="slip-name2">PAYSLIP DATE: {{$startDate}} to {{$endDate}}</th>
                     </tr>
@@ -68,56 +70,65 @@
                         <th class="slip-name2">EARNINGS</th>
                     </tr>
                     <tr>
-                        <th class="regular-name">Department</th>
-                        <th class="regular-name">Net. Pay</th>
+                        <th class="regular-name">DEPARTMENT</th>
+                        <th class="regular-name">NET.PAY</th>
                     </tr>
                     @foreach ($departments as $item)
-                        <tr>
-                            <th class="regular-name">{{$item->name}}</th>
-                            <th>@php
-                                echo 'P' . (float)$employeeModel->timeLogs()
+                        @php
+                          $total_pay = (float)$employeeModel->timeLogs()
                                 ->where('department_id',$item->id)->whereBetween('log_date', [$startDate,$endDate])
                                 ->sum('total_pay');
-                            @endphp</th>
+                        @endphp
+                        @if ($total_pay != 0)
+                        <tr>
+                            <th class="regular-name">{{$item->name}}</th>
+                            <th class="regular-name">P{{number_format($total_pay, 2, '.', '')}}</th>
                         </tr>
+                        @endif
                     @endforeach
                     <tr>
                         <th class="slip-name2">CASH ADVANCE</th>
-                    </tr>
-                    <tr>
-                        <th class="regular-name">Total Cash Advance</th>
-                        <th class="regular-name">{{'P' . $totalCashAdvances}}</th>
+                        <th class="regular-name">{{'P' . number_format($totalCashAdvances, 2, '.', '')}}</th>
                     </tr>
                     <tr>
                         <th  class="regular-name">Total Cash Advance Balance</th>
-                        <th  class="regular-name">P{{$overTotalCashAdvance}}</th>
+                        <th  class="regular-name">P{{number_format($overTotalCashAdvance, 2, '.', '')}}</th>
                     </tr>
                     <tr>
                         <th class="slip-name2">CASH DEDUCTION</th>
-                        <th class="regular-name">P{{$totalCashDeductions}}</th>
+                        <th class="regular-name">P{{number_format($totalCashDeductions, 2, '.', '')}}</th>
                     </tr>
                     <tr>
                         <th class="slip-name2">SSS</th>
-                        <th class="regular-name">P{{$SSS}}</th>
+                        <th class="regular-name">P{{number_format($SSS, 2, '.', '')}}</th>
                     </tr>
                     <tr>
                         <th class="slip-name2">PAGIBIG</th>
-                        <th class="regular-name">P{{$pagibig}}</th>
+                        <th class="regular-name">P{{number_format($pagibig, 2, '.', '')}}</th>
                     </tr>
-                    <tr>
+                    <tr class="separated">
                         <th class="slip-name2">PHILHEALTH</th>
-                        <th class="regular-name">P{{$philhealth}}</th>
+                        <th class="regular-name">P{{number_format($philhealth, 2, '.', '')}}</th>
                     </tr>
                     <tr>
                         <th class="slip-name2">TOTAL GROSS INCOME</th>
-                        <th class="regular-name">P{{$gross}}</th>
+                        <th class="regular-name">P{{number_format($gross, 2, '.', '')}}</th>
                     </tr>
                 </table>
                 <hr>
+                @if ($rows == 2)
+                    <div class="page-break"></div>
+                   @php
+                       $rows = 0;
+                   @endphp
+                @endif
+                @php
+                    $rows++;
+                @endphp
                 @endforeach
+
             </div>
         </div>
     </div>
-    <div class="page-break"></div>
 </body>
 </html>

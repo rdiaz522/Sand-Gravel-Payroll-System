@@ -1,16 +1,6 @@
 <template>
 <div>
     <div class="row">
-        <div class="col-xl-12 col-lg-12">
-            <EmployeeDTRListComponent
-            :timelogList="this.timelogList" 
-            v-on:editTimeLogs="this.editTimeLogs"
-            >
-                
-            </EmployeeDTRListComponent>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-xl-6 col-lg-6">
              <EmployeeDTRComponent 
             title="Employee Daily Time Record" 
@@ -30,6 +20,16 @@
                 :timeLogsEdit="this.timeLogsEdit"
                 v-show="this.showDTREdit"
             ></EmployeeDTREditComponent>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <EmployeeDTRListComponent
+            :timelogList="this.timelogList" 
+            v-on:editTimeLogs="this.editTimeLogs"
+            >
+                
+            </EmployeeDTRListComponent>
         </div>
     </div>
 </div>

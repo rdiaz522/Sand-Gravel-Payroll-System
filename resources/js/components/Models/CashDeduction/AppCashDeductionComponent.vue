@@ -1,13 +1,5 @@
 <template>
     <div>
-         <div class="row">
-            <div class="col-xl-12 col-lg-12"> 
-                <CashDeductionListComponent
-                :cashDeductionList="this.cashDeductionList" 
-                 v-on:editCashDeduction="this.editCashDeduction"
-                > </CashDeductionListComponent>
-                 </div>
-        </div>
         <div class="row"> 
            <div class="col-xl-6 col-lg-6">
                  <CashDeductionComponent
@@ -28,6 +20,14 @@
                     >
                     </CashDeductionEditComponent>
            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12"> 
+                <CashDeductionListComponent
+                :cashDeductionList="this.cashDeductionList" 
+                 v-on:editCashDeduction="this.editCashDeduction"
+                > </CashDeductionListComponent>
+                 </div>
         </div>
     </div>
 </template>

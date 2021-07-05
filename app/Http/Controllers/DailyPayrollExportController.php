@@ -16,7 +16,6 @@ class DailyPayrollExportController extends Controller
 {
     public function generateDailyPayroll(Request $request)
     {
-
         $filename = Carbon::now()->format('Ymdhms').'-Payroll.xlsx';
         $pdfFilename = Carbon::now()->format('Ymdhms').'-PaySlip.pdf';
         Excel::store(new DailyPayrollExport($request), $filename);
@@ -25,8 +24,8 @@ class DailyPayrollExportController extends Controller
         $reports->report_type = $request->report_type;
         $reports->report_excel = $filename;
         $reports->report_pdf = $pdfFilename;
-        $reports->start_date = date('Y-m-d', strtotime($request->start_date));
-        $reports->end_date = date('Y-m-d', strtotime($request->end_date));
+        $reports->start_date = dateFormat($request->start_date);
+        $reports->end_date = dateFormat($request->end_date);
     
         $selectQuery = ['id','firstname','middlename','lastname'];
         $collections = Employees::with(['cashAdvance','cashDeduction', 'timeLogs', 'contributions'])
@@ -54,8 +53,8 @@ class DailyPayrollExportController extends Controller
         $reports->report_type = $request->report_type;
         $reports->report_excel = $filename;
         $reports->report_pdf = 'NO PDF';
-        $reports->start_date = date('Y-m-d', strtotime($request->start_date));
-        $reports->end_date = date('Y-m-d', strtotime($request->end_date));
+        $reports->start_date = dateFormat($request->start_date);
+        $reports->end_date =  dateFormat($request->end_date);
 
         if($reports->save()) {
             return response()->json([
@@ -74,8 +73,8 @@ class DailyPayrollExportController extends Controller
         $reports->report_type = $request->report_type;
         $reports->report_excel = $filename;
         $reports->report_pdf = 'NO PDF';
-        $reports->start_date = date('Y-m-d', strtotime($request->start_date));
-        $reports->end_date = date('Y-m-d', strtotime($request->end_date));
+        $reports->start_date = dateFormat($request->start_date);
+        $reports->end_date = dateFormat($request->end_date);
 
         if($reports->save()) {
             return response()->json([
@@ -84,5 +83,4 @@ class DailyPayrollExportController extends Controller
             ], 200);
         }
     }
-    
 }

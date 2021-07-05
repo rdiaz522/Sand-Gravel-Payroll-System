@@ -53,7 +53,7 @@ export default {
             description:'',
             amount:'',
             cash_from:'',
-            cash_date: moment().format('D MMM, YYYY'),
+            cash_date: ''
         }
     },
     computed: {
@@ -96,7 +96,7 @@ export default {
                 description: this.description,
                 amount: this.amount,
                 cash_from: this.cash_from,
-                cash_date: this.cash_date,
+                cash_date: moment(this.cash_date).format('YYYY-MM-DD')
             }
             const config = {
                 headers: {

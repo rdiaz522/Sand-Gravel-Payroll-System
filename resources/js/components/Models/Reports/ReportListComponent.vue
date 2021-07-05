@@ -21,7 +21,7 @@
                     <button class="btn btn-success btn-sm" v-on:click="(e) => onGenerateReport(props.row, e)">
                        Download Report
                       </button>
-                      <button class="btn btn-success btn-sm" v-on:click="(e) => onGeneratePayslip(props.row, e)">
+                      <button class="btn btn-primary btn-sm" v-on:click="(e) => onGeneratePayslip(props.row, e)">
                         Payslip
                       </button>
                       <button class="btn btn-danger btn-sm" v-on:click="(e) => onDelete(props.row, e)">

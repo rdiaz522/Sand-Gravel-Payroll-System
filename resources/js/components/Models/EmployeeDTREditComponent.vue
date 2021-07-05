@@ -139,6 +139,7 @@ export default {
             this.disabledTimePicker = false;  
         },
         save() {
+
             this.$SHOW_LOADING();
             if(this.formData.time_in !== '' && this.formData.time_out !== '') {
                 this.readyToSave = true;
@@ -159,7 +160,9 @@ export default {
                     'Content-Type': 'application/json'
                 }
             };
-            axios.put(this.$BASE_URL + this.$EMPLOYEETIMELOGS + `/${this.formData.id}`, this.formData, config)
+            this.formData.log_date = moment(this.formData.log_date).format('YYYY-MM-DD');
+            if(this.readyToSave) { 
+                axios.put(this.$BASE_URL + this.$EMPLOYEETIMELOGS + `/${this.formData.id}`, this.formData, config)
                 .then((response) => {
                     this.$parent.getTimeLogs();
                     this.clearFields();
@@ -170,7 +173,8 @@ export default {
                     this.$HIDE_LOADING();
                     this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
                 });
-
+            }
+        
         },
 
         parse(num) {

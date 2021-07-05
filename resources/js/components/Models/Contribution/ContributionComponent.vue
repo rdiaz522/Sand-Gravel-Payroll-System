@@ -66,7 +66,7 @@ export default {
                 sss:'',
                 pagibig:'',
                 philhealth: '',
-                contribution_date: moment().format('D MMM, YYYY')
+                contribution_date: moment().format('YYYY-MM-DD'),
             },
             value:null
         }
@@ -111,12 +111,13 @@ export default {
             this.formData.sss = '';
             this.formData.pagibig = '';
             this.formData.philhealth = '';
-            this.formData.contribution_date = moment().format('D MMM, YYYY');
+            this.formData.contribution_date = moment().format('YYYY-MM-DD'),
             this.value = null;
         },
 
         save() {
             this.formData.employee_id = this.value.id;
+            this.formData.contribution_date = moment(this.formData.contribution_date).format('YYYY-MM-DD');
             this.$SHOW_LOADING();
                 axios.post(this.$BASE_URL + this.$CONTRIBUTION, this.formData)
                     .then((response) => {

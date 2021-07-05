@@ -42,3 +42,11 @@ if (!function_exists('getDepartmentName')) {
     }
 }
 
+if (!function_exists('dateFormat')) {
+    function dateFormat($date)
+    {
+        $cc = \Carbon\Carbon::parse($date)->format('Y-m-d');
+
+        return $cc;
+    }
+}

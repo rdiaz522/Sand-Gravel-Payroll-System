@@ -50,7 +50,7 @@ export default {
                 description:'',
                 amount:'',
                 cash_from:'',
-                cash_date: moment().format('D MMM, YYYY')
+                cash_date: moment().format('YYYY-MM-DD'),
             },
         }
     },
@@ -86,11 +86,12 @@ export default {
             this.formData.description = '';
             this.formData.amount = '';
             this.formData.cash_from = '';
-            this.formData.cash_date =  moment().format('D MMM, YYYY');
+            this.formData.cash_date = moment().format('YYYY-MM-DD');
         },
 
         save() {
             this.$SHOW_LOADING();
+            this.formData.cash_date = moment(this.formData.cash_date).format('YYYY-MM-DD');
             axios.post(this.$BASE_URL + this.$EXPENSES, this.formData)
                         .then((response) => {
                             this.clearFields();

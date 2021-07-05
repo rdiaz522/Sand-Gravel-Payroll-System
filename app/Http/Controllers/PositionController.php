@@ -108,7 +108,7 @@ class PositionController extends Controller
     public function destroy($id)
     {
         //
-        $position = Positi::find($id);
+        $position = Position::find($id);
         if($position->delete()) {
             return new PositionResource($position);
         }

@@ -61,10 +61,11 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
             $overTotalCashAdvance = (float)$totalCashAdvances - (float)$totalCashDeductions;
             if($departments instanceof Collection && !$departments->isEmpty()) {
                 foreach($departments as $department) {
-                    $departmentAssigned[] = $department->name;
-                    $total_each_pay[] =  (float)$employeeModel->timeLogs()
+                    $departmentAssigned[] = strtoupper($department->name);
+                    $amount = (float)$employeeModel->timeLogs()
                     ->where('department_id',$department->id)->whereBetween('log_date', [$this->startDate,$this->endDate])
                     ->sum('total_pay');
+                    $total_each_pay[] ='₱' . number_format($amount, 2, '.', '');
                 }
             }
             $netPay = $employeeModel->timeLogs()->whereBetween('log_date', [$this->startDate,$this->endDate])->sum('total_pay');
@@ -83,16 +84,16 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
         return [
             [
                 $fullname,
-                '(' .implode(", ", $departmentAssigned) . ')',
-                '₱' . '(' .implode(", ", $total_each_pay) . ')',
-                '₱' . $netPay,
-                '₱' . $totalCashAdvances,
-                '₱' . $totalCashDeductions,
-                '₱' . $overTotalCashAdvance,
-                '₱' . $SSS,
-                '₱' . $pagibig,
-                '₱' . $philhealth,
-                '₱' . $gross
+                '(' .implode(" | ", $departmentAssigned) . ')',
+                '(' .implode(" | ", $total_each_pay) . ')',
+                '₱' . number_format($netPay, 2, '.', ''),
+                '₱' . number_format($totalCashAdvances, 2, '.', ''),
+                '₱' . number_format($totalCashDeductions, 2, '.', ''),
+                '₱' . number_format($overTotalCashAdvance, 2, '.', ''),
+                '₱' . number_format($SSS, 2, '.', ''),
+                '₱' . number_format($pagibig, 2, '.', ''),
+                '₱' . number_format($philhealth, 2, '.', ''),
+                '₱' . number_format($gross, 2, '.', ''),
             ]
         ];
     }
