@@ -47,8 +47,16 @@ import DataTable from "vue-materialize-datatable";
                         field: 'employee_fullname',
                     },
                     {
+                        label: 'Description',
+                        field: 'description'
+                    },
+                    {
                         label: 'Cash Deduction',
                         field: 'cash_deduction'
+                    },
+                    {
+                        label: 'Cash Advance Balance',
+                        field: 'new_cash_advance_balance'
                     },
                     {
                         label: 'Date of Cash Deduction',

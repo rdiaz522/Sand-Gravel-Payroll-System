@@ -19,6 +19,8 @@ class CashDeduction extends Model
    protected $fillable = [
        'employee_id',
        'cash_deduction',
+       'cash_advance_id',
+       'new_cash_advance_balance',
        'cash_deduction_date',
    ];
 

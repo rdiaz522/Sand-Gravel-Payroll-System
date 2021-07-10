@@ -2414,6 +2414,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -2423,6 +2425,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       employees: [],
       cashAdvanceList: [],
       cashAdvanceEdit: [],
+      cashAdvanceDescription: [],
       showCashAdvanceEdit: false
     };
   },
@@ -2485,32 +2488,63 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
+    getCashAdvanceDescription: function getCashAdvanceDescription() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                axios.get(_this3.$BASE_URL + _this3.$CASHADVANCEDESCRIPTION).then(function (response) {
+                  _this3.showCashAdvanceEdit = false;
+                  _this3.cashAdvanceDescription = response.data.data;
+
+                  _this3.$HIDE_LOADING();
+                })["catch"](function (err) {
+                  _this3.$HIDE_LOADING();
+
+                  _this3.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                });
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
     editCashAdvance: function editCashAdvance(props) {
       this.showCashAdvanceEdit = true;
       this.cashAdvanceEdit = props;
     }
   },
   created: function created() {
-    var _this3 = this;
+    var _this4 = this;
 
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
-          switch (_context3.prev = _context3.next) {
+          switch (_context4.prev = _context4.next) {
             case 0:
-              _context3.next = 2;
-              return _this3.getEmployees();
+              _context4.next = 2;
+              return _this4.getEmployees();
 
             case 2:
-              _context3.next = 4;
-              return _this3.getCashAdvance();
+              _context4.next = 4;
+              return _this4.getCashAdvance();
 
             case 4:
+              _context4.next = 6;
+              return _this4.getCashAdvanceDescription();
+
+            case 6:
             case "end":
-              return _context3.stop();
+              return _context4.stop();
           }
         }
-      }, _callee3);
+      }, _callee4);
     }))();
   },
   mounted: function mounted() {
@@ -2533,12 +2567,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
 /* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-datepicker-ui */ "./node_modules/vue-datepicker-ui/lib/vuedatepickerui.umd.js");
-/* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _AppComponents_AppDropdown_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../AppComponents/AppDropdown.vue */ "./resources/js/components/AppComponents/AppDropdown.vue");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-datepicker-ui */ "./node_modules/vue-datepicker-ui/lib/vuedatepickerui.umd.js");
+/* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
 //
 //
 //
@@ -2589,20 +2624,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['title', 'name', 'event', 'employees'],
+  props: ['title', 'name', 'event', 'employees', 'cashAdvanceDescriptions'],
   data: function data() {
     return {
       formData: {
         employee_id: '',
         cash_advance: '',
-        description: '',
-        cash_advance_date: moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD')
+        cash_advance_desc_id: '',
+        cash_advance_date: moment__WEBPACK_IMPORTED_MODULE_5___default()().format('YYYY-MM-DD')
       },
       value: null
     };
@@ -2626,8 +2663,9 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AppTextBox: _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_0__.default,
     AppButton: _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_2___default()),
-    datepicker: (vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3___default())
+    AppDropdown: _AppComponents_AppDropdown_vue__WEBPACK_IMPORTED_MODULE_2__.default,
+    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_3___default()),
+    datepicker: (vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_4___default())
   },
   methods: {
     fullName: function fullName(_ref) {
@@ -2645,15 +2683,15 @@ __webpack_require__.r(__webpack_exports__);
     clearFields: function clearFields() {
       this.formData.employee_id = '';
       this.formData.cash_advance = '';
-      this.formData.description = '';
-      this.formData.cash_advance_date = moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD');
+      this.formData.cash_advance_desc_id = '';
+      this.formData.cash_advance_date = moment__WEBPACK_IMPORTED_MODULE_5___default()().format('YYYY-MM-DD');
       this.value = null;
     },
     save: function save() {
       var _this = this;
 
       this.formData.employee_id = this.value.id;
-      this.formData.cash_advance_date = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.cash_advance_date).format('YYYY-MM-DD');
+      this.formData.cash_advance_date = moment__WEBPACK_IMPORTED_MODULE_5___default()(this.formData.cash_advance_date).format('YYYY-MM-DD');
       this.$SHOW_LOADING();
       axios.post(this.$BASE_URL + this.$CASHADVANCEDEDUCTION, this.formData).then(function (response) {
         _this.clearFields();
@@ -2732,14 +2770,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['title', 'name', 'event', 'cashAdvanceEdit'],
+  props: ['title', 'name', 'event', 'cashAdvanceEdit', 'cashAdvanceDescriptions'],
   data: function data() {
     return {
       id: '',
       cash_advance: '',
-      description: '',
+      cash_advance_desc_id: '',
       cash_advance_date: '',
-      fullName: ''
+      fullName: '',
+      description: ''
     };
   },
   computed: {
@@ -2760,10 +2799,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     cashAdvanceEdit: function cashAdvanceEdit(newVal) {
+      console.log(newVal);
       this.id = newVal.id;
       this.cash_advance = newVal.cash_advance;
-      this.description = newVal.description;
       this.cash_advance_date = newVal.cash_advance_date;
+      this.cash_advance_desc_id = newVal.cash_advance_description;
+      this.description = newVal.description;
       this.fullName = newVal.employee_fullname;
     }
   },
@@ -2780,7 +2821,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$SHOW_LOADING();
       var data = {
         cash_advance: this.cash_advance,
-        description: this.description,
+        cash_advance_desc_id: this.cash_advance_desc_id,
         cash_advance_date: moment__WEBPACK_IMPORTED_MODULE_4___default()(this.cash_advance_date).format('YYYY-MM-DD')
       };
       var config = {
@@ -3112,12 +3153,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
 /* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
-/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-datepicker-ui */ "./node_modules/vue-datepicker-ui/lib/vuedatepickerui.umd.js");
-/* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _AppComponents_AppDropdown_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../AppComponents/AppDropdown.vue */ "./resources/js/components/AppComponents/AppDropdown.vue");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-multiselect */ "./node_modules/vue-multiselect/dist/vue-multiselect.min.js");
+/* harmony import */ var vue_multiselect__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_multiselect__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-datepicker-ui */ "./node_modules/vue-datepicker-ui/lib/vuedatepickerui.umd.js");
+/* harmony import */ var vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
 //
 //
 //
@@ -3169,6 +3211,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -3181,10 +3228,15 @@ __webpack_require__.r(__webpack_exports__);
       formData: {
         employee_id: '',
         cash_deduction: '',
-        cash_deduction_date: moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD')
+        employee_cash_advance_id: '',
+        new_cash_advance_balance: '',
+        cash_deduction_date: moment__WEBPACK_IMPORTED_MODULE_5___default()().format('YYYY-MM-DD')
       },
+      cash_advance_id: '',
+      cashAdvanceList: [],
       value: null,
-      total_cashAdvance: 0
+      total_cashAdvance: 0,
+      disabledTimePicker: true
     };
   },
   computed: {
@@ -3206,8 +3258,9 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AppTextBox: _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_0__.default,
     AppButton: _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_2___default()),
-    datepicker: (vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_3___default())
+    AppDropdown: _AppComponents_AppDropdown_vue__WEBPACK_IMPORTED_MODULE_2__.default,
+    Multiselect: (vue_multiselect__WEBPACK_IMPORTED_MODULE_3___default()),
+    datepicker: (vue_datepicker_ui__WEBPACK_IMPORTED_MODULE_4___default())
   },
   methods: {
     fullName: function fullName(_ref) {
@@ -3222,10 +3275,23 @@ __webpack_require__.r(__webpack_exports__);
       this.disabledTimePicker = false;
       this.$SHOW_LOADING();
       setTimeout(function () {
-        axios.get(_this.$BASE_URL + _this.$CASHDEDUCTION + "/".concat(_this.value.id)).then(function (response) {
+        axios.get(_this.$BASE_URL + _this.$CASHADVANCEDEDUCTION + "/".concat(_this.value.id)).then(function (response) {
           _this.$HIDE_LOADING();
 
-          _this.total_cashAdvance = response.data;
+          _this.cashAdvanceList = response.data.data;
+        });
+      }, 500);
+    },
+    onSelect: function onSelect(id) {
+      var _this2 = this;
+
+      this.$SHOW_LOADING();
+      setTimeout(function () {
+        axios.get(_this2.$BASE_URL + _this2.$CASHDEDUCTION + "/".concat(id)).then(function (response) {
+          _this2.$HIDE_LOADING();
+
+          _this2.total_cashAdvance = response.data;
+          _this2.formData.employee_cash_advance_id = id;
         });
       }, 500);
     },
@@ -3235,30 +3301,34 @@ __webpack_require__.r(__webpack_exports__);
     clearFields: function clearFields() {
       this.formData.employee_id = '';
       this.formData.cash_deduction = '';
-      this.formData.cash_deduction_date = moment__WEBPACK_IMPORTED_MODULE_4___default()().format('YYYY-MM-DD');
+      this.formData.employee_cash_advance_id = '';
+      this.cash_advance_id = '';
+      this.formData.cash_deduction_date = moment__WEBPACK_IMPORTED_MODULE_5___default()().format('YYYY-MM-DD');
       this.value = null;
       this.total_cashAdvance = 0;
+      this.disabledTimePicker = true;
     },
     save: function save() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.formData.employee_id = this.value.id;
       this.$SHOW_LOADING();
 
       if (parseFloat(this.formData.cash_deduction) <= this.total_cashAdvance) {
-        this.formData.cash_deduction_date = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.cash_deduction_date).format('YYYY-MM-DD');
+        this.formData.new_cash_advance_balance = parseFloat(this.total_cashAdvance) - parseFloat(this.formData.cash_deduction);
+        this.formData.cash_deduction_date = moment__WEBPACK_IMPORTED_MODULE_5___default()(this.formData.cash_deduction_date).format('YYYY-MM-DD');
         axios.post(this.$BASE_URL + this.$CASHDEDUCTION, this.formData).then(function (response) {
-          _this2.clearFields();
+          _this3.$parent.getCashDeduction();
 
-          _this2.$parent.getCashDeduction();
+          _this3.clearFields();
 
-          _this2.$HIDE_LOADING();
+          _this3.$HIDE_LOADING();
 
-          _this2.$SHOW_MESSAGE('Successfully', 'New Cash Deduction', 'success');
+          _this3.$SHOW_MESSAGE('Successfully', 'New Cash Deduction', 'success');
         })["catch"](function (error) {
-          _this2.$HIDE_LOADING();
+          _this3.$HIDE_LOADING();
 
-          _this2.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+          _this3.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
         });
       } else {
         this.$HIDE_LOADING();
@@ -3319,6 +3389,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -3331,6 +3402,8 @@ __webpack_require__.r(__webpack_exports__);
       id: '',
       cash_deduction: '',
       cash_deduction_date: '',
+      cash_advance: 0,
+      new_cashAdvance: '',
       fullName: ''
     };
   },
@@ -3355,6 +3428,8 @@ __webpack_require__.r(__webpack_exports__);
       this.id = newVal.id;
       this.cash_deduction = newVal.cash_deduction;
       this.cash_deduction_date = newVal.cash_deduction_date;
+      this.cash_advance = newVal.cash_amount;
+      this.new_cashAdvance = newVal.new_cash_advance_balance;
       this.fullName = newVal.employee_fullname;
     }
   },
@@ -3369,28 +3444,35 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$SHOW_LOADING();
-      var data = {
-        cash_deduction: this.cash_deduction,
-        cash_deduction_date: moment__WEBPACK_IMPORTED_MODULE_4___default()(this.cash_deduction_date).format('YYYY-MM-DD')
-      };
-      var config = {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      };
-      axios.put(this.$BASE_URL + this.$CASHDEDUCTION + "/".concat(this.id), data, config).then(function (response) {
-        _this.$parent.getCashDeduction();
 
-        _this.clearFields();
+      if (this.cash_deduction < this.new_cashAdvance) {
+        var data = {
+          cash_deduction: this.cash_deduction,
+          new_cash_advance_balance: parseFloat(this.new_cashAdvance) - parseFloat(this.cash_deduction),
+          cash_deduction_date: moment__WEBPACK_IMPORTED_MODULE_4___default()(this.cash_deduction_date).format('YYYY-MM-DD')
+        };
+        var config = {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+        axios.put(this.$BASE_URL + this.$CASHDEDUCTION + "/".concat(this.id), data, config).then(function (response) {
+          _this.$parent.getCashDeduction();
 
-        _this.$HIDE_LOADING();
+          _this.clearFields();
 
-        _this.$SHOW_MESSAGE('Successfully', 'Cash Updated Updated!', 'success');
-      })["catch"](function (error) {
-        _this.$HIDE_LOADING();
+          _this.$HIDE_LOADING();
 
-        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-      });
+          _this.$SHOW_MESSAGE('Successfully', 'Cash Updated Updated!', 'success');
+        })["catch"](function (error) {
+          _this.$HIDE_LOADING();
+
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        });
+      } else {
+        this.$HIDE_LOADING();
+        this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Cash Deduction must be less than Cash Balance', 'error');
+      }
     },
     edit: function edit() {},
     onCancel: function onCancel() {
@@ -3401,6 +3483,7 @@ __webpack_require__.r(__webpack_exports__);
       this.cash_deduction = '';
       this.cash_deduction_date = '';
       this.fullName = '';
+      this.$parent.showCashDeductionEdit = false;
     }
   }
 });
@@ -3465,8 +3548,14 @@ __webpack_require__.r(__webpack_exports__);
         label: 'Employee',
         field: 'employee_fullname'
       }, {
+        label: 'Description',
+        field: 'description'
+      }, {
         label: 'Cash Deduction',
         field: 'cash_deduction'
+      }, {
+        label: 'Cash Advance Balance',
+        field: 'new_cash_advance_balance'
       }, {
         label: 'Date of Cash Deduction',
         field: 'cash_deduction_date'
@@ -4606,6 +4695,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -4626,6 +4716,7 @@ __webpack_require__.r(__webpack_exports__);
         break_time: '',
         total_hours: '',
         log_date: moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'),
+        log_date2: moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'),
         daily_rate: ''
       },
       breakTimeValue: '1:00',
@@ -4691,22 +4782,22 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.formData.time_in !== '' && this.formData.time_out !== '') {
         this.readyToSave = true;
-        var startTime = moment__WEBPACK_IMPORTED_MODULE_7___default()(this.formData.time_in, "hh:mm A");
-        var endTime = moment__WEBPACK_IMPORTED_MODULE_7___default()(this.formData.time_out, "hh:mm A");
-        var duration = moment__WEBPACK_IMPORTED_MODULE_7___default().duration(endTime.diff(startTime));
-        var hours = parseInt(duration.asHours());
-        var minutes = parseInt(duration.asMinutes()) % 60;
-        var totalMinutesandHours = hours + ':' + minutes;
         var breakTime = parseFloat(moment__WEBPACK_IMPORTED_MODULE_7___default().duration(this.breakTimeValue).asHours());
-        var convertTotalHour = parseFloat(moment__WEBPACK_IMPORTED_MODULE_7___default().duration(totalMinutesandHours).asHours()).toFixed(1);
-        var totalHours = convertTotalHour - breakTime;
-        this.formData.total_hours = totalHours;
+        var dateTimeIn = "".concat(moment__WEBPACK_IMPORTED_MODULE_7___default()(this.formData.log_date).format('YYYY-MM-DD') + ' ' + this.formData.time_in);
+        var dateTimeOut = "".concat(moment__WEBPACK_IMPORTED_MODULE_7___default()(this.formData.log_date2).format('YYYY-MM-DD') + ' ' + this.formData.time_out);
+        var dateOneObj = new Date(dateTimeIn);
+        var dateTwoObj = new Date(dateTimeOut);
+        var milliseconds = Math.abs(dateTwoObj - dateOneObj);
+        var hours = milliseconds / 36e5;
+        var totalHours = hours - breakTime;
+        this.formData.total_hours = totalHours.toFixed(2);
         this.formData.break_time = breakTime;
-        this.formData.employee_id = this.value.id;
       }
 
       if (this.readyToSave) {
+        this.formData.employee_id = this.value.id;
         this.formData.log_date = moment__WEBPACK_IMPORTED_MODULE_7___default()(this.formData.log_date).format('YYYY-MM-DD');
+        this.formData.log_date2 = moment__WEBPACK_IMPORTED_MODULE_7___default()(this.formData.log_date2).format('YYYY-MM-DD');
         this.$SHOW_LOADING();
         axios.post(this.$BASE_URL + this.$EMPLOYEETIMELOGS, this.formData).then(function (response) {
           _this.clearFields();
@@ -4733,7 +4824,7 @@ __webpack_require__.r(__webpack_exports__);
       this.formData.end_time = '';
       this.formData.break_time = '';
       this.formData.total_hours = '';
-      this.formData.log_date = moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'), this.formData.daily_rate = '';
+      this.formData.log_date = moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'), this.formData.log_date2 = moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'), this.formData.daily_rate = '';
       this.disabledTimePicker = true;
       this.value = null;
       this.startTime = {
@@ -4837,6 +4928,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -4856,6 +4950,7 @@ __webpack_require__.r(__webpack_exports__);
         break_time: '',
         total_hours: '',
         log_date: '',
+        log_date2: '',
         daily_rate: ''
       },
       breakTimeValue: '',
@@ -4884,7 +4979,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     timeLogsEdit: function timeLogsEdit(newVal) {
-      console.log(newVal);
       this.formData.id = newVal.id;
       this.formData.position = newVal.position_id;
       this.formData.daily_rate = newVal.daily_rate;
@@ -4893,7 +4987,14 @@ __webpack_require__.r(__webpack_exports__);
       this.breakTimeValue = this.parse(newVal.break_time);
       this.formData.total_hours = newVal.total_hours;
       this.formData.log_date = newVal.log_date;
+      this.formData.log_date2 = newVal.log_date2;
       this.employeeFullname = newVal.employee_fullname;
+
+      if (newVal.departmentName === 'Processing') {
+        this.disabledTimePicker = false;
+      } else {
+        this.disabledTimePicker = true;
+      }
     }
   },
   components: {
@@ -4971,6 +5072,7 @@ __webpack_require__.r(__webpack_exports__);
       this.formData.break_time = '';
       this.formData.total_hours = '';
       this.formData.log_date = '';
+      this.formData.log_date2 = '';
       this.formData.daily_rate = '';
       this.breakTimeValue = '';
       this.$parent.showDTREdit = false;
@@ -5150,6 +5252,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['employeeList'],
@@ -5159,14 +5262,8 @@ __webpack_require__.r(__webpack_exports__);
         label: 'ID',
         field: 'id'
       }, {
-        label: 'Firstname',
-        field: 'firstname'
-      }, {
-        label: 'Middlename',
-        field: 'middlename'
-      }, {
-        label: 'Lastname',
-        field: 'lastname'
+        label: 'Employee Name',
+        field: 'employee_fullname'
       }, {
         label: 'Employee Type',
         field: 'employeeTypeName'
@@ -5996,6 +6093,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -6035,7 +6134,7 @@ __webpack_require__.r(__webpack_exports__);
       this.clearFields();
     },
     onChange: function onChange(event) {
-      if (this.formData.report_type === 'Department Expenses') {
+      if (this.formData.report_type === 'Department Expenses' || this.formData.report_type === 'Weekly Payroll') {
         this.departmentExpenses = true;
       } else {
         this.departmentExpenses = false;
@@ -6096,6 +6195,43 @@ __webpack_require__.r(__webpack_exports__);
               this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Please Select Department..', 'error');
             } else {
               axios.post(this.$BASE_URL + '/departmentexpenses', this.formData).then(function (response) {
+                _this.clearFields();
+
+                _this.$parent.getReports();
+
+                _this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
+
+                _this.$HIDE_LOADING();
+              })["catch"](function (err) {
+                _this.$HIDE_LOADING();
+
+                _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+              });
+            }
+          }
+
+          if (this.formData.report_type === 'Daily Processing') {
+            axios.post(this.$BASE_URL + '/dailyprocessing', this.formData).then(function (response) {
+              _this.clearFields();
+
+              _this.$parent.getReports();
+
+              _this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
+
+              _this.$HIDE_LOADING();
+            })["catch"](function (err) {
+              _this.$HIDE_LOADING();
+
+              _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+            });
+          }
+
+          if (this.formData.report_type === 'Weekly Payroll') {
+            if (this.formData.department_id === '') {
+              this.$HIDE_LOADING();
+              this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Please Select Department..', 'error');
+            } else {
+              axios.post(this.$BASE_URL + '/weeklypayroll', this.formData).then(function (response) {
                 _this.clearFields();
 
                 _this.$parent.getReports();
@@ -6183,6 +6319,9 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         label: 'Report Type',
         field: 'report_type'
+      }, {
+        label: 'Report Name',
+        field: 'report_excel'
       }, {
         label: 'Start Date',
         field: 'start_date'
@@ -6288,6 +6427,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BreakHourComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BreakHourComponent.vue */ "./resources/js/components/Models/Settings/BreakHourComponent.vue");
 /* harmony import */ var _EmployeeTypeComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EmployeeTypeComponent.vue */ "./resources/js/components/Models/Settings/EmployeeTypeComponent.vue");
 /* harmony import */ var _UsersComponent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./UsersComponent.vue */ "./resources/js/components/Models/Settings/UsersComponent.vue");
+/* harmony import */ var _CashAdvanceDescriptionComponent_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CashAdvanceDescriptionComponent.vue */ "./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -6335,6 +6475,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -6352,7 +6498,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     LocationComponent: _LocationComponent_vue__WEBPACK_IMPORTED_MODULE_2__.default,
     EmployeeTypeComponent: _EmployeeTypeComponent_vue__WEBPACK_IMPORTED_MODULE_4__.default,
     BreakHourComponent: _BreakHourComponent_vue__WEBPACK_IMPORTED_MODULE_3__.default,
-    UsersComponent: _UsersComponent_vue__WEBPACK_IMPORTED_MODULE_5__.default
+    UsersComponent: _UsersComponent_vue__WEBPACK_IMPORTED_MODULE_5__.default,
+    CashAdvanceDescriptionComponent: _CashAdvanceDescriptionComponent_vue__WEBPACK_IMPORTED_MODULE_6__.default
   },
   methods: {
     getLocations: function getLocations() {
@@ -6551,6 +6698,88 @@ __webpack_require__.r(__webpack_exports__);
     },
     changeHandler: function changeHandler() {
       console.log('TEST');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../AppComponents/AppButton.vue */ "./resources/js/components/AppComponents/AppButton.vue");
+/* harmony import */ var _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../AppComponents/AppTextBox.vue */ "./resources/js/components/AppComponents/AppTextBox.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['title', 'name', 'event'],
+  data: function data() {
+    return {
+      formData: {
+        name: ''
+      }
+    };
+  },
+  components: {
+    AppButton: _AppComponents_AppButton_vue__WEBPACK_IMPORTED_MODULE_0__.default,
+    AppTextBox: _AppComponents_AppTextBox_vue__WEBPACK_IMPORTED_MODULE_1__.default
+  },
+  computed: {
+    isOnsave: function isOnsave() {
+      if (this.event === 'save') {
+        return true;
+      }
+
+      return false;
+    }
+  },
+  methods: {
+    save: function save() {
+      var _this = this;
+
+      this.$SHOW_LOADING();
+      axios.post(this.$BASE_URL + this.$CASHADVANCEDESCRIPTION, this.formData).then(function (response) {
+        _this.clearFields();
+
+        _this.$HIDE_LOADING();
+
+        _this.$SHOW_MESSAGE('Successfully', 'New Cash Description Added!', 'success');
+      })["catch"](function (error) {
+        _this.$HIDE_LOADING();
+
+        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+      });
+    },
+    onCancel: function onCancel() {
+      this.clearFields();
+    },
+    clearFields: function clearFields() {
+      this.formData.name = '';
     }
   }
 });
@@ -6869,9 +7098,6 @@ __webpack_require__.r(__webpack_exports__);
       columns: [{
         label: 'Location Name',
         field: 'name'
-      }, {
-        label: 'Department Name',
-        field: 'departmentName'
       }]
     };
   },
@@ -7103,6 +7329,7 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$CONTRIBUTION = '/contributio
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$REPORTS = '/reports';
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$EXPENSES = '/expenses';
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$USERS = '/users';
+vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$CASHADVANCEDESCRIPTION = '/cashadvancedescriptions';
 
 vue__WEBPACK_IMPORTED_MODULE_3__.default.prototype.$SHOW_LOADING = function () {
   $('#cover-spin').show();
@@ -75154,6 +75381,45 @@ component.options.__file = "resources/js/components/Models/Settings/BreakHourCom
 
 /***/ }),
 
+/***/ "./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CashAdvanceDescriptionComponent_vue_vue_type_template_id_a4088664___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CashAdvanceDescriptionComponent.vue?vue&type=template&id=a4088664& */ "./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=template&id=a4088664&");
+/* harmony import */ var _CashAdvanceDescriptionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CashAdvanceDescriptionComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _CashAdvanceDescriptionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _CashAdvanceDescriptionComponent_vue_vue_type_template_id_a4088664___WEBPACK_IMPORTED_MODULE_0__.render,
+  _CashAdvanceDescriptionComponent_vue_vue_type_template_id_a4088664___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/Models/Settings/EmployeeTypeComponent.vue":
 /*!***************************************************************************!*\
   !*** ./resources/js/components/Models/Settings/EmployeeTypeComponent.vue ***!
@@ -75854,6 +76120,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CashAdvanceDescriptionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CashAdvanceDescriptionComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CashAdvanceDescriptionComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************!*\
   !*** ./resources/js/components/Models/Settings/EmployeeTypeComponent.vue?vue&type=script&lang=js& ***!
@@ -76551,6 +76833,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_template_id_057edb2c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BreakHourComponent_vue_vue_type_template_id_057edb2c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BreakHourComponent.vue?vue&type=template&id=057edb2c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/BreakHourComponent.vue?vue&type=template&id=057edb2c&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=template&id=a4088664&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=template&id=a4088664& ***!
+  \********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CashAdvanceDescriptionComponent_vue_vue_type_template_id_a4088664___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CashAdvanceDescriptionComponent_vue_vue_type_template_id_a4088664___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CashAdvanceDescriptionComponent_vue_vue_type_template_id_a4088664___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CashAdvanceDescriptionComponent.vue?vue&type=template&id=a4088664& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=template&id=a4088664&");
 
 
 /***/ }),
@@ -77394,7 +77693,8 @@ var render = function() {
               title: "Cash Advance",
               name: "Save",
               event: "save",
-              employees: this.employees
+              employees: this.employees,
+              cashAdvanceDescriptions: this.cashAdvanceDescription
             }
           })
         ],
@@ -77418,7 +77718,8 @@ var render = function() {
               title: "Edit Cash Advance",
               name: "Update",
               event: "save",
-              cashAdvanceEdit: this.cashAdvanceEdit
+              cashAdvanceEdit: this.cashAdvanceEdit,
+              cashAdvanceDescriptions: this.cashAdvanceDescription
             }
           })
         ],
@@ -77536,17 +77837,18 @@ var render = function() {
             "div",
             { staticClass: "form-group" },
             [
-              _c("AppTextBox", {
+              _c("AppDropdown", {
                 attrs: {
-                  label: "Cash Advance",
-                  placeholder: "Enter Cash Advance ..."
+                  label: "Select Cash Advance",
+                  options: _vm.cashAdvanceDescriptions,
+                  placeholder: "Select Cash Advance Description"
                 },
                 model: {
-                  value: _vm.formData.cash_advance,
+                  value: _vm.formData.cash_advance_desc_id,
                   callback: function($$v) {
-                    _vm.$set(_vm.formData, "cash_advance", $$v)
+                    _vm.$set(_vm.formData, "cash_advance_desc_id", $$v)
                   },
-                  expression: "formData.cash_advance"
+                  expression: "formData.cash_advance_desc_id"
                 }
               })
             ],
@@ -77559,15 +77861,15 @@ var render = function() {
             [
               _c("AppTextBox", {
                 attrs: {
-                  label: "Description ",
-                  placeholder: "Enter Description ..."
+                  label: "Cash Advance Amount",
+                  placeholder: "Enter Cash Advance ..."
                 },
                 model: {
-                  value: _vm.formData.description,
+                  value: _vm.formData.cash_advance,
                   callback: function($$v) {
-                    _vm.$set(_vm.formData, "description", $$v)
+                    _vm.$set(_vm.formData, "cash_advance", $$v)
                   },
-                  expression: "formData.description"
+                  expression: "formData.cash_advance"
                 }
               })
             ],
@@ -77684,10 +77986,11 @@ var render = function() {
             "div",
             { staticClass: "form-group" },
             [
-              _c("AppTextBox", {
+              _c("AppDropdown", {
                 attrs: {
-                  label: "Description ",
-                  placeholder: "Enter Description ..."
+                  label: "Cash Description",
+                  options: _vm.cashAdvanceDescriptions,
+                  placeholder: "Select Cash Advance Description"
                 },
                 model: {
                   value: _vm.description,
@@ -77905,7 +78208,7 @@ var render = function() {
               }
             ],
             attrs: {
-              title: "Edit Cash Advance",
+              title: "Edit Cash Deduction",
               name: "Update",
               event: "save",
               cashDeductionEdit: this.cashDeductionEdit
@@ -78016,6 +78319,30 @@ var render = function() {
                     _vm.value = $$v
                   },
                   expression: "value"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("AppDropdown", {
+                attrs: {
+                  disabled: _vm.disabledTimePicker,
+                  label: "Cash Advance",
+                  options: _vm.cashAdvanceList,
+                  placeholder: "Select Cash Advance"
+                },
+                on: { input: _vm.onSelect },
+                model: {
+                  value: _vm.cash_advance_id,
+                  callback: function($$v) {
+                    _vm.cash_advance_id = $$v
+                  },
+                  expression: "cash_advance_id"
                 }
               })
             ],
@@ -78145,6 +78472,10 @@ var render = function() {
         { staticClass: "card-body" },
         [
           _c("h4", [_vm._v(_vm._s(_vm.fullName))]),
+          _vm._v(" "),
+          _c("label", [
+            _vm._v("Total Cash Advance: P" + _vm._s(_vm.new_cashAdvance))
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -79011,8 +79342,8 @@ var render = function() {
             [
               _c("AppTextBox", {
                 attrs: {
-                  label: "Middle Name",
-                  placeholder: "Employee Last Name.."
+                  label: "M.I",
+                  placeholder: "Employee Middle Initial.."
                 },
                 model: {
                   value: _vm.middlename,
@@ -79033,7 +79364,7 @@ var render = function() {
               _c("AppTextBox", {
                 attrs: {
                   label: "Last Name",
-                  placeholder: "Employee Middle Name.."
+                  placeholder: "Employee Last Name.."
                 },
                 model: {
                   value: _vm.lastname,
@@ -79166,8 +79497,9 @@ var render = function() {
             [
               _c("AppTextBox", {
                 attrs: {
-                  label: "Middle Name",
-                  placeholder: "Employee Last Name.."
+                  label: "M.I",
+                  placeholder: "Employee Middle Initial..",
+                  maxlength: "1"
                 },
                 model: {
                   value: _vm.middlename,
@@ -79188,7 +79520,7 @@ var render = function() {
               _c("AppTextBox", {
                 attrs: {
                   label: "Last Name",
-                  placeholder: "Employee Middle Name.."
+                  placeholder: "Employee Last Name.."
                 },
                 model: {
                   value: _vm.lastname,
@@ -79387,7 +79719,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("label", [_vm._v("Date Logs")]),
+          _c("label", [_vm._v("Time In Date Logs")]),
           _vm._v(" "),
           _c(
             "div",
@@ -79402,60 +79734,70 @@ var render = function() {
                   },
                   expression: "formData.log_date"
                 }
+              }),
+              _vm._v(" "),
+              _c("vue-timepicker", {
+                attrs: {
+                  disabled: _vm.disabledTimePicker,
+                  format: _vm.format,
+                  placeholder: "Start Time",
+                  "input-width": "240px",
+                  "input-class": "my-awesome-picker",
+                  "close-on-complete": "",
+                  "auto-scroll": "",
+                  "hide-clear-button": ""
+                },
+                model: {
+                  value: _vm.startTime,
+                  callback: function($$v) {
+                    _vm.startTime = $$v
+                  },
+                  expression: "startTime"
+                }
               })
             ],
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "" } }, [_vm._v("Time Logs")]),
-            _vm._v(" "),
-            _c(
-              "div",
-              [
-                _c("vue-timepicker", {
-                  attrs: {
-                    disabled: _vm.disabledTimePicker,
-                    format: _vm.format,
-                    placeholder: "Start Time",
-                    "input-width": "250px",
-                    "input-class": "my-awesome-picker",
-                    "close-on-complete": "",
-                    "auto-scroll": "",
-                    "hide-clear-button": ""
+          _c("label", [_vm._v("Time Out Date Logs")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("datepicker", {
+                attrs: { circle: true, lang: "en" },
+                model: {
+                  value: _vm.formData.log_date2,
+                  callback: function($$v) {
+                    _vm.$set(_vm.formData, "log_date2", $$v)
                   },
-                  model: {
-                    value: _vm.startTime,
-                    callback: function($$v) {
-                      _vm.startTime = $$v
-                    },
-                    expression: "startTime"
-                  }
-                }),
-                _vm._v("\r\n                to\r\n                "),
-                _c("vue-timepicker", {
-                  attrs: {
-                    disabled: _vm.disabledTimePicker,
-                    format: _vm.format,
-                    placeholder: "End Time",
-                    "input-width": "250px",
-                    "input-class": "my-awesome-picker",
-                    "close-on-complete": "",
-                    "auto-scroll": "",
-                    "hide-clear-button": ""
+                  expression: "formData.log_date2"
+                }
+              }),
+              _vm._v(" "),
+              _c("vue-timepicker", {
+                attrs: {
+                  disabled: _vm.disabledTimePicker,
+                  format: _vm.format,
+                  placeholder: "End Time",
+                  "input-width": "240px",
+                  "input-class": "my-awesome-picker",
+                  "close-on-complete": "",
+                  "auto-scroll": "",
+                  "hide-clear-button": ""
+                },
+                model: {
+                  value: _vm.endTime,
+                  callback: function($$v) {
+                    _vm.endTime = $$v
                   },
-                  model: {
-                    value: _vm.endTime,
-                    callback: function($$v) {
-                      _vm.endTime = $$v
-                    },
-                    expression: "endTime"
-                  }
-                })
-              ],
-              1
-            )
-          ]),
+                  expression: "endTime"
+                }
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -79588,7 +79930,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("label", [_vm._v("Date Logs")]),
+          _c("label", [_vm._v("Time In Date Logs")]),
           _vm._v(" "),
           _c(
             "div",
@@ -79603,58 +79945,70 @@ var render = function() {
                   },
                   expression: "formData.log_date"
                 }
+              }),
+              _vm._v(" "),
+              _c("vue-timepicker", {
+                attrs: {
+                  disabled: _vm.disabledTimePicker,
+                  format: _vm.format,
+                  placeholder: "Start Time",
+                  "input-width": "240px",
+                  "input-class": "my-awesome-picker",
+                  "close-on-complete": "",
+                  "auto-scroll": "",
+                  "hide-clear-button": ""
+                },
+                model: {
+                  value: _vm.formData.time_in,
+                  callback: function($$v) {
+                    _vm.$set(_vm.formData, "time_in", $$v)
+                  },
+                  expression: "formData.time_in"
+                }
               })
             ],
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "" } }, [_vm._v("Time Logs")]),
-            _vm._v(" "),
-            _c(
-              "div",
-              [
-                _c("vue-timepicker", {
-                  attrs: {
-                    format: _vm.format,
-                    placeholder: "Start Time",
-                    "input-width": "250px",
-                    "input-class": "my-awesome-picker",
-                    "close-on-complete": "",
-                    "auto-scroll": "",
-                    "hide-clear-button": ""
+          _c("label", [_vm._v("Time Out Date Logs")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("datepicker", {
+                attrs: { circle: true, lang: "en" },
+                model: {
+                  value: _vm.formData.log_date2,
+                  callback: function($$v) {
+                    _vm.$set(_vm.formData, "log_date2", $$v)
                   },
-                  model: {
-                    value: _vm.formData.time_in,
-                    callback: function($$v) {
-                      _vm.$set(_vm.formData, "time_in", $$v)
-                    },
-                    expression: "formData.time_in"
-                  }
-                }),
-                _vm._v("\r\n                to\r\n                "),
-                _c("vue-timepicker", {
-                  attrs: {
-                    format: _vm.format,
-                    placeholder: "End Time",
-                    "input-width": "250px",
-                    "input-class": "my-awesome-picker",
-                    "close-on-complete": "",
-                    "auto-scroll": "",
-                    "hide-clear-button": ""
+                  expression: "formData.log_date2"
+                }
+              }),
+              _vm._v(" "),
+              _c("vue-timepicker", {
+                attrs: {
+                  disabled: _vm.disabledTimePicker,
+                  format: _vm.format,
+                  placeholder: "End Time",
+                  "input-width": "240px",
+                  "input-class": "my-awesome-picker",
+                  "close-on-complete": "",
+                  "auto-scroll": "",
+                  "hide-clear-button": ""
+                },
+                model: {
+                  value: _vm.formData.time_out,
+                  callback: function($$v) {
+                    _vm.$set(_vm.formData, "time_out", $$v)
                   },
-                  model: {
-                    value: _vm.formData.time_out,
-                    callback: function($$v) {
-                      _vm.$set(_vm.formData, "time_out", $$v)
-                    },
-                    expression: "formData.time_out"
-                  }
-                })
-              ],
-              1
-            )
-          ]),
+                  expression: "formData.time_out"
+                }
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -79849,7 +80203,8 @@ var render = function() {
               rows: _vm.employeeList,
               sortable: false,
               clickable: false,
-              printable: false
+              printable: false,
+              serverSearch: true
             },
             on: { "row-click": _vm.onEdit },
             scopedSlots: _vm._u([
@@ -80576,17 +80931,25 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("option", { attrs: { value: "Payroll Report" } }, [
-                  _vm._v("Payroll Report")
+                  _vm._v("PAYROLL REPORT")
                 ]),
                 _vm._v(" "),
                 _c(
                   "option",
                   { attrs: { value: "Department Total Pay Report" } },
-                  [_vm._v("Total Payment By Department")]
+                  [_vm._v("TOTAL PAYMENT BY DEPARTMENT")]
                 ),
                 _vm._v(" "),
                 _c("option", { attrs: { value: "Department Expenses" } }, [
-                  _vm._v("Department Expenses")
+                  _vm._v("DEPARTMENT EXPENSES REPORT")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Daily Processing" } }, [
+                  _vm._v("DAILY PROCESSING LOG REPORT")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Weekly Payroll" } }, [
+                  _vm._v("WEEKLY PAYROLL BY DEPARTMENT")
                 ])
               ]
             )
@@ -80875,6 +81238,14 @@ var render = function() {
           _vm._v(" "),
           _c("BreakHourComponent", {
             attrs: { title: "Add new Break Time", name: "Save", event: "save" }
+          }),
+          _vm._v(" "),
+          _c("CashAdvanceDescriptionComponent", {
+            attrs: {
+              title: "Add new Cash Description",
+              name: "Save",
+              event: "save"
+            }
           })
         ],
         1
@@ -80947,6 +81318,90 @@ var render = function() {
                     _vm.hour = $$v
                   },
                   expression: "hour"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.isOnsave
+            ? _c("AppButton", {
+                attrs: { "btn-name": _vm.name, "btn-method": "save" },
+                on: { save: _vm.save }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-secondary float-right mr-2",
+              on: { click: _vm.onCancel }
+            },
+            [_vm._v("Cancel")]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=template&id=a4088664&":
+/*!***********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Models/Settings/CashAdvanceDescriptionComponent.vue?vue&type=template&id=a4088664& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "card shadow mb-4" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "card-header py-3 d-flex flex-row align-items-center justify-content-between"
+        },
+        [
+          _c("h6", { staticClass: "m-0 font-weight-bold text-primary" }, [
+            _vm._v(_vm._s(_vm.title))
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        [
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("AppTextBox", {
+                attrs: {
+                  label: "Cash Advance Description",
+                  placeholder: "Enter Cash Advance Description ..."
+                },
+                model: {
+                  value: _vm.formData.name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.formData, "name", $$v)
+                  },
+                  expression: "formData.name"
                 }
               })
             ],

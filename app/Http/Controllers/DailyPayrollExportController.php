@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Exports\DailyPayrollExport;
 use App\Exports\DepartmentExpenses;
+use App\Exports\PayrollLogExport;
 use App\Exports\DepartmentTotalPay;
+use App\Exports\WeeklyPayrollDepartment;
 use App\Models\Employees;
 use App\Models\Report;
 use Carbon\Carbon;
@@ -80,6 +82,46 @@ class DailyPayrollExportController extends Controller
             return response()->json([
                 'data' => $fullPath,
                 'message' => 'Department Expenses are successfully exported.'
+            ], 200);
+        }
+    }
+
+    public function generateProcessingLogBook(Request $request)
+    {
+        $filename = Carbon::now()->format('Ymdhms').'-DailyProcessingLogBook.xlsx';
+        Excel::store(new PayrollLogExport($request), $filename);
+        $fullPath = Storage::disk('public')->path($filename);
+        $reports = new Report;
+        $reports->report_type = $request->report_type;
+        $reports->report_excel = $filename;
+        $reports->report_pdf = 'NO PDF';
+        $reports->start_date = dateFormat($request->start_date);
+        $reports->end_date = dateFormat($request->end_date);
+
+        if($reports->save()) {
+            return response()->json([
+                'data' => $fullPath,
+                'message' => 'Daily Processing are successfully exported.'
+            ], 200);
+        }
+    }
+
+    public function generateWeeklyPayrollDepartment(Request $request)
+    {
+        $filename = Carbon::now()->format('Ymdhms').'-WeeklyPayrollByDepartment.xlsx';
+        Excel::store(new WeeklyPayrollDepartment($request), $filename);
+        $fullPath = Storage::disk('public')->path($filename);
+        $reports = new Report;
+        $reports->report_type = $request->report_type;
+        $reports->report_excel = $filename;
+        $reports->report_pdf = 'NO PDF';
+        $reports->start_date = dateFormat($request->start_date);
+        $reports->end_date = dateFormat($request->end_date);
+
+        if($reports->save()) {
+            return response()->json([
+                'data' => $fullPath,
+                'message' => 'Weekly Payroll are successfully exported.'
             ], 200);
         }
     }

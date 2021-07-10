@@ -34,6 +34,11 @@
             name="Save" 
             event="save"
             ></BreakHourComponent>
+            <CashAdvanceDescriptionComponent
+            title="Add new Cash Description" 
+            name="Save" 
+            event="save"
+            > </CashAdvanceDescriptionComponent>
         </div>
     </div>
 </div>
@@ -45,6 +50,7 @@ import LocationComponent from './LocationComponent.vue';
 import BreakHourComponent from './BreakHourComponent.vue';
 import EmployeeTypeComponent from './EmployeeTypeComponent.vue';
 import UsersComponent from './UsersComponent.vue';
+import CashAdvanceDescriptionComponent from './CashAdvanceDescriptionComponent.vue';
 export default {
     data() {
         return {
@@ -57,7 +63,8 @@ export default {
         LocationComponent,
         EmployeeTypeComponent,
         BreakHourComponent,
-        UsersComponent
+        UsersComponent,
+        CashAdvanceDescriptionComponent
     },
     methods: {
         async getLocations() {

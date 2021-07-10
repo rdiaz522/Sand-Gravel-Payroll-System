@@ -15,39 +15,42 @@
             <div class="form-group">
                  <AppTextBox label="Daily Rate" v-model="formData.daily_rate" placeholder="Enter Daily Rate ..." type="number"> </AppTextBox>
             </div>
-            <label>Date Logs</label>
+            <label>Time In Date Logs</label>
             <div class="form-group">
                 <datepicker 
                 v-model="formData.log_date"
                 :circle="true"
                 lang="en"/>
-            </div>
 
-            <div class="form-group">
-                <label for="">Time Logs</label>
-                <div>   
-                    <vue-timepicker
+                <vue-timepicker
+                    :disabled="disabledTimePicker"
                     :format="format"
                     v-model="formData.time_in"
                     placeholder="Start Time"
-                    input-width="250px"
+                    input-width="240px"
                     input-class="my-awesome-picker"
                     close-on-complete
                     auto-scroll
                     hide-clear-button
                 ></vue-timepicker>
-                to
-                <vue-timepicker
+            </div>
+            <label>Time Out Date Logs</label>     
+             <div class="form-group">
+                <datepicker 
+                v-model="formData.log_date2"
+                :circle="true"
+                lang="en"/>
+                  <vue-timepicker
+                :disabled="disabledTimePicker"
                 :format="format"
                 v-model="formData.time_out"
                 placeholder="End Time"
-                input-width="250px"
+                input-width="240px"
                 input-class="my-awesome-picker"
                 close-on-complete
                 auto-scroll
                 hide-clear-button
                 ></vue-timepicker>
-                </div>
             </div>
 
             <div class="form-group">
@@ -82,6 +85,7 @@ export default {
                 break_time:'',
                 total_hours:'',
                 log_date: '',
+                log_date2: '',
                 daily_rate: ''
             },
             breakTimeValue:'',
@@ -110,7 +114,6 @@ export default {
     },
     watch: {
         timeLogsEdit: function (newVal) {
-            console.log(newVal);
             this.formData.id = newVal.id;
             this.formData.position = newVal.position_id;
             this.formData.daily_rate = newVal.daily_rate;
@@ -119,7 +122,14 @@ export default {
             this.breakTimeValue = this.parse(newVal.break_time);
             this.formData.total_hours = newVal.total_hours;
             this.formData.log_date = newVal.log_date;
+            this.formData.log_date2= newVal.log_date2;
             this.employeeFullname = newVal.employee_fullname
+
+            if(newVal.departmentName === 'Processing') {
+                this.disabledTimePicker = false;
+            } else {
+                 this.disabledTimePicker = true;
+            }
         }
     },
     components: {
@@ -193,6 +203,7 @@ export default {
             this.formData.break_time = '';
             this.formData.total_hours = '';
             this.formData.log_date = '';
+            this.formData.log_date2 = '';
             this.formData.daily_rate = '';
             this.breakTimeValue = '';
             this.$parent.showDTREdit = false;

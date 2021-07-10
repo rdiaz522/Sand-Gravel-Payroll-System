@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PositionResource extends JsonResource
+class CashAdvanceResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,11 +14,9 @@ class PositionResource extends JsonResource
      */
     public function toArray($request)
     {
-        $getDepartmentName = getDepartmentName($this->location_id);
         return [
             'id' => $this->id,
-            'name' => $this->name . ' - ' .$getDepartmentName,
-            'location_id' => $this->location_id,
+            'name' => $this->name
         ];
     }
 }

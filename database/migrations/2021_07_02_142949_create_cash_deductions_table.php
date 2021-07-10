@@ -18,7 +18,10 @@ class CreateCashDeductionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('employee_id')->unsigned();
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->unsignedBigInteger('cash_advance_id')->unsigned();
+            $table->foreign('cash_advance_id')->references('id')->on('cash_advance_deductions')->onDelete('cascade');
             $table->float('cash_deduction');
+            $table->float('new_cash_advance_balance');
             $table->string('cash_deduction_date');
             $table->timestamps();
         });

@@ -20,13 +20,15 @@ class EmployeeCollection extends JsonResource
         if($employeeType instanceof EmployeeType && $employeeType->exists) {
             $employeeTypeName = $employeeType->name;
         }
+        $fullname = getEmployeeFullname($this->id);
         return [
             'id' => $this->id,
             'firstname' => $this->firstname,
             'middlename' => $this->middlename,
             'lastname' => $this->lastname,
             'employee_type_id' => $this->employee_type_id,
-            'employeeTypeName' => $employeeTypeName
+            'employeeTypeName' => $employeeTypeName,
+            'employee_fullname' => $fullname
         ];
     }
 }

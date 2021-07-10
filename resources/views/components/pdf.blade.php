@@ -32,16 +32,14 @@
                             $SSS = 0;
                             $pagibig = 0;
                             $philhealth = 0;
-                            $cashAdvanceModel = $employeeModel->cashAdvance()
-                            ->whereBetween('cash_advance_date', [$startDate,$endDate]);
-                            $totalCashDeductions = $employeeModel->cashDeduction()
-                            ->whereBetween('cash_deduction_date', [$startDate,$endDate])->sum('cash_deduction');
+                            $cashAdvanceModel = $employeeModel->cashAdvance();
 
+                            $cashDeductions = collect($employeeModel->cashDeduction()
+                            ->whereBetween('cash_deduction_date', [$startDate,$endDate])->get());
+                            $overAllTotalCashDedcution = $cashDeductions->sum('cash_deduction');
                             $cashAdvanceCollection = $cashAdvanceModel->get();
                             $totalCashAdvances = (float)$cashAdvanceModel->sum('cash_advance');
-
-                            $overTotalCashAdvance = (float)$totalCashAdvances - (float)$totalCashDeductions;
-                            
+ 
                             $departments = getDepartments();
                             
                             $netPay = $employeeModel->timeLogs()->whereBetween('log_date', [$startDate,$endDate])->sum('total_pay');
@@ -55,7 +53,7 @@
                                 $philhealth = (float)$contributions->philhealth;
                             }
                             $totalContribution = (float)$SSS + (float)$pagibig + (float)$philhealth;
-                            $gross = (float)$netPay - (float)$totalCashDeductions - (float)$totalContribution;
+                            $gross = (float)$netPay - (float)$overAllTotalCashDedcution - (float)$totalContribution;
                         @endphp
                         <th class="slip-name">PAYROLL SLIP</th>
                         <th class="slip-name2">PAYSLIP DATE: {{$startDate}} to {{$endDate}}</th>
@@ -67,11 +65,11 @@
                         <th class="regular-name">Employee Type: Regular</th>
                     </tr>
                     <tr>
-                        <th class="slip-name2">EARNINGS</th>
+                        <th class="regular-name">EARNINGS</th>
                     </tr>
                     <tr>
                         <th class="regular-name">DEPARTMENT</th>
-                        <th class="regular-name">NET.PAY</th>
+                        <th class="regular-name">GROSS</th>
                     </tr>
                     @foreach ($departments as $item)
                         @php
@@ -87,31 +85,53 @@
                         @endif
                     @endforeach
                     <tr>
-                        <th class="slip-name2">CASH ADVANCE</th>
-                        <th class="regular-name">{{'P' . number_format($totalCashAdvances, 2, '.', '')}}</th>
+                        <th class="regular-name">CASH ADVANCE BALANCE</th>
+                        <th class="regular-name">AMOUNT</th>
                     </tr>
+
+                    @foreach ($cashAdvanceCollection as $item)
+                        @php
+                            $getName = getCashAdvanceDescription($item->cash_advance_description);
+                            $amount = (float)$item->cash_advance;
+                        @endphp
+                        <tr>
+                            <th  class="regular-name">{{$getName}}</th>
+                            <th  class="regular-name">P{{number_format($amount, 2, '.', '')}}</th>
+                        </tr>
+                    @endforeach
                     <tr>
-                        <th  class="regular-name">Total Cash Advance Balance</th>
-                        <th  class="regular-name">P{{number_format($overTotalCashAdvance, 2, '.', '')}}</th>
+                        <th  class="regular-name">Total</th>
+                        <th  class="regular-name">P{{number_format($totalCashAdvances, 2, '.', '')}}</th>
                     </tr>
-                    <tr>
-                        <th class="slip-name2">CASH DEDUCTION</th>
-                        <th class="regular-name">P{{number_format($totalCashDeductions, 2, '.', '')}}</th>
+
+                    <tr style="border:1px solid black;">
+                        <th class="regular-name">CASH DEDUCTION</th>
+                        <th class="regular-name">AMOUNT</th>
                     </tr>
+                    @foreach ($cashAdvanceCollection as $item)
+                        @php
+                            $getName = getCashAdvanceDescription($item->cash_advance_description);
+                            $deduction = $cashDeductions->where('cash_advance_id', $item->id)->sum('cash_deduction');
+                        @endphp
+                         <tr>
+                            <th class="regular-name">{{$getName}}</th>
+                            <th class="regular-name">P{{number_format($deduction, 2, '.', '')}}</th>
+                        </tr>
+                    @endforeach
                     <tr>
-                        <th class="slip-name2">SSS</th>
+                        <th class="regular-name">SSS</th>
                         <th class="regular-name">P{{number_format($SSS, 2, '.', '')}}</th>
                     </tr>
                     <tr>
-                        <th class="slip-name2">PAGIBIG</th>
+                        <th class="regular-name">PAGIBIG</th>
                         <th class="regular-name">P{{number_format($pagibig, 2, '.', '')}}</th>
                     </tr>
                     <tr class="separated">
-                        <th class="slip-name2">PHILHEALTH</th>
+                        <th class="regular-name">PHILHEALTH</th>
                         <th class="regular-name">P{{number_format($philhealth, 2, '.', '')}}</th>
                     </tr>
                     <tr>
-                        <th class="slip-name2">TOTAL GROSS INCOME</th>
+                        <th class="regular-name">NET. PAY</th>
                         <th class="regular-name">P{{number_format($gross, 2, '.', '')}}</th>
                     </tr>
                 </table>

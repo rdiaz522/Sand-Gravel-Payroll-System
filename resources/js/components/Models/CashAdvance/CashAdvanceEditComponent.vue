@@ -12,7 +12,7 @@
                 <AppTextBox label="Cash Advance" v-model="cash_advance" placeholder="Enter Cash Advance ..."> </AppTextBox>
             </div>
              <div class="form-group">
-                <AppTextBox label="Description " v-model="description" placeholder="Enter Description ..."> </AppTextBox>
+                <AppDropdown label="Cash Description" v-model="description" :options="cashAdvanceDescriptions" placeholder="Select Cash Advance Description"> </AppDropdown>
             </div>
 
             <label>Cash Advance Date</label>
@@ -39,14 +39,15 @@ import AppButton from '../../AppComponents/AppButton.vue';
 import VueDatepickerUi from 'vue-datepicker-ui';
 import moment from 'moment';
 export default {
-    props: ['title', 'name', 'event','cashAdvanceEdit'],
+    props: ['title', 'name', 'event','cashAdvanceEdit', 'cashAdvanceDescriptions'],
     data() {
         return {
             id:'',
             cash_advance: '',
-            description: '',
+            cash_advance_desc_id: '',
             cash_advance_date: '',
-            fullName:''
+            fullName:'',
+            description:''
         }
     },
     computed: {
@@ -67,10 +68,12 @@ export default {
     },
     watch: {
         cashAdvanceEdit: function (newVal) {
+            console.log(newVal);
             this.id = newVal.id;
             this.cash_advance = newVal.cash_advance;
-            this.description = newVal.description;
             this.cash_advance_date = newVal.cash_advance_date;
+            this.cash_advance_desc_id = newVal.cash_advance_description;
+            this.description = newVal.description;
             this.fullName = newVal.employee_fullname
         }
     },
@@ -85,7 +88,7 @@ export default {
             this.$SHOW_LOADING();
             const data = {
                 cash_advance: this.cash_advance,
-                description: this.description,
+                cash_advance_desc_id: this.cash_advance_desc_id,
                 cash_advance_date: moment(this.cash_advance_date).format('YYYY-MM-DD')
             }
             const config = {

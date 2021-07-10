@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\TimeLogsResource;
-use App\Models\BreakHour;
-use App\Models\Location;
 use App\Models\Position;
 use App\Models\Timelogs;
 use Illuminate\Http\Request;
@@ -69,6 +67,7 @@ class TimelogsController extends Controller
         $timelogs->break_time = $request->break_time;
         $timelogs->total_hours = $request->total_hours;
         $timelogs->log_date = date('Y-m-d', strtotime($request->log_date));
+        $timelogs->log_date2 = date('Y-m-d', strtotime($request->log_date2));
         $timelogs->total_pay = (float)$request->total_hours * ((float)$request->daily_rate / 8);
         if($timelogs->save()) {
             return new TimeLogsResource($timelogs);
@@ -131,6 +130,7 @@ class TimelogsController extends Controller
         $timelogs->break_time = $request->break_time;
         $timelogs->total_hours = $request->total_hours;
         $timelogs->log_date = date('Y-m-d', strtotime($request->log_date));
+        $timelogs->log_date2 = date('Y-m-d', strtotime($request->log_date2));
         $timelogs->total_pay = (float)$request->total_hours * ((float)$request->daily_rate / 8);
         if($timelogs->save()) {
             return new TimeLogsResource($timelogs);

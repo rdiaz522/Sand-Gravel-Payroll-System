@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BreakHourController;
+use App\Http\Controllers\CashAdvanceController;
 use App\Http\Controllers\CashAdvanceDeductionController;
 use App\Http\Controllers\CashDeductionController;
 use App\Http\Controllers\ContributionController;
@@ -35,6 +36,7 @@ Route::resource('/employees',EmployeesController::class)->middleware('auth');
 Route::resource('/employeeTypes',EmployeeTypeController::class)->middleware('auth');
 Route::resource('/position',PositionController::class)->middleware('auth');
 Route::resource('/location',LocationController::class)->middleware('auth');
+Route::resource('/cashadvancedescriptions',CashAdvanceController::class)->middleware('auth');
 Route::resource('/breakhours',BreakHourController::class)->middleware('auth');
 Route::resource('/timelogs',TimelogsController::class)->middleware('auth');
 Route::resource('/cashadvancededuction',CashAdvanceDeductionController::class)->middleware('auth');
@@ -72,6 +74,8 @@ Route::middleware('auth')->group(function() {
 Route::post('/dailypayrollexport', [DailyPayrollExportController::class, 'generateDailyPayroll'])->middleware('auth');
 Route::post('/departmentpay', [DailyPayrollExportController::class, 'generateDepartmentTotalPay'])->middleware('auth');
 Route::post('/departmentexpenses', [DailyPayrollExportController::class, 'generateDepartmentExpenses'])->middleware('auth');
+Route::post('/dailyprocessing', [DailyPayrollExportController::class, 'generateProcessingLogBook'])->middleware('auth');
+Route::post('/weeklypayroll', [DailyPayrollExportController::class, 'generateWeeklyPayrollDepartment'])->middleware('auth');
 Route::get('/generatepayslip/{id}', [ReportController::class, 'generatePaySlip'])->middleware('auth');
 
 Route::get('/testers' , function() {

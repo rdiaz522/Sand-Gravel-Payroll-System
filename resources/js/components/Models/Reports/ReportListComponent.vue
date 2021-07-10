@@ -48,6 +48,10 @@ import DataTable from "vue-materialize-datatable";
                         label: 'Report Type',
                         field: 'report_type',
                     },
+                     {
+                        label: 'Report Name',
+                        field: 'report_excel',
+                    },
                     {
                         label: 'Start Date',
                         field: 'start_date'

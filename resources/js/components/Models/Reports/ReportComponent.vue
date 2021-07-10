@@ -9,9 +9,11 @@
                 <label>Report Type</label>
                <select  class="form-control" v-model="formData.report_type" @change="onChange($event)">
                     <option value="" disabled selected>Select your option</option>
-                    <option value="Payroll Report">Payroll Report</option>
-                    <option value="Department Total Pay Report">Total Payment By Department</option>
-                    <option value="Department Expenses">Department Expenses</option>
+                    <option value="Payroll Report">PAYROLL REPORT</option>
+                    <option value="Department Total Pay Report">TOTAL PAYMENT BY DEPARTMENT</option>
+                    <option value="Department Expenses">DEPARTMENT EXPENSES REPORT</option>
+                    <option value="Daily Processing">DAILY PROCESSING LOG REPORT</option>
+                    <option value="Weekly Payroll">WEEKLY PAYROLL BY DEPARTMENT</option>
                 </select>
             </div>
 
@@ -80,7 +82,7 @@ export default {
             this.clearFields();
         },
         onChange(event) {
-            if(this.formData.report_type === 'Department Expenses') {
+            if(this.formData.report_type === 'Department Expenses' || this.formData.report_type === 'Weekly Payroll') {
                    this.departmentExpenses = true;
             } else {
                   this.departmentExpenses = false;
@@ -144,6 +146,39 @@ export default {
                                 });
                         }
                     }
+
+                    if(this.formData.report_type === 'Daily Processing') {
+                        axios.post(this.$BASE_URL + '/dailyprocessing', this.formData).then((response) => {
+                            this.clearFields();
+                            this.$parent.getReports();
+                            this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
+                            this.$HIDE_LOADING();
+                        })
+                        .catch((err) => {
+                            this.$HIDE_LOADING();
+                            this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                        });
+                    }
+
+                    if(this.formData.report_type === 'Weekly Payroll') {
+                         if(this.formData.department_id === '') {
+                            this.$HIDE_LOADING();
+                            this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Please Select Department..', 'error');
+                        } else {
+                            axios.post(this.$BASE_URL + '/weeklypayroll', this.formData).then((response) => {
+                            this.clearFields();
+                            this.$parent.getReports();
+                            this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
+                            this.$HIDE_LOADING();
+                            })
+                            .catch((err) => {
+                                this.$HIDE_LOADING();
+                                this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                            });
+                        }
+                        
+                    }
+
                 } else {
                     this.$HIDE_LOADING();
                     this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Please Select Report Type', 'error');

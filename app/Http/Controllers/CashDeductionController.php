@@ -6,6 +6,7 @@ use App\Http\Resources\CashDeductionResource;
 use App\Models\CashAdvanceDeduction;
 use App\Models\CashDeduction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CashDeductionController extends Controller
 {
@@ -44,15 +45,45 @@ class CashDeductionController extends Controller
             'employee_id' => 'required',
             'cash_deduction' => 'required|numeric',
             'cash_deduction_date' => 'required',
+            'employee_cash_advance_id' => 'required'
         ]);
 
         $cashDeduction = new CashDeduction;
         $cashDeduction->employee_id = $request->employee_id;
+        $cashDeduction->cash_advance_id = $request->employee_cash_advance_id;
         $cashDeduction->cash_deduction = $request->cash_deduction;
+        $cashDeduction->new_cash_advance_balance = $request->new_cash_advance_balance;
         $cashDeduction->cash_deduction_date = date('Y-m-d', strtotime($request->cash_deduction_date));
         if($cashDeduction->save()) {
-            return new CashDeductionResource($cashDeduction);
+            $deduction = $this->checkCashAdvance($request->employee_cash_advance_id, $request->employee_id);
+            if($deduction) {
+                return new CashDeductionResource($cashDeduction);
+            }
         }
+    }
+
+    protected function checkCashAdvance($id, $employeeId)
+    {
+        $cashDeduction = CashDeduction::where('employee_id', $employeeId)
+        ->where('cash_advance_id', $id)
+        ->select(['cash_advance_id','new_cash_advance_balance'])
+        ->orderBy('id','desc')
+        ->first();
+        if($cashDeduction instanceof CashDeduction && $cashDeduction->exists) {
+            $newCashAmount = $cashDeduction->new_cash_advance_balance;
+            $cashAdvance = DB::table('cash_advance_deductions')
+            ->where('employee_id', $employeeId)
+            ->where('id', $cashDeduction->cash_advance_id)
+            ->update([
+                'cash_advance' => (float)$newCashAmount
+            ]);
+            
+            if($cashAdvance) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -63,9 +94,9 @@ class CashDeductionController extends Controller
      */
     public function show($id)
     {
-        $cashDeduction = CashDeduction::where('employee_id', $id)->sum('cash_deduction');
-        $cashAdvance = CashAdvanceDeduction::where('employee_id', $id)->sum('cash_advance');
-        return (float)$cashAdvance - (float)$cashDeduction;
+        $cashAdvance = CashAdvanceDeduction::where('id', $id)->sum('cash_advance');
+
+        return (float)$cashAdvance;
     }
 
     /**
@@ -96,6 +127,7 @@ class CashDeductionController extends Controller
         $cashDeduction = CashDeduction::findOrFail($id);
         $cashDeduction->cash_deduction = $request->cash_deduction;
         $cashDeduction->cash_deduction_date = $request->cash_deduction_date;
+        
         if($cashDeduction->save()) {
             return new CashDeductionResource($cashDeduction);
         }

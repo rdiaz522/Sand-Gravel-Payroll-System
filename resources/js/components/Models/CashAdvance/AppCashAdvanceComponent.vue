@@ -6,7 +6,8 @@
                     title="Cash Advance" 
                     name="Save" 
                     event="save"
-                    :employees="this.employees">
+                    :employees="this.employees"
+                    :cashAdvanceDescriptions="this.cashAdvanceDescription">
                     </CashAdvanceComponent>
            </div>
            
@@ -16,6 +17,7 @@
                     name="Update" 
                     event="save"
                     :cashAdvanceEdit="this.cashAdvanceEdit"
+                    :cashAdvanceDescriptions="this.cashAdvanceDescription"
                     v-show="this.showCashAdvanceEdit"
                     >
                     </CashAdvanceEditComponent>
@@ -43,6 +45,7 @@ export default {
             employees:[],
             cashAdvanceList:[],
             cashAdvanceEdit:[],
+            cashAdvanceDescription:[],
             showCashAdvanceEdit: false
         }
     },
@@ -77,6 +80,18 @@ export default {
                 });
         },
 
+        async getCashAdvanceDescription() {
+            axios.get(this.$BASE_URL + this.$CASHADVANCEDESCRIPTION).then((response) => {
+                    this.showCashAdvanceEdit = false;
+                    this.cashAdvanceDescription = response.data.data;
+                    this.$HIDE_LOADING();
+                })
+                .catch((err) => {
+                    this.$HIDE_LOADING();
+                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                });
+        },
+
         editCashAdvance(props) {
             this.showCashAdvanceEdit = true;
             this.cashAdvanceEdit = props;
@@ -86,6 +101,7 @@ export default {
     async created() {
         await this.getEmployees();
         await this.getCashAdvance();
+        await this.getCashAdvanceDescription();
     },
     
     mounted() {

@@ -8,10 +8,11 @@
         <!-- Card Body -->
         <div class="card-body">
             <h4>{{fullName}}</h4>
+            <label>Total Cash Advance: P{{new_cashAdvance}}</label>
             <div class="form-group">
                 <AppTextBox label="Cash Deduction" v-model="cash_deduction" placeholder="Enter Cash Deduction ..."> </AppTextBox>
             </div>
-
+            
             <label>Cash Deduction Date</label>
 
             <div class="form-group">
@@ -42,6 +43,8 @@ export default {
             id:'',
             cash_deduction: '',
             cash_deduction_date: '',
+            cash_advance:0,
+            new_cashAdvance: '',
             fullName:''
         }
     },
@@ -66,6 +69,8 @@ export default {
             this.id = newVal.id;
             this.cash_deduction = newVal.cash_deduction;
             this.cash_deduction_date = newVal.cash_deduction_date;
+            this.cash_advance = newVal.cash_amount;
+            this.new_cashAdvance = newVal.new_cash_advance_balance;
             this.fullName = newVal.employee_fullname
         }
     },
@@ -78,27 +83,32 @@ export default {
     methods: {
         save() {
             this.$SHOW_LOADING();
-            const data = {
+            if(this.cash_deduction < this.new_cashAdvance) {
+                const data = {
                 cash_deduction: this.cash_deduction,
+                new_cash_advance_balance: parseFloat(this.new_cashAdvance) - parseFloat(this.cash_deduction),
                 cash_deduction_date: moment(this.cash_deduction_date).format('YYYY-MM-DD'),
-            }
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json'
                 }
-            };
-            axios.put(this.$BASE_URL + this.$CASHDEDUCTION + `/${this.id}`, data, config)
-                .then((response) => {
-                    this.$parent.getCashDeduction();
-                    this.clearFields();
-                    this.$HIDE_LOADING();
-                    this.$SHOW_MESSAGE('Successfully', 'Cash Updated Updated!', 'success');
-                })
-                .catch((error) => {
-                    this.$HIDE_LOADING();
-                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                const config = {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+                axios.put(this.$BASE_URL + this.$CASHDEDUCTION + `/${this.id}`, data, config)
+                    .then((response) => {
+                        this.$parent.getCashDeduction();
+                        this.clearFields();
+                        this.$HIDE_LOADING();
+                        this.$SHOW_MESSAGE('Successfully', 'Cash Updated Updated!', 'success');
+                    })
+                    .catch((error) => {
+                        this.$HIDE_LOADING();
+                        this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
                 });
-
+            } else {
+                this.$HIDE_LOADING();
+                this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Cash Deduction must be less than Cash Balance', 'error');
+            }
         },
 
         edit() {
@@ -113,6 +123,7 @@ export default {
             this.cash_deduction = '';
             this.cash_deduction_date = '';
             this.fullName = '';
+            this.$parent.showCashDeductionEdit = false;
         }
     }
 }

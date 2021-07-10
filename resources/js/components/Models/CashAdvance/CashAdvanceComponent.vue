@@ -28,12 +28,13 @@
             </div>
 
             <div class="form-group">
-                <AppTextBox label="Cash Advance" v-model="formData.cash_advance" placeholder="Enter Cash Advance ..."> </AppTextBox>
-            </div>
-             <div class="form-group">
-                <AppTextBox label="Description " v-model="formData.description" placeholder="Enter Description ..."> </AppTextBox>
+                <AppDropdown label="Select Cash Advance" v-model="formData.cash_advance_desc_id" :options="cashAdvanceDescriptions" placeholder="Select Cash Advance Description"> </AppDropdown>
             </div>
 
+            <div class="form-group">
+                <AppTextBox label="Cash Advance Amount" v-model="formData.cash_advance" placeholder="Enter Cash Advance ..."> </AppTextBox>
+            </div>
+             
             <label>Cash Advance Date</label>
             <div class="form-group">
                 <datepicker 
@@ -51,17 +52,18 @@
 <script>
 import AppTextBox from '../../AppComponents/AppTextBox.vue';
 import AppButton from '../../AppComponents/AppButton.vue';
+import AppDropdown from '../../AppComponents/AppDropdown.vue';
 import Multiselect from 'vue-multiselect';
 import VueDatepickerUi from 'vue-datepicker-ui';
 import moment from 'moment';
 export default {
-    props:['title','name','event','employees'],
+    props:['title','name','event','employees','cashAdvanceDescriptions'],
     data() {
         return {
             formData: {
                 employee_id:'',
                 cash_advance:'',
-                description:'',
+                cash_advance_desc_id:'',
                 cash_advance_date:  moment().format('YYYY-MM-DD')
             },
             value:null
@@ -86,6 +88,7 @@ export default {
     components: {
         AppTextBox,
         AppButton,
+        AppDropdown,
         Multiselect,
         datepicker: VueDatepickerUi
     },
@@ -105,7 +108,7 @@ export default {
         clearFields() {
             this.formData.employee_id = '';
             this.formData.cash_advance = '';
-            this.formData.description = '';
+            this.formData.cash_advance_desc_id = '';
             this.formData.cash_advance_date =  moment().format('YYYY-MM-DD');
             this.value = null;
         },

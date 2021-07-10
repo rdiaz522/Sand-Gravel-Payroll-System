@@ -4,12 +4,20 @@
 }
 .slip-name2 {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size:12px;
+    font-size:13px;
 }
 .regular-name {
+    font-size:11px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
-tr > th  {
-    text-align:left;
-    font-size:12px;
+
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 2px;
+    border-bottom: 1px solid #8ebf42;
+    text-align: center;
 }

@@ -26,6 +26,7 @@
  Vue.prototype.$REPORTS = '/reports';
  Vue.prototype.$EXPENSES = '/expenses';
  Vue.prototype.$USERS = '/users';
+ Vue.prototype.$CASHADVANCEDESCRIPTION = '/cashadvancedescriptions';
  Vue.prototype.$SHOW_LOADING = () => {  
      $('#cover-spin').show();
  }

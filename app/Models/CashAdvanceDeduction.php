@@ -17,9 +17,10 @@ class CashAdvanceDeduction extends Model
      * @var array
      */
     protected $fillable = [
+        'id',
         'employee_id',
         'cash_advance',
-        'description',
+        'cash_advance_description',
         'cash_advance_date',
     ];
 

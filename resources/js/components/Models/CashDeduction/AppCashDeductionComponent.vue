@@ -12,7 +12,7 @@
            
             <div class="col-xl-6 col-lg-6">
                  <CashDeductionEditComponent
-                    title="Edit Cash Advance" 
+                    title="Edit Cash Deduction" 
                     name="Update" 
                     event="save"
                     :cashDeductionEdit="this.cashDeductionEdit"

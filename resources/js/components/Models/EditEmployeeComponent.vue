@@ -11,10 +11,10 @@
                 <AppTextBox label="First Name" v-model="firstname" placeholder="Employee First Name.."> </AppTextBox>
             </div>
             <div class="form-group">
-                <AppTextBox label="Middle Name" v-model="middlename" placeholder="Employee Last Name.."> </AppTextBox>
+                <AppTextBox label="M.I" v-model="middlename" placeholder="Employee Middle Initial.."> </AppTextBox>
             </div>
             <div class="form-group">
-                <AppTextBox label="Last Name" v-model="lastname" placeholder="Employee Middle Name.."> </AppTextBox>
+                <AppTextBox label="Last Name" v-model="lastname" placeholder="Employee Last Name.."> </AppTextBox>
             </div>
             <div class="form-group">
                 <AppDropdown label="Employee Type" v-model="employee_type_id" :options="employeeTypeList" placeholder="Select Employee Type"> </AppDropdown>

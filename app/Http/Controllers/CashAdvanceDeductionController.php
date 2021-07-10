@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\CashAdvanceDeductionResource;
 use App\Models\CashAdvanceDeduction;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CashAdvanceDeductionController extends Controller
 {
@@ -16,7 +16,7 @@ class CashAdvanceDeductionController extends Controller
      */
     public function index()
     {
-        $cashAdvanceDeduction = CashAdvanceDeduction::orderBy('id', 'DESC')->get();
+        $cashAdvanceDeduction = CashAdvanceDeduction::orderBy('updated_at', 'desc')->get();
         if($cashAdvanceDeduction) {
             return CashAdvanceDeductionResource::collection($cashAdvanceDeduction);
         }
@@ -43,18 +43,44 @@ class CashAdvanceDeductionController extends Controller
         $this->validate($request , [
             'employee_id' => 'required',
             'cash_advance' => 'required|numeric',
-            'description' => 'required',
+            'cash_advance_desc_id' => 'required',
             'cash_advance_date' => 'required',
         ]);
-
-        $cashAdvanceDeduction = new CashAdvanceDeduction;
-        $cashAdvanceDeduction->employee_id = $request->employee_id;
-        $cashAdvanceDeduction->cash_advance = $request->cash_advance;
-        $cashAdvanceDeduction->description = $request->description;
-        $cashAdvanceDeduction->cash_advance_date = date('Y-m-d', strtotime($request->cash_advance_date));
-        if($cashAdvanceDeduction->save()) {
-            return new CashAdvanceDeductionResource($cashAdvanceDeduction);
+        $isExistCashAdvance = $this->checkCashAdvance($request->cash_advance_desc_id, $request->employee_id);
+        if(!empty($isExistCashAdvance)) {
+            $cashAdvance = DB::table('cash_advance_deductions')
+            ->where('employee_id', $request->employee_id)
+            ->where('cash_advance_description', $request->cash_advance_desc_id);
+            $cashAmount = $cashAdvance->pluck('cash_advance')->first();
+            $newCashAmount = $cashAmount + $request->cash_advance;
+            $cashAdvance->update([
+                'cash_advance' => $newCashAmount,
+                'cash_advance_date' => date('Y-m-d', strtotime($request->cash_advance_date))
+            ]);
+        } else {
+            $cashAdvanceDeduction = new CashAdvanceDeduction;
+            $cashAdvanceDeduction->employee_id = $request->employee_id;
+            $cashAdvanceDeduction->cash_advance = $request->cash_advance;
+            $cashAdvanceDeduction->cash_advance_description = $request->cash_advance_desc_id;
+            $cashAdvanceDeduction->cash_advance_date = date('Y-m-d', strtotime($request->cash_advance_date));
+            if($cashAdvanceDeduction->save()) {
+                return new CashAdvanceDeductionResource($cashAdvanceDeduction);
+            }
         }
+        
+    }
+
+    protected function checkCashAdvance($id, $employeeId)
+    {
+        $cashAdvance = CashAdvanceDeduction::where('employee_id', $employeeId)
+        ->where('cash_advance_description', $id)
+        ->select('id')
+        ->first();
+        if($cashAdvance instanceof CashAdvanceDeduction && $cashAdvance->exists) {
+            return $cashAdvance->id;
+        }
+
+        return false;
     }
 
     /**
@@ -65,9 +91,9 @@ class CashAdvanceDeductionController extends Controller
      */
     public function show($id)
     {
-        $cashAdvanceDeduction = CashAdvanceDeduction::findOrFail($id);
+        $cashAdvanceDeduction = CashAdvanceDeduction::where('employee_id', $id)->get();
          if($cashAdvanceDeduction) {
-             return new CashAdvanceDeductionResource($cashAdvanceDeduction);
+             return CashAdvanceDeductionResource::collection($cashAdvanceDeduction);
          }
     }
 
@@ -93,13 +119,13 @@ class CashAdvanceDeductionController extends Controller
     {
         $this->validate($request , [
             'cash_advance' => 'required|numeric',
-            'description' => 'required',
+            'cash_advance_desc_id' => 'required',
             'cash_advance_date' => 'required',
         ]);
 
         $cashAdvanceDeduction = CashAdvanceDeduction::findOrFail($id);
         $cashAdvanceDeduction->cash_advance = $request->cash_advance;
-        $cashAdvanceDeduction->description = $request->description;
+        $cashAdvanceDeduction->cash_advance_description = $request->cash_advance_desc_id;
         $cashAdvanceDeduction->cash_advance_date = date('Y-m-d', strtotime($request->cash_advance_date));
         if($cashAdvanceDeduction->save()) {
             return new CashAdvanceDeductionResource($cashAdvanceDeduction);

@@ -12,6 +12,7 @@
                 :clickable="false"
                 :printable="false"
                 v-on:row-click="onEdit"
+                :serverSearch="true"
                 >
 
                 <th slot="thead-tr">
@@ -43,16 +44,8 @@ import DataTable from "vue-materialize-datatable";
                         field: 'id'
                     },
                     {
-                        label: 'Firstname',
-                        field: 'firstname',
-                    },
-                    {
-                        label: 'Middlename',
-                        field: 'middlename'
-                    },
-                    {
-                        label: 'Lastname',
-                        field: 'lastname'
+                        label: 'Employee Name',
+                        field: 'employee_fullname',
                     },
                     {
                         label: 'Employee Type',

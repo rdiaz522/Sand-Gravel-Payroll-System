@@ -2,9 +2,11 @@
 
 namespace App\Exports;
 
+use App\Http\Resources\TimeLogsResource;
 use App\Models\Contribution;
 use App\Models\Employees;
 use App\Models\Location;
+use App\Models\Timelogs;
 use Maatwebsite\Excel\Excel;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Illuminate\Contracts\Support\Responsable;
@@ -23,6 +25,7 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
 
     protected $DAY = '';
 
+    protected $TOTAL = 0;
     /**
     * Optional Writer Type
     */
@@ -52,23 +55,32 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
             $pagibig = 0;
             $philhealth = 0;
             $departments = Location::all();
-            $totalCashAdvances =  (float)$employeeModel->cashAdvance()->sum('cash_advance');;
+            $cashDeductions = collect($employeeModel->cashDeduction()->whereBetween('cash_deduction_date', [$this->startDate,$this->endDate])->get());
+            $overAllTotalCashDedcution = $cashDeductions->sum('cash_deduction');
+            $cashAdvancesCollection = $employeeModel->cashAdvance()->get();
+            $cashAdvanceAmount = [];
+            $totalCashDeductions = [];
 
-            $totalCashDeductions = (float)$employeeModel->cashDeduction()
-            ->whereBetween('cash_deduction_date', [$this->startDate,$this->endDate])
-            ->sum('cash_deduction');
+            $timelogs = collect($employeeModel->timeLogs()->whereBetween('log_date', [$this->startDate,$this->endDate])->get());
+            if($cashAdvancesCollection instanceof Collection && !$cashAdvancesCollection->isEmpty()) {
+                foreach ($cashAdvancesCollection as $item) {
+                    $deduction = $cashDeductions->where('cash_advance_id', $item->id)->sum('cash_deduction');
+                    $getCashAdvanceName = getCashAdvanceDescription($item->cash_advance_description);
+                    $amount = (float)$item->cash_advance;
+                    $totalCashDeductions[] = $getCashAdvanceName . ' - ₱' . number_format($deduction, 2, '.', '');
+                    $cashAdvanceAmount[] =  $getCashAdvanceName . ' - ₱' . number_format($amount, 2, '.', '');
+                }
+            }
 
-            $overTotalCashAdvance = (float)$totalCashAdvances - (float)$totalCashDeductions;
             if($departments instanceof Collection && !$departments->isEmpty()) {
                 foreach($departments as $department) {
                     $departmentAssigned[] = strtoupper($department->name);
-                    $amount = (float)$employeeModel->timeLogs()
-                    ->where('department_id',$department->id)->whereBetween('log_date', [$this->startDate,$this->endDate])
-                    ->sum('total_pay');
+                    $amount = (float)$timelogs->where('department_id',$department->id)->sum('total_pay');
                     $total_each_pay[] ='₱' . number_format($amount, 2, '.', '');
                 }
             }
-            $netPay = $employeeModel->timeLogs()->whereBetween('log_date', [$this->startDate,$this->endDate])->sum('total_pay');
+
+            $netPay = (float)$timelogs->sum('total_pay');
             $contributions = $employeeModel->contributions()
             ->whereBetween('contribution_date', [$this->startDate,$this->endDate])
             ->latest()->first();
@@ -79,46 +91,44 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
                 $philhealth = (float)$contributions->philhealth;
             }
             $totalContribution = (float)$SSS + (float)$pagibig + (float)$philhealth;
-            $gross = (float)$netPay - (float)$totalCashDeductions - (float)$totalContribution;
-        
+            $gross = (float)$netPay - (float)$overAllTotalCashDedcution - (float)$totalContribution;
+            $this->TOTAL = $this->TOTAL + (float)$gross;
         return [
             [
                 $fullname,
                 '(' .implode(" | ", $departmentAssigned) . ')',
                 '(' .implode(" | ", $total_each_pay) . ')',
                 '₱' . number_format($netPay, 2, '.', ''),
-                '₱' . number_format($totalCashAdvances, 2, '.', ''),
-                '₱' . number_format($totalCashDeductions, 2, '.', ''),
-                '₱' . number_format($overTotalCashAdvance, 2, '.', ''),
+                '(' .implode(" | ", $totalCashDeductions) . ')',
+                '(' .implode(" | ", $cashAdvanceAmount) . ')',
                 '₱' . number_format($SSS, 2, '.', ''),
                 '₱' . number_format($pagibig, 2, '.', ''),
                 '₱' . number_format($philhealth, 2, '.', ''),
                 '₱' . number_format($gross, 2, '.', ''),
-            ]
+            ],
         ];
     }
 
     public function headings(): array
     {
         $this->DateNow();
-
         return [
             [
                 'PAYDATE DATE: '. $this->DATENOW,
-                'DATE:'. $this->startDate . ' - ' . $this->endDate
+                'DATE:'. $this->startDate . ' - ' . $this->endDate,
+                'OVERALL TOTAL PAY - ₱' . $this->TOTAL
             ],
             [
                 'FULLNAME',
                 'DEPARTMENT',
                 'TOTAL PAY OF EACH DEPARTMENT',
-                'NET.PAY',
-                'TOTAL CASH ADVANCE',
-                'CASH DEDUCTION',
-                'CASH ADVANCE BALANCE',
+                'GROSS',
+                'TOTAL CASH DEDUCTION',
+                'TOTAL CASH ADVANCE BALANCE',
                 'SSS',
                 'PAGIBIG',
                 'PHILHEALTH',
-                'GROSS'
+                'NET.PAY'
             ]
         ];
     }

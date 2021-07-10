@@ -33,43 +33,44 @@
             <div class="form-group">
                  <AppTextBox label="Daily Rate" v-model="formData.daily_rate" placeholder="Enter Daily Rate ..." type="number"> </AppTextBox>
             </div>
-            <label>Date Logs</label>
+            <label>Time In Date Logs</label>
             <div class="form-group">
                 <datepicker 
                 v-model="formData.log_date"
                 :circle="true"
                 lang="en"/>
-            </div>
 
-            <div class="form-group">
-                <label for="">Time Logs</label>
-                <div>   
-                    <vue-timepicker
+                <vue-timepicker
                     :disabled="disabledTimePicker"
                     :format="format"
                     v-model="startTime"
                     placeholder="Start Time"
-                    input-width="250px"
+                    input-width="240px"
                     input-class="my-awesome-picker"
                     close-on-complete
                     auto-scroll
                     hide-clear-button
                 ></vue-timepicker>
-                to
-                <vue-timepicker
+            </div>
+            <label>Time Out Date Logs</label>
+             <div class="form-group">
+                <datepicker 
+                v-model="formData.log_date2"
+                :circle="true"
+                lang="en"/>
+                  <vue-timepicker
                 :disabled="disabledTimePicker"
                 :format="format"
                 v-model="endTime"
                 placeholder="End Time"
-                input-width="250px"
+                input-width="240px"
                 input-class="my-awesome-picker"
                 close-on-complete
                 auto-scroll
                 hide-clear-button
                 ></vue-timepicker>
-                </div>
             </div>
-
+                
             <div class="form-group">
                 <AppDTRDropdown label="Break Time" v-model="breakTimeValue" :options="breakHour"  placeholder="Select Break Hours"> </AppDTRDropdown>
             </div>
@@ -102,6 +103,7 @@ export default {
                 break_time:'',
                 total_hours:'',
                 log_date: moment().format('YYYY-MM-DD'),
+                log_date2:moment().format('YYYY-MM-DD'),
                 daily_rate: ''
             },
             breakTimeValue:'1:00',
@@ -155,7 +157,7 @@ export default {
         atSelect() {
             this.disabledTimePicker = false;
         },
-
+        
         save() {
             var timeInformat = this.startTime.hh + ':' + this.startTime.mm + ' '+ this.startTime.A;
             var timeOutformat = this.endTime.hh + ':' + this.endTime.mm + ' '+ this.endTime.A;
@@ -163,22 +165,21 @@ export default {
             this.formData.time_out = timeOutformat;
             if(this.formData.time_in !== '' && this.formData.time_out !== '') {
                 this.readyToSave = true;
-                var startTime = moment(this.formData.time_in, "hh:mm A");
-                var endTime = moment(this.formData.time_out, "hh:mm A");
-                var duration = moment.duration(endTime.diff(startTime));
-                var hours = parseInt(duration.asHours());
-                var minutes = parseInt(duration.asMinutes())%60;
-                var totalMinutesandHours = hours + ':' + minutes;
                 var breakTime = parseFloat(moment.duration(this.breakTimeValue).asHours());
-                var convertTotalHour = parseFloat(moment.duration(totalMinutesandHours).asHours()).toFixed(1);
-                var totalHours = convertTotalHour - breakTime;
-                this.formData.total_hours = totalHours;
+                const dateTimeIn = `${moment(this.formData.log_date).format('YYYY-MM-DD') +' '+ this.formData.time_in}`;
+                const dateTimeOut = `${moment(this.formData.log_date2).format('YYYY-MM-DD') +' '+ this.formData.time_out}`;
+                const dateOneObj = new Date(dateTimeIn);
+                const dateTwoObj = new Date(dateTimeOut);
+                const milliseconds = Math.abs(dateTwoObj - dateOneObj);
+                const hours = milliseconds / 36e5;
+                var totalHours = hours - breakTime;
+                this.formData.total_hours = totalHours.toFixed(2);
                 this.formData.break_time = breakTime;
-                this.formData.employee_id = this.value.id;
             }
-
             if(this.readyToSave) {
-               this.formData.log_date = moment(this.formData.log_date).format('YYYY-MM-DD');
+                this.formData.employee_id = this.value.id;
+                this.formData.log_date = moment(this.formData.log_date).format('YYYY-MM-DD');
+                this.formData.log_date2 = moment(this.formData.log_date2).format('YYYY-MM-DD');
                 this.$SHOW_LOADING();
                 axios.post(this.$BASE_URL + this.$EMPLOYEETIMELOGS, this.formData)
                     .then((response) => {
@@ -206,6 +207,7 @@ export default {
             this.formData.break_time = '';
             this.formData.total_hours = '';
             this.formData.log_date = moment().format('YYYY-MM-DD'),
+            this.formData.log_date2 = moment().format('YYYY-MM-DD'),
             this.formData.daily_rate = '';
             this.disabledTimePicker = true;
             this.value = null;
@@ -220,7 +222,6 @@ export default {
                     A: 'PM'
             }
         },
-  
     }
 
 }

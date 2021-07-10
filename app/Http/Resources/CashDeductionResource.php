@@ -22,13 +22,17 @@ class CashDeductionResource extends JsonResource
         if($employees instanceof Employees && $employees->exists) {
             $fullName = $employees->lastname . ' ' . $employees->firstname . ', ' . $employees->middlename;
         }
-    
+
         return [
             'id' => $this->id,
             'employee_id' => $this->employee_id,
             'cash_deduction' => $this->cash_deduction,
+            'new_cash_advance_balance' => $this->new_cash_advance_balance,
             'cash_deduction_date' => $this->cash_deduction_date,
-            'employee_fullname' => $fullName
+            'cash_advance_id' => $this->cash_advance_id,
+            'employee_fullname' => $fullName,
+            'description' => getCashAdvanceById($this->cash_advance_id),
+            'cash_amount' => getCashAdvanceAmountById($this->cash_advance_id)
         ];
     }
 }

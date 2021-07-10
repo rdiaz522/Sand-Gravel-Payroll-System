@@ -56,11 +56,7 @@ export default {
                     {
                         label: 'Location Name',
                         field: 'name'
-                    },
-                     {
-                        label: 'Department Name',
-                        field: 'departmentName'
-                    },
+                    }
                 ],
         }
     },

@@ -26,8 +26,11 @@ class CreateEmployeeTimelogsTable extends Migration
             $table->string('break_time')->nullable();
             $table->string('total_hours')->nullable();
             $table->string('log_date')->nullable();
+            $table->string('log_date2')->nullable();
             $table->string('total_pay')->nullable();
             $table->timestamps();
+            $table->index('department_id');
+            $table->index('log_date');
         });
         Schema::enableForeignKeyConstraints();
     }
