@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ContributionResource;
 use App\Models\Contribution;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContributionController extends Controller
 {
@@ -39,22 +40,25 @@ class ContributionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request , [
-            'employee_id' => 'required',
-            'sss' => 'required|numeric',
-            'pagibig' => 'required|numeric',
-            'philhealth' => 'required|numeric',
+        $validator = Validator::make($request->toArray(), [
+            'sss' => 'required|numeric|digits_between:1,6',
+            'pagibig' => 'required|numeric|digits_between:1,6',
+            'philhealth' => 'required|numeric|digits_between:1,6',
             'contribution_date' => 'required',
         ]);
 
-        $contributions = new Contribution;
-        $contributions->employee_id = $request->employee_id;
-        $contributions->sss = $request->sss;
-        $contributions->pagibig = $request->pagibig;
-        $contributions->philhealth = $request->philhealth;
-        $contributions->contribution_date = date('Y-m-d', strtotime($request->contribution_date));
-        if($contributions->save()) {
-            return new ContributionResource($contributions);
+        if($validator->fails()) {
+            return response()->json($validator->messages()->first(), 400);
+        } else {
+            $contributions = new Contribution;
+            $contributions->employee_id = $request->employee_id;
+            $contributions->sss = $request->sss;
+            $contributions->pagibig = $request->pagibig;
+            $contributions->philhealth = $request->philhealth;
+            $contributions->contribution_date = date('Y-m-d', strtotime($request->contribution_date));
+            if($contributions->save()) {
+                return new ContributionResource($contributions);
+            }
         }
     }
 
@@ -94,21 +98,27 @@ class ContributionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request , [
-            'sss' => 'required|numeric',
-            'pagibig' => 'required|numeric',
-            'philhealth' => 'required|numeric',
+        $validator = Validator::make($request->toArray(), [
+            'sss' => 'required|numeric|digits_between:1,6',
+            'pagibig' => 'required|numeric|digits_between:1,6',
+            'philhealth' => 'required|numeric|digits_between:1,6',
             'contribution_date' => 'required',
         ]);
 
-        $contributions = Contribution::findOrFail($id);
-        $contributions->sss = $request->sss;
-        $contributions->pagibig = $request->pagibig;
-        $contributions->philhealth = $request->philhealth;
-        $contributions->contribution_date = date('Y-m-d', strtotime($request->contribution_date));
-        if($contributions->save()) {
-            return new ContributionResource($contributions);
+        if($validator->fails()) {
+            return response()->json($validator->messages()->first(), 400);
+        } else {
+            $contributions = Contribution::findOrFail($id);
+            $contributions->sss = $request->sss;
+            $contributions->pagibig = $request->pagibig;
+            $contributions->philhealth = $request->philhealth;
+            $contributions->contribution_date = date('Y-m-d', strtotime($request->contribution_date));
+            if($contributions->save()) {
+                return new ContributionResource($contributions);
+            }
         }
+
+        
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ExpensesByDepartmentResource;
 use App\Models\ExpensesByDepartment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ExpensesByDepartmentController extends Controller
 {
@@ -39,23 +40,28 @@ class ExpensesByDepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->toArray(), [
             'department_id' => 'required',
             'description' => 'required',
-            'amount' => 'required|numeric',
+            'amount' => 'required|numeric|digits_between:1,6',
             'cash_from' => 'required',
             'cash_date' => 'required',
         ]);
 
-        $expenses = new ExpensesByDepartment;
-        $expenses->department_id = $request->department_id;
-        $expenses->description = $request->description;
-        $expenses->amount = $request->amount;
-        $expenses->cash_from = $request->cash_from;
-        $expenses->cash_date = date('Y-m-d', strtotime($request->cash_date));
-        if($expenses->save()) {
-            return new ExpensesByDepartmentResource($expenses);
+        if($validator->fails()) {
+            return response()->json($validator->messages()->first(), 400);
+        } else {
+            $expenses = new ExpensesByDepartment;
+            $expenses->department_id = $request->department_id;
+            $expenses->description = $request->description;
+            $expenses->amount = $request->amount;
+            $expenses->cash_from = $request->cash_from;
+            $expenses->cash_date = date('Y-m-d', strtotime($request->cash_date));
+            if($expenses->save()) {
+                return new ExpensesByDepartmentResource($expenses);
+            }
         }
+        
     }
 
     /**
@@ -89,22 +95,26 @@ class ExpensesByDepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        $validator = Validator::make($request->toArray(), [
             'department_id' => 'required',
             'description' => 'required',
-            'amount' => 'required|numeric',
+            'amount' => 'required|numeric|digits_between:1,6',
             'cash_from' => 'required',
             'cash_date' => 'required',
         ]);
 
-        $expenses = ExpensesByDepartment::find($id);
-        $expenses->department_id = $request->department_id;
-        $expenses->description = $request->description;
-        $expenses->amount = $request->amount;
-        $expenses->cash_from = $request->cash_from;
-        $expenses->cash_date = date('Y-m-d', strtotime($request->cash_date));
-        if($expenses->save()) {
-            return new ExpensesByDepartmentResource($expenses);
+        if($validator->fails()) {
+            return response()->json($validator->messages()->first(), 400);
+        } else {
+            $expenses = ExpensesByDepartment::find($id);
+            $expenses->department_id = $request->department_id;
+            $expenses->description = $request->description;
+            $expenses->amount = $request->amount;
+            $expenses->cash_from = $request->cash_from;
+            $expenses->cash_date = date('Y-m-d', strtotime($request->cash_date));
+            if($expenses->save()) {
+                return new ExpensesByDepartmentResource($expenses);
+            }
         }
     }
 

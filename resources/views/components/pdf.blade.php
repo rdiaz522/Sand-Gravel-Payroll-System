@@ -17,15 +17,11 @@
         <div class="card">
             <div class="card-body">
                 @php
-                    $dateNow = (new \DateTime('Asia/Manila'))->format('Y-m-d h:i: A');
+                    $dateNow = (new \DateTime('Asia/Manila'))->format('Y-m-d h:i A');
                     $rows = 1;
                 @endphp
                 @foreach ($collections as $employeeModel)
-
-                <table class="table" style="width: 100%; border:1px solid black;"> 
-                    <tr> <th class="slip-name">DATE: {{$dateNow}}</th></tr>
-                    <tr>
-                        @php
+                @php
                             $fullname = getEmployeeFullname($employeeModel->id);
                             $departmentAssigned = [];
                             $total_each_pay = [];
@@ -55,17 +51,22 @@
                             $totalContribution = (float)$SSS + (float)$pagibig + (float)$philhealth;
                             $gross = (float)$netPay - (float)$overAllTotalCashDedcution - (float)$totalContribution;
                         @endphp
+                <table class="table" style="width: 100%; border:1px solid black;"> 
+                    <tr>
+                        <th class="slip-name">DATE: {{$dateNow}}</th>
+                        <th class="slip-name">PAYSLIP DATE: {{$startDate}} to {{$endDate}}</th>
+                    </tr>
+                    <tr>
                         <th class="slip-name">PAYROLL SLIP</th>
-                        <th class="slip-name2">PAYSLIP DATE: {{$startDate}} to {{$endDate}}</th>
+                        <th class="slip-name">-</th>
                     </tr>
                     <tr>
                         <th class="regular-name">Employee Name: {{$fullname}}</th>
-                    </tr>
-                    <tr>
-                        <th class="regular-name">Employee Type: Regular</th>
+                        <th class="slip-name">-</th>
                     </tr>
                     <tr>
                         <th class="regular-name">EARNINGS</th>
+                        <th class="slip-name">-</th>
                     </tr>
                     <tr>
                         <th class="regular-name">DEPARTMENT</th>

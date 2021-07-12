@@ -40,14 +40,7 @@ import DataTable from "vue-materialize-datatable";
         props:['reportList'],
         data() {
             return {
-                columns: [{
-                        label: 'ID',
-                        field: 'id'
-                    },
-                    {
-                        label: 'Report Type',
-                        field: 'report_type',
-                    },
+                columns: [
                      {
                         label: 'Report Name',
                         field: 'report_excel',
@@ -126,21 +119,27 @@ import DataTable from "vue-materialize-datatable";
             },
             onGeneratePayslip(props,row,e) {
                  this.$SHOW_LOADING();
-                    axios.get(this.$BASE_URL + '/generatepayslip' + `/${props.id}`).then((response) =>  {
-                        if(response.data !== 0) {
-                            window.open(this.$BASE_URL + '/generatepayslip' + `/${props.id}`);
-                        }
+                    if(props.report_type === 'Payroll Report') {
+                        axios.get(this.$BASE_URL + '/generatepayslip' + `/${props.id}`).then((response) =>  {
+                            if(response.data !== 0) {
+                                window.open(this.$BASE_URL + '/generatepayslip' + `/${props.id}`);
+                            }
+                            this.$HIDE_LOADING();
+                            this.$WARNING_MESSAGE.fire(
+                            'Downloaded!',
+                            'Data has been download.',
+                            'success'
+                            )
+                        })
+                        .catch((err) =>{
+                            this.$HIDE_LOADING();
+                            this.$SHOW_MESSAGE('Oops..','Something went wrong, Call the Administrator','error');
+                        });
+                    } else {
                         this.$HIDE_LOADING();
-                        this.$WARNING_MESSAGE.fire(
-                        'Downloaded!',
-                        'Data has been download.',
-                        'success'
-                        )
-                    })
-                    .catch((err) =>{
-                        this.$HIDE_LOADING();
-                        this.$SHOW_MESSAGE('Oops..','Something went wrong, Call the Administrator','error');
-                    });
+                        this.$SHOW_MESSAGE('Oops..','Something went wrong, NO PAYSLIP REPORT','error');
+                    }
+                    
             }
         }
     }

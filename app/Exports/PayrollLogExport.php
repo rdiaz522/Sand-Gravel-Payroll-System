@@ -136,7 +136,7 @@ class PayrollLogExport implements FromCollection, Responsable, WithHeadings, Wit
         ];
         
         $collections = $this->TIMELOGS->select($selectQuery)->get();
-        dd($collections);
+        
         return $collections;
     }
 }

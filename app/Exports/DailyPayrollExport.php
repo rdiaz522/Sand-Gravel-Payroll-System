@@ -14,10 +14,12 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 
-class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, WithColumnWidths, WithMapping
+class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, WithColumnWidths, WithMapping, WithStyles
 {
     use Exportable;
 
@@ -26,6 +28,8 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
     protected $DAY = '';
 
     protected $TOTAL = 0;
+
+    protected $DATA =[];
     /**
     * Optional Writer Type
     */
@@ -44,11 +48,22 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
     {
         $this->startDate = date('Y-m-d', strtotime($request->start_date));
         $this->endDate = date('Y-m-d', strtotime($request->end_date));
+        $selectQuery = ['id','firstname','middlename','lastname'];
+        $this->DATA = Employees::with(['cashAdvance','cashDeduction', 'timeLogs', 'contributions'])
+        ->select($selectQuery)
+        ->get();
+    }
+
+    public function styles(Worksheet $sheet)
+    {
+        $count = count($this->DATA) + 2;
+        // Add cell with SUM formula to last row
+        $sheet->setCellValue("C1", '="OVERALL TOTAL PAY :₱"&SUM(J3:J' . $count . ')');
     }
 
     public function map($employeeModel): array
     {   
-            $fullname = $employeeModel->lastname . ' ' . $employeeModel->firstname . ' ' . $employeeModel->middlename;
+            $fullname = $employeeModel->lastname . ' ' . $employeeModel->firstname . ' ' . $employeeModel->middlename . '.';
             $departmentAssigned = [];
             $total_each_pay = [];
             $SSS = 0;
@@ -92,7 +107,6 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
             }
             $totalContribution = (float)$SSS + (float)$pagibig + (float)$philhealth;
             $gross = (float)$netPay - (float)$overAllTotalCashDedcution - (float)$totalContribution;
-            $this->TOTAL = $this->TOTAL + (float)$gross;
         return [
             [
                 $fullname,
@@ -104,7 +118,7 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
                 '₱' . number_format($SSS, 2, '.', ''),
                 '₱' . number_format($pagibig, 2, '.', ''),
                 '₱' . number_format($philhealth, 2, '.', ''),
-                '₱' . number_format($gross, 2, '.', ''),
+                number_format($gross, 2, '.', ''),
             ],
         ];
     }
@@ -116,7 +130,6 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
             [
                 'PAYDATE DATE: '. $this->DATENOW,
                 'DATE:'. $this->startDate . ' - ' . $this->endDate,
-                'OVERALL TOTAL PAY - ₱' . $this->TOTAL
             ],
             [
                 'FULLNAME',
@@ -128,7 +141,7 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
                 'SSS',
                 'PAGIBIG',
                 'PHILHEALTH',
-                'NET.PAY'
+                'NET.PAY',
             ]
         ];
     }
@@ -154,12 +167,7 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
     */
     public function collection()
     {  
-        $selectQuery = ['id','firstname','middlename','lastname'];
-        $collections = Employees::with(['cashAdvance','cashDeduction', 'timeLogs', 'contributions'])
-        ->select($selectQuery)
-        ->get();
-
-        return $collections;
+        return $this->DATA;
     }
 
     public function DateNow()

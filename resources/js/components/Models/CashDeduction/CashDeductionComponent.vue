@@ -160,7 +160,11 @@ export default {
                     })
                     .catch((error) => {
                         this.$HIDE_LOADING();
+                    if(error.response) {
+                         this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+                    } else {
                         this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                    }
                 });
             } else {
                 this.$HIDE_LOADING();

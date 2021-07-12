@@ -181,7 +181,11 @@ export default {
                 })
                 .catch((error) => {
                     this.$HIDE_LOADING();
-                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                    if(error.response) {
+                         this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+                    } else {
+                        this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                    }
                 });
             }
         

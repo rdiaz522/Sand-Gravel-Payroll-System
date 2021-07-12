@@ -2704,7 +2704,11 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this.$HIDE_LOADING();
 
-        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        if (error.response) {
+          _this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+        } else {
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        }
       });
     }
   }
@@ -2840,7 +2844,11 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this.$HIDE_LOADING();
 
-        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        if (error.response) {
+          _this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+        } else {
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        }
       });
     },
     edit: function edit() {},
@@ -2912,9 +2920,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       columns: [{
-        label: 'ID',
-        field: 'id'
-      }, {
         label: 'Employee',
         field: 'employee_fullname'
       }, {
@@ -3328,7 +3333,11 @@ __webpack_require__.r(__webpack_exports__);
         })["catch"](function (error) {
           _this3.$HIDE_LOADING();
 
-          _this3.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+          if (error.response) {
+            _this3.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+          } else {
+            _this3.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+          }
         });
       } else {
         this.$HIDE_LOADING();
@@ -3467,7 +3476,11 @@ __webpack_require__.r(__webpack_exports__);
         })["catch"](function (error) {
           _this.$HIDE_LOADING();
 
-          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+          if (error.response) {
+            _this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+          } else {
+            _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+          }
         });
       } else {
         this.$HIDE_LOADING();
@@ -3542,9 +3555,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       columns: [{
-        label: 'ID',
-        field: 'id'
-      }, {
         label: 'Employee',
         field: 'employee_fullname'
       }, {
@@ -3958,7 +3968,11 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this.$HIDE_LOADING();
 
-        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        if (error.response) {
+          _this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+        } else {
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        }
       });
     }
   }
@@ -4100,7 +4114,11 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this.$HIDE_LOADING();
 
-        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        if (error.response) {
+          _this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+        } else {
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        }
       });
     },
     edit: function edit() {},
@@ -4174,9 +4192,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       columns: [{
-        label: 'ID',
-        field: 'id'
-      }, {
         label: 'Employee',
         field: 'employee_fullname'
       }, {
@@ -4451,7 +4466,11 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this.$HIDE_LOADING();
 
-        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        if (error.response) {
+          _this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+        } else {
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        }
       });
     },
     edit: function edit() {},
@@ -4571,7 +4590,11 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this.$HIDE_LOADING();
 
-        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        if (error.response) {
+          _this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+        } else {
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        }
       });
     },
     edit: function edit() {},
@@ -4810,7 +4833,11 @@ __webpack_require__.r(__webpack_exports__);
         })["catch"](function (error) {
           _this.$HIDE_LOADING();
 
-          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+          if (error.response) {
+            _this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+          } else {
+            _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+          }
         });
       }
     },
@@ -4825,6 +4852,7 @@ __webpack_require__.r(__webpack_exports__);
       this.formData.break_time = '';
       this.formData.total_hours = '';
       this.formData.log_date = moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'), this.formData.log_date2 = moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'), this.formData.daily_rate = '';
+      this.breakTimeValue = '1:00';
       this.disabledTimePicker = true;
       this.value = null;
       this.startTime = {
@@ -5054,7 +5082,11 @@ __webpack_require__.r(__webpack_exports__);
         })["catch"](function (error) {
           _this.$HIDE_LOADING();
 
-          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+          if (error.response) {
+            _this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+          } else {
+            _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+          }
         });
       }
     },
@@ -5606,7 +5638,11 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this.$HIDE_LOADING();
 
-        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        if (error.response) {
+          _this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+        } else {
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        }
       });
     }
   }
@@ -5751,7 +5787,11 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         _this.$HIDE_LOADING();
 
-        _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        if (error.response) {
+          _this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+        } else {
+          _this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        }
       });
     },
     edit: function edit() {},
@@ -6314,12 +6354,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       columns: [{
-        label: 'ID',
-        field: 'id'
-      }, {
-        label: 'Report Type',
-        field: 'report_type'
-      }, {
         label: 'Report Name',
         field: 'report_excel'
       }, {
@@ -6390,19 +6424,25 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.$SHOW_LOADING();
-      axios.get(this.$BASE_URL + '/generatepayslip' + "/".concat(props.id)).then(function (response) {
-        if (response.data !== 0) {
-          window.open(_this3.$BASE_URL + '/generatepayslip' + "/".concat(props.id));
-        }
 
-        _this3.$HIDE_LOADING();
+      if (props.report_type === 'Payroll Report') {
+        axios.get(this.$BASE_URL + '/generatepayslip' + "/".concat(props.id)).then(function (response) {
+          if (response.data !== 0) {
+            window.open(_this3.$BASE_URL + '/generatepayslip' + "/".concat(props.id));
+          }
 
-        _this3.$WARNING_MESSAGE.fire('Downloaded!', 'Data has been download.', 'success');
-      })["catch"](function (err) {
-        _this3.$HIDE_LOADING();
+          _this3.$HIDE_LOADING();
 
-        _this3.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-      });
+          _this3.$WARNING_MESSAGE.fire('Downloaded!', 'Data has been download.', 'success');
+        })["catch"](function (err) {
+          _this3.$HIDE_LOADING();
+
+          _this3.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+        });
+      } else {
+        this.$HIDE_LOADING();
+        this.$SHOW_MESSAGE('Oops..', 'Something went wrong, NO PAYSLIP REPORT', 'error');
+      }
     }
   }
 });
@@ -6981,41 +7021,48 @@ __webpack_require__.r(__webpack_exports__);
     onDelete: function onDelete(props, row, e) {
       var _this2 = this;
 
-      this.$WARNING_MESSAGE.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        reverseButtons: true
-      }).then(function (result) {
-        if (result.isConfirmed) {
-          _this2.$SHOW_LOADING();
+      if (props.name !== 'Processing') {
+        this.$WARNING_MESSAGE.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'No, cancel!',
+          reverseButtons: true
+        }).then(function (result) {
+          if (result.isConfirmed) {
+            _this2.$SHOW_LOADING();
 
-          axios["delete"](_this2.$BASE_URL + _this2.$LOCATION + "/".concat(props.id)).then(function (response) {
-            _this2.clearFields();
+            axios["delete"](_this2.$BASE_URL + _this2.$LOCATION + "/".concat(props.id)).then(function (response) {
+              _this2.clearFields();
 
-            _this2.$parent.getPositions();
+              _this2.$parent.getPositions();
 
-            _this2.$parent.showExpensesEdit = false;
+              _this2.$parent.getLocations();
 
-            _this2.$HIDE_LOADING();
+              _this2.$parent.showExpensesEdit = false;
 
-            _this2.$WARNING_MESSAGE.fire('Deleted!', 'Data has been deleted.', 'success');
-          })["catch"](function (err) {
-            _this2.$HIDE_LOADING();
+              _this2.$HIDE_LOADING();
 
-            _this2.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
-          });
-        } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === _this2.$SWAL.DismissReason.cancel) {
-          _this2.$WARNING_MESSAGE.fire('Cancelled', 'Data deleting cancelled :)', 'error');
+              _this2.$WARNING_MESSAGE.fire('Deleted!', 'Data has been deleted.', 'success');
+            })["catch"](function (err) {
+              _this2.$HIDE_LOADING();
 
-          return false;
-        }
-      });
+              _this2.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+            });
+          } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === _this2.$SWAL.DismissReason.cancel) {
+            _this2.$WARNING_MESSAGE.fire('Cancelled', 'Data deleting cancelled :)', 'error');
+
+            return false;
+          }
+        });
+      } else {
+        this.$HIDE_LOADING();
+        this.$SHOW_MESSAGE('Oops..', 'Warning! , This department has been disabled the delete!', 'error');
+      }
     },
     onCancel: function onCancel() {
       this.location = '';

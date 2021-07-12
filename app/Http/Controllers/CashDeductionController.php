@@ -7,6 +7,7 @@ use App\Models\CashAdvanceDeduction;
 use App\Models\CashDeduction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class CashDeductionController extends Controller
 {
@@ -41,23 +42,28 @@ class CashDeductionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request , [
+    
+        $validator = Validator::make($request->toArray(), [
             'employee_id' => 'required',
-            'cash_deduction' => 'required|numeric',
+            'cash_deduction' => 'required|numeric|digits_between:1,6',
             'cash_deduction_date' => 'required',
             'employee_cash_advance_id' => 'required'
         ]);
 
-        $cashDeduction = new CashDeduction;
-        $cashDeduction->employee_id = $request->employee_id;
-        $cashDeduction->cash_advance_id = $request->employee_cash_advance_id;
-        $cashDeduction->cash_deduction = $request->cash_deduction;
-        $cashDeduction->new_cash_advance_balance = $request->new_cash_advance_balance;
-        $cashDeduction->cash_deduction_date = date('Y-m-d', strtotime($request->cash_deduction_date));
-        if($cashDeduction->save()) {
-            $deduction = $this->checkCashAdvance($request->employee_cash_advance_id, $request->employee_id);
-            if($deduction) {
-                return new CashDeductionResource($cashDeduction);
+        if($validator->fails()) {
+            return response()->json($validator->messages()->first(), 400);
+        } else {
+            $cashDeduction = new CashDeduction;
+            $cashDeduction->employee_id = $request->employee_id;
+            $cashDeduction->cash_advance_id = $request->employee_cash_advance_id;
+            $cashDeduction->cash_deduction = $request->cash_deduction;
+            $cashDeduction->new_cash_advance_balance = $request->new_cash_advance_balance;
+            $cashDeduction->cash_deduction_date = date('Y-m-d', strtotime($request->cash_deduction_date));
+            if($cashDeduction->save()) {
+                $deduction = $this->checkCashAdvance($request->employee_cash_advance_id, $request->employee_id);
+                if($deduction) {
+                    return new CashDeductionResource($cashDeduction);
+                }
             }
         }
     }
@@ -119,17 +125,21 @@ class CashDeductionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request , [
-            'cash_deduction' => 'required|numeric',
+        $validator = Validator::make($request->toArray(), [
+            'cash_deduction' => 'required|numeric|digits_between:1,6',
             'cash_deduction_date' => 'required',
         ]);
 
-        $cashDeduction = CashDeduction::findOrFail($id);
-        $cashDeduction->cash_deduction = $request->cash_deduction;
-        $cashDeduction->cash_deduction_date = $request->cash_deduction_date;
-        
-        if($cashDeduction->save()) {
-            return new CashDeductionResource($cashDeduction);
+        if($validator->fails()) {
+            return response()->json($validator->messages()->first(), 400);
+        } else {
+            $cashDeduction = CashDeduction::findOrFail($id);
+            $cashDeduction->cash_deduction = $request->cash_deduction;
+            $cashDeduction->cash_deduction_date = $request->cash_deduction_date;
+            
+            if($cashDeduction->save()) {
+                return new CashDeductionResource($cashDeduction);
+            }
         }
     }
 

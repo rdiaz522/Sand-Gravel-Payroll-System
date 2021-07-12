@@ -125,8 +125,12 @@ export default {
                         this.$SHOW_MESSAGE('Successfully', 'New Cash Advance', 'success');
                 })
                 .catch((error) => {
-                    this.$HIDE_LOADING();
-                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                     this.$HIDE_LOADING();
+                    if(error.response) {
+                         this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+                    } else {
+                        this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                    }
             });
         }
     }

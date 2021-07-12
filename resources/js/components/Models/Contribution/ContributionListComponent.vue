@@ -41,10 +41,7 @@ import DataTable from "vue-materialize-datatable";
         props:['contributionList'],
         data() {
             return {
-                columns: [{
-                        label: 'ID',
-                        field: 'id'
-                    },
+                columns: [
                     {
                         label: 'Employee',
                         field: 'employee_fullname',

@@ -190,7 +190,11 @@ export default {
                 })
                 .catch((error) => {
                     this.$HIDE_LOADING();
-                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                    if(error.response) {
+                         this.$SHOW_MESSAGE('Oops..', error.response.data, 'error');
+                    } else {
+                        this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                    }
                 });
             }
         },
@@ -209,6 +213,7 @@ export default {
             this.formData.log_date = moment().format('YYYY-MM-DD'),
             this.formData.log_date2 = moment().format('YYYY-MM-DD'),
             this.formData.daily_rate = '';
+            this.breakTimeValue = '1:00';
             this.disabledTimePicker = true;
             this.value = null;
             this.startTime = {

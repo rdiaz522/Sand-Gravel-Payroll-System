@@ -29,7 +29,7 @@ use App\Http\Controllers\TimelogsController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('login');
 
 Route::resource('/users',UserController::class)->middleware('auth');
 Route::resource('/employees',EmployeesController::class)->middleware('auth');

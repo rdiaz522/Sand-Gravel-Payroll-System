@@ -86,7 +86,8 @@ export default {
         },
 
         onDelete(props,row,e) {
-                 this.$WARNING_MESSAGE.fire({
+                if(props.name !== 'Processing') {
+                    this.$WARNING_MESSAGE.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
                     icon: 'warning',
@@ -100,6 +101,7 @@ export default {
                         axios.delete(this.$BASE_URL + this.$LOCATION + `/${props.id}`).then((response) =>  {
                             this.clearFields();
                             this.$parent.getPositions();
+                            this.$parent.getLocations();
                             this.$parent.showExpensesEdit = false;
                             this.$HIDE_LOADING();
                             this.$WARNING_MESSAGE.fire(
@@ -112,20 +114,23 @@ export default {
                             this.$HIDE_LOADING();
                             this.$SHOW_MESSAGE('Oops..','Something went wrong, Call the Administrator','error');
                         });
-                    } else if (
-                        /* Read more about handling dismissals below */
-                        result.dismiss === this.$SWAL.DismissReason.cancel
-                    ) {
-                        this.$WARNING_MESSAGE.fire(
-                        'Cancelled',
-                        'Data deleting cancelled :)',
-                        'error'
-                        )
+                        } else if (
+                            /* Read more about handling dismissals below */
+                            result.dismiss === this.$SWAL.DismissReason.cancel
+                        ) {
+                            this.$WARNING_MESSAGE.fire(
+                            'Cancelled',
+                            'Data deleting cancelled :)',
+                            'error'
+                            )
 
-                        return false;
-                    }
-                })
-               
+                            return false;
+                        }
+                    })
+                } else {
+                    this.$HIDE_LOADING();
+                    this.$SHOW_MESSAGE('Oops..','Warning! , This department has been disabled the delete!','error');
+                }
             },
 
         onCancel() {
