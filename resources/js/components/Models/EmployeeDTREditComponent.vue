@@ -153,17 +153,16 @@ export default {
             this.$SHOW_LOADING();
             if(this.formData.time_in !== '' && this.formData.time_out !== '') {
                 this.readyToSave = true;
-                var startTime = moment(this.formData.time_in, "hh:mm A");
-                var endTime = moment(this.formData.time_out, "hh:mm A");
-                var duration = moment.duration(endTime.diff(startTime));
-                var hours = parseInt(duration.asHours());
-                var minutes = parseInt(duration.asMinutes())%60;
-                var totalMinutesandHours = hours + ':' + minutes;
                 var breakTime = parseFloat(moment.duration(this.breakTimeValue).asHours());
-                var convertTotalHour = parseFloat(moment.duration(totalMinutesandHours).asHours()).toFixed(1);
-                var totalHours = convertTotalHour - breakTime;
-                this.formData.total_hours = totalHours;
-                this.formData.break_time = breakTime
+                const dateTimeIn = `${moment(this.formData.log_date).format('YYYY-MM-DD') +' '+ this.formData.time_in}`;
+                const dateTimeOut = `${moment(this.formData.log_date2).format('YYYY-MM-DD') +' '+ this.formData.time_out}`;
+                const dateOneObj = new Date(dateTimeIn);
+                const dateTwoObj = new Date(dateTimeOut);
+                const milliseconds = Math.abs(dateTwoObj - dateOneObj);
+                const hours = milliseconds / 36e5;
+                var totalHours = hours - breakTime;
+                this.formData.total_hours = totalHours.toFixed(2);
+                this.formData.break_time = breakTime;
             }
             const config = {
                 headers: {

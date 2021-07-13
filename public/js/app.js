@@ -5050,16 +5050,15 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.formData.time_in !== '' && this.formData.time_out !== '') {
         this.readyToSave = true;
-        var startTime = moment__WEBPACK_IMPORTED_MODULE_6___default()(this.formData.time_in, "hh:mm A");
-        var endTime = moment__WEBPACK_IMPORTED_MODULE_6___default()(this.formData.time_out, "hh:mm A");
-        var duration = moment__WEBPACK_IMPORTED_MODULE_6___default().duration(endTime.diff(startTime));
-        var hours = parseInt(duration.asHours());
-        var minutes = parseInt(duration.asMinutes()) % 60;
-        var totalMinutesandHours = hours + ':' + minutes;
         var breakTime = parseFloat(moment__WEBPACK_IMPORTED_MODULE_6___default().duration(this.breakTimeValue).asHours());
-        var convertTotalHour = parseFloat(moment__WEBPACK_IMPORTED_MODULE_6___default().duration(totalMinutesandHours).asHours()).toFixed(1);
-        var totalHours = convertTotalHour - breakTime;
-        this.formData.total_hours = totalHours;
+        var dateTimeIn = "".concat(moment__WEBPACK_IMPORTED_MODULE_6___default()(this.formData.log_date).format('YYYY-MM-DD') + ' ' + this.formData.time_in);
+        var dateTimeOut = "".concat(moment__WEBPACK_IMPORTED_MODULE_6___default()(this.formData.log_date2).format('YYYY-MM-DD') + ' ' + this.formData.time_out);
+        var dateOneObj = new Date(dateTimeIn);
+        var dateTwoObj = new Date(dateTimeOut);
+        var milliseconds = Math.abs(dateTwoObj - dateOneObj);
+        var hours = milliseconds / 36e5;
+        var totalHours = hours - breakTime;
+        this.formData.total_hours = totalHours.toFixed(2);
         this.formData.break_time = breakTime;
       }
 
