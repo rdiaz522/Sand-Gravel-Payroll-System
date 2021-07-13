@@ -41,9 +41,9 @@ class ContributionController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->toArray(), [
-            'sss' => 'required|numeric|digits_between:1,6',
-            'pagibig' => 'required|numeric|digits_between:1,6',
-            'philhealth' => 'required|numeric|digits_between:1,6',
+            'sss' => 'numeric|digits_between:1,6',
+            'pagibig' => 'numeric|digits_between:1,6',
+            'philhealth' => 'numeric|digits_between:1,6',
             'contribution_date' => 'required',
         ]);
 
@@ -99,9 +99,9 @@ class ContributionController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->toArray(), [
-            'sss' => 'required|numeric|digits_between:1,6',
-            'pagibig' => 'required|numeric|digits_between:1,6',
-            'philhealth' => 'required|numeric|digits_between:1,6',
+            'sss' => 'numeric|digits_between:1,6',
+            'pagibig' => 'numeric|digits_between:1,6',
+            'philhealth' => 'numeric|digits_between:1,6',
             'contribution_date' => 'required',
         ]);
 

@@ -22,6 +22,7 @@ class DepartmentExpenses implements FromCollection, Responsable, WithHeadings, W
 
     protected $DAY = '';
 
+    protected $DEPRTMENTCOLLECTION;
     /**
     * Optional Writer Type
     */
@@ -48,6 +49,7 @@ class DepartmentExpenses implements FromCollection, Responsable, WithHeadings, W
         $this->endDate = date('Y-m-d', strtotime($request->end_date));
         $this->departmentId = $request->department_id;
         $this->departmentName = getDepartmentName($request->department_id);
+        $this->DEPRTMENTCOLLECTION = ExpensesByDepartment::where('department_id', $this->departmentId)->whereBetween('cash_date',[$this->startDate,$this->endDate]);
     }
 
     public function map($employeeModel): array
@@ -70,7 +72,8 @@ class DepartmentExpenses implements FromCollection, Responsable, WithHeadings, W
             [
                 'GENERATED DATE: '. $this->DATENOW,
                 'DATE: '. $this->startDate . ' - ' . $this->endDate,
-                'DEPARTMENT NAME: ' . strtoupper($this->departmentName)
+                'DEPARTMENT NAME: ' . strtoupper($this->departmentName),
+                'TOTAL: ₱' . number_format($this->DEPRTMENTCOLLECTION->sum('amount'), 2, '.', '')
             ],
             [
                 'DATE',
@@ -96,8 +99,7 @@ class DepartmentExpenses implements FromCollection, Responsable, WithHeadings, W
     public function collection()
     {   
         $selectQuery = ['id','department_id','description','amount','cash_from','cash_date'];
-        $departmentCollection = ExpensesByDepartment::where('department_id', $this->departmentId)->whereBetween('cash_date',[$this->startDate,$this->endDate]);
-        $collections = $departmentCollection->select($selectQuery)->get();
+        $collections = $this->DEPRTMENTCOLLECTION->select($selectQuery)->get();
         return $collections;
     }
 
