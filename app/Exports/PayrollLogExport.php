@@ -40,7 +40,7 @@ class PayrollLogExport implements FromCollection, Responsable, WithHeadings, Wit
         $this->startDate = date('Y-m-d', strtotime($request->start_date));
         $this->endDate = date('Y-m-d', strtotime($request->end_date));
         $departmentId = getDepartmentNameByName('Processing');
-        $this->TIMELOGS = Timelogs::where('department_id', $departmentId)->whereBetween('log_date', [$this->startDate,$this->endDate])->orderBy('id', 'DESC');
+        $this->TIMELOGS = Timelogs::where('department_id', $departmentId)->where('log_date', $this->startDate)->orderBy('id', 'DESC');
     }
 
     public function map($employeeModel): array
@@ -69,7 +69,7 @@ class PayrollLogExport implements FromCollection, Responsable, WithHeadings, Wit
         return [
             [
                 'PAYDATE DATE: '. $this->DATENOW,
-                'DATE:'. $this->startDate . ' - ' . $this->endDate,
+                'DATE:'. $this->startDate,
                 'OVERALL TOTAL PAY - ₱' . $totalSum
             ],
             [

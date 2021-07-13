@@ -5284,7 +5284,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['employeeList'],
@@ -6135,6 +6134,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -6151,7 +6151,8 @@ __webpack_require__.r(__webpack_exports__);
         department_id: ''
       },
       value: null,
-      departmentExpenses: false
+      departmentExpenses: false,
+      endDate: false
     };
   },
   computed: {
@@ -6178,6 +6179,12 @@ __webpack_require__.r(__webpack_exports__);
         this.departmentExpenses = true;
       } else {
         this.departmentExpenses = false;
+      }
+
+      if (this.formData.report_type === 'Daily Processing') {
+        this.endDate = true;
+      } else {
+        this.endDate = false;
       }
     },
     clearFields: function clearFields() {
@@ -80250,8 +80257,7 @@ var render = function() {
               rows: _vm.employeeList,
               sortable: false,
               clickable: false,
-              printable: false,
-              serverSearch: true
+              printable: false
             },
             on: { "row-click": _vm.onEdit },
             scopedSlots: _vm._u([
@@ -81061,7 +81067,7 @@ var render = function() {
             { staticClass: "form-group" },
             [
               _c("datepicker", {
-                attrs: { circle: true, lang: "en" },
+                attrs: { disabled: _vm.endDate, circle: true, lang: "en" },
                 model: {
                   value: _vm.formData.end_date,
                   callback: function($$v) {

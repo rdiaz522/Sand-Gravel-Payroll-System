@@ -12,8 +12,7 @@
                 :clickable="false"
                 :printable="false"
                 v-on:row-click="onEdit"
-                :serverSearch="true"
-                >
+                >   
 
                 <th slot="thead-tr">
                     Actions

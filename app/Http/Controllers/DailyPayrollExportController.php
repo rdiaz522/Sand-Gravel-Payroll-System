@@ -96,7 +96,7 @@ class DailyPayrollExportController extends Controller
         $reports->report_excel = $filename;
         $reports->report_pdf = 'NO PDF';
         $reports->start_date = dateFormat($request->start_date);
-        $reports->end_date = dateFormat($request->end_date);
+        $reports->end_date = dateFormat($request->start_date);
 
         if($reports->save()) {
             return response()->json([

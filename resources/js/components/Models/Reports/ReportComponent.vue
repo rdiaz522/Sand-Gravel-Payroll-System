@@ -31,7 +31,8 @@
 
              <label>End Date</label>
             <div class="form-group">
-                <datepicker 
+                <datepicker
+                :disabled="endDate" 
                 v-model="formData.end_date"
                 :circle="true"
                 lang="en"/>
@@ -60,7 +61,8 @@ export default {
                 department_id:''
             },
             value:null,
-            departmentExpenses: false
+            departmentExpenses: false,
+            endDate: false
         }
     },
      computed: {
@@ -87,6 +89,12 @@ export default {
             } else {
                   this.departmentExpenses = false;
             }
+
+            if(this.formData.report_type === 'Daily Processing') {
+                   this.endDate = true;
+            } else {
+                  this.endDate = false;
+            }   
         },
 
         clearFields() {
