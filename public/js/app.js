@@ -77530,7 +77530,7 @@ var render = function() {
       _vm._b(
         {
           staticClass: "form-control",
-          attrs: { maxlength: "20" },
+          attrs: { maxlength: "50" },
           domProps: { value: _vm.value },
           on: {
             input: function($event) {
