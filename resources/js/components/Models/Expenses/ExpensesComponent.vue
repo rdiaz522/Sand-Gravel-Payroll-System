@@ -92,6 +92,7 @@ export default {
         save() {
             this.$SHOW_LOADING();
             this.formData.cash_date = moment(this.formData.cash_date).format('YYYY-MM-DD');
+            this.formData.amount = parseFloat(this.formData.amount);
             axios.post(this.$BASE_URL + this.$EXPENSES, this.formData)
                         .then((response) => {
                             this.clearFields();

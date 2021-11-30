@@ -9,11 +9,11 @@
                 <label>Report Type</label>
                <select  class="form-control" v-model="formData.report_type" @change="onChange($event)">
                     <option value="" disabled selected>Select your option</option>
-                    <option value="Payroll Report">PAYROLL REPORT</option>
-                    <option value="Department Total Pay Report">TOTAL PAYMENT BY DEPARTMENT</option>
-                    <option value="Department Expenses">DEPARTMENT EXPENSES REPORT</option>
-                    <option value="Daily Processing">DAILY PROCESSING LOG REPORT</option>
                     <option value="Weekly Payroll">WEEKLY PAYROLL BY DEPARTMENT</option>
+                    <option value="Department Expenses">DEPARTMENT EXPENSES REPORT</option>
+                    <option value="Department Total Pay Report">TOTAL PAYMENT BY DEPARTMENT</option>
+                    <option value="Payroll Report">PAYROLL REPORT</option>
+                    <option value="Daily Processing">DAILY PROCESSING LOG REPORT</option>
                 </select>
             </div>
 

@@ -51,34 +51,37 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
     public function map($employeeModel): array
     {   
         $fullName = $employeeModel->firstname . ' ' . $employeeModel->middlename . '. ' . $employeeModel->lastname;
-        $timeLogModel = $timeLogs = $employeeModel->timeLogs()->where('department_id', $this->departmentId)->whereBetween('log_date', [$this->startDate,$this->endDate])->select([
+        $timeLogModel = $employeeModel->timeLogs()->where('department_id', $this->departmentId)->whereBetween('log_date', [$this->startDate,$this->endDate])->select([
             'daily_rate',
             'log_date',
             'total_pay'
         ]);
         $total = (float)$timeLogModel->sum('total_pay');
-        $days = [
-            'fullname' => $fullName,
-            0 => '₱0',
-            1 => '₱0',
-            2 => '₱0',
-            3 => '₱0',
-            4 => '₱0',
-            5 => '₱0',
-            6 => '₱0',
-            'total_pay' => '₱'.$total
-        ];
+        if($total > 0) {
         $timeLogs = $timeLogModel->get();
-        if(!empty($timeLogs)) {
-            foreach ($timeLogs as $timeLog) {
-                $cc = Carbon::parse($timeLog->log_date)->dayOfWeek;
-                $days[$cc] = '₱' . $timeLog->daily_rate;
-            }
+                if(!empty($timeLogs)) {
+                    $days = [
+                    'fullname' => $fullName,
+                    6 => '₱0',
+                    0 => '₱0',
+                    1 => '₱0',
+                    2 => '₱0',
+                    3 => '₱0',
+                    4 => '₱0',
+                    5 => '₱0',
+                    'total_pay' => '₱'.$total
+                ];
+                    foreach ($timeLogs as $timeLog) {
+                        $cc = Carbon::parse($timeLog->log_date)->dayOfWeek;
+                        $days[$cc] = '₱' . $timeLog->daily_rate;
+                    }
+                }
+                 return [
+                    $days       
+                ];
         }
 
-        return [
-                $days       
-        ];
+        return [];
     }
 
     public function headings(): array
@@ -87,19 +90,22 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
         $totalSum = $this->TIMELOGS->sum('total_pay');
         return [
             [
+                'DEPARTMENT: ' . getDepartmentName($this->departmentId) 
+            ],
+            [
                 'PAYDATE DATE: '. $this->DATENOW,
                 'DATE:'. $this->startDate . ' - ' . $this->endDate,
                 'OVERALL TOTAL PAY - ₱' . $totalSum
             ],
             [
                 'EMPLOYEE NAME',
-                'SUNDAY',
-                'MONDAY',
-                'TUESDAY',
-                'WEDNESDAY',
-                'THRUSDAY',
-                'FRIDAY',
-                'SATURDAY',
+                'SAT',
+                'SUN',
+                'MON',
+                'TUE',
+                'WED',
+                'THU',
+                'FRI',
                 'TOTAL PAY',
             ],
 
@@ -124,13 +130,13 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
     public function DateNow()
     {
         $days = [
-            0 => 'SUNDAY',
-            1 => 'MONDAY',
-            2 => 'TUESDAY',
-            3 => 'WEDNESDAY',
-            4 => 'THURSDAY',
-            5 => 'FRIDAY',
-            6 => 'SATURDAY',
+            6 => 'SAT',
+            0 => 'SUN',
+            1 => 'MON',
+            2 => 'TUE',
+            3 => 'WED',
+            4 => 'THU',
+            5 => 'FRI',
         ];
         $carbon = Carbon::now('Asia/Manila');
         $this->DATENOW = $carbon->format('Y-m-d');
@@ -149,7 +155,8 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
             'middlename',
         ];
         
-        $collections = $this->EMPLOYEES->select($selectQuery)->get();
+        $collections = $this->EMPLOYEES->select($selectQuery)
+            ->orderBy('lastname', 'ASC')->get();
 
         return $collections;
     }

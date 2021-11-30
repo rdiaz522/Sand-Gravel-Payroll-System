@@ -70,7 +70,7 @@ export default {
         cashAdvanceEdit: function (newVal) {
             console.log(newVal);
             this.id = newVal.id;
-            this.cash_advance = newVal.cash_advance;
+            this.cash_advance = parseFoat(newVal.cash_advance);
             this.cash_advance_date = newVal.cash_advance_date;
             this.cash_advance_desc_id = newVal.cash_advance_description;
             this.description = newVal.description;
@@ -87,7 +87,7 @@ export default {
         save() {
             this.$SHOW_LOADING();
             const data = {
-                cash_advance: this.cash_advance,
+                cash_advance: parseFloat(this.cash_advance),
                 cash_advance_desc_id: this.cash_advance_desc_id,
                 cash_advance_date: moment(this.cash_advance_date).format('YYYY-MM-DD')
             }

@@ -31,6 +31,7 @@ class DailyPayrollExportController extends Controller
     
         $selectQuery = ['id','firstname','middlename','lastname'];
         $collections = Employees::with(['cashAdvance','cashDeduction', 'timeLogs', 'contributions'])
+        ->orderBy('lastname', 'ASC')
         ->select($selectQuery)
         ->get();
         $pdf = PDF::loadView('components.pdf', ['collections' => $collections, 'startDate' => date('Y-m-d', strtotime($request->start_date)),'endDate' => date('Y-m-d', strtotime($request->end_date))]);

@@ -50,6 +50,7 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
         $this->endDate = date('Y-m-d', strtotime($request->end_date));
         $selectQuery = ['id','firstname','middlename','lastname'];
         $this->DATA = Employees::with(['cashAdvance','cashDeduction', 'timeLogs', 'contributions'])
+        ->orderBy('lastname', 'ASC')
         ->select($selectQuery)
         ->get();
     }

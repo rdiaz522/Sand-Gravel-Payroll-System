@@ -67,10 +67,10 @@ export default {
     watch: {
         cashDeductionEdit: function (newVal) {
             this.id = newVal.id;
-            this.cash_deduction = newVal.cash_deduction;
+            this.cash_deduction = parseFloat(newVal.cash_deduction);
             this.cash_deduction_date = newVal.cash_deduction_date;
-            this.cash_advance = newVal.cash_amount;
-            this.new_cashAdvance = newVal.new_cash_advance_balance;
+            this.cash_advance = parseFloat(newVal.cash_amount);
+            this.new_cashAdvance = parseFloat(newVal.new_cash_advance_balance);
             this.fullName = newVal.employee_fullname
         }
     },
@@ -85,7 +85,7 @@ export default {
             this.$SHOW_LOADING();
             if(this.cash_deduction < this.new_cashAdvance) {
                 const data = {
-                cash_deduction: this.cash_deduction,
+                cash_deduction: parseFloat(this.cash_deduction),
                 new_cash_advance_balance: parseFloat(this.new_cashAdvance) - parseFloat(this.cash_deduction),
                 cash_deduction_date: moment(this.cash_deduction_date).format('YYYY-MM-DD'),
                 }

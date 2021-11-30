@@ -24,7 +24,7 @@ class ExpensesByDepartmentResource extends JsonResource
             'id' => $this->id,
             'department_id' => $this->department_id,
             'description' => $this->description,
-            'amount' => $this->amount,
+            'amount' => (float)$this->amount,
             'cash_from' => $this->cash_from,
             'cash_date' => $this->cash_date,
             'departmentName' => $name

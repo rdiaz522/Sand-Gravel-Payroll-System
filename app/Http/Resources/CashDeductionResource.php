@@ -26,8 +26,8 @@ class CashDeductionResource extends JsonResource
         return [
             'id' => $this->id,
             'employee_id' => $this->employee_id,
-            'cash_deduction' => $this->cash_deduction,
-            'new_cash_advance_balance' => $this->new_cash_advance_balance,
+            'cash_deduction' => (float)$this->cash_deduction,
+            'new_cash_advance_balance' => (float)$this->new_cash_advance_balance,
             'cash_deduction_date' => $this->cash_deduction_date,
             'cash_advance_id' => $this->cash_advance_id,
             'employee_fullname' => $fullName,

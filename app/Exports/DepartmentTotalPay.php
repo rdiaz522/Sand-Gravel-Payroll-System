@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Location;
+use App\Models\ExpensesByDepartment;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Excel;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -41,13 +42,17 @@ class DepartmentTotalPay implements FromCollection, Responsable, WithHeadings, W
         $this->endDate = date('Y-m-d', strtotime($request->end_date));
     }
 
-    public function map($employeeModel): array
+    public function map($departmentModel): array
     {   
-        $totalPay = (float)$employeeModel->timeLogs()->whereBetween('log_date', [$this->startDate,$this->endDate])->sum('total_pay');
+        $totalPay = (float)$departmentModel->timeLogs()->whereBetween('log_date', [$this->startDate,$this->endDate])->sum('total_pay');
+        $totalExpenses = (float)ExpensesByDepartment::where('department_id', $departmentModel->id)->whereBetween('cash_date',[$this->startDate,$this->endDate])->sum('amount');
+        $overAllTotal = $totalPay + $totalExpenses;
         return [
             [
-                $employeeModel->name,
+                $departmentModel->name,
                 '₱' . number_format($totalPay, 2, '.', ''),
+                '₱' . number_format($totalExpenses, 2, '.',''),
+                number_format($overAllTotal, 2, '.', '')    
             ]
         ];
     }
@@ -58,12 +63,17 @@ class DepartmentTotalPay implements FromCollection, Responsable, WithHeadings, W
 
         return [
             [
+                'TOTAL PAY BY DEPARTMENT'
+            ],
+            [
                 'GENERATED DATE: '. $this->DATENOW,
                 'DATE:'. $this->startDate . ' - ' . $this->endDate
             ],
             [
                 'DEPARTMENT',
-                'TOTAL PAYMENT'
+                'TOTAL PAYMENT',
+                'TOTAL EXPENSES',
+                'OVERALL TOTAL'
             ]
         ];
     }
@@ -82,6 +92,7 @@ class DepartmentTotalPay implements FromCollection, Responsable, WithHeadings, W
     {   
         $selectQuery = ['id','name'];
         $collections = Location::with(['timeLogs'])
+        ->whereNotIn('name', ['Direct Expense LHB', 'Direct Expenses KBB'])
         ->select($selectQuery)
         ->get();
         return $collections;
@@ -90,13 +101,13 @@ class DepartmentTotalPay implements FromCollection, Responsable, WithHeadings, W
     public function DateNow()
     {
         $days = [
-            0 => 'SUNDAY',
-            1 => 'MONDAY',
-            2 => 'TUESDAY',
-            3 => 'WEDNESDAY',
-            4 => 'THURSDAY',
-            5 => 'FRIDAY',
-            6 => 'SATURDAY',
+            6 => 'SAT',
+            0 => 'SUN',
+            1 => 'MON',
+            2 => 'TUE',
+            3 => 'WED',
+            4 => 'THU',
+            5 => 'FRI',
         ];
 
         $carbon = Carbon::now('Asia/Manila');

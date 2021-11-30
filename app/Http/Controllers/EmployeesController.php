@@ -45,16 +45,25 @@ class EmployeesController extends Controller
             'employee_type_id' => 'required'
         ]);
 
+        $employees = Employees::where('firstname', $request->firstname)
+                            ->where('lastname', $request->lastname)
+                            ->count();
+
+
         if($validator->fails()) {
             return response()->json($validator->messages()->first(), 400);
         } else {
-            $employees = new Employees;
-            $employees->firstname = ucwords($request->firstname);
-            $employees->middlename = ucwords($request->middlename);
-            $employees->lastname = ucwords($request->lastname);
-            $employees->employee_type_id = $request->employee_type_id;
-            if($employees->save()) {
-                    return new EmployeeCollection($employees);
+            if($employees === 0) {
+                $employees = new Employees;
+                $employees->firstname = ucwords($request->firstname);
+                $employees->middlename = ucwords($request->middlename);
+                $employees->lastname = ucwords($request->lastname);
+                $employees->employee_type_id = $request->employee_type_id;
+                if($employees->save()) {
+                        return new EmployeeCollection($employees);
+                }
+            } else {
+                return null;
             }
         }
     }

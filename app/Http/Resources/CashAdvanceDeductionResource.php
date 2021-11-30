@@ -27,7 +27,7 @@ class CashAdvanceDeductionResource extends JsonResource
             'id' => $this->id,
             'name' => $description,
             'employee_id' => $this->employee_id,
-            'cash_advance' => $this->cash_advance,
+            'cash_advance' => (float)$this->cash_advance,
             'cash_advance_description' => $this->cash_advance_description,
             'cash_advance_date' => $this->cash_advance_date,
             'employee_fullname' => $fullName,

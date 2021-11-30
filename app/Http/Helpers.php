@@ -92,7 +92,7 @@ if (!function_exists('getCashAdvanceAmountById')) {
         $cashAdvanceDesc = CashAdvanceDeduction::where('id', $id)->select(['cash_advance'])->first();
         $cash = '';
         if($cashAdvanceDesc instanceof CashAdvanceDeduction && $cashAdvanceDesc->exists) {
-            $cash = $cashAdvanceDesc->cash_advance;
+            $cash = (float)$cashAdvanceDesc->cash_advance;
         }
         
         return $cash;

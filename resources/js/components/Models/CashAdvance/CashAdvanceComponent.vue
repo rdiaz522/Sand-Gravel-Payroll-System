@@ -116,6 +116,7 @@ export default {
         save() {
             this.formData.employee_id = this.value.id;
             this.formData.cash_advance_date = moment(this.formData.cash_advance_date).format('YYYY-MM-DD');
+            this.formData.cash_advance = parseFloat(this.formData.cash_advance);
             this.$SHOW_LOADING();
                 axios.post(this.$BASE_URL + this.$CASHADVANCEDEDUCTION, this.formData)
                     .then((response) => {

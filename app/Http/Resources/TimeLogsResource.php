@@ -42,7 +42,7 @@ class TimeLogsResource extends JsonResource
             'id' => $this->id,
             'employee_id' => $this->employee_id,
             'department_id' => $this->department_id,
-            'daily_rate' => $this->daily_rate,
+            'daily_rate' => (float)$this->daily_rate,
             'time_in' => $timeIn,
             'time_out' => $timeOut,
             'break_time' => $this->break_time,

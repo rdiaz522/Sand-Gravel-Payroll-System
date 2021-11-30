@@ -26,9 +26,9 @@ class ContributionResource extends JsonResource
         return [
             'id' => $this->id,
             'employee_id' => $this->employee_id,
-            'sss' => $this->sss,
-            'pagibig' =>  $this->pagibig,
-            'philhealth' =>  $this->philhealth,
+            'sss' => (float)$this->sss,
+            'pagibig' =>  (float)$this->pagibig,
+            'philhealth' =>  (float)$this->philhealth,
             'contribution_date' => $this->contribution_date,
             'employee_fullname' => $fullName
         ];

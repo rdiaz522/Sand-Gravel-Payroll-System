@@ -18,7 +18,7 @@ class DailyLogsResource extends JsonResource
             'id' => $this->id,
             'employee_id' => $this->employee_id,
             'location_id' => $this->location_id,
-            'daily_rate' => $this->daily_rate,
+            'daily_rate' => (float)$this->daily_rate,
             'log_date' => $this->log_date,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

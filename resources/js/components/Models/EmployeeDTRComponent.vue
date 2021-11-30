@@ -31,8 +31,8 @@
                <AppDropdown label="Location" v-model="formData.position_id" :options="position"  placeholder="Select Position"> </AppDropdown>
             </div>
             <div class="form-group">
-                 <AppTextBox label="Daily Rate" v-model="formData.daily_rate" placeholder="Enter Daily Rate ..." type="number"> </AppTextBox>
-            </div>
+                 <AppTextBox label="Daily Rate" v-model="formData.daily_rate" placeholder="Enter Daily Rate ..." type="text" autocomplete="on"> </AppTextBox>
+            </div>  
             <label>Time In Date Logs</label>
             <div class="form-group">
                 <datepicker 
@@ -204,15 +204,12 @@ export default {
         },
 
         clearFields() {
-            this.formData.position_id = '';
-            this.formData.employee_id = '';
             this.formData.start_time = '';
             this.formData.end_time = '';
             this.formData.break_time = '';
             this.formData.total_hours = '';
             this.formData.log_date = moment().format('YYYY-MM-DD'),
             this.formData.log_date2 = moment().format('YYYY-MM-DD'),
-            this.formData.daily_rate = '';
             this.breakTimeValue = '1:00';
             this.disabledTimePicker = true;
             this.value = null;

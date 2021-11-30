@@ -77,7 +77,7 @@ export default {
             this.id = newVal.id;
             this.department_id = newVal.department_id;
             this.description = newVal.description;
-            this.amount = newVal.amount;
+            this.amount = parseFloat(newVal.amount);
             this.cash_from = newVal.cash_from;
             this.cash_date = newVal.cash_date;
         }

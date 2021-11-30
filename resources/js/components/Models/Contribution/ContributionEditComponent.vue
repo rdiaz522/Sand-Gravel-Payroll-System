@@ -75,9 +75,9 @@ export default {
     watch: {
         contributionEdit: function (newVal) {
             this.id = newVal.id;
-            this.sss = newVal.sss;
-            this.pagibig = newVal.pagibig;
-            this.philhealth = newVal.philhealth;
+            this.sss = parseFloat(newVal.sss);
+            this.pagibig = parseFloat(newVal.pagibig);
+            this.philhealth = parseFloat(newVal.philhealth);
             this.contribution_date = newVal.contribution_date;
             this.fullName = newVal.employee_fullname
         }

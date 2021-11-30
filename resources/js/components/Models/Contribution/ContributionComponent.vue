@@ -118,6 +118,9 @@ export default {
         save() {
             this.formData.employee_id = this.value.id;
             this.formData.contribution_date = moment(this.formData.contribution_date).format('YYYY-MM-DD');
+            this.formData.sss = parseFloat(this.formData.sss);
+            this.formData.pagibig = parseFloat(this.formData.pagibig);
+            this.formData.philhealth = parseFloat(this.formData.philhealth);
             this.$SHOW_LOADING();
                 axios.post(this.$BASE_URL + this.$CONTRIBUTION, this.formData)
                     .then((response) => {

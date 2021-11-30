@@ -50,7 +50,17 @@
                             }
                             $totalContribution = (float)$SSS + (float)$pagibig + (float)$philhealth;
                             $gross = (float)$netPay - (float)$overAllTotalCashDedcution - (float)$totalContribution;
+                            $checkTotal = 0;
+                            foreach($departments as $item) {
+                                $checkTotal += (float)$employeeModel->timeLogs()
+                                ->where('department_id',$item->id)->whereBetween('log_date', [$startDate, $endDate])->sum('total_pay');
+                            }
+                        
                         @endphp
+
+                @php
+                    if((int)$checkTotal > 0) {
+                @endphp
                 <table class="table" style="width: 100%; border:1px solid black;"> 
                     <tr>
                         <th class="slip-name">DATE: {{$dateNow}}</th>
@@ -145,8 +155,10 @@
                 @endif
                 @php
                     $rows++;
+                }
                 @endphp
                 @endforeach
+
 
             </div>
         </div>

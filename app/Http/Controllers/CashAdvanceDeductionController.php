@@ -43,8 +43,8 @@ class CashAdvanceDeductionController extends Controller
     {
         $validator = Validator::make($request->toArray(), [
             'employee_id' => 'required',
-            'cash_advance' => 'required|numeric|digits_between:1,6',
-            'cash_advance_desc_id' => 'required|string',
+            'cash_advance' => 'required|numeric',
+            'cash_advance_desc_id' => 'required',
             'cash_advance_date' => 'required',
         ]);
 
@@ -65,7 +65,7 @@ class CashAdvanceDeductionController extends Controller
             } else {
                 $cashAdvanceDeduction = new CashAdvanceDeduction;
                 $cashAdvanceDeduction->employee_id = $request->employee_id;
-                $cashAdvanceDeduction->cash_advance = $request->cash_advance;
+                $cashAdvanceDeduction->cash_advance = (float)$request->cash_advance;
                 $cashAdvanceDeduction->cash_advance_description = $request->cash_advance_desc_id;
                 $cashAdvanceDeduction->cash_advance_date = date('Y-m-d', strtotime($request->cash_advance_date));
                 if($cashAdvanceDeduction->save()) {
@@ -123,8 +123,8 @@ class CashAdvanceDeductionController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->toArray(), [
-            'cash_advance' => 'required|numeric|digits_between:1,6',
-            'cash_advance_desc_id' => 'required|string',
+            'cash_advance' => 'required|numeric',
+            'cash_advance_desc_id' => 'required',
             'cash_advance_date' => 'required',
         ]);
 
@@ -132,7 +132,7 @@ class CashAdvanceDeductionController extends Controller
             return response()->json($validator->messages()->first(), 400);
         } else {
             $cashAdvanceDeduction = CashAdvanceDeduction::findOrFail($id);
-            $cashAdvanceDeduction->cash_advance = $request->cash_advance;
+            $cashAdvanceDeduction->cash_advance = (float)$request->cash_advance;
             $cashAdvanceDeduction->cash_advance_description = $request->cash_advance_desc_id;
             $cashAdvanceDeduction->cash_advance_date = date('Y-m-d', strtotime($request->cash_advance_date));
             if($cashAdvanceDeduction->save()) {

@@ -43,8 +43,8 @@ class ExpensesByDepartmentController extends Controller
         $validator = Validator::make($request->toArray(), [
             'department_id' => 'required',
             'description' => 'required',
-            'amount' => 'required|numeric|digits_between:1,6',
-            'cash_from' => 'required',
+            'amount' => 'required|numeric',
+            'cash_from' => 'required',  
             'cash_date' => 'required',
         ]);
 
@@ -54,7 +54,7 @@ class ExpensesByDepartmentController extends Controller
             $expenses = new ExpensesByDepartment;
             $expenses->department_id = $request->department_id;
             $expenses->description = $request->description;
-            $expenses->amount = $request->amount;
+            $expenses->amount = (float)$request->amount;
             $expenses->cash_from = $request->cash_from;
             $expenses->cash_date = date('Y-m-d', strtotime($request->cash_date));
             if($expenses->save()) {
@@ -98,7 +98,7 @@ class ExpensesByDepartmentController extends Controller
         $validator = Validator::make($request->toArray(), [
             'department_id' => 'required',
             'description' => 'required',
-            'amount' => 'required|numeric|digits_between:1,6',
+            'amount' => 'required|numeric',
             'cash_from' => 'required',
             'cash_date' => 'required',
         ]);
@@ -109,7 +109,7 @@ class ExpensesByDepartmentController extends Controller
             $expenses = ExpensesByDepartment::find($id);
             $expenses->department_id = $request->department_id;
             $expenses->description = $request->description;
-            $expenses->amount = $request->amount;
+            $expenses->amount = (float)$request->amount;
             $expenses->cash_from = $request->cash_from;
             $expenses->cash_date = date('Y-m-d', strtotime($request->cash_date));
             if($expenses->save()) {

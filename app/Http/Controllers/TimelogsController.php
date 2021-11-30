@@ -44,7 +44,7 @@ class TimelogsController extends Controller
         $validator = Validator::make($request->toArray(), [
             'employee_id' => 'required',
             'position_id' => 'required',
-            'daily_rate' => 'required|numeric|digits_between:1,6',
+            'daily_rate' => 'required|numeric',
             'time_in' => 'required',
             'break_time' => 'required',
             'time_out' => 'required',
@@ -65,7 +65,7 @@ class TimelogsController extends Controller
             $timelogs = new Timelogs();
             $timelogs->employee_id = $request->employee_id;
             $timelogs->department_id = $departmentId;
-            $timelogs->daily_rate = $request->daily_rate;
+            $timelogs->daily_rate = (float)$request->daily_rate;
             $timelogs->time_in = $request->time_in;
             $timelogs->time_out = $request->time_out;
             $timelogs->break_time = $request->break_time;
@@ -112,7 +112,7 @@ class TimelogsController extends Controller
     {
         //
         $validator = Validator::make($request->toArray(), [
-            'daily_rate' => 'required|numeric|digits_between:1,6',
+            'daily_rate' => 'required|numeric',
             'time_in' => 'required',
             'break_time' => 'required',
             'time_out' => 'required',
@@ -132,7 +132,7 @@ class TimelogsController extends Controller
                 $timelogs->department_id = $departmentId;
             }
 
-            $timelogs->daily_rate = $request->daily_rate;
+            $timelogs->daily_rate = (float)$request->daily_rate;
             $timelogs->time_in = $request->time_in;
             $timelogs->time_out = $request->time_out;
             $timelogs->break_time = $request->break_time;

@@ -41,9 +41,9 @@ class ContributionController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->toArray(), [
-            'sss' => 'numeric|digits_between:1,6',
-            'pagibig' => 'numeric|digits_between:1,6',
-            'philhealth' => 'numeric|digits_between:1,6',
+            'sss' => 'numeric',
+            'pagibig' => 'numeric',
+            'philhealth' => 'numeric',
             'contribution_date' => 'required',
         ]);
 
@@ -52,9 +52,9 @@ class ContributionController extends Controller
         } else {
             $contributions = new Contribution;
             $contributions->employee_id = $request->employee_id;
-            $contributions->sss = $request->sss;
-            $contributions->pagibig = $request->pagibig;
-            $contributions->philhealth = $request->philhealth;
+            $contributions->sss = (float)$request->sss;
+            $contributions->pagibig = (float)$request->pagibig;
+            $contributions->philhealth =(float) $request->philhealth;
             $contributions->contribution_date = date('Y-m-d', strtotime($request->contribution_date));
             if($contributions->save()) {
                 return new ContributionResource($contributions);
@@ -99,9 +99,9 @@ class ContributionController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->toArray(), [
-            'sss' => 'numeric|digits_between:1,6',
-            'pagibig' => 'numeric|digits_between:1,6',
-            'philhealth' => 'numeric|digits_between:1,6',
+            'sss' => 'numeric',
+            'pagibig' => 'numeric',
+            'philhealth' => 'numeric',
             'contribution_date' => 'required',
         ]);
 
@@ -109,9 +109,9 @@ class ContributionController extends Controller
             return response()->json($validator->messages()->first(), 400);
         } else {
             $contributions = Contribution::findOrFail($id);
-            $contributions->sss = $request->sss;
-            $contributions->pagibig = $request->pagibig;
-            $contributions->philhealth = $request->philhealth;
+            $contributions->sss = (float)$request->sss;
+            $contributions->pagibig = (float)$request->pagibig;
+            $contributions->philhealth = (float)$request->philhealth;
             $contributions->contribution_date = date('Y-m-d', strtotime($request->contribution_date));
             if($contributions->save()) {
                 return new ContributionResource($contributions);

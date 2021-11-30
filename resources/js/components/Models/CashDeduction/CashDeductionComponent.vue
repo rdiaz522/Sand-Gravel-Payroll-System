@@ -139,7 +139,7 @@ export default {
             this.formData.cash_deduction = '';
             this.formData.employee_cash_advance_id = '';
             this.cash_advance_id = '';
-            this.formData.cash_deduction_date =  moment().format('YYYY-MM-DD');
+            this.formData.cash_deduction_date = moment().format('YYYY-MM-DD');
             this.value = null;
             this.total_cashAdvance = 0;
             this.disabledTimePicker = true;
@@ -148,7 +148,7 @@ export default {
         save() {
             this.formData.employee_id = this.value.id;
             this.$SHOW_LOADING();
-            if(parseFloat(this.formData.cash_deduction) <= this.total_cashAdvance) {
+            if(parseFloat(this.formData.cash_deduction) <= parseFloat(this.total_cashAdvance)) {
                 this.formData.new_cash_advance_balance = parseFloat(this.total_cashAdvance) - parseFloat(this.formData.cash_deduction);
                 this.formData.cash_deduction_date = moment(this.formData.cash_deduction_date).format('YYYY-MM-DD');
                 axios.post(this.$BASE_URL + this.$CASHDEDUCTION, this.formData)

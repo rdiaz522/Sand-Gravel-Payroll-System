@@ -2692,6 +2692,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.formData.employee_id = this.value.id;
       this.formData.cash_advance_date = moment__WEBPACK_IMPORTED_MODULE_5___default()(this.formData.cash_advance_date).format('YYYY-MM-DD');
+      this.formData.cash_advance = parseFloat(this.formData.cash_advance);
       this.$SHOW_LOADING();
       axios.post(this.$BASE_URL + this.$CASHADVANCEDEDUCTION, this.formData).then(function (response) {
         _this.clearFields();
@@ -2805,7 +2806,7 @@ __webpack_require__.r(__webpack_exports__);
     cashAdvanceEdit: function cashAdvanceEdit(newVal) {
       console.log(newVal);
       this.id = newVal.id;
-      this.cash_advance = newVal.cash_advance;
+      this.cash_advance = parseFoat(newVal.cash_advance);
       this.cash_advance_date = newVal.cash_advance_date;
       this.cash_advance_desc_id = newVal.cash_advance_description;
       this.description = newVal.description;
@@ -2824,7 +2825,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$SHOW_LOADING();
       var data = {
-        cash_advance: this.cash_advance,
+        cash_advance: parseFloat(this.cash_advance),
         cash_advance_desc_id: this.cash_advance_desc_id,
         cash_advance_date: moment__WEBPACK_IMPORTED_MODULE_4___default()(this.cash_advance_date).format('YYYY-MM-DD')
       };
@@ -3319,7 +3320,7 @@ __webpack_require__.r(__webpack_exports__);
       this.formData.employee_id = this.value.id;
       this.$SHOW_LOADING();
 
-      if (parseFloat(this.formData.cash_deduction) <= this.total_cashAdvance) {
+      if (parseFloat(this.formData.cash_deduction) <= parseFloat(this.total_cashAdvance)) {
         this.formData.new_cash_advance_balance = parseFloat(this.total_cashAdvance) - parseFloat(this.formData.cash_deduction);
         this.formData.cash_deduction_date = moment__WEBPACK_IMPORTED_MODULE_5___default()(this.formData.cash_deduction_date).format('YYYY-MM-DD');
         axios.post(this.$BASE_URL + this.$CASHDEDUCTION, this.formData).then(function (response) {
@@ -3435,10 +3436,10 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     cashDeductionEdit: function cashDeductionEdit(newVal) {
       this.id = newVal.id;
-      this.cash_deduction = newVal.cash_deduction;
+      this.cash_deduction = parseFloat(newVal.cash_deduction);
       this.cash_deduction_date = newVal.cash_deduction_date;
-      this.cash_advance = newVal.cash_amount;
-      this.new_cashAdvance = newVal.new_cash_advance_balance;
+      this.cash_advance = parseFloat(newVal.cash_amount);
+      this.new_cashAdvance = parseFloat(newVal.new_cash_advance_balance);
       this.fullName = newVal.employee_fullname;
     }
   },
@@ -3456,7 +3457,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.cash_deduction < this.new_cashAdvance) {
         var data = {
-          cash_deduction: this.cash_deduction,
+          cash_deduction: parseFloat(this.cash_deduction),
           new_cash_advance_balance: parseFloat(this.new_cashAdvance) - parseFloat(this.cash_deduction),
           cash_deduction_date: moment__WEBPACK_IMPORTED_MODULE_4___default()(this.cash_deduction_date).format('YYYY-MM-DD')
         };
@@ -3956,6 +3957,9 @@ __webpack_require__.r(__webpack_exports__);
 
       this.formData.employee_id = this.value.id;
       this.formData.contribution_date = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.contribution_date).format('YYYY-MM-DD');
+      this.formData.sss = parseFloat(this.formData.sss);
+      this.formData.pagibig = parseFloat(this.formData.pagibig);
+      this.formData.philhealth = parseFloat(this.formData.philhealth);
       this.$SHOW_LOADING();
       axios.post(this.$BASE_URL + this.$CONTRIBUTION, this.formData).then(function (response) {
         _this.clearFields();
@@ -4074,9 +4078,9 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     contributionEdit: function contributionEdit(newVal) {
       this.id = newVal.id;
-      this.sss = newVal.sss;
-      this.pagibig = newVal.pagibig;
-      this.philhealth = newVal.philhealth;
+      this.sss = parseFloat(newVal.sss);
+      this.pagibig = parseFloat(newVal.pagibig);
+      this.philhealth = parseFloat(newVal.philhealth);
       this.contribution_date = newVal.contribution_date;
       this.fullName = newVal.employee_fullname;
     }
@@ -4845,14 +4849,11 @@ __webpack_require__.r(__webpack_exports__);
       this.clearFields();
     },
     clearFields: function clearFields() {
-      this.formData.position_id = '';
-      this.formData.employee_id = '';
       this.formData.start_time = '';
       this.formData.end_time = '';
       this.formData.break_time = '';
       this.formData.total_hours = '';
-      this.formData.log_date = moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'), this.formData.log_date2 = moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'), this.formData.daily_rate = '';
-      this.breakTimeValue = '1:00';
+      this.formData.log_date = moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'), this.formData.log_date2 = moment__WEBPACK_IMPORTED_MODULE_7___default()().format('YYYY-MM-DD'), this.breakTimeValue = '1:00';
       this.disabledTimePicker = true;
       this.value = null;
       this.startTime = {
@@ -5623,6 +5624,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.$SHOW_LOADING();
       this.formData.cash_date = moment__WEBPACK_IMPORTED_MODULE_4___default()(this.formData.cash_date).format('YYYY-MM-DD');
+      this.formData.amount = parseFloat(this.formData.amount);
       axios.post(this.$BASE_URL + this.$EXPENSES, this.formData).then(function (response) {
         _this.clearFields();
 
@@ -5744,7 +5746,7 @@ __webpack_require__.r(__webpack_exports__);
       this.id = newVal.id;
       this.department_id = newVal.department_id;
       this.description = newVal.description;
-      this.amount = newVal.amount;
+      this.amount = parseFloat(newVal.amount);
       this.cash_from = newVal.cash_from;
       this.cash_date = newVal.cash_date;
     }
@@ -79758,7 +79760,8 @@ var render = function() {
                 attrs: {
                   label: "Daily Rate",
                   placeholder: "Enter Daily Rate ...",
-                  type: "number"
+                  type: "text",
+                  autocomplete: "on"
                 },
                 model: {
                   value: _vm.formData.daily_rate,
@@ -80982,8 +80985,12 @@ var render = function() {
                   [_vm._v("Select your option")]
                 ),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "Payroll Report" } }, [
-                  _vm._v("PAYROLL REPORT")
+                _c("option", { attrs: { value: "Weekly Payroll" } }, [
+                  _vm._v("WEEKLY PAYROLL BY DEPARTMENT")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Department Expenses" } }, [
+                  _vm._v("DEPARTMENT EXPENSES REPORT")
                 ]),
                 _vm._v(" "),
                 _c(
@@ -80992,16 +80999,12 @@ var render = function() {
                   [_vm._v("TOTAL PAYMENT BY DEPARTMENT")]
                 ),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "Department Expenses" } }, [
-                  _vm._v("DEPARTMENT EXPENSES REPORT")
+                _c("option", { attrs: { value: "Payroll Report" } }, [
+                  _vm._v("PAYROLL REPORT")
                 ]),
                 _vm._v(" "),
                 _c("option", { attrs: { value: "Daily Processing" } }, [
                   _vm._v("DAILY PROCESSING LOG REPORT")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "Weekly Payroll" } }, [
-                  _vm._v("WEEKLY PAYROLL BY DEPARTMENT")
                 ])
               ]
             )
