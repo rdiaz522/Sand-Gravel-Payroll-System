@@ -56,7 +56,7 @@ class DepartmentExpenses implements FromCollection, Responsable, WithHeadings, W
     {   
         return [
             [
-                $employeeModel->cash_date,
+                date('m-d-Y', strtotime($employeeModel->cash_date)),
                 $employeeModel->description,
                 '₱' . number_format($employeeModel->amount, 2, '.', ''),
                 $employeeModel->cash_from
@@ -71,7 +71,7 @@ class DepartmentExpenses implements FromCollection, Responsable, WithHeadings, W
         return [
             [
                 'GENERATED DATE: '. $this->DATENOW,
-                'DATE: '. $this->startDate . ' - ' . $this->endDate,
+                'DATE: '. date('m-d-Y', strtotime($this->startDate)) . ' - ' . date('m-d-Y', strtotime($this->endDate)),
                 'DEPARTMENT NAME: ' . strtoupper($this->departmentName),
                 'TOTAL: ₱' . number_format($this->DEPRTMENTCOLLECTION->sum('amount'), 2, '.', '')
             ],
@@ -116,7 +116,7 @@ class DepartmentExpenses implements FromCollection, Responsable, WithHeadings, W
         ];
 
         $carbon = Carbon::now('Asia/Manila');
-        $this->DATENOW = $carbon->format('Y-m-d');
+        $this->DATENOW = $carbon->format('m-d-Y');
         $this->DAY = $days[$carbon->dayOfWeek];
     } 
 }

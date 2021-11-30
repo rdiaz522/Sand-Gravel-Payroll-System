@@ -130,7 +130,7 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
         return [
             [
                 'PAYDATE DATE: '. $this->DATENOW,
-                'DATE:'. $this->startDate . ' - ' . $this->endDate,
+                'DATE:'. date('m-d-Y', strtotime($this->startDate)) . ' - ' . date('m-d-Y', strtotime($this->endDate)),
             ],
             [
                 'FULLNAME',
@@ -183,7 +183,7 @@ class DailyPayrollExport implements FromCollection, Responsable, WithHeadings, W
             6 => 'SATURDAY',
         ];
         $carbon = Carbon::now('Asia/Manila');
-        $this->DATENOW = $carbon->format('Y-m-d');
+        $this->DATENOW = $carbon->format('m-d-Y');
         $this->DAY = $days[$carbon->dayOfWeek];
     } 
 }

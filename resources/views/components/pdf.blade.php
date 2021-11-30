@@ -17,7 +17,7 @@
         <div class="card">
             <div class="card-body">
                 @php
-                    $dateNow = (new \DateTime('Asia/Manila'))->format('Y-m-d h:i A');
+                    $dateNow = (new \DateTime('Asia/Manila'))->format('m-d-Y h:i A');
                     $rows = 1;
                 @endphp
                 @foreach ($collections as $employeeModel)

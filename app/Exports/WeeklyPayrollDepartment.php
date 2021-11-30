@@ -94,7 +94,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
             ],
             [
                 'PAYDATE DATE: '. $this->DATENOW,
-                'DATE:'. $this->startDate . ' - ' . $this->endDate,
+                'DATE:'. date('m-d-Y', strtotime($this->startDate)) . ' - ' . date('m-d-Y', strtotime($this->endDate)),
                 'OVERALL TOTAL PAY - ₱' . $totalSum
             ],
             [
@@ -139,7 +139,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
             5 => 'FRI',
         ];
         $carbon = Carbon::now('Asia/Manila');
-        $this->DATENOW = $carbon->format('Y-m-d');
+        $this->DATENOW = $carbon->format('m-d-Y');
         $this->DAY = $days[$carbon->dayOfWeek];
     }
 

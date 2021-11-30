@@ -69,7 +69,7 @@ class PayrollLogExport implements FromCollection, Responsable, WithHeadings, Wit
         return [
             [
                 'PAYDATE DATE: '. $this->DATENOW,
-                'DATE:'. $this->startDate,
+                'DATE:'. date('m-d-Y', strtotime($this->startDate)),
                 'OVERALL TOTAL PAY - ₱' . $totalSum
             ],
             [
@@ -114,7 +114,7 @@ class PayrollLogExport implements FromCollection, Responsable, WithHeadings, Wit
             6 => 'SATURDAY',
         ];
         $carbon = Carbon::now('Asia/Manila');
-        $this->DATENOW = $carbon->format('Y-m-d');
+        $this->DATENOW = $carbon->format('m-d-Y');
         $this->DAY = $days[$carbon->dayOfWeek];
     }
 
