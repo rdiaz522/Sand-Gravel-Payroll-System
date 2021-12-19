@@ -185,7 +185,6 @@ export default {
                     .then((response) => {
                         this.clearFields();
                         this.$parent.getTimeLogs();
-                        this.$HIDE_LOADING();
                         this.$SHOW_MESSAGE('Successfully', 'New DTR Added!', 'success');
                 })
                 .catch((error) => {

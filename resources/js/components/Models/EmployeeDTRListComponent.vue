@@ -94,7 +94,6 @@ import DataTable from "vue-materialize-datatable";
                         axios.delete(this.$BASE_URL + this.$EMPLOYEETIMELOGS + `/${props.id}`).then((response) =>  {
                             this.$parent.getTimeLogs();
                             this.$parent.showDTREdit = false;
-                            this.$HIDE_LOADING();
                             this.$WARNING_MESSAGE.fire(
                             'Deleted!',
                             'Data has been deleted.',
@@ -105,6 +104,7 @@ import DataTable from "vue-materialize-datatable";
                             this.$HIDE_LOADING();
                             this.$SHOW_MESSAGE('Oops..','Something went wrong, Call the Administrator','error');
                         });
+                        this.$HIDE_LOADING();
                     } else if (
                         /* Read more about handling dismissals below */
                         result.dismiss === this.$SWAL.DismissReason.cancel

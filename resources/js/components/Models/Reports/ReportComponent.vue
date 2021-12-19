@@ -1,4 +1,4 @@
-!<template>
+<template>
  <div>
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -19,6 +19,10 @@
 
             <div class="form-group" v-show="this.departmentExpenses">
                 <AppDropdown label="Department" v-model="formData.department_id" :options="locationList" placeholder="Select Department Type"> </AppDropdown>
+            </div>
+
+            <div class="form-group" v-show="this.showPosition">
+                <AppDropdown label="Location" v-model="formData.location_id" :options="filteredPosition" placeholder="Select Department Type"> </AppDropdown>
             </div>
 
             <label>Start Date</label>
@@ -51,17 +55,19 @@ import AppDropdown from '../../AppComponents/AppDropdown.vue';
 import VueDatepickerUi from 'vue-datepicker-ui';
 import moment from 'moment';
 export default {
-    props:['title','name','event','locationList'],
+    props:['title','name','event','locationList', 'positionList'],
     data() {
         return {
             formData: {
                 report_type:'',
                 start_date: '',
                 end_date: '',
-                department_id:''
+                department_id:'',
+                location_id: ''
             },
             value:null,
             departmentExpenses: false,
+            showPosition: false,
             endDate: false
         }
     },
@@ -71,6 +77,10 @@ export default {
                 return true;
             }
             return false;
+        },
+
+        filteredPosition: function () {
+            return this.positionList.filter(position => position.location_id == this.formData.department_id);
         }
     },
     components: {
@@ -84,10 +94,15 @@ export default {
             this.clearFields();
         },
         onChange(event) {
-            if(this.formData.report_type === 'Department Expenses' || this.formData.report_type === 'Weekly Payroll') {
-                   this.departmentExpenses = true;
+            if(this.formData.report_type === 'Department Expenses') {
+                    this.departmentExpenses = true;
+                     this.showPosition = false;
+            } else if( this.formData.report_type === 'Weekly Payroll') {
+                    this.departmentExpenses = true;
+                    this.showPosition = true;
             } else {
                   this.departmentExpenses = false;
+                  this.showPosition = false;
             }
 
             if(this.formData.report_type === 'Daily Processing') {

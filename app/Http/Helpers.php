@@ -4,6 +4,7 @@ use App\Models\CashAdvanceDeduction;
 use App\Models\CashAdvanceDescription;
 use App\Models\Employees;
 use App\Models\Location;
+use App\Models\Position;
 
 if (!function_exists('get_color')) {
     function get_color()
@@ -96,6 +97,18 @@ if (!function_exists('getCashAdvanceAmountById')) {
         }
         
         return $cash;
+    }
+}
+
+if (!function_exists('getLocationNameById')) {
+    function getLocationNameById($id)
+    {
+        $position = Position::where('id', $id)->select('name')->first();
+        if($position instanceof Position && $position->exists) {
+            return $position->name;
+        }
+        
+        return '';
     }
 }
 

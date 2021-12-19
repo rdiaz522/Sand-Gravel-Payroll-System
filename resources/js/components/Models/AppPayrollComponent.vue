@@ -92,6 +92,7 @@ export default {
         },
 
         async getTimeLogs() {
+            this.$SHOW_LOADING();
             axios.get(this.$BASE_URL + this.$EMPLOYEETIMELOGS).then((response) => {
                     this.timelogList = response.data.data;
                     this.$HIDE_LOADING();

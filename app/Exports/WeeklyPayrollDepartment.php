@@ -38,20 +38,32 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
 
     protected $endDate;
 
+    protected $departmentId;
+
+    protected $locationId;
+
     public function __construct($request)
     {
         $this->startDate = date('Y-m-d', strtotime($request->start_date));
         $this->endDate = date('Y-m-d', strtotime($request->end_date));
         $this->departmentId = $request->department_id;
-
-        $this->TIMELOGS = Timelogs::where('department_id', $this->departmentId)->whereBetween('log_date', [$this->startDate,$this->endDate])->orderBy('id', 'DESC');
+        $this->locationId = $request->location_id;
+        $this->TIMELOGS = Timelogs::where('department_id', $this->departmentId);
+        if(!empty($this->locationId)) {
+            $this->TIMELOGS->where('location_id', $this->locationId);
+        }
+        $this->TIMELOGS->whereBetween('log_date', [$this->startDate,$this->endDate])->orderBy('id', 'DESC');
         $this->EMPLOYEES = Employees::with(['timeLogs']);
     }
 
     public function map($employeeModel): array
     {   
         $fullName = $employeeModel->firstname . ' ' . $employeeModel->middlename . '. ' . $employeeModel->lastname;
-        $timeLogModel = $employeeModel->timeLogs()->where('department_id', $this->departmentId)->whereBetween('log_date', [$this->startDate,$this->endDate])->select([
+        $timeLogModel = $employeeModel->timeLogs()->where('department_id', $this->departmentId);
+        if(!empty($this->locationId)) {
+            $timeLogModel->where('location_id', $this->locationId);
+        }
+        $timeLogModel->whereBetween('log_date', [$this->startDate,$this->endDate])->select([
             'daily_rate',
             'log_date',
             'total_pay'
@@ -73,7 +85,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
                 ];
                     foreach ($timeLogs as $timeLog) {
                         $cc = Carbon::parse($timeLog->log_date)->dayOfWeek;
-                        $days[$cc] = '₱' . $timeLog->daily_rate;
+                        $days[$cc] = '₱' . $timeLog->total_pay;
                     }
                 }
                  return [
@@ -90,7 +102,8 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
         $totalSum = $this->TIMELOGS->sum('total_pay');
         return [
             [
-                'DEPARTMENT: ' . getDepartmentName($this->departmentId) 
+                'DEPARTMENT: ' . getDepartmentName($this->departmentId),
+                'LOCATION: ' . getLocationNameById($this->locationId)
             ],
             [
                 'PAYDATE DATE: '. $this->DATENOW,

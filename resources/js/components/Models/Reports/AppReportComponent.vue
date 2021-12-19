@@ -7,6 +7,7 @@
                     name="Save" 
                     event="save"
                     :locationList="this.locationList"
+                    :positionList="this.positionList"
                     >
                     </ReportComponent>
            </div>
@@ -28,7 +29,8 @@ export default {
     data() {
         return {
             reportList:[],
-            locationList:[]
+            locationList:[],
+            positionList:[]
         }
     },
     
@@ -59,11 +61,23 @@ export default {
                     this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
                 })
         },
+
+        async getPositions() {
+            axios.get(this.$BASE_URL + this.$POSITION).then(response => {
+                    this.positionList = response.data.data;
+                    this.$HIDE_LOADING();
+                })
+                .catch((err) => {
+                    this.$HIDE_LOADING();
+                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                })
+        },
     },
 
     async created() {
         await this.getReports();
         await this.getLocations();
+        await this.getPositions();
     },
     
     mounted() {

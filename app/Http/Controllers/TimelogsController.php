@@ -73,6 +73,7 @@ class TimelogsController extends Controller
             $timelogs->log_date = date('Y-m-d', strtotime($request->log_date));
             $timelogs->log_date2 = date('Y-m-d', strtotime($request->log_date2));
             $timelogs->total_pay = (float)$request->total_hours * ((float)$request->daily_rate / 8);
+            $timelogs->location_id = $request->position_id;
             if($timelogs->save()) {
                 return new TimeLogsResource($timelogs);
             }
