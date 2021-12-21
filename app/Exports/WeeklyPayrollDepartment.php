@@ -85,7 +85,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
                 ];
                     foreach ($timeLogs as $timeLog) {
                         $cc = Carbon::parse($timeLog->log_date)->dayOfWeek;
-                        $days[$cc] = '₱' . $timeLog->total_pay;
+                        $days[$cc] = '₱' . $timeLog->daily_rate;
                     }
                 }
                  return [
