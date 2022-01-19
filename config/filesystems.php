@@ -32,9 +32,12 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => storage_path('app'),
         ],
-
+        'custom' => [
+            'driver' => 'local',
+            'root' => 'D:\LaravelDumper'
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
