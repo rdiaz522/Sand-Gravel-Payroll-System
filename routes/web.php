@@ -76,6 +76,7 @@ Route::post('/departmentpay', [DailyPayrollExportController::class, 'generateDep
 Route::post('/departmentexpenses', [DailyPayrollExportController::class, 'generateDepartmentExpenses'])->middleware('auth');
 Route::post('/dailyprocessing', [DailyPayrollExportController::class, 'generateProcessingLogBook'])->middleware('auth');
 Route::post('/weeklypayroll', [DailyPayrollExportController::class, 'generateWeeklyPayrollDepartment'])->middleware('auth');
+Route::post('/employeerecordhistory', [DailyPayrollExportController::class, 'generateEmployeeRecordHistory'])->middleware('auth');
 Route::get('/generatepayslip/{id}', [ReportController::class, 'generatePaySlip'])->middleware('auth');
 
 Route::get('/testers' , function() {

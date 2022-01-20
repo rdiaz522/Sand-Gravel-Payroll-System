@@ -14,6 +14,7 @@
                     <option value="Department Total Pay Report">TOTAL PAYMENT BY DEPARTMENT</option>
                     <option value="Payroll Report">PAYROLL REPORT</option>
                     <option value="Daily Processing">DAILY PROCESSING LOG REPORT</option>
+                    <option value="Employee Record History">EMPLOYEE RECORD HISTORY REPORT</option>
                 </select>
             </div>
 
@@ -25,9 +26,30 @@
                 <AppDropdown label="Location" v-model="formData.location_id" :options="filteredPosition" placeholder="Select Department Type"> </AppDropdown>
             </div>
 
+            <div class="form-group" v-show="this.showEmployee">
+                <label class="typo__label">Employees</label>
+                 <multiselect
+                        v-model="value"
+                        deselect-label="Remove selected value"
+                        track-by="firstname"
+                        :custom-label="fullName"
+                        placeholder="Search employees"
+                        :options="employeeList"
+                        :searchable="true"
+                        :block-keys="['Tab']"
+                        :allow-empty="true">
+                        <template slot="singleLabel"
+                        slot-scope="{ option }">
+
+                        <strong >{{ option.firstname }} {{ option.lastname }}</strong>
+
+                        </template>
+                </multiselect>
+            </div>
+
             <label>Start Date</label>
             <div class="form-group">
-                <datepicker 
+                <datepicker
                 v-model="formData.start_date"
                 :circle="true"
                 lang="en"/>
@@ -36,7 +58,7 @@
              <label>End Date</label>
             <div class="form-group">
                 <datepicker
-                :disabled="endDate" 
+                :disabled="endDate"
                 v-model="formData.end_date"
                 :circle="true"
                 lang="en"/>
@@ -54,8 +76,9 @@ import AppButton from '../../AppComponents/AppButton.vue';
 import AppDropdown from '../../AppComponents/AppDropdown.vue';
 import VueDatepickerUi from 'vue-datepicker-ui';
 import moment from 'moment';
+import Multiselect from 'vue-multiselect'
 export default {
-    props:['title','name','event','locationList', 'positionList'],
+    props:['title','name','event','locationList', 'positionList', 'employeeList'],
     data() {
         return {
             formData: {
@@ -63,11 +86,13 @@ export default {
                 start_date: '',
                 end_date: '',
                 department_id:'',
-                location_id: ''
+                location_id: '',
+                employee_id: ''
             },
             value:null,
             departmentExpenses: false,
             showPosition: false,
+            showEmployee: false,
             endDate: false
         }
     },
@@ -87,9 +112,13 @@ export default {
         AppTextBox,
         AppButton,
         AppDropdown,
-        datepicker: VueDatepickerUi
+        datepicker: VueDatepickerUi,
+        Multiselect
     },
     methods: {
+        fullName ({ firstname,middlename,lastname }) {
+            return `${firstname} ${middlename}, ${lastname}`
+            },
         onCancel() {
             this.clearFields();
         },
@@ -109,13 +138,28 @@ export default {
                    this.endDate = true;
             } else {
                   this.endDate = false;
-            }   
+            }
+
+            if(this.formData.report_type === 'Employee Record History') {
+                this.showEmployee = true;
+            } else {
+                this.showEmployee = false;
+            }
         },
 
         clearFields() {
             this.formData.report_type = '';
             this.formData.start_date =  '';
             this.formData.end_date =  '';
+            this.formData.department_id = '',
+            this.formData.location_id = '',
+            this.formData.start_date = '',
+            this.formData.end_date = '',
+            this.value = null;
+            this.departmentExpenses = false,
+            this.showPosition = false,
+            this.showEmployee = false,
+            this.endDate = false
         },
 
         save() {
@@ -199,7 +243,21 @@ export default {
                                 this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
                             });
                         }
-                        
+
+                    }
+
+                    if(this.formData.report_type === 'Employee Record History') {
+                        this.formData.employee_id = this.value.id;
+                        axios.post(this.$BASE_URL + '/employeerecordhistory', this.formData).then((response) => {
+                            this.clearFields();
+                            this.$parent.getReports();
+                            this.$SHOW_MESSAGE('Successfully', 'New Report', 'success');
+                            this.$HIDE_LOADING();
+                            })
+                            .catch((err) => {
+                                this.$HIDE_LOADING();
+                                this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                            });
                     }
 
                 } else {

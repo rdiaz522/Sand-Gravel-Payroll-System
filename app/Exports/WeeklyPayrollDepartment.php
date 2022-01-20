@@ -20,7 +20,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
     protected $DATENOW = '';
 
     protected $DAY = '';
-    
+
     protected $EMPLOYEES = '';
 
     protected $TIMELOGS;
@@ -57,7 +57,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
     }
 
     public function map($employeeModel): array
-    {   
+    {
         $fullName = $employeeModel->firstname . ' ' . $employeeModel->middlename . '. ' . $employeeModel->lastname;
         $timeLogModel = $employeeModel->timeLogs()->where('department_id', $this->departmentId);
         if(!empty($this->locationId)) {
@@ -89,7 +89,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
                     }
                 }
                  return [
-                    $days       
+                    $days
                 ];
         }
 
@@ -132,7 +132,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
             'B' => 35,
             'C' => 35,
             'D' => 35,
-            'E' => 35,            
+            'E' => 35,
             'F' => 35,
             'G' => 35,
             'H' => 35,
@@ -167,7 +167,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
             'lastname',
             'middlename',
         ];
-        
+
         $collections = $this->EMPLOYEES->select($selectQuery)
             ->orderBy('lastname', 'ASC')->get();
 

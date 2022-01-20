@@ -3,19 +3,20 @@
          <div class="row">
            <div class="col-xl-6 col-lg-6">
                  <ReportComponent
-                    title="Generate Report" 
-                    name="Save" 
+                    title="Generate Report"
+                    name="Save"
                     event="save"
                     :locationList="this.locationList"
                     :positionList="this.positionList"
+                    :employeeList="this.employeeList"
                     >
                     </ReportComponent>
            </div>
         </div>
-        <div class="row"> 
-             <div class="col-xl-12 col-lg-12"> 
+        <div class="row">
+             <div class="col-xl-12 col-lg-12">
                 <ReportListComponent
-                :reportList="this.reportList" 
+                :reportList="this.reportList"
                 > </ReportListComponent>
             </div>
         </div>
@@ -30,10 +31,11 @@ export default {
         return {
             reportList:[],
             locationList:[],
-            positionList:[]
+            positionList:[],
+            employeeList:[]
         }
     },
-    
+
     components: {
         ReportComponent,
         ReportListComponent
@@ -72,14 +74,25 @@ export default {
                     this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
                 })
         },
+        async getEmployees() {
+            axios.get(this.$BASE_URL + this.$EMPLOYEES).then(response => {
+                    this.employeeList = response.data.data;
+                    this.$HIDE_LOADING();
+                })
+                .catch((err) => {
+                    this.$HIDE_LOADING();
+                    this.$SHOW_MESSAGE('Oops..', 'Something went wrong, Call the Administrator', 'error');
+                })
+        },
     },
 
     async created() {
         await this.getReports();
         await this.getLocations();
         await this.getPositions();
+        await this.getEmployees();
     },
-    
+
     mounted() {
         this.$SHOW_LOADING();
     }

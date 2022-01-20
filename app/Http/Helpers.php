@@ -53,7 +53,7 @@ if (!function_exists('getDepartmentNameByName')) {
         if($department instanceof Location && $department->exists) {
             $id = $department->id;
         }
-        
+
         return $id;
     }
 }
@@ -67,7 +67,7 @@ if (!function_exists('getCashAdvanceDescription')) {
         if($cashAdvanceDesc instanceof CashAdvanceDescription && $cashAdvanceDesc->exists) {
             $name = $cashAdvanceDesc->name;
         }
-        
+
         return $name;
     }
 }
@@ -82,7 +82,7 @@ if (!function_exists('getCashAdvanceById')) {
 
            return getCashAdvanceDescription($id);
         }
-        
+
         return $id;
     }
 }
@@ -95,7 +95,7 @@ if (!function_exists('getCashAdvanceAmountById')) {
         if($cashAdvanceDesc instanceof CashAdvanceDeduction && $cashAdvanceDesc->exists) {
             $cash = (float)$cashAdvanceDesc->cash_advance;
         }
-        
+
         return $cash;
     }
 }
@@ -107,10 +107,23 @@ if (!function_exists('getLocationNameById')) {
         if($position instanceof Position && $position->exists) {
             return $position->name;
         }
-        
+
         return '';
     }
 }
+
+if (!function_exists('getDepartmentById')) {
+    function getDepartmentById($id)
+    {
+        $position = Location::where('id', $id)->select('name')->first();
+        if($position instanceof Location && $position->exists) {
+            return $position->name;
+        }
+
+        return '';
+    }
+}
+
 
 
 
