@@ -247,7 +247,6 @@ export default {
                     }
 
                     if(this.formData.report_type === 'Employee Record History') {
-                        this.formData.employee_id = this.value.id;
                         axios.post(this.$BASE_URL + '/employeerecordhistory', this.formData).then((response) => {
                             this.clearFields();
                             this.$parent.getReports();

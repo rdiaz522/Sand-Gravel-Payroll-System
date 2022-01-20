@@ -28,6 +28,7 @@ if (!function_exists('getEmployeeFullname')) {
         $fullName = '';
         if($employee instanceof Employees && $employee->exists) {
             $fullName = $employee->firstname . ' ' . $employee->middlename . '. ' . $employee->lastname;
+
         }
         return $fullName;
     }

@@ -83,11 +83,37 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
                     5 => '₱0',
                     'total_pay' => '₱'.$total
                 ];
+                    $totalPerDay = [
+                        0 => 0,
+                        1 => 0,
+                        2 => 0,
+                        3 => 0,
+                        4 => 0,
+                        5 => 0,
+                        6 => 0,
+                    ];
                     foreach ($timeLogs as $timeLog) {
                         $cc = Carbon::parse($timeLog->log_date)->dayOfWeek;
-                        $days[$cc] = '₱' . $timeLog->daily_rate;
+                        if($cc === 6) {
+                           $totalPerDay[$cc] += $timeLog->total_pay;
+                        } elseif($cc === 5) {
+                            $totalPerDay[$cc] += $timeLog->total_pay;
+                        } elseif($cc === 4) {
+                            $totalPerDay[$cc] += $timeLog->total_pay;
+                        } elseif($cc === 3) {
+                            $totalPerDay[$cc] += $timeLog->total_pay;
+                        } elseif($cc === 2) {
+                            $totalPerDay[$cc] += $timeLog->total_pay;
+                        } elseif($cc === 1) {
+                            $totalPerDay[$cc] += $timeLog->total_pay;
+                        } elseif($cc === 0) {
+                            $totalPerDay[$cc] += $timeLog->total_pay;
+                        }
+
+                        $days[$cc] = '₱' . $timeLog->daily_rate . ' /Total = ' . $totalPerDay[$cc];
                     }
                 }
+
                  return [
                     $days
                 ];

@@ -115,7 +115,7 @@ class EmployeeRecordHistory implements FromCollection, Responsable, WithColumnWi
         ];
 
         $collections = $this->TIMELOGS->select($selectQuery)
-            ->orderBy('id', 'ASC')->get();
+            ->orderBy('log_date', 'DESC')->get();
 
         return $collections;
     }
