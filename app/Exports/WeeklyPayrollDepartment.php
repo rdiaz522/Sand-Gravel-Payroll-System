@@ -110,7 +110,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
                             $totalPerDay[$cc] += $timeLog->total_pay;
                         }
 
-                        $days[$cc] = '₱' . $timeLog->daily_rate . ' /Total = ' . $totalPerDay[$cc];
+                        $days[$cc] = '₱' . $timeLog->daily_rate . ' /Total = ₱' . $totalPerDay[$cc];
                     }
                 }
 

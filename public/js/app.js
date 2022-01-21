@@ -6420,6 +6420,10 @@ __webpack_require__.r(__webpack_exports__);
           }
 
           if (this.formData.report_type === 'Employee Record History') {
+            /**TODO CHECK ISSET ID VALUE OF EMPLOYEE IF EMPTY OR NOT */
+            // if(this.value.id !== null || this.value.id !== undefined) {
+            //     this.formData.employee_id = this.value.id;
+            // }
             axios.post(this.$BASE_URL + '/employeerecordhistory', this.formData).then(function (response) {
               _this2.clearFields();
 

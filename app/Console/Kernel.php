@@ -25,7 +25,6 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('backup:run --only-db')->everyMinute()->withoutOverlapping();
-        $schedule->command('backup:clean')->everyMinute()->withoutOverlapping();
     }
 
     /**
