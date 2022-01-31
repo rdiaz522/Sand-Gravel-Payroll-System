@@ -45,8 +45,9 @@ class EmployeeRecordHistory implements FromCollection, Responsable, WithColumnWi
         $fullName = getEmployeeFullname($timeLogsModel->employee_id);
         $department = getDepartmentById($timeLogsModel->department_id);
         $location = getLocationNameById($timeLogsModel->location_id);
-        $timeIn  = $timeLogsModel->log_date . ' ' . $timeLogsModel->time_in;
-        $timeOut = $timeLogsModel->log_date2 . ' ' . $timeLogsModel->time_out;
+        $timeIn  = $timeLogsModel->time_in . ' - ' . $timeLogsModel->log_date;
+        $timeOut = $timeLogsModel->time_out . ' - ' . $timeLogsModel->log_date2;
+        $totalPay = $timeLogsModel->total_pay;
         return [
            [
             $fullName,
@@ -56,7 +57,7 @@ class EmployeeRecordHistory implements FromCollection, Responsable, WithColumnWi
             $timeOut,
             $timeLogsModel->break_time,
             $timeLogsModel->total_hours,
-            $timeLogsModel->total_pay
+            number_format($totalPay, 2)
            ]
         ];
     }

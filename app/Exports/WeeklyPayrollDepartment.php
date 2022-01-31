@@ -81,7 +81,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
                     3 => '₱0',
                     4 => '₱0',
                     5 => '₱0',
-                    'total_pay' => '₱'.$total
+                    'total_pay' => '₱'. number_format($total, 2)
                 ];
                     $totalPerDay = [
                         0 => 0,
@@ -134,7 +134,7 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
             [
                 'PAYDATE DATE: '. $this->DATENOW,
                 'DATE:'. date('m-d-Y', strtotime($this->startDate)) . ' - ' . date('m-d-Y', strtotime($this->endDate)),
-                'OVERALL TOTAL PAY - ₱' . $totalSum
+                'OVERALL TOTAL PAY - ₱' . number_format($totalSum, 2)
             ],
             [
                 'EMPLOYEE NAME',
