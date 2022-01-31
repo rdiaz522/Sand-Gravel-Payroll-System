@@ -45,8 +45,8 @@ class EmployeeRecordHistory implements FromCollection, Responsable, WithColumnWi
         $fullName = getEmployeeFullname($timeLogsModel->employee_id);
         $department = getDepartmentById($timeLogsModel->department_id);
         $location = getLocationNameById($timeLogsModel->location_id);
-        $timeIn  = $timeLogsModel->time_in . ' - ' . $timeLogsModel->log_date;
-        $timeOut = $timeLogsModel->time_out . ' - ' . $timeLogsModel->log_date2;
+        $timeIn  = $timeLogsModel->time_in . ' - ' . date('m-d-Y', strtotime($timeLogsModel->log_date));
+        $timeOut = $timeLogsModel->time_out . ' - ' . date('m-d-Y', strtotime($timeLogsModel->log_date2));
         $totalPay = $timeLogsModel->total_pay;
         return [
            [
