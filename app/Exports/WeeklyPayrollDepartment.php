@@ -110,8 +110,8 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
                             $totalPerDay[$cc] += $timeLog->total_pay;
                         }
 
-                        $days[$cc] = '₱' . $timeLog->daily_rate . ' /Total = ₱' . $totalPerDay[$cc];
-                    }
+                        $days[$cc] = '₱' . $timeLog->daily_rate . '/' . number_format($totalPerDay[$cc] -  $timeLog->daily_rate, 2);
+                        }
                 }
 
                  return [
@@ -129,11 +129,15 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
         return [
             [
                 'DEPARTMENT: ' . getDepartmentName($this->departmentId),
-                'LOCATION: ' . getLocationNameById($this->locationId)
+                '',
+                'LOCATION: ' . getLocationNameById($this->locationId),
             ],
             [
                 'PAYDATE DATE: '. $this->DATENOW,
+                '',
                 'DATE:'. date('m-d-Y', strtotime($this->startDate)) . ' - ' . date('m-d-Y', strtotime($this->endDate)),
+                '',
+                '',
                 'OVERALL TOTAL PAY - ₱' . number_format($totalSum, 2)
             ],
             [
@@ -154,15 +158,15 @@ class WeeklyPayrollDepartment implements FromCollection, Responsable, WithHeadin
     public function columnWidths(): array
     {
         return [
-            'A' => 35,
-            'B' => 35,
-            'C' => 35,
-            'D' => 35,
-            'E' => 35,
-            'F' => 35,
-            'G' => 35,
-            'H' => 35,
-            'I' => 35
+            'A' => 23,
+            'B' => 12,      
+            'C' => 12,  
+            'D' => 14,
+            'E' => 12,
+            'F' => 12,
+            'G' => 12,
+            'H' => 12,
+            'I' => 12       
         ];
     }
 
